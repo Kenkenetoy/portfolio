@@ -5,6 +5,8 @@ import {
   IconBrandX,
   IconBrandFacebook,
   IconBrandInstagram,
+  IconBrandLeetcode,
+  IconBrandYoutube,
 } from "@tabler/icons-react";
 import Image from "@heroui/image";
 import { siteConfig } from "@/config/site";
@@ -24,6 +26,13 @@ export function FloatingDockDemo() {
         <IconBrandInstagram className="w-full h-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: siteConfig.links.instagram,
+    },
+    {
+      title: "LeetCode",
+      icon: (
+        <IconBrandLeetcode className="w-full h-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: siteConfig.links.leetcode,
     },
     {
       title: "GitHub",

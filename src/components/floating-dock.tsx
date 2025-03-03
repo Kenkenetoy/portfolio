@@ -85,7 +85,7 @@ const FloatingDockMobile = ({
         className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 dark:bg-neutral-800"
         onClick={() => setOpen(!open)}
       >
-        <IconLayoutNavbarCollapse className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
+        <IconLayoutNavbarCollapse className="w-5 h-5 text-neutral-900 dark:text-neutral-400" />
       </button>
     </div>
   );
@@ -182,7 +182,7 @@ function IconContainer({
           {hovered && (
             <motion.div
               animate={{ opacity: 1, y: 0, x: "-50%" }}
-              className="px-2 py-0.5 whitespace-pre rounded-md bg-gray-100 border dark:bg-neutral-800 dark:border-neutral-900 dark:text-white border-gray-200 text-neutral-700 absolute left-1/2 -translate-x-1/2 -top-8 w-fit text-md font-normal"
+              className="px-2 py-0.5 whitespace-pre rounded-md bg-gray-100 border dark:bg-neutral-800 dark:border-neutral-900 dark:text-white border-gray-200 text-neutral-900 absolute left-1/2 -translate-x-1/2 -top-8 w-fit text-md font-normal"
               exit={{ opacity: 0, y: 2, x: "-50%" }}
               initial={{ opacity: 0, y: 10, x: "-50%" }}
             >

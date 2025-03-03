@@ -46,7 +46,7 @@ export const DraggableMockupPhone = () => {
         <div
           ref={phoneRef}
           aria-label="Scrollable content"
-          className="h-[600px] p-4 space-y-4 overflow-y-scroll artboard artboard-demo phone-1 bg-gray-50 dark:bg-neutral-900 overflow-x-hidden"
+          className="h-[600px] w-full flex flex-col justify-center overflow-x-hidden max-w-full p-0 space-y-4 overflow-y-scroll artboard artboard-demo phone-1 bg-gray-50 dark:bg-neutral-900 "
           role="button"
           tabIndex={0}
           onKeyDown={handleKeyDown}
@@ -64,12 +64,14 @@ export const DraggableMockupPhone = () => {
             <p className="text-2xl text-neutral-900 dark:text-white">
               {siteConfig.name}
             </p>
-            <p className="text-lg text-neutral-700 dark:text-gray-300">
-              {siteConfig.role}
-            </p>
-          </div>
-          <div className="pointer-events-auto">
-            <FloatingDockDemo />
+            <div className="flex text-sm text-neutral-700 dark:text-gray-300">
+              <p className="">{siteConfig.role}</p>
+              <div className="divider divider-horizontal"></div>
+              <p className="">{siteConfig.location}</p>
+            </div>
+            <div className="pointer-events-auto">
+              <FloatingDockDemo />
+            </div>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ export const siteConfig = {
   name: "Kenneth Aparece",
   description: "Cebu Based Software Engineer",
   location: "Cebu",
-  role: "Software Engineer",
+  role: "Web Developer",
   navItems: [
     {
       label: "Home",
@@ -28,6 +28,8 @@ export const siteConfig = {
   links: {
     github: "https://github.com/frontio-ai/heroui",
     facebook: "https://facebook.com/hero_ui",
+    youtube: "https://youtube.com/hero_ui",
     instagram: "https://instagram.com/hero_ui",
+    leetcode: "https://leetcode.com/hero_ui",
   },
 };
