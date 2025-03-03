@@ -1,14 +1,11 @@
-import React from "react";
-import { FloatingDock } from "@/components/floating-dock";
 import {
   IconBrandGithub,
-  IconBrandX,
   IconBrandFacebook,
   IconBrandInstagram,
   IconBrandLeetcode,
-  IconBrandYoutube,
 } from "@tabler/icons-react";
-import Image from "@heroui/image";
+
+import { FloatingDock } from "@/components/floating-dock";
 import { siteConfig } from "@/config/site";
 
 export function FloatingDockDemo() {
@@ -42,11 +39,12 @@ export function FloatingDockDemo() {
       href: siteConfig.links.github,
     },
   ];
+
   return (
     <div className="flex items-center justify-center w-full">
       <FloatingDock
-        mobileClassName="translate-y-20" // only for demo, remove for production
         items={links}
+        mobileClassName="translate-y-20" // only for demo, remove for production
       />
     </div>
   );

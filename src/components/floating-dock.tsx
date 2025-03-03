@@ -104,7 +104,7 @@ const FloatingDockDesktop = ({
     <motion.div
       className={cn(
         "mx-auto hidden md:flex h-16 gap-4 items-end  rounded-2xl bg-gray-50 dark:bg-neutral-900 px-4 pb-3",
-        className
+        className,
       )}
       onMouseLeave={() => mouseX.set(Infinity)}
       onMouseMove={(e) => mouseX.set(e.pageX)}
@@ -142,7 +142,7 @@ function IconContainer({
   let heightTransformIcon = useTransform(
     distance,
     [-150, 0, 150],
-    [20, 40, 20]
+    [20, 40, 20],
   );
 
   let width = useSpring(widthTransform, {
@@ -170,7 +170,7 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link href={href} target="_blank" rel="noopener noreferrer">
+    <Link href={href} rel="noopener noreferrer" target="_blank">
       <motion.div
         ref={ref}
         className="relative flex items-center justify-center bg-gray-200 rounded-full aspect-square dark:bg-neutral-800"

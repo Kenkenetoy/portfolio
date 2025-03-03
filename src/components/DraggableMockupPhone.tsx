@@ -1,5 +1,5 @@
-import { useRef, useState, MouseEvent, KeyboardEvent } from "react";
 import { Image } from "@heroui/image";
+
 import { FloatingDockDemo } from "@/components/floater";
 import { siteConfig } from "@/config/site";
 
