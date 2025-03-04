@@ -16,9 +16,9 @@ import { cn } from "@/lib/utils";
 
 // Stack-to-icon mapping
 const stackIcons: { [key: string]: JSX.Element } = {
-  react: <IconBrandReact />,
-  laravel: <IconBrandLaravel />,
-  tailwind: <IconBrandTailwind />,
+  react: <IconBrandReact size={16} />,
+  laravel: <IconBrandLaravel size={16} />,
+  tailwind: <IconBrandTailwind size={16} />,
 };
 
 export const StickyScroll = ({
@@ -27,6 +27,7 @@ export const StickyScroll = ({
 }: {
   content: {
     title: string;
+    type: string;
     description: string;
     imageSrc: string;
     stack: string[]; // Added stack
@@ -86,15 +87,23 @@ export const StickyScroll = ({
       <div className="relative flex flex-col space-y-10">
         {content.map((item, index) => (
           <div key={item.title + index} className="space-y-4 scroll-section">
-            <motion.h2
-              animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-              className="text-2xl font-bold text-gray-900 dark:text-slate-100"
-            >
-              {item.title}
-            </motion.h2>
+            <div className="space-y-2">
+              <motion.h2
+                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
+                className="text-2xl font-bold text-gray-900 dark:text-slate-100"
+              >
+                {item.title}
+              </motion.h2>
+              <motion.h4
+                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
+                className="text-gray-900 text-md dark:text-slate-100"
+              >
+                {item.type}
+              </motion.h4>
+            </div>
             <motion.p
               animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-              className="max-w-md text-lg text-gray-700 dark:text-slate-300"
+              className="max-w-lg text-lg text-gray-700 dark:text-slate-300"
             >
               {item.description}
             </motion.p>
@@ -116,15 +125,18 @@ export const StickyScroll = ({
                           <div className="font-bold text-small">
                             {stackInfo?.title}
                           </div>
-                          <div className="text-tiny">
-                            {stackInfo?.description}
-                          </div>
+                          <div className="text-">{stackInfo?.description}</div>
                         </div>
                       }
                     >
-                      <Button aria-label="Like" color="default" variant="faded">
+                      <Button
+                        color="default"
+                        radius="full"
+                        size="sm"
+                        variant="ghost"
+                      >
                         {stackIcons[tech]}
-                        <span className="text-sm font-semibold">
+                        <span className="font-semibold text-tiny">
                           {stackInfo?.title}
                         </span>
                       </Button>
@@ -143,8 +155,13 @@ export const StickyScroll = ({
                         </div>
                       }
                     >
-                      <Button aria-label="Like" color="default" variant="faded">
-                        <span className="text-sm font-semibold">
+                      <Button
+                        color="default"
+                        radius="full"
+                        size="sm"
+                        variant="ghost"
+                      >
+                        <span className="font-semibold text-tiny">
                           {stackInfo?.title}
                         </span>
                       </Button>

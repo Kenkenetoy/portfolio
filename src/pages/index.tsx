@@ -32,7 +32,7 @@ export default function IndexPage() {
                 aria-label="Like"
                 className="pointer-events-auto"
                 color="primary"
-                variant="solid"
+                variant="shadow"
               >
                 <IconBrandGmail />
                 <span className="text-sm font-semibold">Contact</span>
