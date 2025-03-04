@@ -25,11 +25,26 @@ export const siteConfig = {
       href: "/projects",
     },
   ],
-  links: {
-    github: "https://github.com/frontio-ai/heroui",
-    facebook: "https://facebook.com/hero_ui",
-    youtube: "https://youtube.com/hero_ui",
-    instagram: "https://instagram.com/hero_ui",
-    leetcode: "https://leetcode.com/hero_ui",
+  socials: {
+    github: {
+      title: "GitHub",
+      link: "https://github.com/frontio-ai/heroui",
+    },
+    facebook: {
+      title: "Facebook",
+      link: "https://facebook.com/hero_ui",
+    },
+    youtube: {
+      title: "YouTube",
+      link: "https://youtube.com/hero_ui",
+    },
+    instagram: {
+      title: "Instagram",
+      link: "https://instagram.com/hero_ui",
+    },
+    leetcode: {
+      title: "LeetCode",
+      link: "https://leetcode.com/hero_ui",
+    },
   },
 };

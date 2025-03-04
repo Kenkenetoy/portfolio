@@ -1,7 +1,7 @@
 import {
   IconBrandGithub,
   IconBrandFacebook,
-  IconBrandInstagram,
+  // IconBrandInstagram,
   IconBrandLeetcode,
 } from "@tabler/icons-react";
 
@@ -17,13 +17,13 @@ export function FloatingDockDemo() {
       ),
       href: siteConfig.links.facebook,
     },
-    {
-      title: "Instagram",
-      icon: (
-        <IconBrandInstagram className="w-full h-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: siteConfig.links.instagram,
-    },
+    // {
+    //   title: "Instagram",
+    //   icon: (
+    //     <IconBrandInstagram className="w-full h-full text-neutral-500 dark:text-neutral-300" />
+    //   ),
+    //   href: siteConfig.links.instagram,
+    // },
     {
       title: "LeetCode",
       icon: (

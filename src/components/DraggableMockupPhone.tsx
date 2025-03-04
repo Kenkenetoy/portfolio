@@ -1,6 +1,5 @@
 import { Image } from "@heroui/image";
 
-import { FloatingDockDemo } from "@/components/floater";
 import { siteConfig } from "@/config/site";
 
 export const DraggableMockupPhone = () => {
@@ -18,18 +17,15 @@ export const DraggableMockupPhone = () => {
             alt="Woman listening to music"
             className="object-cover pointer-events-none select-none"
             draggable={false}
-            src="https://heroui.com/images/hero-card.jpeg"
+            src="public\228041565_1204885213317442_2861452606248897561_n.webp"
           />
           <div>
-            <p className="text-2xl text-neutral-900 dark:text-white">
+            <p className="text-2xl text-neutral-900 dark:text-whitetext-neutral-900 dark:text-white">
               {siteConfig.name}
             </p>
             <p className="text-lg text-neutral-700 dark:text-gray-300">
               {siteConfig.role}
             </p>
-          </div>
-          <div className="pointer-events-auto">
-            <FloatingDockDemo />
           </div>
         </div>
       </div>
