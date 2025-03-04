@@ -9,6 +9,8 @@ import {
   IconBrandLaravel,
   IconBrandTailwind,
 } from "@tabler/icons-react";
+import { Button } from "@heroui/button";
+
 import { siteConfig } from "@/config/site"; // Import siteConfig
 import { cn } from "@/lib/utils";
 
@@ -110,29 +112,42 @@ export const StickyScroll = ({
                     <Tooltip
                       key={i}
                       content={
-                        <div className="text-sm">
-                          <p className="font-semibold">{stackInfo?.title}</p>
-                          <p className="text-gray-500">
+                        <div className="px-1 py-2">
+                          <div className="font-bold text-small">
+                            {stackInfo?.title}
+                          </div>
+                          <div className="text-tiny">
                             {stackInfo?.description}
-                          </p>
+                          </div>
                         </div>
                       }
                     >
-                      <span className="flex items-center gap-1 p-2 bg-gray-200 rounded-md dark:bg-gray-800">
+                      <Button aria-label="Like" color="default" variant="faded">
                         {stackIcons[tech]}
                         <span className="text-sm font-semibold">
                           {stackInfo?.title}
                         </span>
-                      </span>
+                      </Button>
                     </Tooltip>
                   ) : (
                     <Tooltip
                       key={i}
-                      content={<p className="text-sm">{tech}</p>}
+                      content={
+                        <div className="px-1 py-2">
+                          <div className="font-bold text-small">
+                            {stackInfo?.title}
+                          </div>
+                          <div className="text-tiny">
+                            {stackInfo?.description}
+                          </div>
+                        </div>
+                      }
                     >
-                      <span className="px-3 py-1 text-sm font-semibold text-white bg-gray-600 rounded-full">
-                        {tech}
-                      </span>
+                      <Button aria-label="Like" color="default" variant="faded">
+                        <span className="text-sm font-semibold">
+                          {stackInfo?.title}
+                        </span>
+                      </Button>
                     </Tooltip>
                   );
                 })}

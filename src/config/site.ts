@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Kenneth Aparece",
   description: "Cebu Based Software Engineer",
   location: "Cebu",
-  role: "Web Developer",
+  role: "Software Engineer",
 
   navItems: [
     { label: "Home", href: "/" },
