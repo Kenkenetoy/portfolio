@@ -3,8 +3,21 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Image } from "@heroui/image";
-
+import { Tooltip } from "@heroui/tooltip";
+import {
+  IconBrandReact,
+  IconBrandLaravel,
+  IconBrandTailwind,
+} from "@tabler/icons-react";
+import { siteConfig } from "@/config/site"; // Import siteConfig
 import { cn } from "@/lib/utils";
+
+// Stack-to-icon mapping
+const stackIcons: { [key: string]: JSX.Element } = {
+  react: <IconBrandReact />,
+  laravel: <IconBrandLaravel />,
+  tailwind: <IconBrandTailwind />,
+};
 
 export const StickyScroll = ({
   content,
@@ -14,6 +27,7 @@ export const StickyScroll = ({
     title: string;
     description: string;
     imageSrc: string;
+    stack: string[]; // Added stack
   }[];
   contentClassName?: string;
 }) => {
@@ -82,6 +96,48 @@ export const StickyScroll = ({
             >
               {item.description}
             </motion.p>
+
+            {/* Stack Icons */}
+            {item.stack.length > 0 && (
+              <motion.div
+                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
+                className="flex flex-wrap gap-2"
+              >
+                {item.stack.map((tech, i) => {
+                  const stackInfo = siteConfig.stack[tech]; // Get stack info
+
+                  return stackIcons[tech] ? (
+                    <Tooltip
+                      key={i}
+                      content={
+                        <div className="text-sm">
+                          <p className="font-semibold">{stackInfo?.title}</p>
+                          <p className="text-gray-500">
+                            {stackInfo?.description}
+                          </p>
+                        </div>
+                      }
+                    >
+                      <span className="flex items-center gap-1 p-2 bg-gray-200 rounded-md dark:bg-gray-800">
+                        {stackIcons[tech]}
+                        <span className="text-sm font-semibold">
+                          {stackInfo?.title}
+                        </span>
+                      </span>
+                    </Tooltip>
+                  ) : (
+                    <Tooltip
+                      key={i}
+                      content={<p className="text-sm">{tech}</p>}
+                    >
+                      <span className="px-3 py-1 text-sm font-semibold text-white bg-gray-600 rounded-full">
+                        {tech}
+                      </span>
+                    </Tooltip>
+                  );
+                })}
+              </motion.div>
+            )}
           </div>
         ))}
       </div>
