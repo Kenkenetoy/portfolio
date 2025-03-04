@@ -4,12 +4,21 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Image } from "@heroui/image";
 import { Tooltip } from "@heroui/tooltip";
+import { Card, CardFooter } from "@heroui/card";
+// import { Badge } from "@heroui/badge";
 import {
   IconBrandReact,
   IconBrandLaravel,
   IconBrandTailwind,
+  IconBrandGithub,
+  IconBrandUnity,
+  IconBrandFigma,
+  IconBrandAdobeAfterEffect,
+  IconBrandAdobePhotoshop,
+  IconBrandBlender,
 } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
+import React from "react";
 
 import { siteConfig } from "@/config/site"; // Import siteConfig
 import { cn } from "@/lib/utils";
@@ -19,6 +28,11 @@ const stackIcons: { [key: string]: JSX.Element } = {
   react: <IconBrandReact size={16} />,
   laravel: <IconBrandLaravel size={16} />,
   tailwind: <IconBrandTailwind size={16} />,
+  unity: <IconBrandUnity size={16} />,
+  figma: <IconBrandFigma size={16} />,
+  aftereffects: <IconBrandAdobeAfterEffect size={16} />,
+  photoshop: <IconBrandAdobePhotoshop size={16} />,
+  blender: <IconBrandBlender size={16} />,
 };
 
 export const StickyScroll = ({
@@ -30,7 +44,8 @@ export const StickyScroll = ({
     type: string;
     description: string;
     imageSrc: string;
-    stack: string[]; // Added stack
+    stack: string[];
+    url?: { demo?: string; github?: string };
   }[];
   contentClassName?: string;
 }) => {
@@ -66,7 +81,6 @@ export const StickyScroll = ({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Preload the next image to prevent delay when switching
   useEffect(() => {
     if (!content[activeCard]) return;
 
@@ -84,9 +98,12 @@ export const StickyScroll = ({
       className="relative flex justify-center p-10 space-x-10"
     >
       {/* Left Content */}
-      <div className="relative flex flex-col space-y-10">
+      <div className="relative flex flex-col space-y-12">
         {content.map((item, index) => (
-          <div key={item.title + index} className="space-y-4 scroll-section">
+          <div
+            key={item.title + index}
+            className="max-w-lg space-y-8 scroll-section"
+          >
             <div className="space-y-2">
               <motion.h2
                 animate={{ opacity: activeCard === index ? 1 : 0.3 }}
@@ -103,12 +120,16 @@ export const StickyScroll = ({
             </div>
             <motion.p
               animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-              className="max-w-lg text-lg text-gray-700 dark:text-slate-300"
+              className="text-lg text-gray-700 dark:text-slate-300"
             >
-              {item.description}
+              {item.description.split("\n").map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
             </motion.p>
 
-            {/* Stack Icons */}
             {item.stack.length > 0 && (
               <motion.div
                 animate={{ opacity: activeCard === index ? 1 : 0.3 }}
@@ -128,9 +149,11 @@ export const StickyScroll = ({
                           <div className="text-">{stackInfo?.description}</div>
                         </div>
                       }
+                      isDisabled={activeCard !== index}
                     >
                       <Button
                         color="default"
+                        isDisabled={activeCard !== index}
                         radius="full"
                         size="sm"
                         variant="ghost"
@@ -154,9 +177,11 @@ export const StickyScroll = ({
                           </div>
                         </div>
                       }
+                      isDisabled={activeCard !== index}
                     >
                       <Button
                         color="default"
+                        isDisabled={activeCard !== index}
                         radius="full"
                         size="sm"
                         variant="ghost"
@@ -181,20 +206,54 @@ export const StickyScroll = ({
         )}
       >
         <motion.div
-          key={activeCard} // Re-render when activeCard changes
+          key={activeCard}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -10, scale: 0.95 }}
           initial={{ opacity: 0, y: 10, scale: 0.95 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           {loadedImages[activeCard] ? (
-            <Image
-              alt={content[activeCard].title}
-              className="object-cover w-full h-full"
-              height={200}
-              src={content[activeCard].imageSrc}
-              width={400}
-            />
+            <Card isFooterBlurred className="border-none" radius="lg">
+              <Image
+                alt={content[activeCard].title}
+                className="object-cover w-full h-full"
+                height={250}
+                src={content[activeCard].imageSrc}
+                width={400}
+              />
+              <CardFooter className="absolute bottom-0 z-10 overflow-hidden justify-evenly">
+                {/* Live Demo Button (Opens in New Tab) */}
+                <Button
+                  color="primary"
+                  radius="sm"
+                  size="md"
+                  variant="solid"
+                  isDisabled={!content[activeCard].url?.demo}
+                  onPress={() =>
+                    content[activeCard].url?.demo &&
+                    window.open(content[activeCard].url.demo, "_blank")
+                  }
+                >
+                  Live Demo
+                </Button>
+
+                {/* GitHub Button (Opens in New Tab) */}
+                {content[activeCard].url?.github && (
+                  <Button
+                    isIconOnly
+                    aria-label="GitHub"
+                    color="default"
+                    size="md"
+                    variant="solid"
+                    onPress={() =>
+                      window.open(content[activeCard].url?.github, "_blank")
+                    }
+                  >
+                    <IconBrandGithub size={16} />
+                  </Button>
+                )}
+              </CardFooter>
+            </Card>
           ) : (
             <div className="flex items-center justify-center w-full h-full">
               Loading...

@@ -18,9 +18,9 @@ export default function IndexPage() {
     <DefaultLayout>
       <div className="h-[50rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center">
         {/* Radial gradient for the container to give a faded look */}
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-        <div className="absolute inset-0 z-10 flex items-center justify-around px-40 text-3xl font-bold text-center text-white pointer-events-none md:text-4xl lg:text-7xl">
-          <GlareCard className="flex flex-col items-center justify-center pointer-events-auto">
+        <div className="absolute  inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+        <div className="absolute inset-0 z-10 flex items-center justify-around px-40 text-3xl font-bold text-center text-white md:text-4xl lg:text-7xl">
+          <GlareCard className="flex flex-col items-center justify-center ">
             <DraggableMockupPhone />
           </GlareCard>
           <section className="flex flex-col items-center justify-center w-1/2 gap-4 py-8 space-y-12 md:py-10">
@@ -30,7 +30,7 @@ export default function IndexPage() {
               </h1>
               <Button
                 aria-label="Like"
-                className="pointer-events-auto"
+                className=""
                 color="primary"
                 variant="shadow"
               >
@@ -38,7 +38,7 @@ export default function IndexPage() {
                 <span className="text-sm font-semibold">Contact</span>
               </Button>
             </div>
-            <div className="space-x-6 pointer-events-auto">
+            <div className="space-x-6 ">
               <Tooltip
                 content={
                   <div className="px-1 py-2">
