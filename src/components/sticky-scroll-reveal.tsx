@@ -1,9 +1,8 @@
 /* eslint-disable prettier/prettier */
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { useScroll } from "framer-motion";
 import { motion } from "framer-motion";
-// import { Image } from "@heroui/image";
+import { Image } from "@heroui/image";
 
 import { cn } from "@/lib/utils";
 
@@ -19,8 +18,10 @@ export const StickyScroll = ({
   contentClassName?: string;
 }) => {
   const [activeCard, setActiveCard] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<{ [key: number]: boolean }>(
+    {}
+  );
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +33,7 @@ export const StickyScroll = ({
 
       sections.forEach((section, index) => {
         const rect = section.getBoundingClientRect();
-        const distance = Math.abs(rect.top - window.innerHeight / 3); // Adjusted to trigger earlier
+        const distance = Math.abs(rect.top - window.innerHeight / 3);
 
         if (distance < minDistance) {
           minDistance = distance;
@@ -46,47 +47,72 @@ export const StickyScroll = ({
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrollY]);
+  }, []);
+
+  // Preload the next image to prevent delay when switching
+  useEffect(() => {
+    if (!content[activeCard]) return;
+
+    const img = document.createElement("img");
+
+    img.src = content[activeCard].imageSrc;
+    img.onload = () => {
+      setLoadedImages((prev) => ({ ...prev, [activeCard]: true }));
+    };
+  }, [activeCard]);
 
   return (
     <motion.div
       ref={ref}
-      className="relative flex justify-center p-10 space-x-10 rounded-md"
+      className="relative flex justify-center p-10 space-x-10"
     >
-      <div className="relative flex items-start">
-        <div className="">
-          {content.map((item, index) => (
-            <div key={item.title + index} className="mb-10 scroll-section">
-              <motion.h2
-                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-                className="text-2xl font-bold text-gray-900 dark:text-slate-100"
-              >
-                {item.title}
-              </motion.h2>
-              <motion.p
-                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-                className="max-w-md mt-5 text-lg text-gray-700 dark:text-slate-300"
-              >
-                {item.description}
-              </motion.p>
-            </div>
-          ))}
-          <div className="h-40" />
-        </div>
+      {/* Left Content */}
+      <div className="relative flex flex-col space-y-10">
+        {content.map((item, index) => (
+          <div key={item.title + index} className="space-y-4 scroll-section">
+            <motion.h2
+              animate={{ opacity: activeCard === index ? 1 : 0.3 }}
+              className="text-2xl font-bold text-gray-900 dark:text-slate-100"
+            >
+              {item.title}
+            </motion.h2>
+            <motion.p
+              animate={{ opacity: activeCard === index ? 1 : 0.3 }}
+              className="max-w-md text-lg text-gray-700 dark:text-slate-300"
+            >
+              {item.description}
+            </motion.p>
+          </div>
+        ))}
       </div>
+
       <div
         className={cn(
-          "hidden lg:block h-60 w-80 rounded-md bg-white dark:bg-gray-800 sticky top-[33vh] overflow-hidden",
+          "hidden lg:block h-full w-80 rounded-md sticky top-[33vh] overflow-hidden",
           contentClassName
         )}
       >
-        <img
-          alt={content[activeCard].title}
-          className="object-cover w-full h-full"
-          height={300}
-          src={content[activeCard].imageSrc}
-          width={300}
-        />
+        <motion.div
+          key={activeCard} // Re-render when activeCard changes
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -10, scale: 0.95 }}
+          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          {loadedImages[activeCard] ? (
+            <Image
+              alt={content[activeCard].title}
+              className="object-cover w-full h-full"
+              height={200}
+              src={content[activeCard].imageSrc}
+              width={400}
+            />
+          ) : (
+            <div className="flex items-center justify-center w-full h-full">
+              Loading...
+            </div>
+          )}
+        </motion.div>
       </div>
     </motion.div>
   );
