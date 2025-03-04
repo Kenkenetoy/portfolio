@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Image } from "@heroui/image";
 import { Tooltip } from "@heroui/tooltip";
 import { Card, CardFooter } from "@heroui/card";
+import { Divider } from "@heroui/divider";
 // import { Badge } from "@heroui/badge";
 import {
   IconBrandReact,
@@ -16,6 +17,9 @@ import {
   IconBrandAdobeAfterEffect,
   IconBrandAdobePhotoshop,
   IconBrandBlender,
+  IconBrandFramerMotion,
+  IconBrandVite,
+  IconLink,
 } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
 import React from "react";
@@ -33,6 +37,8 @@ const stackIcons: { [key: string]: JSX.Element } = {
   aftereffects: <IconBrandAdobeAfterEffect size={16} />,
   photoshop: <IconBrandAdobePhotoshop size={16} />,
   blender: <IconBrandBlender size={16} />,
+  framermotion: <IconBrandFramerMotion size={16} />,
+  vite: <IconBrandVite size={16} />,
 };
 
 export const StickyScroll = ({
@@ -95,10 +101,10 @@ export const StickyScroll = ({
   return (
     <motion.div
       ref={ref}
-      className="relative flex justify-center p-10 space-x-10"
+      className="relative flex justify-center p-10 space-x-12"
     >
       {/* Left Content */}
-      <div className="relative flex flex-col space-y-12">
+      <div className="relative flex flex-col space-y-20">
         {content.map((item, index) => (
           <div
             key={item.title + index}
@@ -130,6 +136,8 @@ export const StickyScroll = ({
               ))}
             </motion.p>
 
+            <Divider className="my-4" />
+
             {item.stack.length > 0 && (
               <motion.div
                 animate={{ opacity: activeCard === index ? 1 : 0.3 }}
@@ -146,7 +154,9 @@ export const StickyScroll = ({
                           <div className="font-bold text-small">
                             {stackInfo?.title}
                           </div>
-                          <div className="text-">{stackInfo?.description}</div>
+                          <div className="w-48 text-tiny">
+                            {stackInfo?.description}
+                          </div>
                         </div>
                       }
                       isDisabled={activeCard !== index}
@@ -172,7 +182,7 @@ export const StickyScroll = ({
                           <div className="font-bold text-small">
                             {stackInfo?.title}
                           </div>
-                          <div className="text-tiny">
+                          <div className="w-48 text-tiny">
                             {stackInfo?.description}
                           </div>
                         </div>
@@ -201,7 +211,7 @@ export const StickyScroll = ({
 
       <div
         className={cn(
-          "hidden lg:block h-full w-80 rounded-md sticky top-[33vh] overflow-hidden",
+          "hidden lg:block h-full w-96 rounded-md sticky top-[33vh]",
           contentClassName
         )}
       >
@@ -213,49 +223,55 @@ export const StickyScroll = ({
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           {loadedImages[activeCard] ? (
-            <Card isFooterBlurred className="border-none" radius="lg">
-              <Image
-                alt={content[activeCard].title}
-                className="object-cover w-full h-full"
-                height={250}
-                src={content[activeCard].imageSrc}
-                width={400}
-              />
-              <CardFooter className="absolute bottom-0 z-10 overflow-hidden justify-evenly">
-                {/* Live Demo Button (Opens in New Tab) */}
-                <Button
-                  color="primary"
-                  radius="sm"
-                  size="md"
-                  variant="solid"
-                  isDisabled={!content[activeCard].url?.demo}
-                  onPress={() =>
-                    content[activeCard].url?.demo &&
-                    window.open(content[activeCard].url.demo, "_blank")
-                  }
-                >
-                  Live Demo
-                </Button>
-
-                {/* GitHub Button (Opens in New Tab) */}
-                {content[activeCard].url?.github && (
+            <Card
+              isFooterBlurred
+              className="overflow-visible border-none "
+              radius="lg"
+            >
+              <div className="relative group">
+                <Image
+                  isBlurred
+                  isZoomed
+                  alt={content[activeCard].title}
+                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                  height={275}
+                  src={content[activeCard].imageSrc}
+                  width={400}
+                />
+                <div className="absolute bottom-0 z-10 flex p-2 -translate-x-1/2 left-1/2 justify-evenly">
                   <Button
-                    isIconOnly
-                    aria-label="GitHub"
-                    color="default"
+                    color="secondary"
+                    isDisabled={!content[activeCard].url?.demo}
+                    radius="sm"
                     size="md"
-                    variant="solid"
+                    variant="shadow"
                     onPress={() =>
-                      window.open(content[activeCard].url?.github, "_blank")
+                      content[activeCard].url?.demo &&
+                      window.open(content[activeCard].url.demo, "_blank")
                     }
                   >
-                    <IconBrandGithub size={16} />
+                    <IconLink size={16} />
+                    Live Demo
                   </Button>
-                )}
-              </CardFooter>
+                  {content[activeCard].url?.github && (
+                    <Button
+                      isIconOnly
+                      aria-label="GitHub"
+                      color="default"
+                      size="md"
+                      variant="solid"
+                      onPress={() =>
+                        window.open(content[activeCard].url?.github, "_blank")
+                      }
+                    >
+                      <IconBrandGithub size={16} />
+                    </Button>
+                  )}
+                </div>
+              </div>
             </Card>
           ) : (
-            <div className="flex items-center justify-center w-full h-full">
+            <div className="flex items-center justify-center w-[250] h-full">
               Loading...
             </div>
           )}

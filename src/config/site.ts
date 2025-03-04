@@ -22,35 +22,54 @@ export const siteConfig = {
   stack: {
     react: {
       title: "React",
-      description: "Used to create the frontend.",
+      description:
+        "A powerful JavaScript library for building dynamic and interactive UIs.",
     },
     laravel: {
       title: "Laravel",
-      description: "Used to create the backend.",
+      description:
+        "A PHP framework for building scalable and maintainable backends.",
     },
     tailwind: {
       title: "Tailwind CSS",
-      description: "Used to style the frontend.",
+      description:
+        "A utility-first CSS framework for rapid and responsive UI design.",
     },
     unity: {
       title: "Unity",
-      description: "Used to develop the game.",
+      description:
+        "A game engine for developing immersive 2D and 3D experiences.",
     },
     figma: {
       title: "Figma",
-      description: "Used to visualize UI/UX.",
+      description:
+        "A collaborative design tool for UI/UX prototyping and wireframing.",
     },
     aftereffects: {
       title: "After Effects",
-      description: "Used to create VFX.",
+      description:
+        "A motion graphics and visual effects software for animations and compositing.",
     },
     photoshop: {
       title: "Photoshop",
-      description: "Used to manipulate images and textures.",
+      description:
+        "An industry-standard tool for image editing, retouching, and digital design.",
     },
     blender: {
       title: "Blender",
-      description: "Used to model, texture, and rig 3d models.",
+      description:
+        "An open-source 3D software for modeling, texturing, rigging, and animation.",
+    },
+    framermotion: {
+      title: "Framer Motion",
+      description:
+        "A React animation library for smooth and interactive UI transitions.",
+    },
+
+    vite: {
+      title: "Vite",
+      description:
+        "A fast build tool and development server for modern web projects.",
     },
   } as Record<string, { title: string; description: string }>,
 
@@ -76,12 +95,12 @@ export const siteConfig = {
       },
     },
     {
-      title: "Real-time changes",
-      type: "Back-end Project",
+      title: "Portfolio",
+      type: "Front-end Project",
       description:
-        "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
+        "I built my minimalistic portfolio using React and Tailwind CSS, with Framer Motion for animations, Aceternity for UI, HeroUI for components, and DaisyUI for styling.\n\nIt’s clean, responsive, and interactive, showcasing my work with smooth transitions.",
       imageSrc: "https://heroui.com/images/card-example-2.jpeg",
-      stack: ["laravel", "tailwind"],
+      stack: ["react", "tailwind", "framermotion", "vite"],
       url: {
         demo: "",
         github: "",
