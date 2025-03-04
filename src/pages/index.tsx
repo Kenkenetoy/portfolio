@@ -7,12 +7,11 @@ import {
 } from "@tabler/icons-react";
 
 import { DraggableMockupPhone } from "@/components/DraggableMockupPhone";
+import { StickyScroll } from "@/components/sticky-scroll-reveal";
 import { GlareCard } from "@/components/glare-card";
 import DefaultLayout from "@/layouts/default";
-
 import { siteConfig } from "@/config/site";
 
-// import { FloatingDockDemo } from "@/components/floater";
 export default function IndexPage() {
   return (
     <DefaultLayout>
@@ -99,6 +98,8 @@ export default function IndexPage() {
           </section>
         </div>
       </div>
+      <StickyScroll content={siteConfig.contents} />
+      <div className="p-96">p</div>
     </DefaultLayout>
   );
 }
