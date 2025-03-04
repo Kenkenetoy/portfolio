@@ -4,6 +4,7 @@ import {
   IconBrandGithub,
   IconBrandFacebook,
   IconBrandLeetcode,
+  IconBrandGmail,
 } from "@tabler/icons-react";
 
 import { DraggableMockupPhone } from "@/components/DraggableMockupPhone";
@@ -27,6 +28,15 @@ export default function IndexPage() {
               <h1 className="text-5xl capitalize text-neutral-900 dark:text-white">
                 a crafty Web Artisan and Tech Artist
               </h1>
+              <Button
+                aria-label="Like"
+                className="pointer-events-auto"
+                color="primary"
+                variant="solid"
+              >
+                <IconBrandGmail />
+                <span className="text-sm font-semibold">Contact</span>
+              </Button>
             </div>
             <div className="space-x-6 pointer-events-auto">
               <Tooltip
