@@ -1,4 +1,6 @@
 export const siteConfig = {
+  developing: "http://localhost:5173",
+
   name: "Kenneth Aparece",
   description: "Cebu Based Software Engineer",
   location: "Cebu",
