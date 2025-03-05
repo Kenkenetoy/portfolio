@@ -21,6 +21,7 @@ import {
 } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
 import React from "react";
+
 import { siteConfig } from "@/config/site"; // Import siteConfig
 import { cn } from "@/lib/utils";
 
@@ -211,6 +212,7 @@ export const StickyScroll = ({
           exit={{ opacity: 0, y: -10, scale: 0.95 }}
           initial={{ opacity: 0, y: 10, scale: 0.95 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="space-y-4"
         >
           <Image
             isBlurred
@@ -220,31 +222,45 @@ export const StickyScroll = ({
             src={content[activeCard].imageSrc}
             width={400}
           />
-          <div className="z-10 flex p-2 -translate-x-1/2 left-1/2 justify-evenly">
+          <div className="flex p-2 space-x-4 justify-evenly">
             <Tooltip
-              containerPadding={0}
+              closeDelay={0}
               content={
                 content[activeCard].url?.demo ? (
-                  <div className="text-sm max-w-48">
+                  <div className="p-2 overflow-hidden rounded-sm">
                     <Image
-                      alt="preview"
-                      className="object-cover rounded-lg"
-                      height={150}
+                      alt={content?.[activeCard]?.url?.demo}
+                      className="z-0 object-cover w-full h-full"
                       // src={`https://api.microlink.io/?url=${encodeURIComponent(
                       //   content[activeCard].url.demo
                       // )}&screenshot=true&meta=false&embed=screenshot.url`}
+                      height={200}
                       src="public\228041565_1204885213317442_2861452606248897561_n.webp"
                       width={200}
                     />
+                    <div className="absolute bottom-0 left-0 p-2 overflow-hidden rounded-b-sm bg-zinc-900">
+                      <a
+                        className="flex items-center w-full gap-2"
+                        href={content?.[activeCard]?.url?.demo}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <IconLink color="white" size={12} />
+                        <p className="w-[80%] text-tiny text-white/80 overflow-clip text-ellipsis">
+                          {content[activeCard].url?.demo}
+                        </p>
+                      </a>
+                    </div>
                   </div>
                 ) : (
                   "No Preview Available"
                 )
               }
+              delay={2000}
               isDisabled={!content[activeCard].url?.demo}
             >
               <Button
-                color="secondary"
+                color="primary"
                 isDisabled={!content[activeCard].url?.demo}
                 radius="sm"
                 size="md"
@@ -257,7 +273,6 @@ export const StickyScroll = ({
                 Live Demo
               </Button>
             </Tooltip>
-
             {content[activeCard].url?.github && (
               <Button
                 isIconOnly
