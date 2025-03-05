@@ -222,16 +222,18 @@ export const StickyScroll = ({
           />
           <div className="z-10 flex p-2 -translate-x-1/2 left-1/2 justify-evenly">
             <Tooltip
+              containerPadding={0}
               content={
                 content[activeCard].url?.demo ? (
                   <div className="text-sm max-w-48">
                     <Image
                       alt="preview"
-                      className="rounded-lg"
+                      className="object-cover rounded-lg"
                       height={150}
-                      src={`https://api.microlink.io/?url=${encodeURIComponent(
-                        content[activeCard].url.demo
-                      )}&screenshot=true&meta=false&embed=screenshot.url`}
+                      // src={`https://api.microlink.io/?url=${encodeURIComponent(
+                      //   content[activeCard].url.demo
+                      // )}&screenshot=true&meta=false&embed=screenshot.url`}
+                      src="public\228041565_1204885213317442_2861452606248897561_n.webp"
                       width={200}
                     />
                   </div>
