@@ -222,7 +222,7 @@ export const StickyScroll = ({
             src={content[activeCard].imageSrc}
             width={400}
           />
-          <div className="flex p-2 space-x-4 justify-evenly">
+          <div className="flex justify-center p-2 space-x-4">
             <Tooltip
               closeDelay={0}
               content={
@@ -231,11 +231,11 @@ export const StickyScroll = ({
                     <Image
                       alt={content?.[activeCard]?.url?.demo}
                       className="z-0 object-cover w-full h-full"
-                      // src={`https://api.microlink.io/?url=${encodeURIComponent(
-                      //   content[activeCard].url.demo
-                      // )}&screenshot=true&meta=false&embed=screenshot.url`}
+                      src={`https://api.microlink.io/?url=${encodeURIComponent(
+                        content[activeCard].url.demo
+                      )}&screenshot=true&meta=false&embed=screenshot.url`}
                       height={200}
-                      src="public\228041565_1204885213317442_2861452606248897561_n.webp"
+                      // src="public\228041565_1204885213317442_2861452606248897561_n.webp"
                       width={200}
                     />
                     <div className="absolute bottom-0 left-0 p-2 overflow-hidden rounded-b-sm bg-zinc-900">
@@ -256,7 +256,7 @@ export const StickyScroll = ({
                   "No Preview Available"
                 )
               }
-              delay={2000}
+              delay={1000}
               isDisabled={!content[activeCard].url?.demo}
             >
               <Button

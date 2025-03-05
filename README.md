@@ -8,3 +8,4 @@
 - [Tailwind Variants](https://tailwind-variants.org)
 - [TypeScript](https://www.typescriptlang.org)
 - [Framer Motion](https://www.framer.com/motion)
+- [Tabler Icons](https://tabler.io/icons)

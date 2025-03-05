@@ -5,7 +5,17 @@ import {
   IconBrandFacebook,
   IconBrandLeetcode,
   IconBrandGmail,
+  IconLink,
 } from "@tabler/icons-react";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+} from "@heroui/modal";
+import { Link } from "@heroui/link";
 
 import { DraggableMockupPhone } from "@/components/DraggableMockupPhone";
 import { StickyScroll } from "@/components/sticky-scroll-reveal";
@@ -14,6 +24,8 @@ import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
 
 export default function IndexPage() {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   return (
     <DefaultLayout>
       <div className="h-[50rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center">
@@ -33,10 +45,76 @@ export default function IndexPage() {
                 className=""
                 color="primary"
                 variant="shadow"
+                onPress={onOpen}
               >
                 <IconBrandGmail />
                 <span className="text-sm font-semibold">Contact</span>
               </Button>
+              <Modal
+                backdrop="opaque"
+                isOpen={isOpen}
+                motionProps={{
+                  variants: {
+                    enter: {
+                      y: 0,
+                      opacity: 1,
+                      transition: {
+                        duration: 0.3,
+                        ease: "easeOut",
+                      },
+                    },
+                    exit: {
+                      y: -20,
+                      opacity: 0,
+                      transition: {
+                        duration: 0.2,
+                        ease: "easeIn",
+                      },
+                    },
+                  },
+                }}
+                onOpenChange={onOpenChange}
+              >
+                <ModalContent>
+                  {(onClose) => (
+                    <>
+                      <ModalHeader className="flex flex-col gap-1 capitalize">
+                        Connect with me
+                      </ModalHeader>
+                      <ModalBody>
+                        <Link
+                          isExternal
+                          showAnchorIcon
+                          anchorIcon={<IconLink size={20} />}
+                          href={siteConfig.email.first}
+                        >
+                          {siteConfig.email.first}
+                        </Link>
+                        <Link
+                          isExternal
+                          showAnchorIcon
+                          anchorIcon={<IconLink size={20} />}
+                          href={siteConfig.email.second}
+                        >
+                          {siteConfig.email.second}
+                        </Link>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button
+                          color="warning"
+                          variant="solid"
+                          onPress={onClose}
+                        >
+                          Share
+                        </Button>
+                        <Button color="primary" onPress={onClose}>
+                          Action
+                        </Button>
+                      </ModalFooter>
+                    </>
+                  )}
+                </ModalContent>
+              </Modal>
             </div>
             <div className="space-x-6 ">
               <Tooltip

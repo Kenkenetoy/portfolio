@@ -1,7 +1,9 @@
 export const siteConfig = {
-  developing: "http://localhost:5173",
-
   name: "Kenneth Aparece",
+  email: {
+    first:  "kennethjoseaparece@gmail.com" ,
+    second:   "yonascarren@gmail.com" ,
+  },
   description: "Cebu Based Software Engineer",
   location: "Cebu",
   role: "Software Engineer",
@@ -80,7 +82,7 @@ export const siteConfig = {
       title: "VLOG: 01",
       type: "Capstone Project - Game Development",
       description:
-        "With no prior game development experience, our capstone team created a fully 3D horror game based on our college.\n\nAs Junior Programmer and Graphics Lead, I handled character and environment modeling, rigging, animation, and UI/UX design. I also contributed to game logic, system design, and core mechanics development, and collaborated on the game’s webpage.\n\nThe game is a proprietary project of our college. To comply with the school's capstone publication policy, only a live demo is allowed.",
+        "With no prior game dev experience, our capstone team built a 3D horror game based on our college.\n\nAs Junior Programmer & Graphics Lead, I handled 3D modeling, rigging, animation, UI/UX, and contributed to game logic and system design. I also helped develop core mechanics and the game’s webpage.\n\nDue to school policy, only a live demo is available.",
       imageSrc: "https://heroui.com/images/card-example-5.jpeg",
       stack: [
         "unity",
@@ -90,6 +92,7 @@ export const siteConfig = {
         "photoshop",
         "react",
         "tailwind",
+        "vite",
       ],
       url: {
         demo: "https://sites.google.com/view/vlog-01",
@@ -104,8 +107,8 @@ export const siteConfig = {
       imageSrc: "https://heroui.com/images/card-example-2.jpeg",
       stack: ["react", "tailwind", "framermotion", "vite"],
       url: {
-        demo: "",
-        github: "",
+        demo: "https://portfolio-gamma-seven-14.vercel.app/",
+        github: "https://github.com/Kenkenetoy/portfolio",
       },
     },
     {
