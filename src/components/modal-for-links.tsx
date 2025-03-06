@@ -66,7 +66,7 @@ export const ShareModal = ({
       label: "Share on LinkedIn",
     },
     {
-      href: `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`,
+      href: `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}&image=${pageImage}`,
       icon: <IconBrandTwitter size={24} />,
       label: "Share on Twitter",
     },
