@@ -54,7 +54,7 @@ export const ShareModal = ({
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const pageUrl = encodeURIComponent(siteConfig.url);
   const pageTitle = encodeURIComponent(
-    `Check out ${siteConfig.name}'s portfolio!`,
+    `Check out ${siteConfig.name}'s portfolio!`
   );
   const pageDescription = encodeURIComponent(siteConfig.meta_description);
   const pageImage = encodeURIComponent(siteConfig.meta_image);
@@ -149,7 +149,7 @@ export const ShareModal = ({
                             className="z-0 object-cover w-full h-full"
                             height={200}
                             src={`https://api.microlink.io/?url=${encodeURIComponent(
-                              `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`,
+                              `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`
                             )}&screenshot=true&meta=false&embed=screenshot.url`}
                             width={200}
                           />
@@ -187,7 +187,7 @@ export const ShareModal = ({
                     <a
                       key={index}
                       aria-label={link.label}
-                      className="transition hover:text-primary"
+                      className="transition hover:text-secondary"
                       href={link.href}
                       rel="noopener noreferrer"
                       target="_blank"

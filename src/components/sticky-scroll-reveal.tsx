@@ -269,7 +269,7 @@ export const StickyScroll = ({
               showArrow={true}
             >
               <Button
-                color="primary"
+                color="secondary"
                 isDisabled={!content[activeCard].url?.demo}
                 radius="sm"
                 size="md"
@@ -289,7 +289,7 @@ export const StickyScroll = ({
                 aria-label="GitHub"
                 color="default"
                 size="md"
-                variant="solid"
+                variant="shadow"
                 onPress={() =>
                   window.open(content[activeCard].url?.github, "_blank")
                 }

@@ -4,6 +4,7 @@ import {
   IconBrandGithub,
   IconBrandLeetcode,
   IconLink,
+  IconDownload,
   IconBrandLinkedin,
 } from "@tabler/icons-react";
 import { Helmet } from "react-helmet-async";
@@ -48,23 +49,45 @@ export default function IndexPage() {
             <GlareCard className="flex flex-col items-center justify-center ">
               <DraggableMockupPhone />
             </GlareCard>
-            <section className="flex flex-col items-center justify-center w-1/2 gap-4 py-8 space-y-12 md:py-10">
-              <div className="justify-center inline-block max-w-xl text-center">
+            <section className="flex flex-col justify-center w-1/2 gap-4 py-8 space-y-12 md:py-10">
+              <div className="justify-center inline-block max-w-xl space-y-8 text-center">
                 <h1 className="text-5xl capitalize text-neutral-900 dark:text-white">
                   a crafty Web Artisan and Tech Artist
                 </h1>
-                <ShareModal
-                  className="gap-2"
-                  color="secondary"
-                  radius="full"
-                  size="lg"
-                  variant="shadow"
-                >
-                  <span>
-                    <IconLink />
-                  </span>
-                  <span className="text-lg font-semibold">Contact</span>
-                </ShareModal>
+                <div className="flex gap-4 mx-auto w-fit">
+                  <ShareModal
+                    className="gap-2"
+                    color="secondary"
+                    radius="full"
+                    size="lg"
+                    variant="shadow"
+                  >
+                    <span className="text-lg font-semibold">Contact</span>
+                    <span>
+                      <IconLink />
+                    </span>
+                  </ShareModal>
+                  <Button
+                    radius="full"
+                    size="lg"
+                    variant="shadow"
+                    onPress={() => {
+                      const link = document.createElement("a");
+
+                      link.href =
+                        "https://drive.google.com/uc?export=download&id=1IED6anEob_8QUZd1MjLJJanHRPIc8aV7";
+                      link.target = "_blank";
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                    }}
+                  >
+                    <span className="text-lg font-semibold">Download</span>
+                    <span>
+                      <IconDownload />
+                    </span>
+                  </Button>
+                </div>
               </div>
               <div className="space-x-6 ">
                 <Tooltip
