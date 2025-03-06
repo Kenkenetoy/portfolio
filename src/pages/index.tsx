@@ -2,11 +2,8 @@ import { Tooltip } from "@heroui/tooltip";
 import { Button } from "@heroui/button";
 import {
   IconBrandGithub,
-  IconBrandFacebook,
   IconBrandLeetcode,
-  IconBrandGmail,
   IconLink,
-  IconBrandTwitter,
   IconBrandLinkedin,
 } from "@tabler/icons-react";
 import { Helmet } from "react-helmet-async";
@@ -59,9 +56,9 @@ export default function IndexPage() {
                 <ShareModal
                   className="gap-2"
                   color="secondary"
-                  variant="shadow"
-                  size="lg"
                   radius="full"
+                  size="lg"
+                  variant="shadow"
                 >
                   <span>
                     <IconLink />

@@ -3,7 +3,6 @@ import { Button } from "@heroui/button";
 import { Image } from "@heroui/image";
 import {
   IconBrandFacebook,
-  IconBrandGmail,
   IconLink,
   IconBrandTwitter,
   IconBrandLinkedin,
@@ -26,7 +25,7 @@ export const ShareModal = ({
   variant = "solid",
   color = "default",
   size = "md",
-  radius = "xl",
+  radius = "lg",
   fullWidth = false,
   isDisabled = false,
 }: {
@@ -55,7 +54,7 @@ export const ShareModal = ({
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const pageUrl = encodeURIComponent(siteConfig.url);
   const pageTitle = encodeURIComponent(
-    `Check out ${siteConfig.name}'s portfolio!`
+    `Check out ${siteConfig.name}'s portfolio!`,
   );
   const pageDescription = encodeURIComponent(siteConfig.meta_description);
   const pageImage = encodeURIComponent(siteConfig.meta_image);
@@ -84,11 +83,11 @@ export const ShareModal = ({
         aria-label="Share"
         className={className}
         color={color}
-        variant={variant}
-        size={size}
-        radius={radius}
         fullWidth={fullWidth}
         isDisabled={isDisabled}
+        radius={radius}
+        size={size}
+        variant={variant}
         onPress={onOpen}
       >
         {children}
@@ -148,10 +147,10 @@ export const ShareModal = ({
                           <Image
                             alt={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
                             className="z-0 object-cover w-full h-full"
-                            src={`https://api.microlink.io/?url=${encodeURIComponent(
-                              `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`
-                            )}&screenshot=true&meta=false&embed=screenshot.url`}
                             height={200}
+                            src={`https://api.microlink.io/?url=${encodeURIComponent(
+                              `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`,
+                            )}&screenshot=true&meta=false&embed=screenshot.url`}
                             width={200}
                           />
                         </span>
@@ -168,14 +167,14 @@ export const ShareModal = ({
                   showArrow={true}
                 >
                   <Link
-                    underline="always"
                     isExternal
                     showAnchorIcon
                     anchorIcon={<IconLink size={20} />}
+                    className="gap-2 w-fit"
                     color="foreground"
                     href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
                     target="_blank"
-                    className="gap-2 w-fit"
+                    underline="always"
                   >
                     {siteConfig.email.first}
                   </Link>
