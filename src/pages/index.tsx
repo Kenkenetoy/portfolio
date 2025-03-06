@@ -1,6 +1,5 @@
 import { Tooltip } from "@heroui/tooltip";
 import { Button } from "@heroui/button";
-import { Image } from "@heroui/image";
 import {
   IconBrandGithub,
   IconBrandFacebook,
@@ -10,15 +9,6 @@ import {
   IconBrandTwitter,
   IconBrandLinkedin,
 } from "@tabler/icons-react";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  useDisclosure,
-} from "@heroui/modal";
-import { Link } from "@heroui/link";
 import { Helmet } from "react-helmet-async";
 
 import { DraggableMockupPhone } from "@/components/DraggableMockupPhone";
@@ -26,54 +16,32 @@ import { StickyScroll } from "@/components/sticky-scroll-reveal";
 import { GlareCard } from "@/components/glare-card";
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
-
+import { ShareModal } from "@/components/modal-for-links";
 export default function IndexPage() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const pageUrl = encodeURIComponent(siteConfig.url);
-  const pageTitle = encodeURIComponent(
-    `Check out ${siteConfig.name}'s portfolio!`
-  );
-  const pageDescription = encodeURIComponent(siteConfig.sitedescription);
-  const pageImage = encodeURIComponent(siteConfig.image);
-
-  const shareLinks = [
-    {
-      href: `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}&title=${pageTitle}&summary=${pageDescription}&source=${pageUrl}`,
-      icon: <IconBrandLinkedin size={24} />,
-      label: "Share on LinkedIn",
-    },
-    {
-      href: `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`,
-      icon: <IconBrandTwitter size={24} />,
-      label: "Share on Twitter",
-    },
-    {
-      href: `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`,
-      icon: <IconBrandFacebook size={24} />,
-      label: "Share on Facebook",
-    },
-  ];
   return (
     <>
       <Helmet>
         {/* Primary Meta Tags */}
-        <title>{siteConfig.name}</title>
-        <meta content={siteConfig.sitedescription} name="description" />
+        <title>Home | {siteConfig.name}</title>
+        <meta content={siteConfig.meta_description} name="description" />
         <link href={siteConfig.url} rel="canonical" />
 
         {/* Open Graph / Facebook / LinkedIn */}
         <meta content="website" property="og:type" />
         <meta content={siteConfig.url} property="og:url" />
         <meta content={siteConfig.name} property="og:title" />
-        <meta content={siteConfig.sitedescription} property="og:description" />
-        <meta content={siteConfig.image} property="og:image" />
+        <meta content={siteConfig.meta_description} property="og:description" />
+        <meta content={siteConfig.meta_image} property="og:image" />
 
         {/* Twitter Meta Tags */}
         <meta content="summary_large_image" name="twitter:card" />
         <meta content={siteConfig.url} name="twitter:url" />
         <meta content={siteConfig.name} name="twitter:title" />
-        <meta content={siteConfig.sitedescription} name="twitter:description" />
-        <meta content={siteConfig.image} name="twitter:image" />
+        <meta
+          content={siteConfig.meta_description}
+          name="twitter:description"
+        />
+        <meta content={siteConfig.meta_image} name="twitter:image" />
       </Helmet>
 
       <DefaultLayout>
@@ -88,125 +56,18 @@ export default function IndexPage() {
                 <h1 className="text-5xl capitalize text-neutral-900 dark:text-white">
                   a crafty Web Artisan and Tech Artist
                 </h1>
-                <Button
-                  aria-label="Like"
-                  className=""
-                  color="primary"
+                <ShareModal
+                  className="gap-2"
+                  color="secondary"
                   variant="shadow"
-                  onPress={onOpen}
+                  size="lg"
+                  radius="full"
                 >
-                  <IconBrandGmail />
-                  <span className="text-sm font-semibold">Contact</span>
-                </Button>
-                <Modal
-                  backdrop="blur"
-                  isOpen={isOpen}
-                  motionProps={{
-                    variants: {
-                      enter: {
-                        y: 0,
-                        opacity: 1,
-                        transition: {
-                          duration: 0.3,
-                          ease: "easeOut",
-                        },
-                      },
-                      exit: {
-                        y: -20,
-                        opacity: 0,
-                        transition: {
-                          duration: 0.2,
-                          ease: "easeIn",
-                        },
-                      },
-                    },
-                  }}
-                  onOpenChange={onOpenChange}
-                >
-                  <ModalContent>
-                    {() => (
-                      <>
-                        <ModalHeader className="flex flex-col gap-1 capitalize">
-                          Connect with me
-                        </ModalHeader>
-                        <ModalBody>
-                          <p className="text-sm text-gray-500">
-                            Clicking the links below will open Gmail in a new
-                            tab. This method is secure as it directly opens
-                            Gmail’s official website.
-                          </p>
-
-                          <Tooltip
-                            content={
-                              `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}` ? (
-                                <Link
-                                  isExternal
-                                  showAnchorIcon
-                                  anchorIcon={<IconLink size={20} />}
-                                  className="flex flex-col p-2 space-y-2"
-                                  color="foreground"
-                                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
-                                  isBlock={true}
-                                  size="sm"
-                                  target="_blank"
-                                >
-                                  <span>
-                                    <Image
-                                      alt={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
-                                      className="z-0 object-cover w-full h-full"
-                                      src={`https://api.microlink.io/?url=${encodeURIComponent(
-                                        `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`
-                                      )}&screenshot=true&meta=false&embed=screenshot.url`}
-                                      height={200}
-                                      // src="public\228041565_1204885213317442_2861452606248897561_n.webp"
-                                      width={200}
-                                    />
-                                  </span>
-
-                                  <span className="w-48 overflow-hidden text-ellipsis">
-                                    {`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
-                                  </span>
-                                </Link>
-                              ) : (
-                                "No Preview Available"
-                              )
-                            }
-                            shadow="md"
-                            showArrow={true}
-                          >
-                            <Link
-                              isExternal
-                              showAnchorIcon
-                              anchorIcon={<IconLink size={20} />}
-                              color="foreground"
-                              href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
-                              target="_blank"
-                            >
-                              {siteConfig.email.first}
-                            </Link>
-                          </Tooltip>
-                        </ModalBody>
-                        <ModalFooter className="justify-start">
-                          <div className="flex gap-4">
-                            <p className="text-sm">Share my portfolio:</p>
-                            {shareLinks.map((link, index) => (
-                              <a
-                                key={index}
-                                aria-label={link.label}
-                                className="transition hover:text-primary"
-                                href={link.href}
-                                rel="noopener noreferrer"
-                                target="_blank"
-                              >
-                                {link.icon}
-                              </a>
-                            ))}
-                          </div>
-                        </ModalFooter>
-                      </>
-                    )}
-                  </ModalContent>
-                </Modal>
+                  <span>
+                    <IconLink />
+                  </span>
+                  <span className="text-lg font-semibold">Contact</span>
+                </ShareModal>
               </div>
               <div className="space-x-6 ">
                 <Tooltip

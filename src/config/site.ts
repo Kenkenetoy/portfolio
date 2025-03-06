@@ -1,9 +1,15 @@
 export const siteConfig = {
   name: "Kenneth Aparece",
-  sitedescription:
-    "Check out my portfolio showcasing my latest projects and skills!",
+
   url: "https://portfolio-kenprce09.vercel.app/",
-  image: "https://portfolio-kenprce09.vercel.app/og-image.webp",
+
+  meta_type: "website",
+  meta_title: "Kenneth Aparece",
+  meta_description:
+    "Check out Kenneth's portfolio showcasing  latest projects and skills!",
+  meta_image:
+    "https://portfolio-kenprce09.vercel.app/228041565_1204885213317442_2861452606248897561_n.webp",
+
   email: {
     first: "kennethjoseaparece@gmail.com",
     second: "yonascarren@gmail.com",
