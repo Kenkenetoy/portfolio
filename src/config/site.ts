@@ -3,7 +3,8 @@ export const siteConfig = {
   sitedescription:
     "Check out my portfolio showcasing my latest projects and skills!",
   url: "https://portfolio-kenprce09.vercel.app/",
-  image: `https://api.microlink.io/?url=${encodeURIComponent("https://portfolio-kenprce09.vercel.app/")}&screenshot=true&meta=false&embed=screenshot.url`,
+  image:
+    "https://github.com/Kenkenetoy/portfolio/blob/dbe3f2918d5d9c19059a8d3709a95e0b42e34bf6/public/228041565_1204885213317442_2861452606248897561_n.webp",
   email: {
     first: "kennethjoseaparece@gmail.com",
     second: "yonascarren@gmail.com",
