@@ -3,8 +3,7 @@ export const siteConfig = {
   sitedescription:
     "Check out my portfolio showcasing my latest projects and skills!",
   url: "https://portfolio-kenprce09.vercel.app/",
-  image:
-    "https://portfolio-kenprce09.vercel.app/228041565_1204885213317442_2861452606248897561_n.webp",
+  image: "https://portfolio-kenprce09.vercel.app/og-image.webp",
   email: {
     first: "kennethjoseaparece@gmail.com",
     second: "yonascarren@gmail.com",

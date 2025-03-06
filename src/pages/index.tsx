@@ -29,14 +29,16 @@ import { siteConfig } from "@/config/site";
 
 export default function IndexPage() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const pageUrl = encodeURIComponent(window.location.href);
+  const pageUrl = encodeURIComponent(siteConfig.url);
   const pageTitle = encodeURIComponent(
     `Check out ${siteConfig.name}'s portfolio!`
   );
+  const pageDescription = encodeURIComponent(siteConfig.sitedescription);
+  const pageImage = encodeURIComponent(siteConfig.image);
 
   const shareLinks = [
     {
-      href: `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`,
+      href: `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}&title=${pageTitle}&summary=${pageDescription}&source=${pageUrl}`,
       icon: <IconBrandLinkedin size={24} />,
       label: "Share on LinkedIn",
     },
@@ -50,13 +52,7 @@ export default function IndexPage() {
       icon: <IconBrandFacebook size={24} />,
       label: "Share on Facebook",
     },
-    {
-      href: `https://github.com/yourusername`, // GitHub has no share link, so just a profile link
-      icon: <IconBrandGithub size={24} />,
-      label: "GitHub",
-    },
   ];
-
   return (
     <>
       <Helmet>
