@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Image } from "@heroui/image";
+import { Link } from "@heroui/link";
 import { Tooltip } from "@heroui/tooltip";
 import { Divider } from "@heroui/divider";
 import {
@@ -99,7 +100,7 @@ export const StickyScroll = ({
         {content.map((item, index) => (
           <div
             key={item.title + index}
-            className="max-w-lg space-y-4 scroll-section"
+            className="max-w-xl space-y-4 scroll-section"
           >
             <div>
               <motion.h2
@@ -115,6 +116,9 @@ export const StickyScroll = ({
                 {item.type}
               </motion.h4>
             </div>
+
+            <Divider className="my-4" />
+
             <motion.p
               animate={{ opacity: activeCard === index ? 1 : 0.3 }}
               className="text-gray-700 text-md dark:text-slate-300"
@@ -209,10 +213,10 @@ export const StickyScroll = ({
         <motion.div
           key={activeCard}
           animate={{ opacity: 1, y: 0, scale: 1 }}
+          className="space-y-4"
           exit={{ opacity: 0, y: -10, scale: 0.95 }}
           initial={{ opacity: 0, y: 10, scale: 0.95 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="space-y-4"
         >
           <Image
             isBlurred
@@ -224,40 +228,45 @@ export const StickyScroll = ({
           />
           <div className="flex justify-center p-2 space-x-4">
             <Tooltip
-              closeDelay={0}
               content={
                 content[activeCard].url?.demo ? (
-                  <div className="p-2 overflow-hidden rounded-sm">
-                    <Image
-                      alt={content?.[activeCard]?.url?.demo}
-                      className="z-0 object-cover w-full h-full"
-                      src={`https://api.microlink.io/?url=${encodeURIComponent(
-                        content[activeCard].url.demo
-                      )}&screenshot=true&meta=false&embed=screenshot.url`}
-                      height={200}
-                      // src="public\228041565_1204885213317442_2861452606248897561_n.webp"
-                      width={200}
-                    />
-                    <div className="absolute bottom-0 left-0 p-2 overflow-hidden rounded-b-sm bg-zinc-900">
-                      <a
-                        className="flex items-center w-full gap-2"
-                        href={content?.[activeCard]?.url?.demo}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        <IconLink color="white" size={12} />
-                        <p className="w-[80%] text-tiny text-white/80 overflow-clip text-ellipsis">
-                          {content[activeCard].url?.demo}
-                        </p>
-                      </a>
-                    </div>
-                  </div>
+                  <>
+                    <Link
+                      isExternal
+                      showAnchorIcon
+                      anchorIcon={<IconLink size={20} />}
+                      className="flex flex-col p-2 space-y-2"
+                      color="foreground"
+                      href={content?.[activeCard]?.url?.demo}
+                      isBlock={true}
+                      size="sm"
+                      target="_blank"
+                    >
+                      <span>
+                        <Image
+                          alt={content?.[activeCard]?.url?.demo}
+                          className="z-0 object-cover w-full h-full"
+                          src={`https://api.microlink.io/?url=${encodeURIComponent(
+                            content[activeCard].url.demo
+                          )}&screenshot=true&meta=false&embed=screenshot.url`}
+                          height={200}
+                          // src="public\228041565_1204885213317442_2861452606248897561_n.webp"
+                          width={200}
+                        />
+                      </span>
+
+                      <span className="w-48 overflow-hidden text-ellipsis">
+                        {content[activeCard].url?.demo}
+                      </span>
+                    </Link>
+                  </>
                 ) : (
                   "No Preview Available"
                 )
               }
-              delay={1000}
               isDisabled={!content[activeCard].url?.demo}
+              shadow="md"
+              showArrow={true}
             >
               <Button
                 color="primary"
@@ -270,7 +279,8 @@ export const StickyScroll = ({
                   window.open(content[activeCard].url.demo, "_blank")
                 }
               >
-                Live Demo
+                <IconLink />
+                Site Link
               </Button>
             </Tooltip>
             {content[activeCard].url?.github && (

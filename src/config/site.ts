@@ -1,8 +1,12 @@
 export const siteConfig = {
   name: "Kenneth Aparece",
+  sitedescription:
+    "Check out my portfolio showcasing my latest projects and skills!",
+  url: "https://portfolio-kenprce09.vercel.app/",
+  image: `https://api.microlink.io/?url=${encodeURIComponent("https://portfolio-kenprce09.vercel.app/")}&screenshot=true&meta=false&embed=screenshot.url`,
   email: {
-    first:  "kennethjoseaparece@gmail.com" ,
-    second:   "yonascarren@gmail.com" ,
+    first: "kennethjoseaparece@gmail.com",
+    second: "yonascarren@gmail.com",
   },
   description: "Cebu Based Software Engineer",
   location: "Cebu",
@@ -18,6 +22,7 @@ export const siteConfig = {
   socials: {
     github: { title: "GitHub", link: "https://github.com/frontio-ai/heroui" },
     facebook: { title: "Facebook", link: "https://facebook.com/hero_ui" },
+    linkedin: { title: "LinkedIn", link: "https://linkedin.com/hero_ui" },
     youtube: { title: "YouTube", link: "https://youtube.com/hero_ui" },
     instagram: { title: "Instagram", link: "https://instagram.com/hero_ui" },
     leetcode: { title: "LeetCode", link: "https://leetcode.com/hero_ui" },
