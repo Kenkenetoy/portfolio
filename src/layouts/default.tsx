@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // import { Link } from "@heroui/link";
 
 import { Navbar } from "@/components/navbar";
