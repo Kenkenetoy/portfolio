@@ -13,6 +13,7 @@ import { Image } from "@heroui/image";
 
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/sidebar";
 import { cn } from "@/lib/utils";
+import { ThemeSwitch } from "@/components/theme-switch";
 
 export function SidebarDemo({ children }: { children: React.ReactNode }) {
   const links = [
@@ -50,12 +51,12 @@ export function SidebarDemo({ children }: { children: React.ReactNode }) {
   return (
     <div
       className={cn(
-        "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1 max-w-7xl mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
-        "h-screen" // for your use case, use `h-screen` instead of `h-[60vh]`
+        "fixed left-4 top-1/2 -translate-y-1/2 h-[50vh] bg-neutral-100 dark:bg-transparent shadow-lg transition-all",
+        open ? "w-64 rounded-xl" : "w-14 rounded-xl"
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="justify-between gap-10">
+        <SidebarBody className="flex flex-col justify-between h-full gap-10">
           <div className="flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
             {open ? <Logo /> : <LogoIcon />}
             <div className="flex flex-col gap-2 mt-8">
@@ -64,26 +65,9 @@ export function SidebarDemo({ children }: { children: React.ReactNode }) {
               ))}
             </div>
           </div>
-          <div>
-            <SidebarLink
-              link={{
-                label: "Manu Arora",
-                href: "#",
-                icon: (
-                  <Image
-                    alt="Avatar"
-                    className="rounded-full h-7 w-7 shrink-0"
-                    height={50}
-                    src="https://assets.aceternity.com/manu.png"
-                    width={50}
-                  />
-                ),
-              }}
-            />
-          </div>
+          <ThemeSwitch />
         </SidebarBody>
       </Sidebar>
-      {children}
     </div>
   );
 }

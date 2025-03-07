@@ -4,35 +4,25 @@
 import { Navbar } from "@/components/navbar";
 import AnnouncementBanner from "@/components/AnnouncementBanner";
 import { SidebarDemo } from "@/components/sitdebar-bar";
-
+import { Sidebar } from "@/components/sidebar";
 export default function DefaultLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative flex flex-col">
-      <SidebarDemo >
-      </SidebarDemo >
-      <Navbar />
+    <div className="relative flex h-screen">
+      {/* Floating Sidebar */}
+      <div className="absolute top-0 left-0 z-50 h-full">
+        <SidebarDemo />
+      </div>
 
-      <main className="container flex-grow mx-auto max-w-7xl space-y--16">
-        {children}
-      </main>
-
-      <AnnouncementBanner />
-
-      {/* <footer className="flex items-center justify-center w-full py-3">
-        <Link
-          isExternal
-          className="flex items-center gap-1 text-current"
-          href="https://heroui.com"
-          title="heroui.com homepage"
-        >
-          <span className="text-default-600">Powered by</span>
-          <p className="text-primary">HeroUI</p>
-        </Link>
-      </footer> */}
+      {/* Main Content */}
+      <div className="relative flex flex-col flex-grow">
+        <main className="container flex-grow mx-auto space-y-16 max-w-7xl">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }
