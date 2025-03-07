@@ -3,6 +3,7 @@
 
 import { Navbar } from "@/components/navbar";
 import AnnouncementBanner from "@/components/AnnouncementBanner";
+import { SidebarDemo } from "@/components/sitdebar-bar";
 
 export default function DefaultLayout({
   children,
@@ -11,6 +12,8 @@ export default function DefaultLayout({
 }) {
   return (
     <div className="relative flex flex-col">
+      <SidebarDemo >
+      </SidebarDemo >
       <Navbar />
 
       <main className="container flex-grow mx-auto max-w-7xl space-y--16">
