@@ -15,7 +15,7 @@ import { Sidebar, SidebarBody, SidebarLink } from "@/components/sidebar";
 import { cn } from "@/lib/utils";
 import { ThemeSwitch } from "@/components/theme-switch";
 
-export function SidebarDemo({ children }: { children: React.ReactNode }) {
+export function SidebarDemo() {
   const links = [
     {
       label: "Dashboard",

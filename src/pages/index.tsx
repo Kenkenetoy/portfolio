@@ -1,5 +1,7 @@
+/* eslint-disable prettier/prettier */
 import { Tooltip } from "@heroui/tooltip";
 import { Button } from "@heroui/button";
+import { Image } from "@heroui/image";
 import {
   IconBrandGithub,
   IconBrandLeetcode,
@@ -8,6 +10,7 @@ import {
   IconBrandLinkedin,
 } from "@tabler/icons-react";
 import { Helmet } from "react-helmet-async";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 import { DraggableMockupPhone } from "@/components/DraggableMockupPhone";
 import { StickyScroll } from "@/components/sticky-scroll-reveal";
@@ -15,7 +18,17 @@ import { GlareCard } from "@/components/glare-card";
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
 import { ShareModal } from "@/components/modal-for-links";
+import { ContainerScroll } from "@/components/container-scroll-animation";
+import { DraggableGrid } from "@/components/Draggable-Grid";
+
 export default function IndexPage() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   return (
     <>
       <Helmet>
@@ -43,8 +56,12 @@ export default function IndexPage() {
       </Helmet>
 
       <DefaultLayout>
-        <div className="h-[50rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center">
-          <div className="absolute  inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+        <motion.div
+          className="fixed z-50 top-0 left-0 right-0 h-[5px] bg-secondary origin-left"
+          style={{ scaleX }}
+        />
+        <div className="mt-24 h-[50rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
           <div className="absolute inset-0 z-10 flex items-center justify-around px-40 text-3xl font-bold text-center text-white md:text-4xl lg:text-7xl">
             <GlareCard className="flex flex-col items-center justify-center ">
               <DraggableMockupPhone />
@@ -160,8 +177,34 @@ export default function IndexPage() {
             </section>
           </div>
         </div>
+        <div className="flex items-center justify-center w-screen h-screen bg-gray-900">
+          <DraggableGrid size={70} gap={12} rows={5} cols={5} />
+        </div>
         <StickyScroll content={siteConfig.contents} />
-        <div className="p-96">p</div>
+
+        <div className="flex flex-col overflow-hidden">
+          <ContainerScroll
+            titleComponent={
+              <>
+                <h1 className="text-4xl font-semibold text-black dark:text-white">
+                  Unleash the power of <br />
+                  <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
+                    Scroll Animations
+                  </span>
+                </h1>
+              </>
+            }
+          >
+            <Image
+              alt="hero"
+              className="object-cover object-left-top h-full mx-auto rounded-2xl"
+              draggable={false}
+              height={720}
+              src={`/linear.webp`}
+              width={1400}
+            />
+          </ContainerScroll>
+        </div>
       </DefaultLayout>
     </>
   );
