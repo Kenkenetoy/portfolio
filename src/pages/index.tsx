@@ -20,6 +20,7 @@ import { siteConfig } from "@/config/site";
 import { ShareModal } from "@/components/modal-for-links";
 import { ContainerScroll } from "@/components/container-scroll-animation";
 import { DraggableGrid } from "@/components/Draggable-Grid";
+import { ParallaxContainer } from "@/components/ParallaxContainer";
 
 export default function IndexPage() {
   const { scrollYProgress } = useScroll();
@@ -177,9 +178,8 @@ export default function IndexPage() {
             </section>
           </div>
         </div>
-        <div className="flex items-center justify-center w-screen h-screen bg-gray-900">
-          <DraggableGrid size={70} gap={12} rows={5} cols={5} />
-        </div>
+        <ParallaxContainer />
+        <DraggableGrid size={80} gap={12} rows={3} cols={5} />
         <StickyScroll content={siteConfig.contents} />
 
         <div className="flex flex-col overflow-hidden">
