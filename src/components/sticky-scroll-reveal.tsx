@@ -91,10 +91,7 @@ export const StickyScroll = ({
   }, [activeCard]);
 
   return (
-    <motion.div
-      ref={ref}
-      className="relative flex justify-center p-10 space-x-12"
-    >
+    <motion.div ref={ref} className="relative flex justify-center space-x-12 ">
       {/* Left Content */}
       <div className="relative flex flex-col space-y-16">
         {content.map((item, index) => (

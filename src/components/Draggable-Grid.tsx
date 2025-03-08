@@ -3,6 +3,37 @@ import * as React from "react";
 import { useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { distance } from "@popmotion/popcorn";
+import {
+  IconBrandReact,
+  IconBrandLaravel,
+  IconBrandTailwind,
+  IconBrandGithub,
+  IconBrandUnity,
+  IconBrandFigma,
+  IconBrandAdobeAfterEffect,
+  IconBrandAdobePhotoshop,
+  IconBrandBlender,
+  IconBrandFramerMotion,
+  IconBrandVite,
+  IconLink,
+} from "@tabler/icons-react";
+import { Button } from "@heroui/button";
+import { Tooltip } from "@heroui/tooltip";
+import { siteConfig } from "@/config/site"; // Import siteConfig
+import { cn } from "@/lib/utils";
+
+const stackIcons: { [key: string]: JSX.Element } = {
+  react: <IconBrandReact size={16} />,
+  laravel: <IconBrandLaravel size={16} />,
+  tailwind: <IconBrandTailwind size={16} />,
+  unity: <IconBrandUnity size={16} />,
+  figma: <IconBrandFigma size={16} />,
+  aftereffects: <IconBrandAdobeAfterEffect size={16} />,
+  photoshop: <IconBrandAdobePhotoshop size={16} />,
+  blender: <IconBrandBlender size={16} />,
+  framermotion: <IconBrandFramerMotion size={16} />,
+  vite: <IconBrandVite size={16} />,
+};
 
 type DraggableGridProps = {
   size?: number;
@@ -20,9 +51,9 @@ const Square = ({
   y,
   size,
   gap,
+  tech, // <-- Tech key from siteConfig.stack
 }: any) => {
   const isDragging = colIndex === active.col && rowIndex === active.row;
-  const diagonalIndex = (360 / 6) * (colIndex + rowIndex);
   const d = distance(
     { x: active.col, y: active.row },
     { x: colIndex, y: rowIndex }
@@ -36,25 +67,40 @@ const Square = ({
   const dx = useSpring(x, springConfig);
   const dy = useSpring(y, springConfig);
 
+  // Get stack details
+  const stackInfo = siteConfig.stack[tech];
+  const icon = stackIcons[tech];
+
   return (
     <motion.div
       drag
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
       dragElastic={1}
-      onDragStart={() => setActive({ row: rowIndex, col: colIndex })}
       style={{
-        background: `hsla(calc(var(--base-hue) + ${diagonalIndex}), 80%, 60%, 1)`,
-        width: size,
+        width: size, // Ensure proper square size
         height: size,
         top: rowIndex * (size + gap),
         left: colIndex * (size + gap),
         position: "absolute",
-        borderRadius: "50%",
         x: isDragging ? x : dx,
         y: isDragging ? y : dy,
         zIndex: isDragging ? 1 : 0,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: "12px", // Optional rounded corners
       }}
-    />
+      onDragStart={() => setActive({ row: rowIndex, col: colIndex })}
+    >
+      <Button
+        color="default"
+        radius="full"
+        variant="ghost"
+        className="flex items-center justify-center w-full h-full" // <-- Fix button stretching
+      >
+        {React.cloneElement(icon, { size: 32 })} {/* Increase Icon Size */}
+      </Button>
+    </motion.div>
   );
 };
 
@@ -67,16 +113,19 @@ export const DraggableGrid: React.FC<DraggableGridProps> = ({
   const [active, setActive] = useState({ row: 0, col: 0 });
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+
+  // Get all technology keys
+  const techKeys = Object.keys(siteConfig.stack);
   const grid = Array.from({ length: rows }, (_, i) =>
-    Array.from({ length: cols }, (_, j) => i * cols + j)
+    Array.from({ length: cols }, (_, j) => techKeys[i * cols + j] || null)
   );
 
   return (
     <motion.div
       animate={{ "--base-hue": 360 } as any}
       initial={{ "--base-hue": 0 } as any}
-      transition={{ duration: 10, loop: Infinity, ease: "linear" }}
       style={{ width: "100%", height: "100%" }}
+      transition={{ duration: 10, loop: Infinity, ease: "linear" }}
     >
       <motion.div
         style={{
@@ -91,19 +140,22 @@ export const DraggableGrid: React.FC<DraggableGridProps> = ({
         }}
       >
         {grid.map((row, rowIndex) =>
-          row.map((_item, colIndex) => (
-            <Square
-              key={`${rowIndex}-${colIndex}`}
-              x={x}
-              y={y}
-              active={active}
-              setActive={setActive}
-              rowIndex={rowIndex}
-              colIndex={colIndex}
-              size={size}
-              gap={gap}
-            />
-          ))
+          row.map((tech, colIndex) =>
+            tech ? (
+              <Square
+                key={`${rowIndex}-${colIndex}`}
+                active={active}
+                colIndex={colIndex}
+                rowIndex={rowIndex}
+                setActive={setActive}
+                size={size}
+                x={x}
+                y={y}
+                gap={gap}
+                tech={tech} // <-- Pass the tech name
+              />
+            ) : null
+          )
         )}
       </motion.div>
     </motion.div>

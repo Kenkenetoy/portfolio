@@ -20,7 +20,6 @@ import { siteConfig } from "@/config/site";
 import { ShareModal } from "@/components/modal-for-links";
 import { ContainerScroll } from "@/components/container-scroll-animation";
 import { DraggableGrid } from "@/components/Draggable-Grid";
-import { ParallaxContainer } from "@/components/ParallaxContainer";
 
 export default function IndexPage() {
   const { scrollYProgress } = useScroll();
@@ -178,9 +177,27 @@ export default function IndexPage() {
             </section>
           </div>
         </div>
-        <ParallaxContainer />
-        <DraggableGrid size={80} gap={12} rows={3} cols={5} />
-        <StickyScroll content={siteConfig.contents} />
+        <div className="flex m-auto space-x-12 w-[1000px] h-fit">
+          <span className="max-w-xl w-[1000px] space-y-4">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 ">
+              My Stack
+            </h2>
+            <p className="text-gray-700 text-md dark:text-slate-300 ">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+              esse qui inventore vel excepturi. Officia nesciunt optio possimus
+              voluptate qui sapiente harum, et totam, consequatur unde officiis,
+              neque saepe! Dolorum deleniti tempore numquam fugiat sint animi
+              sunt, iste rerum quo at ea pariatur! Pariatur quibusdam dolor
+              alias officiis! Recusandae error earum nihil quas iure quam.
+            </p>
+          </span>
+          <span className="z-45">
+            <DraggableGrid cols={4} gap={12} rows={3} size={80} />
+          </span>
+        </div>
+        <div className="w-[1000px] m-auto">
+          <StickyScroll content={siteConfig.contents} />
+        </div>
 
         <div className="flex flex-col overflow-hidden">
           <ContainerScroll

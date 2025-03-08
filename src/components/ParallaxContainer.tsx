@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { ParallaxText } from "./ParallaxText";
 
 export const ParallaxContainer: React.FC = () => {
