@@ -1,34 +1,14 @@
 /* eslint-disable prettier/prettier */
-import { Tooltip } from "@heroui/tooltip";
-import { Button } from "@heroui/button";
 import { Image } from "@heroui/image";
-import {
-  IconBrandGithub,
-  IconBrandLeetcode,
-  IconLink,
-  IconDownload,
-  IconBrandLinkedin,
-} from "@tabler/icons-react";
 import { Helmet } from "react-helmet-async";
-import { motion, useScroll, useSpring } from "framer-motion";
 
-import { DraggableMockupPhone } from "@/components/DraggableMockupPhone";
 import { StickyScroll } from "@/components/sticky-scroll-reveal";
-import { GlareCard } from "@/components/glare-card";
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
-import { ShareModal } from "@/components/modal-for-links";
 import { ContainerScroll } from "@/components/container-scroll-animation";
-import { DraggableGrid } from "@/components/Draggable-Grid";
+import HeroSection from "@/components/hero";
 
 export default function IndexPage() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
-
   return (
     <>
       <Helmet>
@@ -56,129 +36,11 @@ export default function IndexPage() {
       </Helmet>
 
       <DefaultLayout>
-        <motion.div
-          className="fixed z-50 top-0 left-0 right-0 h-[5px] bg-secondary origin-left"
-          style={{ scaleX }}
-        />
-        <div className="mt-24 h-[50rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center">
-          <div className="absolute inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-          <div className="absolute inset-0 z-10 flex items-center justify-around px-40 text-3xl font-bold text-center text-white md:text-4xl lg:text-7xl">
-            <GlareCard className="flex flex-col items-center justify-center ">
-              <DraggableMockupPhone />
-            </GlareCard>
-            <section className="flex flex-col justify-center w-1/2 gap-4 py-8 space-y-12 md:py-10">
-              <div className="justify-center inline-block max-w-xl space-y-8 text-center">
-                <h1 className="text-5xl capitalize text-neutral-900 dark:text-white">
-                  a crafty Web Artisan and Tech Artist
-                </h1>
-                <div className="flex gap-4 mx-auto w-fit">
-                  <ShareModal
-                    className="gap-2"
-                    color="secondary"
-                    radius="full"
-                    size="lg"
-                    variant="shadow"
-                  >
-                    <span className="text-lg font-semibold">Contact</span>
-                    <span>
-                      <IconLink />
-                    </span>
-                  </ShareModal>
-                  <Button
-                    radius="full"
-                    size="lg"
-                    variant="shadow"
-                    onPress={() => {
-                      const link = document.createElement("a");
-
-                      link.href =
-                        "https://drive.google.com/uc?export=download&id=1IED6anEob_8QUZd1MjLJJanHRPIc8aV7";
-                      link.target = "_blank";
-                      document.body.appendChild(link);
-                      link.click();
-                      document.body.removeChild(link);
-                    }}
-                  >
-                    <span className="text-lg font-semibold">Download</span>
-                    <span>
-                      <IconDownload />
-                    </span>
-                  </Button>
-                </div>
-              </div>
-              <div className="space-x-6 ">
-                <Tooltip
-                  content={
-                    <div className="px-1 py-2">
-                      <div className="font-bold text-small">
-                        {siteConfig.socials.linkedin.title}
-                      </div>
-                      <div className="text-tiny">
-                        This opens another tab to
-                        {siteConfig.socials.linkedin.link}
-                      </div>
-                    </div>
-                  }
-                >
-                  <Button
-                    isIconOnly
-                    aria-label="Like"
-                    color="primary"
-                    variant="faded"
-                  >
-                    <IconBrandLinkedin />
-                  </Button>
-                </Tooltip>
-                <Tooltip
-                  content={
-                    <div className="px-1 py-2">
-                      <div className="font-bold text-small">
-                        {siteConfig.socials.github.title}
-                      </div>
-                      <div className="text-tiny">
-                        This opens another tab to{" "}
-                        {siteConfig.socials.github.link}
-                      </div>
-                    </div>
-                  }
-                >
-                  <Button
-                    isIconOnly
-                    aria-label="Like"
-                    color="default"
-                    variant="faded"
-                  >
-                    <IconBrandGithub />
-                  </Button>
-                </Tooltip>
-                <Tooltip
-                  content={
-                    <div className="px-1 py-2">
-                      <div className="font-bold text-small">
-                        {siteConfig.socials.leetcode.title}
-                      </div>
-                      <div className="text-tiny">
-                        This opens another tab to{" "}
-                        {siteConfig.socials.leetcode.link}
-                      </div>
-                    </div>
-                  }
-                >
-                  <Button
-                    isIconOnly
-                    aria-label="Like"
-                    color="warning"
-                    variant="faded"
-                  >
-                    <IconBrandLeetcode />
-                  </Button>
-                </Tooltip>
-              </div>
-            </section>
-          </div>
+        <div className="h-screen bg-white">
+          <HeroSection siteConfig={siteConfig} />
         </div>
         <div className="flex m-auto space-x-12 w-[1000px] h-fit">
-          <span className="max-w-xl w-[1000px] space-y-4">
+          <span className="max-w-xl w-[1000px] space-y-4 z-1">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 ">
               My Stack
             </h2>
@@ -191,14 +53,11 @@ export default function IndexPage() {
               alias officiis! Recusandae error earum nihil quas iure quam.
             </p>
           </span>
-          <span className="z-45">
-            <DraggableGrid cols={4} gap={12} rows={3} size={80} />
-          </span>
+          <span className="z-45" />
         </div>
         <div className="w-[1000px] m-auto">
           <StickyScroll content={siteConfig.contents} />
         </div>
-
         <div className="flex flex-col overflow-hidden">
           <ContainerScroll
             titleComponent={

@@ -88,14 +88,13 @@ const Square = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: "12px", // Optional rounded corners
       }}
       onDragStart={() => setActive({ row: rowIndex, col: colIndex })}
     >
       <Button
         color="default"
         radius="full"
-        variant="ghost"
+        variant="solid"
         className="flex items-center justify-center w-full h-full" // <-- Fix button stretching
       >
         {React.cloneElement(icon, { size: 32 })} {/* Increase Icon Size */}

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Image } from "@heroui/image";
 
 import { siteConfig } from "@/config/site";
@@ -9,7 +10,7 @@ export const DraggableMockupPhone = () => {
       <div className="display">
         <div
           aria-label="Scrollable content"
-          className="h-[600px] p-4 space-y-4 overflow-y-scroll artboard artboard-demo phone-1 bg-gray-50 dark:bg-neutral-900 overflow-x-hidden"
+          className="h-[600px] p-4 space-y-4 overflow-y-auto artboard artboard-demo phone-1 bg-gray-50 dark:bg-neutral-900 overflow-x-hidden"
           role="button"
           tabIndex={0}
         >
