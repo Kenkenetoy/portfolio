@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Image } from "@heroui/image";
 import { Helmet } from "react-helmet-async";
+import { Tabs, Tab } from "@heroui/tabs";
 
 import { StickyScroll } from "@/components/sticky-scroll-reveal";
 import DefaultLayout from "@/layouts/default";
@@ -55,8 +56,32 @@ export default function IndexPage() {
           </span>
           <span className="z-45" />
         </div>
-        <div className="w-[1000px] m-auto">
+        {/* <div className="w-[1000px] m-auto">
           <StickyScroll content={siteConfig.contents} />
+        </div> */}
+        <div className="flex flex-col w-full">
+          <Tabs
+            classNames={{
+              tabList: "flex justify-center space-x-4 w-full font-bold ",
+              tab: "w-fit h-fit text-4xl",
+              tabContent: "p-6 ",
+              panel: "p-12 rounded-lg",
+            }}
+            color="default"
+            size="lg"
+            variant="underlined"
+          >
+            <Tab key="experience" title="Experience">
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur.
+            </Tab>
+
+            <Tab key="projects" title="Projects">
+              <StickyScroll content={siteConfig.contents} />
+            </Tab>
+          </Tabs>
         </div>
         <div className="flex flex-col overflow-hidden">
           <ContainerScroll

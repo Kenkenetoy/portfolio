@@ -26,7 +26,7 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
   return (
-    <div className="h-full w-full dark:bg-black bg-white dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center">
+    <div className="h-full w-full dark:bg-black bg-white dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex items-center justify-center">
       <div className="absolute inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       <div className="z-10 flex justify-center gap-12 font-bold text-center">
         <GlareCard>
@@ -34,7 +34,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
         </GlareCard>
 
         <section className="flex flex-col justify-center space-y-12 ">
-          <div className="justify-center inline-block max-w-xl space-y-8 text-center">
+          <div className="justify-center inline-block max-w-2xl space-y-8 text-center">
             <div className="space-y-2">
               <p className="text-lg font-thin">
                 Hi, my name is {siteConfig.name}

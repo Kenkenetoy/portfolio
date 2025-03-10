@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { SidebarDemo } from "@/components/sitdebar-bar";
 import { motion, useScroll, useSpring } from "framer-motion";
+
+import { SidebarDemo } from "@/components/sitdebar-bar";
 export default function DefaultLayout({
   children,
 }: {
