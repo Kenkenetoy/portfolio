@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 import { StickyScroll } from "./sticky-scroll-reveal";
 
 import { siteConfig } from "@/config/site";
+import { TimelineDemo } from "./education";
 
 const tabVariants = {
   initial: { opacity: 0, y: -20 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
-  exit: { opacity: 0, y: -20, transition: { duration: 0.2, ease: "easeIn" } }
+  exit: { opacity: 0, y: -20, transition: { duration: 0.2, ease: "easeIn" } },
 };
-
 
 export default function AnimatedTabs() {
   return (
@@ -36,6 +36,17 @@ export default function AnimatedTabs() {
           >
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
             nisi ut aliquip ex ea commodo consequat.
+          </motion.div>
+        </Tab>
+
+        <Tab key="education" title="Education">
+          <motion.div
+            animate="animate"
+            exit="exit"
+            initial="initial"
+            variants={tabVariants}
+          >
+            <TimelineDemo />
           </motion.div>
         </Tab>
 
