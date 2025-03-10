@@ -93,12 +93,9 @@ export const StickyScroll = ({
   return (
     <motion.div ref={ref} className="relative flex justify-center space-x-12 ">
       {/* Left Content */}
-      <div className="relative flex flex-col space-y-16">
+      <div className="relative flex flex-col w-1/2 mt-12 mb-48 space-y-32">
         {content.map((item, index) => (
-          <div
-            key={item.title + index}
-            className="max-w-xl space-y-4 scroll-section"
-          >
+          <div key={item.title + index} className="space-y-4 scroll-section">
             <div>
               <motion.h2
                 animate={{ opacity: activeCard === index ? 1 : 0.3 }}
@@ -203,7 +200,7 @@ export const StickyScroll = ({
 
       <div
         className={cn(
-          "hidden lg:block h-full w-96 rounded-md sticky top-[33vh]",
+          "hidden lg:block h-full w-1/2 rounded-md sticky top-[33vh]",
           contentClassName
         )}
       >
@@ -218,11 +215,10 @@ export const StickyScroll = ({
           <Image
             isBlurred
             alt={content[activeCard].title}
-            className="object-cover w-full h-full"
-            height={275}
+            className="object-cover w-full aspect-[4/3]" // Adjust aspect ratio as needed
             src={content[activeCard].imageSrc}
-            width={400}
           />
+
           <div className="flex justify-center p-2 space-x-4">
             <Tooltip
               content={

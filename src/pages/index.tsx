@@ -8,6 +8,7 @@ import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
 import { ContainerScroll } from "@/components/container-scroll-animation";
 import HeroSection from "@/components/hero";
+import AnimatedTabs from "@/components/AnimatedTabPanels";
 
 export default function IndexPage() {
   return (
@@ -59,7 +60,7 @@ export default function IndexPage() {
         {/* <div className="w-[1000px] m-auto">
           <StickyScroll content={siteConfig.contents} />
         </div> */}
-        <div className="flex flex-col w-full">
+        {/* <div className="flex flex-col w-full">
           <Tabs
             classNames={{
               tabList: "flex justify-center space-x-4 w-full font-bold ",
@@ -82,7 +83,8 @@ export default function IndexPage() {
               <StickyScroll content={siteConfig.contents} />
             </Tab>
           </Tabs>
-        </div>
+        </div> */}
+        <AnimatedTabs />
         <div className="flex flex-col overflow-hidden">
           <ContainerScroll
             titleComponent={
