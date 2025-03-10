@@ -1,7 +1,12 @@
 /* eslint-disable prettier/prettier */
 "use client";
 import { useState, useEffect } from "react";
-import { IconUserFilled, IconLetterB } from "@tabler/icons-react";
+import {
+  IconCreditCardPay,
+  IconBriefcase,
+  IconCircleFilled,
+  IconHome,
+} from "@tabler/icons-react";
 import { Link } from "@heroui/link";
 
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/sidebar";
@@ -12,17 +17,24 @@ import { siteConfig } from "@/config/site";
 export function SidebarDemo() {
   const links = [
     {
+      label: "Home",
+      href: "/",
+      icon: (
+        <IconHome className="w-5 h-5 text-neutral-700 dark:text-neutral-200 shrink-0" />
+      ),
+    },
+    {
       label: "About",
       href: "/about",
       icon: (
-        <IconUserFilled className="w-5 h-5 text-neutral-700 dark:text-neutral-200 shrink-0" />
+        <IconCreditCardPay className="w-5 h-5 text-neutral-700 dark:text-neutral-200 shrink-0" />
       ),
     },
     {
       label: "Blog",
       href: "/blog",
       icon: (
-        <IconLetterB className="w-5 h-5 text-neutral-700 dark:text-neutral-200 shrink-0" />
+        <IconBriefcase className="w-5 h-5 text-neutral-700 dark:text-neutral-200 shrink-0" />
       ),
     },
   ];
@@ -37,8 +49,8 @@ export function SidebarDemo() {
   return (
     <div
       className={cn(
-        "fixed left-4 top-1/2 -translate-y-1/2 h-[50vh] bg-neutral-100 dark:bg-transparent shadow-lg transition-all",
-        open ? "w-64 rounded-xl" : "w-14 rounded-xl"
+        "fixed left-4 top-1/2 -translate-y-1/2 h-fit bg-neutral-100 dark:bg-transparent shadow-lg transition-all",
+        open ? "w-64 rounded-3xl" : "w-14 rounded-3xl"
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
@@ -48,7 +60,7 @@ export function SidebarDemo() {
               className="relative z-20 flex items-center py-1 space-x-2 text-sm font-normal text-black"
               href="/"
             >
-              <div className="w-6 h-5 bg-black rounded-tl-lg rounded-tr-sm rounded-bl-sm rounded-br-lg dark:bg-white shrink-0" />
+              <IconCircleFilled className="w-6 h-5 text-black dark:text-white shrink-0" />
               <span className="font-medium text-black whitespace-pre dark:text-white">
                 {siteConfig.name}
               </span>

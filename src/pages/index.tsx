@@ -10,6 +10,8 @@ import { ContainerScroll } from "@/components/container-scroll-animation";
 import HeroSection from "@/components/hero";
 import AnimatedTabs from "@/components/AnimatedTabPanels";
 import { MobbinParallax } from "@/components/ParallaxStack";
+import { DraggableMockupPhone } from "@/components/DraggableMockupPhone";
+import { GlareCard } from "@/components/glare-card";
 
 export default function IndexPage() {
   return (
@@ -41,31 +43,6 @@ export default function IndexPage() {
       <DefaultLayout>
         <div className="h-screen bg-white">
           <HeroSection siteConfig={siteConfig} />
-        </div>
-        <MobbinParallax />
-        <AnimatedTabs />
-        <div className="flex flex-col overflow-hidden">
-          <ContainerScroll
-            titleComponent={
-              <>
-                <h1 className="text-4xl font-semibold text-black dark:text-white">
-                  Unleash the power of <br />
-                  <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-                    Scroll Animations
-                  </span>
-                </h1>
-              </>
-            }
-          >
-            <Image
-              alt="hero"
-              className="object-cover object-left-top h-full mx-auto rounded-2xl"
-              draggable={false}
-              height={720}
-              src={`/linear.webp`}
-              width={1400}
-            />
-          </ContainerScroll>
         </div>
       </DefaultLayout>
     </>

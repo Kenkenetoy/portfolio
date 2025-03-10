@@ -12,7 +12,7 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
-} from "framer-motion";
+} from "motion/react";
 import { Link } from "@heroui/link";
 import { useRef, useState } from "react";
 
@@ -71,7 +71,7 @@ const FloatingDockMobile = ({
               >
                 <Link
                   key={item.title}
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white/75 dark:bg-black/75 backdrop-blur-lg"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 dark:bg-neutral-900"
                   href={item.href}
                 >
                   <div className="w-4 h-4">{item.icon}</div>
@@ -85,7 +85,7 @@ const FloatingDockMobile = ({
         className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 dark:bg-neutral-800"
         onClick={() => setOpen(!open)}
       >
-        <IconLayoutNavbarCollapse className="w-5 h-5 text-neutral-900 dark:text-neutral-400" />
+        <IconLayoutNavbarCollapse className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
       </button>
     </div>
   );
@@ -104,7 +104,7 @@ const FloatingDockDesktop = ({
     <motion.div
       className={cn(
         "mx-auto hidden md:flex h-16 gap-4 items-end  rounded-2xl  px-4 pb-3",
-        className,
+        className
       )}
       onMouseLeave={() => mouseX.set(Infinity)}
       onMouseMove={(e) => mouseX.set(e.pageX)}
@@ -142,7 +142,7 @@ function IconContainer({
   let heightTransformIcon = useTransform(
     distance,
     [-150, 0, 150],
-    [20, 40, 20],
+    [20, 40, 20]
   );
 
   let width = useSpring(widthTransform, {
@@ -170,7 +170,7 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link href={href} rel="noopener noreferrer" target="_blank">
+    <Link href={href}>
       <motion.div
         ref={ref}
         className="relative flex items-center justify-center bg-gray-200 rounded-full aspect-square dark:bg-neutral-800"
@@ -182,7 +182,7 @@ function IconContainer({
           {hovered && (
             <motion.div
               animate={{ opacity: 1, y: 0, x: "-50%" }}
-              className="px-2 py-0.5 whitespace-pre rounded-md bg-gray-100 border dark:bg-neutral-800 dark:border-neutral-900 dark:text-white border-gray-200 text-neutral-900 absolute left-1/2 -translate-x-1/2 -top-8 w-fit text-md font-normal"
+              className="px-2 py-0.5 whitespace-pre rounded-md bg-gray-100 border dark:bg-neutral-800 dark:border-neutral-900 dark:text-white border-gray-200 text-neutral-700 absolute left-1/2 -translate-x-1/2 -top-8 w-fit text-xs"
               exit={{ opacity: 0, y: 2, x: "-50%" }}
               initial={{ opacity: 0, y: 10, x: "-50%" }}
             >

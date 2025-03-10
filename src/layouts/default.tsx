@@ -30,6 +30,18 @@ export default function DefaultLayout({
         <main className="container flex-grow mx-auto space-y-16 max-w-7xl">
           {children}
         </main>
+        <footer className="p-10 footer sm:footer-horizontal bg-base-300 text-base-content">
+          <nav>
+            <h6 className="footer-title">Services</h6>
+          </nav>
+          <nav>
+            <h6 className="footer-title">Company</h6>
+          </nav>
+          <nav>
+            <h6 className="footer-title">Social</h6>
+            <div className="grid grid-flow-col gap-4"></div>
+          </nav>
+        </footer>
       </div>
     </div>
   );
