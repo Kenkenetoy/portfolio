@@ -1,6 +1,9 @@
 /* eslint-disable prettier/prettier */
 export const siteConfig = {
   name: "Kenneth Aparece",
+  description: "I build cool looking web applications",
+  location: "Bohol",
+  role: "Software Engineer",
 
   url: "https://portfolio-kenprce09.vercel.app/",
 
@@ -15,9 +18,6 @@ export const siteConfig = {
     first: "kennethjoseaparece@gmail.com",
     second: "yonascarren@gmail.com",
   },
-  description: "Cebu Based Software Engineer",
-  location: "Cebu",
-  role: "Software Engineer",
 
   navItems: [
     { label: "Home", href: "/" },

@@ -16,6 +16,8 @@ import { ShareModal } from "./modal-for-links";
 interface HeroSectionProps {
   siteConfig: {
     name: string;
+    description: string;
+    location: string;
     socials: {
       linkedin: { title: string; link: string };
       github: { title: string; link: string };
@@ -36,11 +38,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
         <section className="flex flex-col justify-center space-y-12 ">
           <div className="justify-center inline-block max-w-2xl space-y-8 text-center">
             <div className="space-y-2">
-              <p className="text-lg font-thin">
-                Hi, my name is {siteConfig.name}
+              <p className="text-lg font-normal">
+                Hi, my name is {siteConfig.name} based in {siteConfig.location}
               </p>
               <h1 className="text-6xl capitalize text-neutral-900 dark:text-white">
-                I am a crafty Web Artisan and Tech Artist
+                {siteConfig.description}
               </h1>
             </div>
 
