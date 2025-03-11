@@ -1,17 +1,10 @@
 /* eslint-disable prettier/prettier */
-import { Image } from "@heroui/image";
 import { Helmet } from "react-helmet-async";
-import { Tabs, Tab } from "@heroui/tabs";
 
-import { StickyScroll } from "@/components/sticky-scroll-reveal";
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
-import { ContainerScroll } from "@/components/container-scroll-animation";
 import HeroSection from "@/components/hero";
-import AnimatedTabs from "@/components/AnimatedTabPanels";
-import { MobbinParallax } from "@/components/ParallaxStack";
-import { DraggableMockupPhone } from "@/components/DraggableMockupPhone";
-import { GlareCard } from "@/components/glare-card";
+import { Divider } from "@heroui/divider";
 
 export default function IndexPage() {
   return (
@@ -43,6 +36,25 @@ export default function IndexPage() {
       <DefaultLayout>
         <div className="h-screen bg-white">
           <HeroSection siteConfig={siteConfig} />
+        </div>
+        <div className="flex flex-col gap-12 w-[80vw] m-auto text-3xl">
+          <div className="flex justify-between">
+            <p className="w-1/2">
+              Building scalable and performant applications with Laravel, React,
+              and WebGPU. I blend backend logic with interactive frontends,
+              shaping the future of digital experiences.
+            </p>
+            <p className="text-sm w-96">
+              My expertise in full-stack development, 3D visualization, and
+              interactive web design sets me apart in the tech industry.
+            </p>
+          </div>
+          <div>
+            <p className="text-4xl font-medium w-96 text-secondary">
+              Engineering Scalable Systems, Crafting Immersive Experiences
+            </p>
+          </div>
+          <Divider />
         </div>
       </DefaultLayout>
     </>

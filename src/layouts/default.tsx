@@ -27,7 +27,7 @@ export default function DefaultLayout({
 
       {/* Main Content */}
       <div className="relative flex flex-col flex-grow">
-        <main>{children}</main>
+        <main className="space-y-12">{children}</main>
         <footer className="p-10 footer sm:footer-horizontal bg-base-300 text-base-content">
           <nav>
             <h6 className="footer-title">Services</h6>

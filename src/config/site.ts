@@ -150,7 +150,5 @@ export const siteConfig = {
     },
   ],
 
-  education: [
-    
-  ]
+  education: [],
 };

@@ -78,9 +78,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
                   Hi, my name is {siteConfig.name} based in{" "}
                   {siteConfig.location}
                 </p>
-                <h1 className="text-6xl capitalize text-neutral-900 dark:text-white">
+                <h1 className="text-6xl capitalize text-default-foreground">
                   {siteConfig.description}
                 </h1>
+                <h2 className="text-xl font-light capitalize text-default-foreground">
+                  {siteConfig.description}
+                </h2>
               </div>
 
               <div className="flex gap-4 mx-auto w-fit">
@@ -135,32 +138,32 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
               </div>
               <Tooltip
                 content={
-                  `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}` ? (
+                  `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.second}` ? (
                     <Link
                       isExternal
                       showAnchorIcon
                       anchorIcon={<IconLink size={20} />}
                       className="flex flex-col p-2 space-y-2"
                       color="foreground"
-                      href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
+                      href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.second}`}
                       isBlock={true}
                       size="sm"
                       target="_blank"
                     >
                       <span>
                         <Image
-                          alt={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
+                          alt={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.second}`}
                           className="z-0 object-cover w-full h-full"
                           height={200}
                           src={`https://api.microlink.io/?url=${encodeURIComponent(
-                            `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`
+                            `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.second}`
                           )}&screenshot=true&meta=false&embed=screenshot.url`}
                           width={200}
                         />
                       </span>
 
                       <span className="w-48 overflow-hidden text-ellipsis">
-                        {`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
+                        {`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.second}`}
                       </span>
                     </Link>
                   ) : (
@@ -175,10 +178,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
                   anchorIcon={<IconLink size={20} />}
                   className="gap-2 w-fit"
                   color="foreground"
-                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.second}`}
                   target="_blank"
                 >
-                  {siteConfig.email.first}
+                  {siteConfig.email.second}
                 </Link>
               </Tooltip>
             </div>
