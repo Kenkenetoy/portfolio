@@ -103,7 +103,7 @@ const FloatingDockDesktop = ({
   return (
     <motion.div
       className={cn(
-        "mx-auto hidden md:flex h-16 gap-4 items-end  rounded-2xl  px-4 pb-3",
+        "mx-auto hidden md:flex h-13 gap-4 items-end rounded-full border-1",
         className
       )}
       onMouseLeave={() => mouseX.set(Infinity)}
@@ -135,8 +135,8 @@ function IconContainer({
     return val - bounds.x - bounds.width / 2;
   });
 
-  let widthTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
-  let heightTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
+  let widthTransform = useTransform(distance, [-150, 0, 150], [50, 90, 50]);
+  let heightTransform = useTransform(distance, [-150, 0, 150], [50, 90, 50]);
 
   let widthTransformIcon = useTransform(distance, [-150, 0, 150], [20, 40, 20]);
   let heightTransformIcon = useTransform(
@@ -173,8 +173,10 @@ function IconContainer({
     <Link href={href}>
       <motion.div
         ref={ref}
-        className="relative flex items-center justify-center bg-gray-200 rounded-full aspect-square dark:bg-neutral-800"
+        className="relative flex items-center justify-center transition-colors bg-gray-200 rounded-full duration-250 aspect-square dark:bg-neutral-800"
         style={{ width, height }}
+        whileHover={{ scale: 1.1 }} // Instant hover effect
+        transition={{ type: "spring", stiffness: 300, damping: 12 }} // Faster response
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -182,7 +184,7 @@ function IconContainer({
           {hovered && (
             <motion.div
               animate={{ opacity: 1, y: 0, x: "-50%" }}
-              className="px-2 py-0.5 whitespace-pre rounded-md bg-gray-100 border dark:bg-neutral-800 dark:border-neutral-900 dark:text-white border-gray-200 text-neutral-700 absolute left-1/2 -translate-x-1/2 -top-8 w-fit text-xs"
+              className="px-2 py-0.5 whitespace-pre rounded-md bg-gray-100 border dark:bg-neutral-800 dark:border-neutral-900 dark:text-white border-gray-200 text-neutral-700 absolute left-1/2 -translate-x-1/2 -top-8 w-fit text-base"
               exit={{ opacity: 0, y: 2, x: "-50%" }}
               initial={{ opacity: 0, y: 10, x: "-50%" }}
             >

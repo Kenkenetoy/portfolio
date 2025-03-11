@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Tooltip } from "@heroui/tooltip";
 import { Button } from "@heroui/button";
 import { Image } from "@heroui/image";

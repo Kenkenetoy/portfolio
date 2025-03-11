@@ -6,6 +6,7 @@ import {
   IconLink,
   IconBrandFacebook,
   IconBrandInstagram,
+  IconMail,
 } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
 
@@ -14,9 +15,14 @@ import { GlareCard } from "./glare-card";
 import { ShareModal } from "./modal-for-links";
 import { FloatingDock } from "./floating-dock";
 import { siteConfig } from "@/config/site";
+import { Tooltip } from "@heroui/tooltip";
+import { Link } from "@heroui/link";
+import { Image } from "@heroui/image";
+import { Divider } from "@heroui/divider";
 
 interface HeroSectionProps {
   siteConfig: {
+    email: string;
     name: string;
     description: string;
     location: string;
@@ -44,18 +50,26 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
       ),
       href: siteConfig.socials.github.link,
     },
+    {
+      title: "GitHub",
+      icon: (
+        <IconBrandGithub className="w-full h-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: siteConfig.socials.github.link,
+    },
   ];
 
   return (
     <div className="h-full w-full dark:bg-black bg-white dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex flex-col justify-center items-center ">
       <div className="absolute inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-      <div className="z-10 flex flex-col h-full justify-evenly">
+      <div className="z-10 flex flex-col justify-between w-full h-full">
+        {/* top */}
         <div className="flex justify-center font-bold text-center">
           <GlareCard>
             <DraggableMockupPhone />
           </GlareCard>
 
-          <section className="flex flex-col justify-center space-y-12 ">
+          <section className="flex flex-col justify-center space-y-12">
             <div className="justify-center inline-block max-w-2xl space-y-8 text-center">
               <div className="space-y-2">
                 <p className="text-lg font-normal">
@@ -103,69 +117,73 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
                 </Button>
               </div>
             </div>
-
-            {/* <div className="space-x-6">
-            <Tooltip
-              content={
-                <TooltipContent
-                  link={siteConfig.socials.linkedin.link}
-                  title={siteConfig.socials.linkedin.title}
-                />
-              }
-            >
-              <Button
-                isIconOnly
-                aria-label="LinkedIn"
-                color="primary"
-                variant="faded"
-              >
-                <IconBrandLinkedin />
-              </Button>
-            </Tooltip>
-
-            <Tooltip
-              content={
-                <TooltipContent
-                  link={siteConfig.socials.github.link}
-                  title={siteConfig.socials.github.title}
-                />
-              }
-            >
-              <Button
-                isIconOnly
-                aria-label="GitHub"
-                color="default"
-                variant="faded"
-              >
-                <IconBrandGithub />
-              </Button>
-            </Tooltip>
-
-            <Tooltip
-              content={
-                <TooltipContent
-                  link={siteConfig.socials.leetcode.link}
-                  title={siteConfig.socials.leetcode.title}
-                />
-              }
-            >
-              <Button
-                isIconOnly
-                aria-label="LeetCode"
-                color="warning"
-                variant="faded"
-              >
-                <IconBrandLeetcode />
-              </Button>
-            </Tooltip>
-          </div> */}
           </section>
         </div>
-        <div className="flex items-center justify-center ">
-          <FloatingDock
-            mobileClassName="translate-y-20" // only for demo, remove for production
-            items={links}
-          />
+        {/* bottom */}
+        <div className="w-full">
+          <Divider className="mb-4" />
+          <div className="grid items-center w-full grid-cols-3 font-medium place-items-end">
+            <p className="justify-self-start">// Design, Code, Execute</p>
+            <FloatingDock
+              mobileClassName="translate-y-20" // only for demo, remove for production
+              items={links}
+            />
+            <div className="flex items-center gap-2 pr-4 rounded-full border transition-colors duration-500 ease-in-out bg-[--nextui-background] border-[--nextui-border]">
+              <div className="p-3 rounded-full bg-default">
+                <IconMail />
+              </div>
+              <Tooltip
+                content={
+                  `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}` ? (
+                    <Link
+                      isExternal
+                      showAnchorIcon
+                      anchorIcon={<IconLink size={20} />}
+                      className="flex flex-col p-2 space-y-2"
+                      color="foreground"
+                      href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
+                      isBlock={true}
+                      size="sm"
+                      target="_blank"
+                    >
+                      <span>
+                        <Image
+                          alt={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
+                          className="z-0 object-cover w-full h-full"
+                          height={200}
+                          src={`https://api.microlink.io/?url=${encodeURIComponent(
+                            `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`
+                          )}&screenshot=true&meta=false&embed=screenshot.url`}
+                          width={200}
+                        />
+                      </span>
+
+                      <span className="w-48 overflow-hidden text-ellipsis">
+                        {`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
+                      </span>
+                    </Link>
+                  ) : (
+                    "No Preview Available"
+                  )
+                }
+                shadow="md"
+                showArrow={true}
+              >
+                <Link
+                  isExternal
+                  showAnchorIcon
+                  anchorIcon={<IconLink size={20} />}
+                  className="gap-2 w-fit"
+                  color="foreground"
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
+                  target="_blank"
+                  underline="always"
+                >
+                  {siteConfig.email.first}
+                </Link>
+              </Tooltip>
+            </div>
+          </div>
         </div>
       </div>
     </div>
