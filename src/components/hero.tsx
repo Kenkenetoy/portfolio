@@ -115,7 +115,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
                     document.body.removeChild(link);
                   }}
                 >
-                  <span className="text-lg font-semibold">Download</span>
+                  <span className="text-lg font-semibold">Resume</span>
                   <span>
                     <IconDownload />
                   </span>
@@ -133,7 +133,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
               items={links}
             />
             <div className="flex items-center gap-2 pr-4 transition-colors ease-in-out rounded-full border-default duration-250 border-1">
-              <div className="p-3 rounded-full bg-default">
+              <div className="p-3 transition-colors ease-in-out rounded-full bg-default text-default-foreground ">
                 <IconMail />
               </div>
               <Tooltip

@@ -5,7 +5,7 @@ import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
 import HeroSection from "@/components/hero";
 import { Divider } from "@heroui/divider";
-
+import { WobbleCardComponent } from "@/components/wobble-card";
 export default function IndexPage() {
   return (
     <>
@@ -34,7 +34,7 @@ export default function IndexPage() {
       </Helmet>
 
       <DefaultLayout>
-        <div className="h-screen bg-white">
+        <div className="h-screen">
           <HeroSection siteConfig={siteConfig} />
         </div>
         <div className="flex flex-col gap-12 w-[80vw] m-auto text-3xl">
@@ -55,6 +55,7 @@ export default function IndexPage() {
             </p>
           </div>
           <Divider />
+          <WobbleCardComponent />
         </div>
       </DefaultLayout>
     </>

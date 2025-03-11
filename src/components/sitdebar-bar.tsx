@@ -19,23 +19,17 @@ export function SidebarDemo() {
     {
       label: "Home",
       href: "/",
-      icon: (
-        <IconHome className="w-5 h-5 text-neutral-700 dark:text-neutral-200 shrink-0" />
-      ),
+      icon: <IconHome className="w-5 h-5 text-default-500 shrink-0" />,
     },
     {
       label: "About",
       href: "/about",
-      icon: (
-        <IconCreditCardPay className="w-5 h-5 text-neutral-700 dark:text-neutral-200 shrink-0" />
-      ),
+      icon: <IconCreditCardPay className="w-5 h-5 text-default-500 shrink-0" />,
     },
     {
       label: "Blog",
       href: "/blog",
-      icon: (
-        <IconBriefcase className="w-5 h-5 text-neutral-700 dark:text-neutral-200 shrink-0" />
-      ),
+      icon: <IconBriefcase className="w-5 h-5 text-default-500 shrink-0" />,
     },
   ];
   const [open, setOpen] = useState(() =>
@@ -49,7 +43,7 @@ export function SidebarDemo() {
   return (
     <div
       className={cn(
-        "fixed left-4 top-1/2 -translate-y-1/2 h-fit bg-neutral-100 dark:bg-transparent shadow-lg transition-all",
+        "fixed left-4 top-1/2 -translate-y-1/2 h-fit bg-default-100 dark:bg-black shadow-lg transition-all",
         open ? "w-64 rounded-3xl" : "w-14 rounded-3xl"
       )}
     >
@@ -57,11 +51,11 @@ export function SidebarDemo() {
         <SidebarBody className="flex flex-col justify-between h-full gap-10">
           <div className="flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
             <Link
-              className="relative z-20 flex items-center py-1 space-x-2 text-sm font-normal text-black"
+              className="relative z-20 flex items-center py-1 space-x-2 text-base font-normal text-default-foreground"
               href="/"
             >
-              <IconCircleFilled className="w-6 h-5 text-black dark:text-white shrink-0" />
-              <span className="font-medium text-black whitespace-pre dark:text-white">
+              <IconCircleFilled className="w-6 h-5 text-default-foreground shrink-0" />
+              <span className="font-medium whitespace-pre text-default-foreground">
                 {siteConfig.name}
               </span>
             </Link>
