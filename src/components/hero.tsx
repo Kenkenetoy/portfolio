@@ -39,21 +39,21 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
     {
       title: "LeetCode",
       icon: (
-        <IconBrandLeetcode className="w-full h-full text-neutral-500 dark:text-neutral-300" />
+        <IconBrandLeetcode className="w-full h-full text-default-foreground" />
       ),
       href: siteConfig.socials.leetcode.link,
     },
     {
       title: "GitHub",
       icon: (
-        <IconBrandGithub className="w-full h-full text-neutral-500 dark:text-neutral-300" />
+        <IconBrandGithub className="w-full h-full text-default-foreground " />
       ),
       href: siteConfig.socials.github.link,
     },
     {
       title: "GitHub",
       icon: (
-        <IconBrandGithub className="w-full h-full text-neutral-500 dark:text-neutral-300" />
+        <IconBrandGithub className="w-full h-full text-default-foreground" />
       ),
       href: siteConfig.socials.github.link,
     },
@@ -64,10 +64,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
       <div className="absolute inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       <div className="z-10 flex flex-col justify-between w-full h-full">
         {/* top */}
-        <div className="flex justify-center font-bold text-center">
-          <GlareCard>
-            <DraggableMockupPhone />
-          </GlareCard>
+        <div className="flex items-center justify-center h-full font-bold text-center">
+          <div>
+            <GlareCard>
+              <DraggableMockupPhone />
+            </GlareCard>
+          </div>
 
           <section className="flex flex-col justify-center space-y-12">
             <div className="justify-center inline-block max-w-2xl space-y-8 text-center">
@@ -120,15 +122,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
           </section>
         </div>
         {/* bottom */}
-        <div className="w-full">
-          <Divider className="mb-4" />
-          <div className="grid items-center w-full grid-cols-3 font-medium place-items-end">
+        <div className="flex flex-col items-center justify-center w-full h-24 transition-colors ease-in-out border-default-foreground border-t-1 duration-250">
+          <div className="grid items-center w-full grid-cols-3 px-4 font-medium place-items-end">
             <p className="justify-self-start">// Design, Code, Execute</p>
             <FloatingDock
               mobileClassName="translate-y-20" // only for demo, remove for production
               items={links}
             />
-            <div className="flex items-center gap-2 pr-4 rounded-full border transition-colors duration-500 ease-in-out bg-[--nextui-background] border-[--nextui-border]">
+            <div className="flex items-center gap-2 pr-4 transition-colors ease-in-out rounded-full border-default duration-250 border-1">
               <div className="p-3 rounded-full bg-default">
                 <IconMail />
               </div>
@@ -171,13 +172,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
               >
                 <Link
                   isExternal
-                  showAnchorIcon
                   anchorIcon={<IconLink size={20} />}
                   className="gap-2 w-fit"
                   color="foreground"
                   href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
                   target="_blank"
-                  underline="always"
                 >
                   {siteConfig.email.first}
                 </Link>

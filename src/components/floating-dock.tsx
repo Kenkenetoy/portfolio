@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /**
  * Note: Use position fixed according to your needs
  * Desktop navbar is better positioned at the bottom
@@ -71,7 +72,7 @@ const FloatingDockMobile = ({
               >
                 <Link
                   key={item.title}
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 dark:bg-neutral-900"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-default"
                   href={item.href}
                 >
                   <div className="w-4 h-4">{item.icon}</div>
@@ -82,10 +83,10 @@ const FloatingDockMobile = ({
         )}
       </AnimatePresence>
       <button
-        className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 dark:bg-neutral-800"
+        className="flex items-center justify-center w-10 h-10 rounded-full bg-default"
         onClick={() => setOpen(!open)}
       >
-        <IconLayoutNavbarCollapse className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
+        <IconLayoutNavbarCollapse className="w-5 h-5 " />
       </button>
     </div>
   );
@@ -103,8 +104,7 @@ const FloatingDockDesktop = ({
   return (
     <motion.div
       className={cn(
-        "mx-auto hidden md:flex h-13 gap-4 items-end rounded-full border-1",
-        className
+        "mx-auto hidden md:flex gap-4 items-end rounded-full border border-gray-300 dark:border-neutral-800  overflow-visible min-w-max h-[50px] "
       )}
       onMouseLeave={() => mouseX.set(Infinity)}
       onMouseMove={(e) => mouseX.set(e.pageX)}
@@ -173,7 +173,7 @@ function IconContainer({
     <Link href={href}>
       <motion.div
         ref={ref}
-        className="relative flex items-center justify-center transition-colors bg-gray-200 rounded-full duration-250 aspect-square dark:bg-neutral-800"
+        className="relative flex items-center justify-center transition-colors rounded-full bg-default duration-250 aspect-square "
         style={{ width, height }}
         whileHover={{ scale: 1.1 }} // Instant hover effect
         transition={{ type: "spring", stiffness: 300, damping: 12 }} // Faster response
@@ -184,7 +184,7 @@ function IconContainer({
           {hovered && (
             <motion.div
               animate={{ opacity: 1, y: 0, x: "-50%" }}
-              className="px-2 py-0.5 whitespace-pre rounded-md bg-gray-100 border dark:bg-neutral-800 dark:border-neutral-900 dark:text-white border-gray-200 text-neutral-700 absolute left-1/2 -translate-x-1/2 -top-8 w-fit text-base"
+              className="px-2 py-0.5 whitespace-pre rounded-md bg-default text-default-foreground absolute left-1/2 -translate-x-1/2 -top-8 w-fit text-base"
               exit={{ opacity: 0, y: 2, x: "-50%" }}
               initial={{ opacity: 0, y: 10, x: "-50%" }}
             >
