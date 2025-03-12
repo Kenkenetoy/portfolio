@@ -20,8 +20,17 @@ const links = siteConfig.socials.map((social) => ({
 
 const HeroSection: React.FC = () => {
   return (
-    <div className="h-full w-full dark:bg-black bg-white dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex flex-col justify-center items-center">
-      <div className="absolute inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+    <div className="h-full w-full bg-background dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex flex-col justify-center items-center">
+      <div
+        className="absolute inset-0 flex items-center justify-center bg-background"
+        style={{
+          maskImage:
+            "radial-gradient(ellipse at center, transparent 20%, black 75%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at center, transparent 20%, black 75%)",
+        }}
+      />
+
       <div className="z-10 flex flex-col justify-between w-full h-full">
         {/* Top Section */}
         <div className="flex items-center justify-center h-full font-bold text-center">
@@ -32,18 +41,14 @@ const HeroSection: React.FC = () => {
           </div>
 
           <section className="flex flex-col justify-center space-y-12">
-            <div className="justify-center inline-block max-w-2xl space-y-8 text-center">
+            <div className="justify-center inline-block max-w-3xl space-y-8 text-center">
               <div className="space-y-2">
-                <p className="text-lg font-normal">
-                  Hi, my name is {siteConfig.name} based in{" "}
-                  {siteConfig.location}
+                <p className="text-xl font-normal">
+                  Hi, I am {siteConfig.name} from {siteConfig.location.province}
                 </p>
-                <h1 className="text-6xl capitalize text-default-foreground">
+                <h1 className="font-medium capitalize text-8xl text-default-foreground">
                   {siteConfig.description}
                 </h1>
-                <h2 className="text-xl font-light capitalize text-default-foreground">
-                  {siteConfig.description}
-                </h2>
               </div>
 
               {/* Buttons */}
@@ -89,7 +94,9 @@ const HeroSection: React.FC = () => {
         {/* Bottom Section */}
         <div className="flex flex-col items-center justify-center w-full h-24 transition-colors ease-in-out border-default-foreground border-t-1 duration-250">
           <div className="grid items-center w-full grid-cols-3 px-4 font-medium place-items-end">
-            <p className="justify-self-start">{"// Design, Code, Execute"}</p>
+            <p className="w-32 justify-self-start">
+              {"// Design, Code, Execute"}
+            </p>
 
             <FloatingDock items={links} mobileClassName="translate-y-20" />
 

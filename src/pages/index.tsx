@@ -7,6 +7,7 @@ import { siteConfig } from "@/config/site";
 import HeroSection from "@/components/hero";
 import { WobbleCardComponent } from "@/components/wobble-card";
 import { Footer } from "@/components/footer";
+import { StickyScroll } from "@/components/sticky-scroll-reveal";
 
 export default function IndexPage() {
   return (
@@ -58,6 +59,14 @@ export default function IndexPage() {
           </div>
           <Divider />
           <WobbleCardComponent />
+          <div className="space-y-8">
+            <h1 className="text-6xl">My Projects</h1>
+            <Divider />
+            <div className="mx-auto max-w-7xl">
+              <StickyScroll content={siteConfig.contents} />
+            </div>
+            <Divider />
+          </div>
           <Footer />
         </div>
       </DefaultLayout>

@@ -6,38 +6,12 @@ import { Image } from "@heroui/image";
 import { Link } from "@heroui/link";
 import { Tooltip } from "@heroui/tooltip";
 import { Divider } from "@heroui/divider";
-import {
-  IconBrandReact,
-  IconBrandLaravel,
-  IconBrandTailwind,
-  IconBrandGithub,
-  IconBrandUnity,
-  IconBrandFigma,
-  IconBrandAdobeAfterEffect,
-  IconBrandAdobePhotoshop,
-  IconBrandBlender,
-  IconBrandFramerMotion,
-  IconBrandVite,
-  IconLink,
-} from "@tabler/icons-react";
+import { IconBrandGithub, IconLink } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
 import React from "react";
 
 import { siteConfig } from "@/config/site"; // Import siteConfig
 import { cn } from "@/lib/utils";
-
-const stackIcons: { [key: string]: JSX.Element } = {
-  react: <IconBrandReact size={16} />,
-  laravel: <IconBrandLaravel size={16} />,
-  tailwind: <IconBrandTailwind size={16} />,
-  unity: <IconBrandUnity size={16} />,
-  figma: <IconBrandFigma size={16} />,
-  aftereffects: <IconBrandAdobeAfterEffect size={16} />,
-  photoshop: <IconBrandAdobePhotoshop size={16} />,
-  blender: <IconBrandBlender size={16} />,
-  framermotion: <IconBrandFramerMotion size={16} />,
-  vite: <IconBrandVite size={16} />,
-};
 
 export const StickyScroll = ({
   content,
@@ -93,19 +67,19 @@ export const StickyScroll = ({
   return (
     <motion.div ref={ref} className="relative flex justify-center space-x-12 ">
       {/* Left Content */}
-      <div className="relative flex flex-col w-1/2 mt-12 mb-48 space-y-32">
+      <div className="relative flex flex-col w-2/3 mb-4 space-y-32">
         {content.map((item, index) => (
-          <div key={item.title + index} className="space-y-4 scroll-section">
-            <div>
+          <div key={item.title + index} className="space-y-8 scroll-section">
+            <div className="space-y-2">
               <motion.h2
                 animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-                className="text-2xl font-bold text-gray-900 dark:text-slate-100"
+                className="text-4xl text-gray-900 dark:text-slate-100"
               >
                 {item.title}
               </motion.h2>
               <motion.h4
                 animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-                className="text-lg text-gray-900 dark:text-slate-100"
+                className="text-xl text-gray-900 dark:text-slate-100"
               >
                 {item.type}
               </motion.h4>
@@ -115,7 +89,7 @@ export const StickyScroll = ({
 
             <motion.p
               animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-              className="text-gray-700 text-md dark:text-slate-300"
+              className="text-lg text-gray-700 dark:text-slate-300"
             >
               {item.description.split("\n").map((line, index) => (
                 <React.Fragment key={index}>
@@ -133,19 +107,17 @@ export const StickyScroll = ({
                 className="flex flex-wrap gap-2"
               >
                 {item.stack.map((tech, i) => {
-                  const stackInfo = siteConfig.stack[tech]; // Get stack info
+                  const stackInfo =
+                    siteConfig.stack[tech as keyof typeof siteConfig.stack];
+                  const { icon, title, description } = stackInfo || {};
 
-                  return stackIcons[tech] ? (
+                  return icon ? (
                     <Tooltip
                       key={i}
                       content={
                         <div className="px-1 py-2">
-                          <div className="text-sm font-bold">
-                            {stackInfo?.title}
-                          </div>
-                          <div className="w-48 text-tiny">
-                            {stackInfo?.description}
-                          </div>
+                          <div className="text-lg font-bold">{title}</div>
+                          <div className="w-48 text-sm">{description}</div>
                         </div>
                       }
                       isDisabled={activeCard !== index}
@@ -154,13 +126,12 @@ export const StickyScroll = ({
                         color="default"
                         isDisabled={activeCard !== index}
                         radius="full"
-                        size="sm"
+                        size="md"
                         variant="ghost"
                       >
-                        {stackIcons[tech]}
-                        <span className="font-semibold text-tiny">
-                          {stackInfo?.title}
-                        </span>
+                        {React.createElement(icon)}
+                        {/* No need for React.createElement, just use the JSX component */}
+                        <span className="text-sm font-semibold">{title}</span>
                       </Button>
                     </Tooltip>
                   ) : (
@@ -168,12 +139,8 @@ export const StickyScroll = ({
                       key={i}
                       content={
                         <div className="px-1 py-2">
-                          <div className="font-bold text-small">
-                            {stackInfo?.title}
-                          </div>
-                          <div className="w-48 text-tiny">
-                            {stackInfo?.description}
-                          </div>
+                          <div className="font-bold text-small">{title}</div>
+                          <div className="w-48 text-tiny">{description}</div>
                         </div>
                       }
                       isDisabled={activeCard !== index}
@@ -185,9 +152,7 @@ export const StickyScroll = ({
                         size="sm"
                         variant="ghost"
                       >
-                        <span className="font-semibold text-tiny">
-                          {stackInfo?.title}
-                        </span>
+                        <span className="font-semibold text-tiny">{title}</span>
                       </Button>
                     </Tooltip>
                   );
@@ -219,7 +184,7 @@ export const StickyScroll = ({
             src={content[activeCard].imageSrc}
           />
 
-          <div className="flex justify-center p-2 space-x-4">
+          <div className="flex justify-center w-full p-2 space-x-4">
             <Tooltip
               content={
                 content[activeCard].url?.demo ? (
@@ -243,7 +208,6 @@ export const StickyScroll = ({
                             content[activeCard].url.demo
                           )}&screenshot=true&meta=false&embed=screenshot.url`}
                           height={200}
-                          // src="public\228041565_1204885213317442_2861452606248897561_n.webp"
                           width={200}
                         />
                       </span>
@@ -265,7 +229,7 @@ export const StickyScroll = ({
                 color="secondary"
                 isDisabled={!content[activeCard].url?.demo}
                 radius="sm"
-                size="md"
+                size="lg"
                 variant="shadow"
                 onPress={() =>
                   content[activeCard].url?.demo &&
@@ -281,13 +245,13 @@ export const StickyScroll = ({
                 isIconOnly
                 aria-label="GitHub"
                 color="default"
-                size="md"
+                size="lg"
                 variant="shadow"
                 onPress={() =>
                   window.open(content[activeCard].url?.github, "_blank")
                 }
               >
-                <IconBrandGithub size={16} />
+                <IconBrandGithub size={20} />
               </Button>
             )}
           </div>

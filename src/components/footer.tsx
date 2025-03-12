@@ -1,54 +1,86 @@
 /* eslint-disable prettier/prettier */
 import { Link } from "@heroui/link";
 
+import { TextHoverEffect } from "./text-hover-effect";
+
 import { siteConfig } from "@/config/site";
 
 export const Footer = () => {
   return (
-    <footer className="p-10 bg-default text-base-content rounded-xl">
-      <div className="footer sm:footer-horizontal">
-        <nav>
-          <h6 className="footer-title">
-            Where aesthetics & functionality meet
-          </h6>
-        </nav>
+    <div className="space-y-4">
+      <footer className="p-10 space-y-4 overflow-hidden bg-default-50 rounded-2xl text-default-foreground h-96">
+        <div className="h-40 footer sm:footer-horizontal">
+          <nav>
+            <h6 className="w-48 font-bold text-large">
+              Where aesthetics & functionality meet
+            </h6>
+          </nav>
 
-        {/* Explore Section */}
-        <nav>
-          <h6 className="footer-title">Explore</h6>
-          <div className="flex flex-col gap-2">
-            {siteConfig.navItems.map((item) => (
-              <Link
-                key={item.label}
-                className="hover:underline"
-                href={item.href}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </nav>
+          {/* Explore Section */}
+          <nav>
+            <h6 className="font-bold text-large text-danger">Explore</h6>
+            <div className="z-10 flex flex-col gap-2">
+              {siteConfig.navItems.map((item) => (
+                <Link key={item.label} color="foreground" href={item.href}>
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </nav>
 
-        {/* Follow Me Section */}
-        <nav>
-          <h6 className="footer-title">Follow Me</h6>
-          <div className="grid grid-flow-col gap-4">
-            {siteConfig.socials.map(({ link, icon: Icon }) => (
-              <Link key={link} href={link} target="_blank">
-                <Icon size={24} />
-              </Link>
-            ))}
-          </div>
-        </nav>
-      </div>
+          {/* Follow Me Section */}
+          <nav>
+            <h6 className="font-bold text-large text-primary">Follow Me</h6>
+            <div className="z-10 flex flex-col gap-2">
+              {siteConfig.socials.map(({ link, icon: Icon, title }) => (
+                <Link
+                  key={link}
+                  className="gap-2"
+                  color="foreground"
+                  href={link}
+                  target="_blank"
+                >
+                  <Icon size={24} />
+                  <span>{title}</span>
+                </Link>
+              ))}
+            </div>
+          </nav>
 
-      {/* Footer Branding */}
-      <div className="relative w-full h-full mt-6">
-        <p className="w-full text-center text-[calc(100%/10)] font-bold">
-          {siteConfig.name}
+          {/* Follow Me Section */}
+          <nav>
+            <div className="z-10 flex flex-col gap-2">
+              {siteConfig.socials.map(({ link, icon: Icon, title }) => (
+                <Link
+                  key={link}
+                  className="gap-2"
+                  color="foreground"
+                  href={link}
+                  target="_blank"
+                >
+                  <Icon size={24} />
+                  <span>{title}</span>
+                </Link>
+              ))}
+            </div>
+          </nav>
+        </div>
+
+        {/* Footer Branding */}
+        <p className="z-0 w-full scale-105 ">
+          <TextHoverEffect text={siteConfig.name} />
         </p>
-      </div>
-    </footer>
+      </footer>
+
+      <span className="flex justify-between text-base">
+        <p>
+          {siteConfig.name} ©{new Date().getFullYear()} - Privacy Policy
+        </p>
+        <p>
+          {siteConfig.location.province}, {siteConfig.location.country}
+        </p>
+      </span>
+    </div>
   );
 };
 
