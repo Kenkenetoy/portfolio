@@ -2,14 +2,9 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import {
-  IconBrush,
-  IconCode,
-  IconDevices,
-  IconLayoutGrid,
-} from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
+import { siteConfig } from "@/config/site";
 
 export const WobbleCard = ({
   children,
@@ -52,12 +47,7 @@ export const WobbleCard = ({
       }}
       onMouseMove={handleMouseMove}
     >
-      <div
-        style={{
-          boxShadow:
-            "0 10px 32px rgba(34, 42, 53, 0.12), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.05), 0 4px 6px rgba(34, 42, 53, 0.08), 0 24px 108px rgba(47, 48, 55, 0.10)",
-        }}
-      >
+      <div>
         <motion.div
           className={cn("h-full px-4 pt-28 pb-12 sm:px-10", className)}
           style={{
@@ -87,54 +77,23 @@ const Noise = () => {
   );
 };
 
-const cardData = [
-  {
-    title: "UI & UX",
-    description:
-      "Designing interfaces that are intuitive, efficient, and enjoyable to use.",
-    backgroundClass: "bg-primary-50",
-    textColorClass: "text-primary",
-    icon: <IconLayoutGrid className="text-primary" size={40} />,
-  },
-  {
-    title: "Web & Mobile App",
-    description:
-      "Transforming ideas into exceptional web and mobile app experiences.",
-    backgroundClass: "bg-secondary-50",
-    textColorClass: "text-secondary",
-    icon: <IconDevices className="text-secondary" size={40} />,
-  },
-  {
-    title: "Design & Creative",
-    description:
-      "Crafting visually stunning design that connects deeply with your audience.",
-    backgroundClass: "bg-warning-50",
-    textColorClass: "text-warning",
-    icon: <IconBrush className="text-warning" size={40} />,
-  },
-  {
-    title: "Development",
-    description:
-      "Bringing your vision to life with the latest technology and design trends.",
-    backgroundClass: "bg-danger-50",
-    textColorClass: "text-danger",
-    icon: <IconCode className="text-danger" size={40} />,
-  },
-];
-
 export function WobbleCardComponent() {
   return (
     <div className="flex flex-col space-y-8">
       <h1 className="text-6xl">What I Do</h1>
       <div className="grid w-full grid-cols-1 gap-4 mx-auto lg:grid-cols-4">
-        {cardData.map((card, index) => (
+        {siteConfig.whatIDoData.map((card, index) => (
           <WobbleCard
             key={index}
             className=""
             containerClassName={`col-span-1 h-full min-h-[300px] ${card.backgroundClass}`}
           >
             <div className="flex flex-col items-start max-w-xs transition-colors ease-in-out duration-250">
-              {card.icon}
+              <card.icon
+                className={`text-3xl text-${card.iconColor}`}
+                size={40}
+              />{" "}
+              {/* You can adjust the icon size here */}
               <h2
                 className={cn(
                   "mt-4 text-left text-balance text-2xl lg:text-3xl font-semibold tracking-[-0.015em]",

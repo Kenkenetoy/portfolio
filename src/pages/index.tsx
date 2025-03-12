@@ -1,11 +1,12 @@
 /* eslint-disable prettier/prettier */
 import { Helmet } from "react-helmet-async";
+import { Divider } from "@heroui/divider";
 
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
 import HeroSection from "@/components/hero";
-import { Divider } from "@heroui/divider";
 import { WobbleCardComponent } from "@/components/wobble-card";
+import { Footer } from "@/components/footer";
 
 export default function IndexPage() {
   return (
@@ -36,7 +37,7 @@ export default function IndexPage() {
 
       <DefaultLayout>
         <div className="h-screen">
-          <HeroSection siteConfig={siteConfig} />
+          <HeroSection />
         </div>
         <div className="flex flex-col gap-12 w-[80vw] m-auto text-3xl">
           <div className="flex justify-between">
@@ -57,18 +58,7 @@ export default function IndexPage() {
           </div>
           <Divider />
           <WobbleCardComponent />
-          <footer className="p-10 footer sm:footer-horizontal bg-default text-base-content rounded-xl">
-            <nav>
-              <h6 className="footer-title">Services</h6>
-            </nav>
-            <nav>
-              <h6 className="footer-title">Company</h6>
-            </nav>
-            <nav>
-              <h6 className="footer-title">Social</h6>
-              <div className="grid grid-flow-col gap-4"></div>
-            </nav>
-          </footer>
+          <Footer />
         </div>
       </DefaultLayout>
     </>

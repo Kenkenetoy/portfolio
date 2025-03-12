@@ -1,6 +1,22 @@
 /* eslint-disable prettier/prettier */
+import WhatIDo from "@/components/what-i-do";
+import {
+  IconBrandLinkedin,
+  IconBrandGithub,
+  IconBrandLeetcode,
+  IconBriefcase,
+  IconCreditCardPay,
+  IconHome,
+  IconCode,
+  IconBrush,
+  IconDevices,
+  IconLayoutGrid,
+  IconCircleDashed,
+} from "@tabler/icons-react";
+
 export const siteConfig = {
   name: "Kenneth Aparece",
+  logo: IconCircleDashed,
   description: "I build cool looking web applications",
   location: "Bohol",
   role: "Software Engineer",
@@ -20,20 +36,35 @@ export const siteConfig = {
   },
 
   navItems: [
-    { label: "Home", href: "/" },
-    { label: "Blog", href: "/blog" },
-    { label: "About", href: "/about" },
+    { label: "Home", href: "/", icon: IconHome },
+    { label: "Blog", href: "/blog", icon: IconBriefcase },
+    { label: "About", href: "/about", icon: IconCreditCardPay },
   ],
+
   navMenuItems: [{ label: "Projects", href: "/projects" }],
 
-  socials: {
-    github: { title: "GitHub", link: "https://github.com/frontio-ai/heroui" },
-    facebook: { title: "Facebook", link: "https://facebook.com/hero_ui" },
-    linkedin: { title: "LinkedIn", link: "https://linkedin.com/hero_ui" },
-    youtube: { title: "YouTube", link: "https://youtube.com/hero_ui" },
-    instagram: { title: "Instagram", link: "https://instagram.com/hero_ui" },
-    leetcode: { title: "LeetCode", link: "https://leetcode.com/hero_ui" },
-  },
+  socials: [
+    {
+      title: "LinkedIn",
+      link: "https://linkedin.com/in/kenneth",
+      icon: IconBrandLinkedin,
+    },
+    {
+      title: "GitHub",
+      link: "https://github.com/kenneth",
+      icon: IconBrandGithub,
+    },
+    {
+      title: "LeetCode",
+      link: "https://leetcode.com/kenneth",
+      icon: IconBrandLeetcode,
+    },
+    {
+      title: "LeetCode",
+      link: "https://leetcode.com/kenneth",
+      icon: IconBrandLeetcode,
+    },
+  ],
 
   stack: {
     react: {
@@ -150,5 +181,42 @@ export const siteConfig = {
     },
   ],
 
-  education: [],
+  whatIDoData: [
+    {
+      title: "UI & UX",
+      description:
+        "Designing interfaces that are intuitive, efficient, and enjoyable to use.",
+      backgroundClass: "bg-primary-50",
+      textColorClass: "text-primary",
+      icon: IconLayoutGrid,
+      iconColor: "primary",
+    },
+    {
+      title: "Web & Mobile App",
+      description:
+        "Transforming ideas into exceptional web and mobile app experiences.",
+      backgroundClass: "bg-secondary-50",
+      textColorClass: "text-secondary",
+      icon: IconDevices,
+      iconColor: "secondary",
+    },
+    {
+      title: "Design & Creative",
+      description:
+        "Crafting visually stunning design that connects deeply with your audience.",
+      backgroundClass: "bg-warning-50",
+      textColorClass: "text-warning",
+      icon: IconBrush,
+      iconColor: "warning",
+    },
+    {
+      title: "Development",
+      description:
+        "Bringing your vision to life with the latest technology and design trends.",
+      backgroundClass: "bg-danger-50",
+      textColorClass: "text-danger",
+      icon: IconCode,
+      iconColor: "danger",
+    },
+  ],
 };

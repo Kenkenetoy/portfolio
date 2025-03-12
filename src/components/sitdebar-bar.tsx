@@ -1,12 +1,6 @@
 /* eslint-disable prettier/prettier */
 "use client";
 import { useState, useEffect } from "react";
-import {
-  IconCreditCardPay,
-  IconBriefcase,
-  IconCircleFilled,
-  IconHome,
-} from "@tabler/icons-react";
 import { Link } from "@heroui/link";
 
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/sidebar";
@@ -15,23 +9,6 @@ import { ThemeSwitch } from "@/components/theme-switch";
 import { siteConfig } from "@/config/site";
 
 export function SidebarDemo() {
-  const links = [
-    {
-      label: "Home",
-      href: "/",
-      icon: <IconHome className="w-5 h-5 text-default-500 shrink-0" />,
-    },
-    {
-      label: "About",
-      href: "/about",
-      icon: <IconCreditCardPay className="w-5 h-5 text-default-500 shrink-0" />,
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-      icon: <IconBriefcase className="w-5 h-5 text-default-500 shrink-0" />,
-    },
-  ];
   const [open, setOpen] = useState(() =>
     JSON.parse(localStorage.getItem("sidebarOpen") || "false")
   );
@@ -54,14 +31,23 @@ export function SidebarDemo() {
               className="relative z-20 flex items-center py-1 space-x-2 text-base font-normal text-default-foreground"
               href="/"
             >
-              <IconCircleFilled className="w-6 h-5 text-default-foreground shrink-0" />
+              <siteConfig.logo className="shrink-0" />
               <span className="font-medium whitespace-pre text-default-foreground">
                 {siteConfig.name}
               </span>
             </Link>
             <div className="flex flex-col gap-2 mt-8">
-              {links.map((link, idx) => (
-                <SidebarLink key={idx} link={link} />
+              {siteConfig.navItems.map((navItem, idx) => (
+                <SidebarLink
+                  key={idx}
+                  link={{
+                    label: navItem.label,
+                    href: navItem.href,
+                    icon: navItem.icon && (
+                      <navItem.icon className=" text-default-500 shrink-0" />
+                    ),
+                  }}
+                />
               ))}
             </div>
           </div>

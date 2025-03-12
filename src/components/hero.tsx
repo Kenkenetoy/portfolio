@@ -1,11 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {
-  IconBrandGithub,
-  IconBrandLeetcode,
-  IconDownload,
-  IconLink,
-  IconMail,
-} from "@tabler/icons-react";
+import { IconDownload, IconLink, IconMail } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
 import { Tooltip } from "@heroui/tooltip";
 import { Link } from "@heroui/link";
@@ -16,50 +10,20 @@ import { GlareCard } from "./glare-card";
 import { ShareModal } from "./modal-for-links";
 import { FloatingDock } from "./floating-dock";
 
-interface HeroSectionProps {
-  siteConfig: {
-    email: { first: string; second: string }; // Update this if you want to keep the object structure
-    name: string;
-    description: string;
-    location: string;
-    socials: {
-      linkedin: { title: string; link: string };
-      github: { title: string; link: string };
-      leetcode: { title: string; link: string };
-    };
-  };
-}
+import { siteConfig } from "@/config/site"; // Import siteConfig directly
 
-const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
-  const links = [
-    {
-      title: "LeetCode",
-      icon: (
-        <IconBrandLeetcode className="w-full h-full text-default-foreground" />
-      ),
-      href: siteConfig.socials.leetcode.link,
-    },
-    {
-      title: "GitHub",
-      icon: (
-        <IconBrandGithub className="w-full h-full text-default-foreground " />
-      ),
-      href: siteConfig.socials.github.link,
-    },
-    {
-      title: "GitHub",
-      icon: (
-        <IconBrandGithub className="w-full h-full text-default-foreground" />
-      ),
-      href: siteConfig.socials.github.link,
-    },
-  ];
+const links = siteConfig.socials.map((social) => ({
+  title: social.title,
+  icon: <social.icon className="w-full h-full text-default-foreground" />,
+  href: social.link,
+}));
 
+const HeroSection: React.FC = () => {
   return (
-    <div className="h-full w-full dark:bg-black bg-white dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex flex-col justify-center items-center ">
+    <div className="h-full w-full dark:bg-black bg-white dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex flex-col justify-center items-center">
       <div className="absolute inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       <div className="z-10 flex flex-col justify-between w-full h-full">
-        {/* top */}
+        {/* Top Section */}
         <div className="flex items-center justify-center h-full font-bold text-center">
           <div>
             <GlareCard>
@@ -82,6 +46,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
                 </h2>
               </div>
 
+              {/* Buttons */}
               <div className="flex gap-4 mx-auto w-fit">
                 <ShareModal
                   className="gap-2"
@@ -120,17 +85,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
             </div>
           </section>
         </div>
-        {/* bottom */}
+
+        {/* Bottom Section */}
         <div className="flex flex-col items-center justify-center w-full h-24 transition-colors ease-in-out border-default-foreground border-t-1 duration-250">
           <div className="grid items-center w-full grid-cols-3 px-4 font-medium place-items-end">
             <p className="justify-self-start">{"// Design, Code, Execute"}</p>
 
-            <FloatingDock
-              items={links}
-              mobileClassName="translate-y-20" // only for demo, remove for production
-            />
+            <FloatingDock items={links} mobileClassName="translate-y-20" />
+
+            {/* Email Section */}
             <div className="flex items-center gap-2 pr-4 transition-colors ease-in-out rounded-full border-default duration-250 border-1">
-              <div className="p-3 transition-colors ease-in-out rounded-full bg-default text-default-foreground ">
+              <div className="p-3 transition-colors ease-in-out rounded-full bg-default text-default-foreground">
                 <IconMail />
               </div>
               <Tooltip
@@ -149,7 +114,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
                     >
                       <span>
                         <Image
-                          alt={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.second}`}
+                          alt={`Email preview`}
                           className="z-0 object-cover w-full h-full"
                           height={200}
                           src={`https://api.microlink.io/?url=${encodeURIComponent(
@@ -158,7 +123,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
                           width={200}
                         />
                       </span>
-
                       <span className="w-48 overflow-hidden text-ellipsis">
                         {`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.second}`}
                       </span>
