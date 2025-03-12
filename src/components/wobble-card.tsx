@@ -2,13 +2,14 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { cn } from "@/lib/utils";
 import {
   IconBrush,
   IconCode,
   IconDevices,
   IconLayoutGrid,
 } from "@tabler/icons-react";
+
+import { cn } from "@/lib/utils";
 
 export const WobbleCard = ({
   children,
@@ -93,7 +94,7 @@ const cardData = [
       "Designing interfaces that are intuitive, efficient, and enjoyable to use.",
     backgroundClass: "bg-primary-50",
     textColorClass: "text-primary",
-    icon: <IconLayoutGrid size={40} className="text-primary" />,
+    icon: <IconLayoutGrid className="text-primary" size={40} />,
   },
   {
     title: "Web & Mobile App",
@@ -101,7 +102,7 @@ const cardData = [
       "Transforming ideas into exceptional web and mobile app experiences.",
     backgroundClass: "bg-secondary-50",
     textColorClass: "text-secondary",
-    icon: <IconDevices size={40} className="text-secondary" />,
+    icon: <IconDevices className="text-secondary" size={40} />,
   },
   {
     title: "Design & Creative",
@@ -109,7 +110,7 @@ const cardData = [
       "Crafting visually stunning design that connects deeply with your audience.",
     backgroundClass: "bg-warning-50",
     textColorClass: "text-warning",
-    icon: <IconBrush size={40} className="text-warning" />,
+    icon: <IconBrush className="text-warning" size={40} />,
   },
   {
     title: "Development",
@@ -117,7 +118,7 @@ const cardData = [
       "Bringing your vision to life with the latest technology and design trends.",
     backgroundClass: "bg-danger-50",
     textColorClass: "text-danger",
-    icon: <IconCode size={40} className="text-danger" />,
+    icon: <IconCode className="text-danger" size={40} />,
   },
 ];
 

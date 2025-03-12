@@ -3,9 +3,9 @@ import { Tabs, Tab } from "@heroui/tabs";
 import { motion } from "framer-motion";
 
 import { StickyScroll } from "./sticky-scroll-reveal";
+import { TimelineDemo } from "./education";
 
 import { siteConfig } from "@/config/site";
-import { TimelineDemo } from "./education";
 
 const tabVariants = {
   initial: { opacity: 0, y: -20 },

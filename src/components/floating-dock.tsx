@@ -94,7 +94,6 @@ const FloatingDockMobile = ({
 
 const FloatingDockDesktop = ({
   items,
-  className,
 }: {
   items: { title: string; icon: React.ReactNode; href: string }[];
   className?: string;
@@ -175,8 +174,8 @@ function IconContainer({
         ref={ref}
         className="relative flex items-center justify-center transition-colors rounded-full bg-default duration-250 aspect-square "
         style={{ width, height }}
-        whileHover={{ scale: 1.1 }} // Instant hover effect
         transition={{ type: "spring", stiffness: 300, damping: 12 }} // Faster response
+        whileHover={{ scale: 1.1 }} // Instant hover effect
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >

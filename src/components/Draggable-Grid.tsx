@@ -7,7 +7,6 @@ import {
   IconBrandReact,
   IconBrandLaravel,
   IconBrandTailwind,
-  IconBrandGithub,
   IconBrandUnity,
   IconBrandFigma,
   IconBrandAdobeAfterEffect,
@@ -15,12 +14,10 @@ import {
   IconBrandBlender,
   IconBrandFramerMotion,
   IconBrandVite,
-  IconLink,
 } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
-import { Tooltip } from "@heroui/tooltip";
+
 import { siteConfig } from "@/config/site"; // Import siteConfig
-import { cn } from "@/lib/utils";
 
 const stackIcons: { [key: string]: JSX.Element } = {
   react: <IconBrandReact size={16} />,
@@ -68,7 +65,6 @@ const Square = ({
   const dy = useSpring(y, springConfig);
 
   // Get stack details
-  const stackInfo = siteConfig.stack[tech];
   const icon = stackIcons[tech];
 
   return (
@@ -92,10 +88,10 @@ const Square = ({
       onDragStart={() => setActive({ row: rowIndex, col: colIndex })}
     >
       <Button
+        className="flex items-center justify-center w-full h-full" // <-- Fix button stretching
         color="default"
         radius="full"
         variant="solid"
-        className="flex items-center justify-center w-full h-full" // <-- Fix button stretching
       >
         {React.cloneElement(icon, { size: 32 })} {/* Increase Icon Size */}
       </Button>
@@ -145,13 +141,13 @@ export const DraggableGrid: React.FC<DraggableGridProps> = ({
                 key={`${rowIndex}-${colIndex}`}
                 active={active}
                 colIndex={colIndex}
+                gap={gap}
                 rowIndex={rowIndex}
                 setActive={setActive}
                 size={size}
+                tech={tech} // <-- Pass the tech name
                 x={x}
                 y={y}
-                gap={gap}
-                tech={tech} // <-- Pass the tech name
               />
             ) : null
           )

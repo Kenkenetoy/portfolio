@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
+import AnimatedTabs from "@/components/AnimatedTabPanels";
 
 export default function DocsPage() {
   return (
@@ -36,6 +37,7 @@ export default function DocsPage() {
             <h1 className={title()}>About</h1>
           </div>
         </section>
+        <AnimatedTabs />
       </DefaultLayout>
     </>
   );
