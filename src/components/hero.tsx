@@ -4,25 +4,21 @@ import {
   IconBrandLeetcode,
   IconDownload,
   IconLink,
-  IconBrandFacebook,
-  IconBrandInstagram,
   IconMail,
 } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
+import { Tooltip } from "@heroui/tooltip";
+import { Link } from "@heroui/link";
+import { Image } from "@heroui/image";
 
 import { DraggableMockupPhone } from "./DraggableMockupPhone";
 import { GlareCard } from "./glare-card";
 import { ShareModal } from "./modal-for-links";
 import { FloatingDock } from "./floating-dock";
-import { siteConfig } from "@/config/site";
-import { Tooltip } from "@heroui/tooltip";
-import { Link } from "@heroui/link";
-import { Image } from "@heroui/image";
-import { Divider } from "@heroui/divider";
 
 interface HeroSectionProps {
   siteConfig: {
-    email: string;
+    email: { first: string; second: string }; // Update this if you want to keep the object structure
     name: string;
     description: string;
     location: string;
@@ -127,10 +123,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ siteConfig }) => {
         {/* bottom */}
         <div className="flex flex-col items-center justify-center w-full h-24 transition-colors ease-in-out border-default-foreground border-t-1 duration-250">
           <div className="grid items-center w-full grid-cols-3 px-4 font-medium place-items-end">
-            <p className="justify-self-start">// Design, Code, Execute</p>
+            <p className="justify-self-start">{"// Design, Code, Execute"}</p>
+
             <FloatingDock
-              mobileClassName="translate-y-20" // only for demo, remove for production
               items={links}
+              mobileClassName="translate-y-20" // only for demo, remove for production
             />
             <div className="flex items-center gap-2 pr-4 transition-colors ease-in-out rounded-full border-default duration-250 border-1">
               <div className="p-3 transition-colors ease-in-out rounded-full bg-default text-default-foreground ">

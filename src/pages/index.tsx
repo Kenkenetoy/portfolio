@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/site";
 import HeroSection from "@/components/hero";
 import { Divider } from "@heroui/divider";
 import { WobbleCardComponent } from "@/components/wobble-card";
+
 export default function IndexPage() {
   return (
     <>
