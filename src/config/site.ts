@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-import WhatIDo from "@/components/what-i-do";
 import {
   IconBrandLinkedin,
   IconBrandGithub,
