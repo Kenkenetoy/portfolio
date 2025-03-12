@@ -34,14 +34,15 @@ export const WobbleCard = ({
   return (
     <motion.section
       className={cn(
-        "mx-auto w-full bg-indigo-800 relative rounded-2xl border-1 border-default overflow-hidden",
+        "mx-auto w-full bg-indigo-800 relative rounded-2xl border-1 border-default overflow-hidden transition-colors duration-300 ease-in-out",
         containerClassName
       )}
       style={{
         transform: isHovering
           ? `translate3d(${mousePosition.x}px, ${mousePosition.y}px, 0) scale3d(1, 1, 1)`
           : "translate3d(0px, 0px, 0) scale3d(1, 1, 1)",
-        transition: "transform 0.1s ease-out",
+        transition:
+          "transform 0.1s ease-out, background-color 0.1s ease-in-out",
       }}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => {
@@ -90,7 +91,7 @@ const cardData = [
     title: "UI & UX",
     description:
       "Designing interfaces that are intuitive, efficient, and enjoyable to use.",
-    backgroundClass: "bg-default-50",
+    backgroundClass: "bg-primary-50",
     textColorClass: "text-primary",
     icon: <IconLayoutGrid size={40} className="text-primary" />,
   },
@@ -98,7 +99,7 @@ const cardData = [
     title: "Web & Mobile App",
     description:
       "Transforming ideas into exceptional web and mobile app experiences.",
-    backgroundClass: "bg-default-50",
+    backgroundClass: "bg-secondary-50",
     textColorClass: "text-secondary",
     icon: <IconDevices size={40} className="text-secondary" />,
   },
@@ -106,7 +107,7 @@ const cardData = [
     title: "Design & Creative",
     description:
       "Crafting visually stunning design that connects deeply with your audience.",
-    backgroundClass: "bg-default-50",
+    backgroundClass: "bg-warning-50",
     textColorClass: "text-warning",
     icon: <IconBrush size={40} className="text-warning" />,
   },
@@ -114,7 +115,7 @@ const cardData = [
     title: "Development",
     description:
       "Bringing your vision to life with the latest technology and design trends.",
-    backgroundClass: "bg-default-50",
+    backgroundClass: "bg-danger-50",
     textColorClass: "text-danger",
     icon: <IconCode size={40} className="text-danger" />,
   },

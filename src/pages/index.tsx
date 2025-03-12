@@ -56,6 +56,18 @@ export default function IndexPage() {
           </div>
           <Divider />
           <WobbleCardComponent />
+          <footer className="p-10 footer sm:footer-horizontal bg-default text-base-content rounded-xl">
+            <nav>
+              <h6 className="footer-title">Services</h6>
+            </nav>
+            <nav>
+              <h6 className="footer-title">Company</h6>
+            </nav>
+            <nav>
+              <h6 className="footer-title">Social</h6>
+              <div className="grid grid-flow-col gap-4"></div>
+            </nav>
+          </footer>
         </div>
       </DefaultLayout>
     </>
