@@ -30,7 +30,7 @@ export const WobbleCard = ({
   return (
     <motion.section
       className={cn(
-        "mx-auto w-full bg-indigo-800 relative rounded-2xl border-1 border-default overflow-hidden transition-colors duration-300 ease-in-out",
+        "mx-auto w-full relative rounded-2xl border-1 border-default overflow-hidden transition-colors duration-300 ease-in-out",
         containerClassName
       )}
       style={{
@@ -104,8 +104,8 @@ export function WobbleCardComponent() {
         className="grid w-full grid-cols-1 gap-4 mx-auto lg:grid-cols-4"
         initial="hidden"
         variants={containerVariants}
-        viewport={{ once: true, amount: 0.2 }} // ✅ Runs once, triggers when 20% of the element is visible
-        whileInView="show" // ✅ Triggers when in viewport
+        viewport={{ once: true, amount: 0.2 }}
+        whileInView="show"
       >
         {siteConfig.whatIDoData.map((card, index) => (
           <motion.div key={index} variants={cardVariants}>

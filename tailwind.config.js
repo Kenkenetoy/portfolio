@@ -18,6 +18,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Poppins", "Arial", "sans-serif"], // Poppins for body text
+        serif: ["Roboto", "serif"], // Roboto for headings
+      },
       animation: {
         move: "move 5s linear infinite",
       },

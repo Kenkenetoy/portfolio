@@ -7,9 +7,7 @@ import {
   IconCreditCardPay,
   IconHome,
   IconCode,
-  IconBrush,
   IconDevices,
-  IconLayoutGrid,
   IconCircleDashed,
   IconBrandBlender,
   IconBrandFigma,
@@ -20,12 +18,16 @@ import {
   IconBrandVite,
   IconBrandAdobePhotoshop,
   IconBrandAdobeAfterEffect,
+  IconPalette,
+  IconLayout,
 } from "@tabler/icons-react";
 
 export const siteConfig = {
   name: "Kenneth Aparece",
   logo: IconCircleDashed,
-  description: "I build cool looking web applications",
+  hero_big: "designer & developer",
+  hero_small:
+    "I blend design and development to create smooth, user-friendly digital experiences.",
   location: { province: ["Bohol"], country: ["Philippines"] },
   role: "Software Engineer",
 
@@ -137,7 +139,7 @@ export const siteConfig = {
       title: "VLOG: 01",
       type: "Capstone Project - Game Development",
       description:
-        "With no prior game dev experience, our capstone team built a 3D horror game based on our college.\n\nAs Junior Programmer & Graphics Lead, I handled 3D modeling, rigging, animation, UI/UX, and contributed to game logic and system design. I also helped develop core mechanics and the game’s webpage.\n\nDue to school policy, only a live demo is available.",
+        "With no prior game dev experience, our capstone team created a 3D horror game based on our college.\n\nAs Junior Programmer & Graphics Lead, I handled 3D modeling, rigging, animation, UI/UX, 3D programming, and contributed to game logic and system design. I also helped develop core mechanics and the game’s webpage.\n\nDue to school policy, only a live demo is available.",
       imageSrc: "https://heroui.com/images/card-example-5.jpeg",
       stack: [
         "unity",
@@ -167,42 +169,41 @@ export const siteConfig = {
       },
     },
   ],
-
   whatIDoData: [
     {
-      title: "UI & UX",
+      title: "UI/UX Design",
       description:
-        "Designing interfaces that are intuitive, efficient, and enjoyable to use.",
-      backgroundClass: "bg-primary-50",
+        "I craft intuitive, user-friendly interfaces that make apps easy to use and visually appealing.",
+      backgroundClass: "bg-default-50",
       textColorClass: "text-primary",
-      icon: IconLayoutGrid,
+      icon: IconLayout, // Consider an icon more focused on design or user interaction
       iconColor: "primary",
     },
     {
-      title: "Web & Mobile App",
+      title: "Full-Stack Development",
       description:
-        "Transforming ideas into exceptional web and mobile app experiences.",
-      backgroundClass: "bg-secondary-50",
+        "I build seamless web and mobile apps, handling both front-end and back-end for a smooth user experience.",
+      backgroundClass: "bg-default-50",
       textColorClass: "text-secondary",
-      icon: IconDevices,
+      icon: IconCode, // A general development or coding icon
       iconColor: "secondary",
     },
     {
-      title: "Design & Creative",
+      title: "Mobile & Web Apps",
       description:
-        "Crafting visually stunning design that connects deeply with your audience.",
-      backgroundClass: "bg-warning-50",
+        "I create fast, responsive apps that work smoothly across all devices and platforms.",
+      backgroundClass: "bg-default-50",
       textColorClass: "text-warning",
-      icon: IconBrush,
+      icon: IconDevices, // A device-related icon for web and mobile
       iconColor: "warning",
     },
     {
-      title: "Development",
+      title: "Creative Direction",
       description:
-        "Bringing your vision to life with the latest technology and design trends.",
-      backgroundClass: "bg-danger-50",
+        "I lead the visual design, crafting concepts that tell a story and connect with your audience.",
+      backgroundClass: "bg-default-50",
       textColorClass: "text-danger",
-      icon: IconCode,
+      icon: IconPalette, // A more creative and artistic icon (like a palette or brush)
       iconColor: "danger",
     },
   ],

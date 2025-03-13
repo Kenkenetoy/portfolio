@@ -15,7 +15,7 @@ export default function DefaultLayout({
   });
 
   return (
-    <div className="relative flex min-h-screen ">
+    <div className="relative flex min-h-screen font-sans">
       {/* Floating Sidebar */}
       <div className="absolute top-0 left-0 z-50 h-full">
         <SidebarDemo />

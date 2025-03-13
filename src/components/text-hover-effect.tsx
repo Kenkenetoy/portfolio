@@ -34,7 +34,7 @@ export const TextHoverEffect = ({
       ref={svgRef}
       className="select-none"
       height="100%"
-      viewBox="0 0 300 50"
+      viewBox="0 0 325 40"
       width="100%"
       xmlns="http://www.w3.org/2000/svg"
       onMouseEnter={() => setHovered(true)}

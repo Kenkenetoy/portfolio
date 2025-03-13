@@ -32,6 +32,7 @@
     "@radix-ui/react-hover-card": "^1.1.6",
     "@react-aria/visually-hidden": "3.8.19",
     "@tabler/icons-react": "^3.30.0",
+    "axios": "^1.8.3",
     "clsx": "^2.1.1",
     "framer-motion": "11.15.0",
     "mini-svg-data-uri": "^1.4.4",

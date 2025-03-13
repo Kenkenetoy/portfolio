@@ -33,22 +33,23 @@ const HeroSection: React.FC = () => {
 
       <div className="z-10 flex flex-col justify-between w-full h-full">
         {/* Top Section */}
-        <div className="flex items-center justify-center h-full font-bold text-center">
+        <div className="flex items-center justify-center h-full gap-12 font-bold text-center">
           <div>
             <GlareCard>
               <DraggableMockupPhone />
             </GlareCard>
           </div>
 
-          <section className="flex flex-col justify-center space-y-12">
+          <section className="flex flex-col justify-center space-y-12 max-w-[36rem]">
             <div className="justify-center inline-block max-w-3xl space-y-8 text-center">
               <div className="space-y-2">
                 <p className="text-xl font-normal">
                   Hi, I am {siteConfig.name} from {siteConfig.location.province}
                 </p>
-                <h1 className="font-medium capitalize text-8xl text-default-foreground">
-                  {siteConfig.description}
+                <h1 className="font-medium uppercase text-8xl text-default-foreground">
+                  {siteConfig.hero_big}
                 </h1>
+                <p className="text-xl font-normal">{siteConfig.hero_small}</p>
               </div>
 
               {/* Buttons */}
@@ -60,7 +61,7 @@ const HeroSection: React.FC = () => {
                   size="lg"
                   variant="shadow"
                 >
-                  <span className="text-lg font-semibold">Contact</span>
+                  <span className="text-lg ">Contact</span>
                   <span>
                     <IconLink />
                   </span>
@@ -81,7 +82,7 @@ const HeroSection: React.FC = () => {
                     document.body.removeChild(link);
                   }}
                 >
-                  <span className="text-lg font-semibold">Resume</span>
+                  <span className="text-lg ">Resume</span>
                   <span>
                     <IconDownload />
                   </span>
