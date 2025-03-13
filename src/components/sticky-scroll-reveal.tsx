@@ -69,28 +69,28 @@ export const StickyScroll = ({
       {/* Left Content */}
       <div className="relative flex flex-col w-2/3 mb-4 space-y-32">
         {content.map((item, index) => (
-          <div key={item.title + index} className="space-y-8 scroll-section">
+          <motion.div
+            key={item.title + index}
+            animate={{
+              scale: activeCard === index ? 1 : 0.95,
+              opacity: activeCard === index ? 1 : 0.3,
+              originX: 1, // Ensures animation happens from right to left
+            }}
+            className="space-y-8 scale-100 scroll-section"
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+          >
             <div className="space-y-2">
-              <motion.h2
-                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-                className="text-4xl text-gray-900 dark:text-slate-100"
-              >
+              <motion.h2 className="text-4xl text-gray-900 dark:text-slate-100">
                 {item.title}
               </motion.h2>
-              <motion.h4
-                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-                className="text-xl text-gray-900 dark:text-slate-100"
-              >
+              <motion.h4 className="text-xl text-gray-900 dark:text-slate-100">
                 {item.type}
               </motion.h4>
             </div>
 
             <Divider className="my-4" />
 
-            <motion.p
-              animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-              className="text-lg text-gray-700 dark:text-slate-300"
-            >
+            <motion.p className="text-lg text-gray-700 dark:text-slate-300">
               {item.description.split("\n").map((line, index) => (
                 <React.Fragment key={index}>
                   {line}
@@ -102,10 +102,7 @@ export const StickyScroll = ({
             <Divider className="my-4" />
 
             {item.stack.length > 0 && (
-              <motion.div
-                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-                className="flex flex-wrap gap-2"
-              >
+              <motion.div className="flex flex-wrap gap-2">
                 {item.stack.map((tech, i) => {
                   const stackInfo =
                     siteConfig.stack[tech as keyof typeof siteConfig.stack];
@@ -159,7 +156,7 @@ export const StickyScroll = ({
                 })}
               </motion.div>
             )}
-          </div>
+          </motion.div>
         ))}
       </div>
 
@@ -204,10 +201,10 @@ export const StickyScroll = ({
                         <Image
                           alt={content?.[activeCard]?.url?.demo}
                           className="z-0 object-cover w-full h-full"
+                          height={200}
                           src={`https://api.microlink.io/?url=${encodeURIComponent(
                             content[activeCard].url.demo
                           )}&screenshot=true&meta=false&embed=screenshot.url`}
-                          height={200}
                           width={200}
                         />
                       </span>

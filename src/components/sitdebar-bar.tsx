@@ -20,7 +20,7 @@ export function SidebarDemo() {
   return (
     <div
       className={cn(
-        "fixed left-4 top-1/2 -translate-y-1/2 h-fit bg-default-100 dark:bg-black shadow-lg transition-all",
+        "fixed left-4 top-1/2 -translate-y-1/2 h-fit bg-default-50 shadow-lg transition-all",
         open ? "w-64 rounded-3xl" : "w-14 rounded-3xl"
       )}
     >

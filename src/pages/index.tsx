@@ -40,7 +40,7 @@ export default function IndexPage() {
         <div className="h-screen">
           <HeroSection />
         </div>
-        <div className="flex flex-col gap-12 w-[80vw] m-auto text-3xl">
+        <div className="flex flex-col gap-12 mx-auto text-3xl max-w-screen-2xl">
           <div className="flex justify-between">
             <p className="w-1/2">
               Building scalable and performant applications with Laravel, React,

@@ -77,36 +77,61 @@ const Noise = () => {
   );
 };
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, x: -20 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
 export function WobbleCardComponent() {
   return (
     <div className="flex flex-col space-y-8">
       <h1 className="text-6xl">What I Do</h1>
-      <div className="grid w-full grid-cols-1 gap-4 mx-auto lg:grid-cols-4">
+      <motion.div
+        className="grid w-full grid-cols-1 gap-4 mx-auto lg:grid-cols-4"
+        initial="hidden"
+        variants={containerVariants}
+        viewport={{ once: true, amount: 0.2 }} // ✅ Runs once, triggers when 20% of the element is visible
+        whileInView="show" // ✅ Triggers when in viewport
+      >
         {siteConfig.whatIDoData.map((card, index) => (
-          <WobbleCard
-            key={index}
-            className=""
-            containerClassName={`col-span-1 h-full min-h-[300px] ${card.backgroundClass}`}
-          >
-            <div className="flex flex-col items-start max-w-xs transition-colors ease-in-out duration-250">
-              <card.icon
-                className={`text-3xl text-${card.iconColor}`}
-                size={40}
-              />{" "}
-              {/* You can adjust the icon size here */}
-              <h2
-                className={cn(
-                  "mt-4 text-left text-balance text-2xl lg:text-3xl font-semibold tracking-[-0.015em]",
-                  card.textColorClass
-                )}
-              >
-                {card.title}
-              </h2>
-              <p className="mt-2 text-base text-left">{card.description}</p>
-            </div>
-          </WobbleCard>
+          <motion.div key={index} variants={cardVariants}>
+            <WobbleCard
+              className=""
+              containerClassName={`col-span-1 h-full min-h-[300px] ${card.backgroundClass}`}
+            >
+              <div className="flex flex-col items-start max-w-xs transition-colors ease-in-out duration-250">
+                <card.icon
+                  className={`text-3xl text-${card.iconColor}`}
+                  size={40}
+                />
+                <h2
+                  className={cn(
+                    "mt-4 text-left text-balance text-2xl lg:text-3xl font-semibold tracking-[-0.015em]",
+                    card.textColorClass
+                  )}
+                >
+                  {card.title}
+                </h2>
+                <p className="mt-2 text-base text-left">{card.description}</p>
+              </div>
+            </WobbleCard>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }

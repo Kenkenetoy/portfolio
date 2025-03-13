@@ -92,7 +92,7 @@ export const TextHoverEffect = ({
       <text
         className="text-4xl font-bold stroke-neutral-200 dark:stroke-neutral-800 fill-default-foreground"
         dominantBaseline="middle"
-        strokeWidth="0.3"
+        strokeWidth="0.5"
         style={{ opacity: hovered ? 0.7 : 0 }}
         textAnchor="middle"
         x="50%"
@@ -108,7 +108,7 @@ export const TextHoverEffect = ({
         className="text-4xl font-bold fill-default-foreground stroke-neutral-200 dark:stroke-neutral-800"
         dominantBaseline="middle"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
-        strokeWidth="0.3"
+        strokeWidth="0.5"
         textAnchor="middle"
         transition={{
           duration: 4,
@@ -124,7 +124,7 @@ export const TextHoverEffect = ({
         dominantBaseline="middle"
         mask="url(#textMask)"
         stroke="url(#textGradient)"
-        strokeWidth="0.3"
+        strokeWidth="0.5"
         textAnchor="middle"
         x="50%"
         y="50%"

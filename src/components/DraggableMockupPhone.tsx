@@ -27,6 +27,9 @@ export const DraggableMockupPhone = () => {
             <p className="text-lg text-neutral-700 dark:text-gray-300">
               {siteConfig.role}
             </p>
+            how to make spotify api call here: 
+            ~music playing right now
+            ~music picture
           </div>
         </div>
       </div>
