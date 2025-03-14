@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from "react";
+import { IconFileOff } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
-import { IconFileOff } from "@tabler/icons-react";
 
 export const InfiniteMovingCards = ({
   items,
@@ -88,7 +88,7 @@ export const InfiniteMovingCards = ({
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
-        {items.map(({ title, icon: Icon, devicon: DevIcon }, idx) => {
+        {items.map(({ icon: Icon, devicon: DevIcon }, idx) => {
           const SelectedIcon = useDevicon
             ? DevIcon || DefaultIcon
             : Icon || DefaultIcon;
