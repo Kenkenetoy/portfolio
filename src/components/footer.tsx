@@ -15,19 +15,21 @@ const moveup = {
   outOfView: { y: 200, opacity: 0 },
 };
 
+const moveright = {
+  // Initial state: translateY far off-screen
+  initial: { x: -50, opacity: 0 },
+  // When the element is in view, translateY to 0
+  inView: { x: 0, opacity: 1 },
+  // When the element goes out of view, move it further down (you can modify this value if necessary)
+  outOfView: { x: -50, opacity: 0 },
+};
+
 export const Footer = () => {
   return (
     <div className="space-y-4">
-      <footer className="p-10 space-y-4 overflow-hidden bg-default-50 rounded-2xl text-default-foreground">
-        <motion.div
-          className="h-40 footer sm:footer-horizontal"
-          initial="initial"
-          transition={{ duration: 0.25, ease: "circOut" }}
-          variants={moveup}
-          viewport={{ once: true, amount: 0.3 }} // 👈 Fix viewport detection
-          whileInView="inView"
-        >
-          <nav>
+      <footer className="p-10 space-y-4 overflow-hidden border bg-default-50 rounded-2xl text-default-foreground border-default">
+        <motion.div className="h-40 footer sm:footer-horizontal">
+          <motion.nav>
             <svg className="w-40 h-40 mx-auto" viewBox="25 25 175 175">
               <defs>
                 <path
@@ -57,10 +59,16 @@ export const Footer = () => {
                 </text>
               </motion.g>
             </svg>
-          </nav>
+          </motion.nav>
 
           {/* Explore Section */}
-          <nav>
+          <motion.nav
+            initial="initial"
+            transition={{ duration: 1, ease: "circOut" }}
+            variants={moveright}
+            viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
+            whileInView="inView"
+          >
             <h6 className="font-bold text-large text-danger">Explore</h6>
             <div className="z-10 flex flex-col gap-2">
               {siteConfig.navItems.map((item) => (
@@ -69,10 +77,16 @@ export const Footer = () => {
                 </Link>
               ))}
             </div>
-          </nav>
+          </motion.nav>
 
           {/* Follow Me Section */}
-          <nav>
+          <motion.nav
+            initial="initial"
+            transition={{ duration: 1, ease: "circOut" }}
+            variants={moveright}
+            viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
+            whileInView="inView"
+          >
             <h6 className="font-bold text-large text-primary">Follow Me</h6>
             <div className="z-10 flex flex-col gap-2">
               {siteConfig.socials.map(({ link, icon: Icon, title }) => (
@@ -88,10 +102,16 @@ export const Footer = () => {
                 </Link>
               ))}
             </div>
-          </nav>
+          </motion.nav>
 
           {/* Follow Me Section */}
-          <nav>
+          <motion.nav
+            initial="initial"
+            transition={{ duration: 1, ease: "circOut" }}
+            variants={moveright}
+            viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
+            whileInView="inView"
+          >
             <div className="z-10 flex flex-col gap-2">
               {siteConfig.socials.map(({ link, icon: Icon, title }) => (
                 <Link
@@ -106,7 +126,7 @@ export const Footer = () => {
                 </Link>
               ))}
             </div>
-          </nav>
+          </motion.nav>
         </motion.div>
 
         {/* Footer Branding */}
@@ -115,7 +135,7 @@ export const Footer = () => {
           initial="initial"
           transition={{ duration: 0.5, ease: "circOut" }}
           variants={moveup}
-          viewport={{ once: false, amount: 0.01 }}
+          viewport={{ once: false, amount: 0.001 }}
           whileInView="inView"
         >
           <TextHoverEffect text={siteConfig.name} />

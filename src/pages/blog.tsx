@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
+import Footer from "@/components/footer";
 
 export default function DocsPage() {
   return (
@@ -36,6 +37,7 @@ export default function DocsPage() {
             <h1 className={title()}>Blog</h1>
           </div>
         </section>
+        <Footer />
       </DefaultLayout>
     </>
   );

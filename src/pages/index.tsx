@@ -2,6 +2,8 @@
 import { Helmet } from "react-helmet-async";
 import { Divider } from "@heroui/divider";
 import { motion } from "framer-motion";
+import { Button } from "@heroui/button";
+import { IconArrowRight, IconRecharging } from "@tabler/icons-react";
 
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
@@ -10,6 +12,15 @@ import { WobbleCardComponent } from "@/components/wobble-card";
 import { Footer } from "@/components/footer";
 import { StickyScroll } from "@/components/sticky-scroll-reveal";
 import { InfiniteMovingCards } from "@/components/infinite-moving-cards";
+
+const moveright = {
+  // Initial state: translateY far off-screen
+  initial: { x: -50, opacity: 0 },
+  // When the element is in view, translateY to 0
+  inView: { x: 0, opacity: 1 },
+  // When the element goes out of view, move it further down (you can modify this value if necessary)
+  outOfView: { x: -50, opacity: 0 },
+};
 
 export default function IndexPage() {
   return (
@@ -43,33 +54,98 @@ export default function IndexPage() {
           <HeroSection />
         </div>
         <div className="flex flex-col gap-24 mx-auto text-3xl max-w-screen-2xl">
-          <motion.div
-            className="flex justify-between"
-            transition={{ duration: 2, ease: "easeInOut" }}
-          >
-            <p className="w-1/2">
-              I build fast, scalable apps using Laravel, React, and
-              WebGPU—seamlessly combining backend power with interactive,
-              immersive frontends.
-            </p>
-            <p className="text-sm w-96">
-              My expertise in full-stack development, 3D visualization, and
-              interactive web design sets me apart in the tech industry.
-            </p>
-          </motion.div>
-          <Divider />
-          <div>
-            <p className="text-4xl font-medium w-96 text-secondary">
-              Engineering Scalable Systems
-            </p>
+          <div className="flex flex-col gap-8">
+            <motion.div
+              className="flex justify-between"
+              initial="initial"
+              transition={{ duration: 1, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
+              whileInView="inView"
+            >
+              <p className="w-1/2">
+                I build fast, scalable apps using Laravel, React, and
+                WebGPU—seamlessly combining backend power with interactive,
+                immersive frontends.
+              </p>
+              <motion.p
+                className="text-sm w-96"
+                initial="initial"
+                transition={{ duration: 1.25, ease: "circOut" }}
+                variants={moveright}
+                viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
+                whileInView="inView"
+              >
+                My expertise in full-stack development, 3D visualization, and
+                interactive web design sets me apart in the tech industry.
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              className="relative flex items-center w-full"
+              initial="initial"
+              transition={{ duration: 1, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
+              whileInView="inView"
+            >
+              <Divider className="flex-1" />
+              <motion.div className="absolute p-2 transition-colors ease-in-out rounded-full bg-default-foreground left-[90%] duration-250">
+                <IconRecharging
+                  className="w-20 h-20 text-default-50"
+                  stroke={1}
+                />
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial="initial"
+              transition={{ duration: 1, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
+              whileInView="inView"
+            >
+              <p className="text-4xl font-medium w-96 text-secondary">
+                Engineering Scalable Systems
+              </p>
+            </motion.div>
           </div>
-          <div className="space-y-8">
+
+          <motion.div
+            className="space-y-8"
+            initial="initial"
+            transition={{ duration: 1, ease: "circOut" }}
+            variants={moveright}
+            viewport={{ once: true, amount: 0.2 }} // 👈 Fix viewport detection
+            whileInView="inView"
+          >
             <h1 className="text-6xl">What I Do</h1>
             <Divider />
-            <div className="flex h-fit">
-              <WobbleCardComponent />
-            </div>
-          </div>
+            <WobbleCardComponent />
+            <motion.div
+              className="flex justify-end"
+              initial="initial"
+              transition={{ duration: 1, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 0.7 }} // 👈 Fix viewport detection
+              whileInView="inView"
+            >
+              {/* Aligns button to the right */}
+              <Button
+                className="p-8 text-lg"
+                href="/about"
+                radius="full"
+                size="lg"
+                variant="ghost"
+              >
+                <span className="text-lg">About Me</span>
+                <span>
+                  <IconArrowRight />
+                </span>
+              </Button>
+            </motion.div>
+          </motion.div>
+
           <div className="space-y-8">
             <h1 className="font-serif text-6xl">My Projects</h1>
             <Divider />

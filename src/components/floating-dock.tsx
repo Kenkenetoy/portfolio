@@ -192,9 +192,9 @@ function IconContainer({
             </motion.div>
           )}
         </AnimatePresence>
-        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-default-foreground">
+        <div className="flex items-center justify-center w-12 h-12 transition ease-in-out rounded-full duration-250 bg-default-foreground">
           <motion.div
-            className="flex items-center justify-center text-default-foreground"
+            className="flex items-center justify-center"
             style={{ width: widthIcon, height: heightIcon }}
           >
             {React.cloneElement(icon as React.ReactElement, {

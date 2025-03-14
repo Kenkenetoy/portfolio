@@ -33,7 +33,7 @@ const HeroSection: React.FC = () => {
 
       <div className="z-10 flex flex-col justify-between w-full h-full">
         {/* Top Section */}
-        <div className="flex flex-col items-center justify-center w-full h-24 transition-colors ease-in-out border-default-foreground border-t-1 duration-250">
+        <div className="flex flex-col items-center justify-center w-full h-24 transition-colors ease-in-out border-default-foreground border-b-1 duration-250">
           <div className="grid items-center w-full grid-cols-3 px-4 font-medium place-items-end">
             <p className="w-32 justify-self-start">
               {"// Design, Code, Execute"}

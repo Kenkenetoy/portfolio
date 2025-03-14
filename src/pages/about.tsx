@@ -4,6 +4,7 @@ import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
 import AnimatedTabs from "@/components/AnimatedTabPanels";
+import { Footer } from "@/components/footer";
 
 export default function DocsPage() {
   return (
@@ -38,6 +39,7 @@ export default function DocsPage() {
           </div>
         </section>
         <AnimatedTabs />
+        <Footer />
       </DefaultLayout>
     </>
   );

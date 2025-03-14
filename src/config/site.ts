@@ -31,6 +31,7 @@ import {
   IconBrandBootstrap,
   IconBrandFramer,
   IconBrandGit,
+  IconBrandPhp,
 } from "@tabler/icons-react";
 import {
   ReactOriginal,
@@ -58,6 +59,8 @@ import {
   BootstrapOriginal,
   FramermotionOriginal,
   GitOriginal,
+  PhpOriginal,
+  AxiosPlain,
 } from "devicons-react";
 
 export const siteConfig = {
@@ -65,7 +68,7 @@ export const siteConfig = {
   logo: IconCircleFilled,
   hero_big: "designer & developer",
   hero_small:
-    "I blend design and development to create smooth, user-friendly digital experiences.",
+    "I blend design and development to create smooth digital experiences.",
   location: { province: ["Bohol"], country: ["Philippines"] },
   role: "Software Engineer",
 
@@ -110,48 +113,6 @@ export const siteConfig = {
   ],
 
   stack: {
-    react: {
-      title: "React",
-      description:
-        "A powerful JavaScript library for building dynamic and interactive UIs.",
-      icon: IconBrandReact,
-      devicon: ReactOriginal,
-    },
-    typescript: {
-      title: "TypeScript",
-      description:
-        "A strongly typed programming language that builds on JavaScript.",
-      icon: IconBrandTypescript,
-      devicon: TypescriptOriginal,
-    },
-    laravel: {
-      title: "Laravel",
-      description:
-        "A PHP framework for building scalable and maintainable backends.",
-      icon: IconBrandLaravel,
-      devicon: LaravelOriginal,
-    },
-    tailwind: {
-      title: "Tailwind CSS",
-      description:
-        "A utility-first CSS framework for rapid and responsive UI design.",
-      icon: IconBrandTailwind,
-      devicon: TailwindcssOriginal,
-    },
-    bootstrap: {
-      title: "Bootstrap",
-      description:
-        "A popular CSS framework for building responsive and mobile-first websites.",
-      icon: IconBrandBootstrap,
-      devicon: BootstrapOriginal,
-    },
-    framer: {
-      title: "Framer Motion",
-      description:
-        "A powerful animation library for React, enabling smooth and interactive UI animations.",
-      icon: IconBrandFramer,
-      devicon: FramermotionOriginal,
-    },
     unity: {
       title: "Unity",
       description:
@@ -180,11 +141,40 @@ export const siteConfig = {
       icon: IconBrandGit,
       devicon: GitOriginal,
     },
-    java: {
-      title: "Java",
+    react: {
+      title: "React",
       description:
-        "A robust and versatile programming language for backend, mobile, and enterprise applications.",
-      devicon: JavaOriginal,
+        "A powerful JavaScript library for building dynamic and interactive UIs.",
+      icon: IconBrandReact,
+      devicon: ReactOriginal,
+    },
+    axios: {
+      title: "Axios",
+      description:
+        "A promise-based HTTP client for making API requests in JavaScript and Node.js.",
+      devicon: AxiosPlain,
+    },
+    laravel: {
+      title: "Laravel",
+      description:
+        "A PHP framework for building scalable and maintainable backends.",
+      icon: IconBrandLaravel,
+      devicon: LaravelOriginal,
+    },
+    php: {
+      title: "PHP",
+      description:
+        "A popular general-purpose scripting language suited for web development.",
+      icon: IconBrandPhp, // Replace with an actual PHP icon if available
+      devicon: PhpOriginal, // Devicon should have this
+    },
+
+    typescript: {
+      title: "TypeScript",
+      description:
+        "A strongly typed programming language that builds on JavaScript.",
+      icon: IconBrandTypescript,
+      devicon: TypescriptOriginal,
     },
     javascript: {
       title: "JavaScript",
@@ -206,11 +196,38 @@ export const siteConfig = {
       icon: IconBrandCss3,
       devicon: Css3Original,
     },
+    tailwind: {
+      title: "Tailwind CSS",
+      description:
+        "A utility-first CSS framework for rapid and responsive UI design.",
+      icon: IconBrandTailwind,
+      devicon: TailwindcssOriginal,
+    },
+    bootstrap: {
+      title: "Bootstrap",
+      description:
+        "A popular CSS framework for building responsive and mobile-first websites.",
+      icon: IconBrandBootstrap,
+      devicon: BootstrapOriginal,
+    },
+    framer: {
+      title: "Framer Motion",
+      description:
+        "A powerful animation library for React, enabling smooth and interactive UI animations.",
+      icon: IconBrandFramer,
+      devicon: FramermotionOriginal,
+    },
     csharp: {
       title: "C#",
       description:
         "A powerful object-oriented programming language used in game development and enterprise applications.",
       devicon: CsharpOriginal,
+    },
+    java: {
+      title: "Java",
+      description:
+        "A robust and versatile programming language for backend, mobile, and enterprise applications.",
+      devicon: JavaOriginal,
     },
     python: {
       title: "Python",
@@ -237,13 +254,6 @@ export const siteConfig = {
       description:
         "A high-level programming language known for its text-processing capabilities.",
       devicon: PerlOriginal,
-    },
-    shell: {
-      title: "Shell Scripting",
-      description:
-        "A command-line scripting language used for automating system tasks.",
-      icon: IconTerminal,
-      devicon: BashOriginal,
     },
   },
 

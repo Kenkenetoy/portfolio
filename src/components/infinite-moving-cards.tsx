@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
+import { IconFileOff } from "@tabler/icons-react";
 
 export const InfiniteMovingCards = ({
   items,
@@ -9,19 +10,19 @@ export const InfiniteMovingCards = ({
   speed = "fast",
   pauseOnHover = true,
   className,
-  useDevicon = false, // New prop to toggle between Tabler Icons and Devicons
+  useDevicon = false,
 }: {
   items: {
     title: string;
     description: string;
-    icon: React.ComponentType<any>; // Tabler Icon
-    devicon: React.ComponentType<any>; // Devicon
+    icon?: React.ComponentType<any>;
+    devicon?: React.ComponentType<any>;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
   pauseOnHover?: boolean;
   className?: string;
-  useDevicon?: boolean; // Toggle for icon set
+  useDevicon?: boolean;
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
@@ -69,6 +70,8 @@ export const InfiniteMovingCards = ({
     }
   };
 
+  const DefaultIcon = IconFileOff; // Set as fallback
+
   return (
     <div
       ref={containerRef}
@@ -80,21 +83,29 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex min-w-full shrink-0 gap-12 py-4 w-max flex-nowrap",
+          "flex min-w-full shrink-0 gap-4 w-max flex-nowrap ",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
         {items.map(({ title, icon: Icon, devicon: DevIcon }, idx) => {
-          const SelectedIcon = useDevicon ? DevIcon : Icon; // Toggle between Tabler and Devicon
+          const SelectedIcon = useDevicon
+            ? DevIcon || DefaultIcon
+            : Icon || DefaultIcon;
 
           return (
-            <SelectedIcon
+            <div
               key={idx}
-              className="text-default-foreground"
-              size={96}
-              stroke={1}
-            />
+              className="flex items-center justify-center gap-4 p-6 rounded-full bg-default-50"
+            >
+              {SelectedIcon && (
+                <SelectedIcon
+                  className="text-default-foreground"
+                  size={60}
+                  stroke={1} // Keep stroke at 1
+                />
+              )}
+            </div>
           );
         })}
       </ul>

@@ -59,7 +59,7 @@ export const WobbleCard = ({
         >
           <div
             className={cn(
-              "group w-full cursor-pointer overflow-hidden relative card h-[45rem] rounded-md shadow-xl mx-auto flex flex-col justify-end  dark:border-neutral-800",
+              "group w-full cursor-pointer overflow-hidden relative card h-[35rem] rounded-md shadow-xl mx-auto flex flex-col justify-end  dark:border-neutral-800",
               "bg-[url(https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80)] bg-cover",
               // Preload hover image by setting it in a pseudo-element
               "before:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)] before:fixed before:inset-0 before:opacity-0 before:z-[-1]",
@@ -104,14 +104,14 @@ export function WobbleCardComponent() {
       className="grid w-full grid-cols-1 gap-4 mx-auto lg:grid-cols-4"
       initial="hidden"
       variants={containerVariants}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.4 }}
       whileInView="show"
     >
       {siteConfig.whatIDoData.map((card, index) => (
         <motion.div key={index} variants={cardVariants}>
           <WobbleCard
             className=""
-            containerClassName={`col-span-1 h-full min-h-[300px] ${card.backgroundClass}`}
+            containerClassName={`col-span-1  ${card.backgroundClass}`}
           >
             <div className="flex flex-col items-start max-w-xs transition-colors ease-in-out duration-250">
               <card.icon
