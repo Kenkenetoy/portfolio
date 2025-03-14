@@ -16,6 +16,7 @@ import {
 } from "motion/react";
 import { Link } from "@heroui/link";
 import { useRef, useState } from "react";
+import React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -191,12 +192,16 @@ function IconContainer({
             </motion.div>
           )}
         </AnimatePresence>
-        <motion.div
-          className="flex items-center justify-center"
-          style={{ width: widthIcon, height: heightIcon }}
-        >
-          {icon}
-        </motion.div>
+        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-default-foreground">
+          <motion.div
+            className="flex items-center justify-center text-default-foreground"
+            style={{ width: widthIcon, height: heightIcon }}
+          >
+            {React.cloneElement(icon as React.ReactElement, {
+              className: "w-full h-full stroke-default",
+            })}
+          </motion.div>
+        </div>
       </motion.div>
     </Link>
   );

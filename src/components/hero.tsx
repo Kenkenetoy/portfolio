@@ -33,6 +33,15 @@ const HeroSection: React.FC = () => {
 
       <div className="z-10 flex flex-col justify-between w-full h-full">
         {/* Top Section */}
+        <div className="flex flex-col items-center justify-center w-full h-24 transition-colors ease-in-out border-default-foreground border-t-1 duration-250">
+          <div className="grid items-center w-full grid-cols-3 px-4 font-medium place-items-end">
+            <p className="w-32 justify-self-start">
+              {"// Design, Code, Execute"}
+            </p>
+          </div>
+        </div>
+
+        {/* Middle Section */}
         <div className="flex items-center justify-center h-full gap-12 font-bold text-center">
           <div>
             <GlareCard>
@@ -46,7 +55,7 @@ const HeroSection: React.FC = () => {
                 <p className="text-xl font-normal">
                   Hi, I am {siteConfig.name} from {siteConfig.location.province}
                 </p>
-                <h1 className="font-medium uppercase text-8xl text-default-foreground">
+                <h1 className="font-serif font-medium uppercase text-8xl text-default-foreground">
                   {siteConfig.hero_big}
                 </h1>
                 <p className="text-xl font-normal">{siteConfig.hero_small}</p>
@@ -59,7 +68,7 @@ const HeroSection: React.FC = () => {
                   color="secondary"
                   radius="full"
                   size="lg"
-                  variant="shadow"
+                  variant="ghost"
                 >
                   <span className="text-lg ">Contact</span>
                   <span>
@@ -70,7 +79,7 @@ const HeroSection: React.FC = () => {
                 <Button
                   radius="full"
                   size="lg"
-                  variant="shadow"
+                  variant="ghost"
                   onPress={() => {
                     const link = document.createElement("a");
 
@@ -103,7 +112,7 @@ const HeroSection: React.FC = () => {
 
             {/* Email Section */}
             <div className="flex items-center gap-2 pr-4 transition-colors ease-in-out rounded-full border-default duration-250 border-1">
-              <div className="p-3 transition-colors ease-in-out rounded-full bg-default text-default-foreground">
+              <div className="p-3 transition-colors ease-in-out rounded-full bg-default-foreground text-default">
                 <IconMail />
               </div>
               <Tooltip

@@ -27,7 +27,7 @@ export default function DefaultLayout({
 
       {/* Main Content */}
       <div className="relative flex flex-col flex-grow overflow-x-clip">
-        <main className="space-y-12">{children}</main>
+        <main className="space-y-24">{children}</main>
       </div>
     </div>
   );

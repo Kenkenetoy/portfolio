@@ -34,6 +34,7 @@
     "@tabler/icons-react": "^3.30.0",
     "axios": "^1.8.3",
     "clsx": "^2.1.1",
+    "devicons-react": "^1.4.0",
     "framer-motion": "11.15.0",
     "mini-svg-data-uri": "^1.4.4",
     "motion": "^12.4.10",

@@ -66,8 +66,7 @@ export const StickyScroll = ({
 
   return (
     <motion.div ref={ref} className="relative flex justify-center space-x-12 ">
-      {/* Left Content */}
-      <div className="relative flex flex-col w-2/3 mb-4 space-y-32">
+      <div className="relative flex flex-col w-5/6 my-16 space-y-48">
         {content.map((item, index) => (
           <motion.div
             key={item.title + index}
@@ -79,18 +78,34 @@ export const StickyScroll = ({
             className="space-y-8 scale-100 scroll-section"
             transition={{ duration: 0.25, ease: "easeInOut" }}
           >
-            <div className="space-y-2">
-              <motion.h2 className="text-4xl text-gray-900 dark:text-slate-100">
+            <div className="flex justify-between">
+              <motion.h2 className="text-5xl text-default-foreground">
                 {item.title}
               </motion.h2>
-              <motion.h4 className="text-xl text-gray-900 dark:text-slate-100">
-                {item.type}
-              </motion.h4>
+              <div className="w-96">
+                <motion.h4 className="text-lg text-default-foreground">
+                  {item.type}
+                </motion.h4>
+
+                {item.stack.map((tech, i) => {
+                  const stackInfo =
+                    siteConfig.stack[tech as keyof typeof siteConfig.stack];
+
+                  if (!stackInfo) return null; // Skip if stackInfo is undefined
+
+                  return (
+                    <span key={i} className="text-xs">
+                      {stackInfo.title}
+                      {i < item.stack.length - 1 && ", "}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
 
-            <Divider className="my-4" />
+            <Divider />
 
-            <motion.p className="text-lg text-gray-700 dark:text-slate-300">
+            <motion.p className="text-sm text-default-foreground">
               {item.description.split("\n").map((line, index) => (
                 <React.Fragment key={index}>
                   {line}
@@ -98,64 +113,6 @@ export const StickyScroll = ({
                 </React.Fragment>
               ))}
             </motion.p>
-
-            <Divider className="my-4" />
-
-            {item.stack.length > 0 && (
-              <motion.div className="flex flex-wrap gap-2">
-                {item.stack.map((tech, i) => {
-                  const stackInfo =
-                    siteConfig.stack[tech as keyof typeof siteConfig.stack];
-                  const { icon, title, description } = stackInfo || {};
-
-                  return icon ? (
-                    <Tooltip
-                      key={i}
-                      content={
-                        <div className="px-1 py-2">
-                          <div className="text-lg font-bold">{title}</div>
-                          <div className="w-48 text-sm">{description}</div>
-                        </div>
-                      }
-                      isDisabled={activeCard !== index}
-                    >
-                      <Button
-                        color="default"
-                        isDisabled={activeCard !== index}
-                        radius="full"
-                        size="md"
-                        variant="ghost"
-                      >
-                        {React.createElement(icon)}
-                        {/* No need for React.createElement, just use the JSX component */}
-                        <span className="text-sm font-semibold">{title}</span>
-                      </Button>
-                    </Tooltip>
-                  ) : (
-                    <Tooltip
-                      key={i}
-                      content={
-                        <div className="px-1 py-2">
-                          <div className="font-bold text-small">{title}</div>
-                          <div className="w-48 text-tiny">{description}</div>
-                        </div>
-                      }
-                      isDisabled={activeCard !== index}
-                    >
-                      <Button
-                        color="default"
-                        isDisabled={activeCard !== index}
-                        radius="full"
-                        size="sm"
-                        variant="ghost"
-                      >
-                        <span className="font-semibold text-tiny">{title}</span>
-                      </Button>
-                    </Tooltip>
-                  );
-                })}
-              </motion.div>
-            )}
           </motion.div>
         ))}
       </div>
@@ -177,7 +134,7 @@ export const StickyScroll = ({
           <Image
             isBlurred
             alt={content[activeCard].title}
-            className="object-cover w-full aspect-[4/3]" // Adjust aspect ratio as needed
+            className="object-cover w-full aspect-[6/3]" // Adjust aspect ratio as needed
             src={content[activeCard].imageSrc}
           />
 
@@ -225,9 +182,9 @@ export const StickyScroll = ({
               <Button
                 color="secondary"
                 isDisabled={!content[activeCard].url?.demo}
-                radius="sm"
+                radius="full"
                 size="lg"
-                variant="shadow"
+                variant="ghost"
                 onPress={() =>
                   content[activeCard].url?.demo &&
                   window.open(content[activeCard].url.demo, "_blank")
@@ -242,8 +199,9 @@ export const StickyScroll = ({
                 isIconOnly
                 aria-label="GitHub"
                 color="default"
+                radius="full"
                 size="lg"
-                variant="shadow"
+                variant="ghost"
                 onPress={() =>
                   window.open(content[activeCard].url?.github, "_blank")
                 }

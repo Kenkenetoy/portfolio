@@ -32,7 +32,7 @@ export function SidebarDemo() {
               href="/"
             >
               <siteConfig.logo className="shrink-0" />
-              <span className="font-medium whitespace-pre text-default-foreground">
+              <span className="font-medium uppercase whitespace-pre text-default-foreground">
                 {siteConfig.name}
               </span>
             </Link>
@@ -44,7 +44,7 @@ export function SidebarDemo() {
                     label: navItem.label,
                     href: navItem.href,
                     icon: navItem.icon && (
-                      <navItem.icon className=" text-default-500 shrink-0" />
+                      <navItem.icon className=" text-default-foreground shrink-0" />
                     ),
                   }}
                 />

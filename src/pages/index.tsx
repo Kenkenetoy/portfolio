@@ -9,15 +9,7 @@ import HeroSection from "@/components/hero";
 import { WobbleCardComponent } from "@/components/wobble-card";
 import { Footer } from "@/components/footer";
 import { StickyScroll } from "@/components/sticky-scroll-reveal";
-
-const scaleVariants = {
-  // When the element is in view, scale to 1
-  initial: { scale: 1 },
-  // When the element is in view, scale to 1
-  inView: { scale: 1 },
-  // When the element is out of view or farther, scale down
-  outOfView: { scale: 0.9 },
-};
+import { InfiniteMovingCards } from "@/components/infinite-moving-cards";
 
 export default function IndexPage() {
   return (
@@ -47,47 +39,60 @@ export default function IndexPage() {
       </Helmet>
 
       <DefaultLayout>
-        <motion.div
-          animate="inView"
-          className="h-screen"
-          initial="initial"
-          transition={{ duration: 2, ease: "easeInOut" }}
-          variants={scaleVariants}
-          viewport={{ amount: 0.2 }} // Control the trigger when entering/leaving the viewport
-          whileInView="inView"
-        >
+        <div className="h-screen">
           <HeroSection />
-        </motion.div>
-        <div className="flex flex-col gap-12 mx-auto text-3xl max-w-screen-2xl">
+        </div>
+        <div className="flex flex-col gap-24 mx-auto text-3xl max-w-screen-2xl">
           <motion.div
             className="flex justify-between"
             transition={{ duration: 2, ease: "easeInOut" }}
           >
             <p className="w-1/2">
-              Building scalable and performant applications with Laravel, React,
-              and WebGPU. I blend backend logic with interactive frontends,
-              shaping the future of digital experiences.
+              I build fast, scalable apps using Laravel, React, and
+              WebGPU—seamlessly combining backend power with interactive,
+              immersive frontends.
             </p>
             <p className="text-sm w-96">
               My expertise in full-stack development, 3D visualization, and
               interactive web design sets me apart in the tech industry.
             </p>
           </motion.div>
+          <Divider />
           <div>
             <p className="text-4xl font-medium w-96 text-secondary">
-              Engineering Scalable Systems, Crafting Immersive Experiences
+              Engineering Scalable Systems
             </p>
           </div>
-          <Divider />
-          <WobbleCardComponent />
           <div className="space-y-8">
-            <h1 className="text-6xl">My Projects</h1>
+            <h1 className="text-6xl">What I Do</h1>
+            <Divider />
+            <div className="flex h-fit">
+              <WobbleCardComponent />
+            </div>
+          </div>
+          <div className="space-y-8">
+            <h1 className="font-serif text-6xl">My Projects</h1>
             <Divider />
             <div className="mx-auto max-w-[90rem]">
               <StickyScroll content={siteConfig.contents} />
             </div>
             <Divider />
           </div>
+          <div>
+            <div>
+              MY TECH STACK My expertise spans a diverse range of technologies,
+              enabling me to deliver comprehensive and cutting-edge solutions
+              across various platforms.
+            </div>
+
+            <InfiniteMovingCards
+              direction="right"
+              items={Object.values(siteConfig.stack)}
+              speed="normal"
+              useDevicon={true}
+            />
+          </div>
+
           <Footer />
         </div>
       </DefaultLayout>
