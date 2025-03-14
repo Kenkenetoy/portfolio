@@ -13,6 +13,12 @@ import React from "react";
 import { siteConfig } from "@/config/site"; // Import siteConfig
 import { cn } from "@/lib/utils";
 
+const cardAnimation = (activeCard: number, index: number) => ({
+  scale: activeCard === index ? 1 : 0.95,
+  opacity: activeCard === index ? 1 : 0.3,
+  originX: 1, // Ensures animation happens from right to left
+});
+
 export const StickyScroll = ({
   content,
   contentClassName,
@@ -70,16 +76,12 @@ export const StickyScroll = ({
         {content.map((item, index) => (
           <motion.div
             key={item.title + index}
-            animate={{
-              scale: activeCard === index ? 1 : 0.95,
-              opacity: activeCard === index ? 1 : 0.3,
-              originX: 1, // Ensures animation happens from right to left
-            }}
+            animate={cardAnimation(activeCard, index)}
             className="space-y-8 scale-100 scroll-section"
             transition={{ duration: 0.25, ease: "easeInOut" }}
           >
             <div className="flex justify-between">
-              <motion.h2 className="text-5xl text-default-foreground">
+              <motion.h2 className="font-serif text-5xl text-default-foreground">
                 {item.title}
               </motion.h2>
               <div className="w-96">
@@ -94,7 +96,7 @@ export const StickyScroll = ({
                   if (!stackInfo) return null; // Skip if stackInfo is undefined
 
                   return (
-                    <span key={i} className="text-xs">
+                    <span key={i} className="text-xs ">
                       {stackInfo.title}
                       {i < item.stack.length - 1 && ", "}
                     </span>

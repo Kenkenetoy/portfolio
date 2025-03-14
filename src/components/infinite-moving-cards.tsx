@@ -83,9 +83,7 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex min-w-full shrink-0 gap-4 w-max flex-nowrap ",
-          start && "animate-scroll",
-          pauseOnHover && "hover:[animation-play-state:paused]"
+          "flex min-w-full shrink-0 gap-4 w-max flex-nowrap animate-scroll"
         )}
       >
         {items.map(({ icon: Icon, devicon: DevIcon }, idx) => {
@@ -94,7 +92,7 @@ export const InfiniteMovingCards = ({
             : Icon || DefaultIcon;
 
           return (
-            <div
+            <li
               key={idx}
               className="flex items-center justify-center gap-4 p-6 rounded-full bg-default-50"
             >
@@ -102,10 +100,10 @@ export const InfiniteMovingCards = ({
                 <SelectedIcon
                   className="text-default-foreground"
                   size={60}
-                  stroke={1} // Keep stroke at 1
+                  stroke={1}
                 />
               )}
-            </div>
+            </li>
           );
         })}
       </ul>

@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 import { TextHoverEffect } from "./text-hover-effect";
 
 import { siteConfig } from "@/config/site";
+import { IconLink } from "@tabler/icons-react";
+import { ShareModal } from "./modal-for-links";
+import { Button } from "@heroui/button";
 
 const moveup = {
   // Initial state: translateY far off-screen
@@ -54,7 +57,7 @@ export const Footer = () => {
                     startOffset="50%"
                     textAnchor="middle"
                   >
-                    ● Where aesthetics & functionality meet ●
+                    Where design and usability come together.
                   </textPath>
                 </text>
               </motion.g>
@@ -64,7 +67,7 @@ export const Footer = () => {
           {/* Explore Section */}
           <motion.nav
             initial="initial"
-            transition={{ duration: 1, ease: "circOut" }}
+            transition={{ duration: 0.75, ease: "circOut" }}
             variants={moveright}
             viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
             whileInView="inView"
@@ -82,7 +85,7 @@ export const Footer = () => {
           {/* Follow Me Section */}
           <motion.nav
             initial="initial"
-            transition={{ duration: 1, ease: "circOut" }}
+            transition={{ duration: 0.75, ease: "circOut" }}
             variants={moveright}
             viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
             whileInView="inView"
@@ -107,7 +110,7 @@ export const Footer = () => {
           {/* Follow Me Section */}
           <motion.nav
             initial="initial"
-            transition={{ duration: 1, ease: "circOut" }}
+            transition={{ duration: 0.75, ease: "circOut" }}
             variants={moveright}
             viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
             whileInView="inView"
@@ -130,8 +133,8 @@ export const Footer = () => {
         </motion.div>
 
         {/* Footer Branding */}
-        <motion.p
-          className="z-0 w-full font-sans"
+        <motion.div
+          className="z-0 w-full -space-y-8 font-sans"
           initial="initial"
           transition={{ duration: 0.5, ease: "circOut" }}
           variants={moveup}
@@ -139,7 +142,35 @@ export const Footer = () => {
           whileInView="inView"
         >
           <TextHoverEffect text={siteConfig.name} />
-        </motion.p>
+          <motion.div
+            className="flex items-center gap-4 font-serif"
+            initial="initial"
+            transition={{ duration: 1, ease: "circOut" }}
+            variants={moveright}
+            viewport={{ once: false, amount: 0.2 }}
+            whileInView="inView"
+          >
+            <p>Let&apos;s create something awesome</p>
+            <motion.div
+              initial="initial"
+              transition={{ duration: 1.5, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: false, amount: 0.2 }}
+              whileInView="inView"
+            >
+              <Button
+                className="gap-2 text-3xl"
+                color="default"
+                radius="full"
+                size="lg"
+                variant="ghost"
+              >
+                <span>Get in Touch!</span>
+                <IconLink />
+              </Button>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </footer>
 
       <span className="flex justify-between text-base">

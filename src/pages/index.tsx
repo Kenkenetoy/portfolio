@@ -3,7 +3,12 @@ import { Helmet } from "react-helmet-async";
 import { Divider } from "@heroui/divider";
 import { motion } from "framer-motion";
 import { Button } from "@heroui/button";
-import { IconArrowRight, IconRecharging } from "@tabler/icons-react";
+import {
+  IconArrowRight,
+  IconCodeCircle2,
+  IconRecharging,
+} from "@tabler/icons-react";
+import { Link } from "@heroui/link";
 
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
@@ -20,6 +25,24 @@ const moveright = {
   inView: { x: 0, opacity: 1 },
   // When the element goes out of view, move it further down (you can modify this value if necessary)
   outOfView: { x: -50, opacity: 0 },
+};
+
+const moveleft = {
+  // Initial state: slightly off-screen
+  initial: { x: 500, opacity: 0, scale: 0 },
+  // When the element is in view
+  inView: { x: 0, opacity: 1, scale: 1 },
+  // When the element goes out of view
+  outOfView: { x: 500, opacity: 0, scale: 0 },
+};
+
+const moveup = {
+  // Initial state: slightly off-screen
+  initial: { y: 50, opacity: 0 },
+  // When the element is in view
+  inView: { y: 0, opacity: 1 },
+  // When the element goes out of view
+  outOfView: { y: 50, opacity: 0 },
 };
 
 export default function IndexPage() {
@@ -53,14 +76,14 @@ export default function IndexPage() {
         <div className="h-screen">
           <HeroSection />
         </div>
-        <div className="flex flex-col gap-24 mx-auto text-3xl max-w-screen-2xl">
+        <div className="mx-auto space-y-24 text-3xl max-w-screen-2xl">
           <div className="flex flex-col gap-8">
             <motion.div
               className="flex justify-between"
               initial="initial"
-              transition={{ duration: 1, ease: "circOut" }}
+              transition={{ duration: 0.75, ease: "circOut" }}
               variants={moveright}
-              viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
+              viewport={{ once: true, amount: 1 }}
               whileInView="inView"
             >
               <p className="w-1/2">
@@ -71,9 +94,9 @@ export default function IndexPage() {
               <motion.p
                 className="text-sm w-96"
                 initial="initial"
-                transition={{ duration: 1.25, ease: "circOut" }}
+                transition={{ duration: 0.75, ease: "circOut" }}
                 variants={moveright}
-                viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
+                viewport={{ once: true, amount: 1 }}
                 whileInView="inView"
               >
                 My expertise in full-stack development, 3D visualization, and
@@ -84,9 +107,9 @@ export default function IndexPage() {
             <motion.div
               className="relative flex items-center w-full"
               initial="initial"
-              transition={{ duration: 1, ease: "circOut" }}
+              transition={{ duration: 0.75, ease: "circOut" }}
               variants={moveright}
-              viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
+              viewport={{ once: true, amount: 1 }}
               whileInView="inView"
             >
               <Divider className="flex-1" />
@@ -100,9 +123,9 @@ export default function IndexPage() {
 
             <motion.div
               initial="initial"
-              transition={{ duration: 1, ease: "circOut" }}
+              transition={{ duration: 0.75, ease: "circOut" }}
               variants={moveright}
-              viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
+              viewport={{ once: true, amount: 1 }}
               whileInView="inView"
             >
               <p className="text-4xl font-medium w-96 text-secondary">
@@ -114,23 +137,22 @@ export default function IndexPage() {
           <motion.div
             className="space-y-8"
             initial="initial"
-            transition={{ duration: 1, ease: "circOut" }}
+            transition={{ duration: 0.75, ease: "circOut" }}
             variants={moveright}
-            viewport={{ once: true, amount: 0.2 }} // 👈 Fix viewport detection
+            viewport={{ once: true, amount: 0.2 }}
             whileInView="inView"
           >
-            <h1 className="text-6xl">What I Do</h1>
+            <h1 className="font-serif text-6xl">What I Do</h1>
             <Divider />
             <WobbleCardComponent />
             <motion.div
               className="flex justify-end"
               initial="initial"
-              transition={{ duration: 1, ease: "circOut" }}
+              transition={{ duration: 0.75, ease: "circOut" }}
               variants={moveright}
-              viewport={{ once: true, amount: 0.7 }} // 👈 Fix viewport detection
+              viewport={{ once: true, amount: 0.7 }}
               whileInView="inView"
             >
-              {/* Aligns button to the right */}
               <Button
                 className="p-8 text-lg"
                 href="/about"
@@ -146,20 +168,89 @@ export default function IndexPage() {
             </motion.div>
           </motion.div>
 
-          <div className="space-y-8">
-            <h1 className="font-serif text-6xl">My Projects</h1>
-            <Divider />
-            <div className="mx-auto max-w-[90rem]">
+          <motion.div
+            className="space-y-8"
+            initial="initial"
+            transition={{ duration: 0.75, ease: "circOut" }}
+            variants={moveup}
+            viewport={{ once: true, amount: 0.1 }}
+            whileInView="inView"
+          >
+            <motion.h1
+              className="font-serif text-6xl"
+              initial="initial"
+              transition={{ duration: 1, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 0.2 }}
+              whileInView="inView"
+            >
+              My Projects
+            </motion.h1>
+            <motion.div
+              className="relative flex items-center w-full"
+              initial="initial"
+              transition={{ duration: 1.1, ease: "circOut" }}
+              variants={moveleft}
+              viewport={{ once: true, amount: 1 }}
+              whileInView="inView"
+            >
+              <Divider className="flex-1" />
+              <motion.div className="absolute p-2 transition-colors ease-in-out rounded-full bg-default-foreground left-[50%] duration-250">
+                <IconCodeCircle2
+                  className="w-20 h-20 text-default-50"
+                  stroke={1}
+                />
+              </motion.div>
+            </motion.div>
+            <div className="mx-auto max-w-[90rem] space-y-8">
               <StickyScroll content={siteConfig.contents} />
+              <motion.div
+                className="flex justify-end"
+                initial="initial"
+                transition={{ duration: 0.75, ease: "circOut" }}
+                variants={moveright}
+                viewport={{ once: true, amount: 0.7 }}
+                whileInView="inView"
+              >
+                <Button
+                  className="p-8 text-lg"
+                  href="/about"
+                  radius="full"
+                  size="lg"
+                  variant="ghost"
+                >
+                  <span className="text-lg">Load More</span>
+                  <span>
+                    <IconArrowRight />
+                  </span>
+                </Button>
+              </motion.div>
             </div>
             <Divider />
-          </div>
-          <div>
-            <div>
-              MY TECH STACK My expertise spans a diverse range of technologies,
-              enabling me to deliver comprehensive and cutting-edge solutions
-              across various platforms.
-            </div>
+          </motion.div>
+
+          <motion.div
+            className="space-y-8"
+            initial="initial"
+            transition={{ duration: 0.5, ease: "circOut" }}
+            variants={moveup}
+            viewport={{ once: true, amount: 0.1 }}
+            whileInView="inView"
+          >
+            <motion.h1
+              initial="initial"
+              transition={{ duration: 0.75, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 0.2 }}
+              whileInView="inView"
+              className="font-serif text-6xl"
+            >
+              My Tech Stack
+            </motion.h1>
+            <p className="text-lg">
+              I work with a variety of technologies to build creative and
+              efficient solutions for different platforms.
+            </p>
 
             <InfiniteMovingCards
               direction="right"
@@ -167,7 +258,27 @@ export default function IndexPage() {
               speed="normal"
               useDevicon={true}
             />
-          </div>
+
+            <motion.div
+              className="flex justify-end"
+              initial="initial"
+              transition={{ duration: 0.75, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 0.7 }}
+              whileInView="inView"
+            >
+              <Link
+                className="p-8 text-lg text-default-foreground"
+                href="/about"
+                underline="always"
+              >
+                <span>See More In About Me</span>
+                <span>
+                  <IconArrowRight />
+                </span>
+              </Link>
+            </motion.div>
+          </motion.div>
 
           <Footer />
         </div>
