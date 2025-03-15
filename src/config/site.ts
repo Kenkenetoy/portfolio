@@ -251,8 +251,8 @@ export const siteConfig = {
       title: "VLOG: 01",
       type: "Capstone Project - Game Development",
       description:
-        "A 3D horror puzzle game set in my school. Players solve puzzles, navigate dark hallways, and uncover hidden secrets while avoiding lurking threats.",
-      imageSrc: "https://heroui.com/images/card-example-5.jpeg",
+        "Despite having no prior game development experience, our capstone team created what is, for now, our magnum opus—a 3D horror puzzle game set in my school. Players solve puzzles, navigate dark hallways, and uncover hidden secrets while avoiding lurking threats.",
+      imageSrc: "public/Poster.png",
       stack: ["unity", "blender", "react", "typescript", "tailwind"],
       url: {
         demo: "https://sites.google.com/view/vlog-01",
@@ -263,7 +263,7 @@ export const siteConfig = {
       title: "Portfolio",
       type: "Front-end Project",
       description:
-        "A minimalistic portfolio built with React, Tailwind CSS, Framer Motion, Aceternity, HeroUI, and DaisyUI—clean, responsive, and interactive with smooth transitions.",
+        "A sleek, responsive, and interactive web portfolio with smooth transitions—built as a study in motion design and user experience.",
       imageSrc: "https://heroui.com/images/card-example-2.jpeg",
       stack: ["react", "typescript", "tailwind", "framer", "git"],
       url: {

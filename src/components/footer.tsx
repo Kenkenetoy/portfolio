@@ -1,13 +1,13 @@
 /* eslint-disable prettier/prettier */
 import { Link } from "@heroui/link";
 import { motion } from "framer-motion";
+import { IconCodeCircle2, IconLink } from "@tabler/icons-react";
+import { Button } from "@heroui/button";
+import { IconDeviceAirtag } from "@tabler/icons-react";
 
 import { TextHoverEffect } from "./text-hover-effect";
 
 import { siteConfig } from "@/config/site";
-import { IconLink } from "@tabler/icons-react";
-import { ShareModal } from "./modal-for-links";
-import { Button } from "@heroui/button";
 
 const moveup = {
   // Initial state: translateY far off-screen
@@ -32,8 +32,14 @@ export const Footer = () => {
     <div className="space-y-4">
       <footer className="p-10 space-y-4 overflow-hidden border bg-default-50 rounded-2xl text-default-foreground border-default">
         <motion.div className="h-40 footer sm:footer-horizontal">
-          <motion.nav>
-            <svg className="w-40 h-40 mx-auto" viewBox="25 25 175 175">
+          <motion.nav
+            exit="outOfView"
+            initial="initial"
+            transition={{ duration: 1, ease: "circOut" }}
+            variants={moveright}
+            whileInView="inView"
+          >
+            <svg className="w-40 h-40 mx-auto" viewBox="0 0 200 200">
               <defs>
                 <path
                   d="M 100,100 m -65,0 a 65,65 0 1,1 130,0 a 65,65 0 1,1 -130,0"
@@ -41,10 +47,10 @@ export const Footer = () => {
                 />
               </defs>
 
-              {/* Wrap text in a motion group (g) to fix shifting */}
+              {/* Rotating text */}
               <motion.g
                 animate={{ rotate: 360 }}
-                transform="translate(100,100)" // Set rotation center
+                style={{ transformOrigin: "center" }}
                 transition={{
                   repeat: Infinity,
                   duration: 10,
@@ -57,10 +63,17 @@ export const Footer = () => {
                     startOffset="50%"
                     textAnchor="middle"
                   >
-                    Where design and usability come together.
+                    Where design and usability meet together.
                   </textPath>
                 </text>
               </motion.g>
+
+              {/* Fixed Devicon in the center */}
+              <foreignObject height="128" width="128" x="36" y="36">
+                <div className="flex items-center justify-center w-full h-full">
+                  <IconCodeCircle2 size={128} stroke={1} />
+                </div>
+              </foreignObject>
             </svg>
           </motion.nav>
 
