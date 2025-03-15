@@ -1,6 +1,4 @@
 /* eslint-disable prettier/prettier */
-"use client";
-import { useState, useEffect } from "react";
 import { Link } from "@heroui/link";
 import { Avatar } from "@heroui/avatar";
 
@@ -8,15 +6,10 @@ import { Sidebar, SidebarBody, SidebarLink } from "@/components/sidebar";
 import { cn } from "@/lib/utils";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { siteConfig } from "@/config/site";
+import { useSidebar } from "@/context/SidebarContext"; // ✅ Use context
 
 export function SidebarDemo() {
-  const [open, setOpen] = useState(() =>
-    JSON.parse(localStorage.getItem("sidebarOpen") || "false")
-  );
-
-  useEffect(() => {
-    localStorage.setItem("sidebarOpen", JSON.stringify(open));
-  }, [open]);
+  const { open, setOpen } = useSidebar(); // ✅ Get global state
 
   return (
     <div
@@ -49,7 +42,7 @@ export function SidebarDemo() {
                     href: navItem.href,
                     icon: navItem.icon && (
                       <navItem.icon
-                        className=" text-default-foreground shrink-0"
+                        className="text-default-foreground shrink-0"
                         stroke={1}
                       />
                     ),
