@@ -17,33 +17,8 @@ import { WobbleCardComponent } from "@/components/wobble-card";
 import { Footer } from "@/components/footer";
 import { StickyScroll } from "@/components/sticky-scroll-reveal";
 import { InfiniteMovingCards } from "@/components/infinite-moving-cards";
-
-const moveright = {
-  // Initial state: translateY far off-screen
-  initial: { x: -50, opacity: 0 },
-  // When the element is in view, translateY to 0
-  inView: { x: 0, opacity: 1 },
-  // When the element goes out of view, move it further down (you can modify this value if necessary)
-  outOfView: { x: -50, opacity: 0 },
-};
-
-const moveleft = {
-  // Initial state: slightly off-screen
-  initial: { x: 500, opacity: 0, scale: 0 },
-  // When the element is in view
-  inView: { x: 0, opacity: 1, scale: 1 },
-  // When the element goes out of view
-  outOfView: { x: 500, opacity: 0, scale: 0 },
-};
-
-const moveup = {
-  // Initial state: slightly off-screen
-  initial: { y: 50, opacity: 0 },
-  // When the element is in view
-  inView: { y: 0, opacity: 1 },
-  // When the element goes out of view
-  outOfView: { y: 50, opacity: 0 },
-};
+import { moveright, moveleft, moveup } from "@/anim/variants";
+import AnimatedDiv from "@/components/animated-div";
 
 export default function IndexPage() {
   return (
@@ -78,14 +53,7 @@ export default function IndexPage() {
         </div>
         <div className="mx-auto space-y-24 text-3xl max-w-screen-2xl">
           <div className="flex flex-col gap-8">
-            <motion.div
-              className="flex justify-between"
-              initial="initial"
-              transition={{ duration: 0.35, ease: "circOut" }}
-              variants={moveright}
-              viewport={{ once: true, amount: 1 }}
-              whileInView="inView"
-            >
+            <AnimatedDiv className="flex justify-between" variants={moveright}>
               <p className="w-1/2">
                 I build fast, scalable apps using Laravel, React, and
                 WebGPU—seamlessly combining backend power with interactive,
@@ -102,7 +70,7 @@ export default function IndexPage() {
                 My expertise in full-stack development, 3D visualization, and
                 interactive web design sets me apart in the tech industry.
               </motion.p>
-            </motion.div>
+            </AnimatedDiv>
 
             <motion.div
               className="relative flex items-center w-full"
@@ -238,12 +206,12 @@ export default function IndexPage() {
             whileInView="inView"
           >
             <motion.h1
+              className="font-serif text-6xl"
               initial="initial"
               transition={{ duration: 0.5, ease: "circOut" }}
               variants={moveright}
               viewport={{ once: true, amount: 0.2 }}
               whileInView="inView"
-              className="font-serif text-6xl"
             >
               My Tech Stack
             </motion.h1>

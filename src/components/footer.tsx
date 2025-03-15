@@ -7,24 +7,7 @@ import { Button } from "@heroui/button";
 import { TextHoverEffect } from "./text-hover-effect";
 
 import { siteConfig } from "@/config/site";
-
-const moveup = {
-  // Initial state: translateY far off-screen
-  initial: { y: 200, opacity: 0 },
-  // When the element is in view, translateY to 0
-  inView: { y: 0, opacity: 1 },
-  // When the element goes out of view, move it further down (you can modify this value if necessary)
-  outOfView: { y: 200, opacity: 0 },
-};
-
-const moveright = {
-  // Initial state: translateY far off-screen
-  initial: { x: -50, opacity: 0 },
-  // When the element is in view, translateY to 0
-  inView: { x: 0, opacity: 1 },
-  // When the element goes out of view, move it further down (you can modify this value if necessary)
-  outOfView: { x: -50, opacity: 0 },
-};
+import { moveright, moveup } from "@/anim/variants";
 
 export const Footer = () => {
   return (
