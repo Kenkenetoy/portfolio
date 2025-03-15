@@ -2,7 +2,7 @@
 import {
   IconBrandLinkedin,
   IconBrandGithub,
-  IconBrandLeetcode,
+  // IconBrandLeetcode,
   IconBriefcase,
   IconCreditCardPay,
   IconHome,
@@ -94,11 +94,11 @@ export const siteConfig = {
       link: "https://github.com/kenneth",
       icon: IconBrandGithub,
     },
-    {
-      title: "LeetCode",
-      link: "https://leetcode.com/kenneth",
-      icon: IconBrandLeetcode,
-    },
+    // {
+    //   title: "LeetCode",
+    //   link: "https://leetcode.com/kenneth",
+    //   icon: IconBrandLeetcode,
+    // },
   ],
 
   stack: {
