@@ -6,7 +6,6 @@ import { motion } from "motion/react";
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
 import Footer from "@/components/footer";
-import { LayoutGrid } from "@/components/layout-grid";
 import { moveleft, moveright, moveup } from "@/anim/variants";
 
 export default function DocsPage() {
