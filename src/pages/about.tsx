@@ -38,7 +38,6 @@ export default function DocsPage() {
             <h1 className={title()}>About</h1>
           </div>
         </section>
-        <AnimatedTabs />
         <Footer />
       </DefaultLayout>
     </>

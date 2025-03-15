@@ -3,9 +3,6 @@ import {
   IconBrandLinkedin,
   IconBrandGithub,
   // IconBrandLeetcode,
-  IconBriefcase,
-  IconCreditCardPay,
-  IconHome,
   IconCode,
   IconDevices,
   IconBrandBlender,
@@ -27,6 +24,9 @@ import {
   IconBrandFramer,
   IconBrandGit,
   IconBrandPhp,
+  IconHomeFilled,
+  IconBriefcaseFilled,
+  IconAlignBoxLeftMiddleFilled,
 } from "@tabler/icons-react";
 import {
   ReactOriginal,
@@ -54,7 +54,7 @@ import {
 
 export const siteConfig = {
   name: "Kenneth Aparece",
-  logo: IconCircleFilled,
+  logo: "public/202010300.jpg",
   hero_big: "designer & developer",
   hero_small:
     "I blend design and development to create smooth digital experiences.",
@@ -76,9 +76,9 @@ export const siteConfig = {
   },
 
   navItems: [
-    { label: "Home", href: "/", icon: IconHome },
-    { label: "Projects", href: "/blog", icon: IconBriefcase },
-    { label: "About Me", href: "/about", icon: IconCreditCardPay },
+    { label: "Home", href: "/", icon: IconHomeFilled },
+    { label: "Projects", href: "/blog", icon: IconBriefcaseFilled },
+    { label: "About Me", href: "/about", icon: IconAlignBoxLeftMiddleFilled },
   ],
 
   navMenuItems: [{ label: "Projects", href: "/projects" }],
@@ -253,7 +253,7 @@ export const siteConfig = {
       description:
         "Despite having no prior game development experience, our capstone team created what is, for now, our magnum opus—a 3D horror puzzle game set in my school. Players solve puzzles, navigate dark hallways, and uncover hidden secrets while avoiding lurking threats.",
       imageSrc: "public/Poster.png",
-      stack: ["unity", "blender", "react", "typescript", "tailwind"],
+      stack: ["unity", "blender"],
       url: {
         demo: "https://sites.google.com/view/vlog-01",
         github: "",
@@ -265,7 +265,7 @@ export const siteConfig = {
       description:
         "A sleek, responsive, and interactive web portfolio with smooth transitions—built as a study in motion design and user experience.",
       imageSrc: "https://heroui.com/images/card-example-2.jpeg",
-      stack: ["react", "typescript", "tailwind", "framer", "git"],
+      stack: ["react", "typescript", "tailwind", "git"],
       url: {
         demo: "https://portfolio-gamma-seven-14.vercel.app/",
         github: "https://github.com/Kenkenetoy/portfolio",

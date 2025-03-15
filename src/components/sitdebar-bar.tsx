@@ -2,6 +2,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Link } from "@heroui/link";
+import { Avatar } from "@heroui/avatar";
 
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/sidebar";
 import { cn } from "@/lib/utils";
@@ -31,7 +32,10 @@ export function SidebarDemo() {
               className="relative z-20 flex items-center py-1 space-x-2 text-base font-normal text-default-foreground"
               href="/"
             >
-              <siteConfig.logo className="shrink-0" />
+              <Avatar
+                className="w-6 h-6 text-tiny shrink-0"
+                src={siteConfig.logo}
+              />
               <span className="font-medium uppercase whitespace-pre text-default-foreground">
                 {siteConfig.name}
               </span>
@@ -44,7 +48,10 @@ export function SidebarDemo() {
                     label: navItem.label,
                     href: navItem.href,
                     icon: navItem.icon && (
-                      <navItem.icon className=" text-default-foreground shrink-0" />
+                      <navItem.icon
+                        className=" text-default-foreground shrink-0"
+                        stroke={1}
+                      />
                     ),
                   }}
                 />
