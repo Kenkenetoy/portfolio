@@ -8,7 +8,6 @@ export const InfiniteMovingCards = ({
   items,
   direction = "left",
   speed = "fast",
-  pauseOnHover = true,
   className,
   useDevicon = false,
 }: {
@@ -31,8 +30,6 @@ export const InfiniteMovingCards = ({
     addAnimation();
   }, []);
 
-  const [start, setStart] = useState(false);
-
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
@@ -46,7 +43,6 @@ export const InfiniteMovingCards = ({
       });
       getDirection();
       getSpeed();
-      setStart(true);
     }
   }
 

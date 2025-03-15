@@ -3,7 +3,6 @@ import { Link } from "@heroui/link";
 import { motion } from "framer-motion";
 import { IconCodeCircle2, IconLink } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
-import { IconDeviceAirtag } from "@tabler/icons-react";
 
 import { TextHoverEffect } from "./text-hover-effect";
 
