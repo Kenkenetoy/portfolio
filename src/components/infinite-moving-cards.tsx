@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { IconFileOff } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
