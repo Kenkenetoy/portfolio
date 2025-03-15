@@ -20,3 +20,10 @@ export const moveup = {
   outOfView: { y: 50, opacity: 0 },
   transition: { duration: 0.5, ease: "circOut" },
 };
+
+export const movedown = {
+  initial: { y: -50, opacity: 0 },
+  inView: { y: 0, opacity: 1 },
+  outOfView: { y: -50, opacity: 0 },
+  transition: { duration: 0.5, ease: "circOut" },
+};
