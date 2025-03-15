@@ -72,7 +72,7 @@ export const StickyScroll = ({
 
   return (
     <motion.div ref={ref} className="relative flex justify-center space-x-12 ">
-      <div className="relative flex flex-col w-5/6 my-16 space-y-48">
+      <div className="relative flex flex-col w-5/6 my-16 space-y-24">
         {content.map((item, index) => (
           <motion.div
             key={item.title + index}

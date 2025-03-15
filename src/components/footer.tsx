@@ -7,7 +7,7 @@ import { Button } from "@heroui/button";
 import { TextHoverEffect } from "./text-hover-effect";
 
 import { siteConfig } from "@/config/site";
-import { moveright, moveup } from "@/anim/variants";
+import { moveright, moveup, rotateBounce } from "@/anim/variants";
 
 export const Footer = () => {
   return (
@@ -53,7 +53,14 @@ export const Footer = () => {
               {/* Fixed Devicon in the center */}
               <foreignObject height="128" width="128" x="36" y="36">
                 <div className="flex items-center justify-center w-full h-full">
-                  <IconCodeCircle2 size={128} stroke={1} />
+                  <motion.div
+                    initial="initial"
+                    transition={rotateBounce.transition}
+                    variants={rotateBounce}
+                    whileHover="hover"
+                  >
+                    <IconCodeCircle2 size={128} stroke={1} />
+                  </motion.div>
                 </div>
               </foreignObject>
             </svg>

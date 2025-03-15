@@ -17,7 +17,7 @@ import { WobbleCardComponent } from "@/components/wobble-card";
 import { Footer } from "@/components/footer";
 import { StickyScroll } from "@/components/sticky-scroll-reveal";
 import { InfiniteMovingCards } from "@/components/infinite-moving-cards";
-import { moveright, moveleft, moveup } from "@/anim/variants";
+import { moveright, moveleft, moveup, rotateBounce } from "@/anim/variants";
 import AnimatedDiv from "@/components/animated-div";
 
 export default function IndexPage() {
@@ -82,10 +82,17 @@ export default function IndexPage() {
             >
               <Divider className="flex-1" />
               <motion.div className="absolute p-2 transition-colors ease-in-out rounded-full bg-default-foreground left-[90%] duration-250">
-                <IconRecharging
-                  className="w-20 h-20 text-default-50"
-                  stroke={1}
-                />
+                <motion.div
+                  initial="initial"
+                  transition={rotateBounce.transition}
+                  variants={rotateBounce}
+                  whileHover="hover"
+                >
+                  <IconRecharging
+                    className="w-20 h-20 text-default-50"
+                    stroke={1}
+                  />
+                </motion.div>
               </motion.div>
             </motion.div>
 
@@ -164,10 +171,17 @@ export default function IndexPage() {
             >
               <Divider className="flex-1" />
               <motion.div className="absolute p-2 transition-colors ease-in-out rounded-full bg-default-foreground left-[50%] duration-250">
-                <IconCodeCircle2
-                  className="w-20 h-20 text-default-50"
-                  stroke={1}
-                />
+                <motion.div
+                  initial="initial"
+                  transition={rotateBounce.transition}
+                  variants={rotateBounce}
+                  whileHover="hover"
+                >
+                  <IconCodeCircle2
+                    className="w-20 h-20 text-default-50"
+                    stroke={1}
+                  />
+                </motion.div>
               </motion.div>
             </motion.div>
             <div className="mx-auto max-w-[90rem] space-y-8">

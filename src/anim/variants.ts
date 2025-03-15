@@ -27,3 +27,13 @@ export const movedown = {
   outOfView: { y: -50, opacity: 0 },
   transition: { duration: 0.5, ease: "circOut" },
 };
+
+export const rotateBounce = {
+  initial: { rotate: 0, scale: 1 },
+  hover: { rotate: 15, scale: [1, 0.8, 1.1, 1] },
+  transition: {
+    duration: 0.5,
+    ease: "easeInOut",
+    times: [0, 0.3, 0.7, 1],
+  },
+};

@@ -111,7 +111,7 @@ export function WobbleCardComponent() {
         <motion.div key={index} variants={cardVariants}>
           <WobbleCard
             className=""
-            containerClassName={`col-span-1  ${card.backgroundClass}`}
+            containerClassName={`border border-1 border-default col-span-1  ${card.backgroundClass}`}
           >
             <div className="flex flex-col items-start max-w-xs transition-colors ease-in-out duration-250">
               <card.icon
