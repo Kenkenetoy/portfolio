@@ -147,7 +147,7 @@ export const Footer = () => {
 
         {/* Footer Branding */}
         <motion.div
-          className="z-0 w-full -space-y-8 font-sans"
+          className="z-0 w-full mx-auto -space-y-8 font-sans text-3xl"
           initial="initial"
           transition={{ duration: 0.5, ease: "circOut" }}
           variants={moveup}

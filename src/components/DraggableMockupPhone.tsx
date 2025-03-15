@@ -98,7 +98,7 @@ export const DraggableMockupPhone = () => {
             alt="Woman listening to music"
             className="object-cover pointer-events-none select-none"
             draggable={false}
-            src="https://heroui.com/images/hero-card.jpeg"
+            src="public\202010300.jpg"
           />
           <div>
             <p className="text-2xl text-neutral-900 dark:text-whitetext-neutral-900 dark:text-white">

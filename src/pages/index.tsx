@@ -81,7 +81,7 @@ export default function IndexPage() {
             <motion.div
               className="flex justify-between"
               initial="initial"
-              transition={{ duration: 0.75, ease: "circOut" }}
+              transition={{ duration: 0.35, ease: "circOut" }}
               variants={moveright}
               viewport={{ once: true, amount: 1 }}
               whileInView="inView"
@@ -94,7 +94,7 @@ export default function IndexPage() {
               <motion.p
                 className="text-sm w-96"
                 initial="initial"
-                transition={{ duration: 0.75, ease: "circOut" }}
+                transition={{ duration: 0.35, ease: "circOut" }}
                 variants={moveright}
                 viewport={{ once: true, amount: 1 }}
                 whileInView="inView"
@@ -107,7 +107,7 @@ export default function IndexPage() {
             <motion.div
               className="relative flex items-center w-full"
               initial="initial"
-              transition={{ duration: 0.75, ease: "circOut" }}
+              transition={{ duration: 0.35, ease: "circOut" }}
               variants={moveright}
               viewport={{ once: true, amount: 1 }}
               whileInView="inView"
@@ -123,7 +123,7 @@ export default function IndexPage() {
 
             <motion.div
               initial="initial"
-              transition={{ duration: 0.75, ease: "circOut" }}
+              transition={{ duration: 0.35, ease: "circOut" }}
               variants={moveright}
               viewport={{ once: true, amount: 1 }}
               whileInView="inView"
@@ -137,7 +137,7 @@ export default function IndexPage() {
           <motion.div
             className="space-y-8"
             initial="initial"
-            transition={{ duration: 0.75, ease: "circOut" }}
+            transition={{ duration: 0.5, ease: "circOut" }}
             variants={moveright}
             viewport={{ once: true, amount: 0.2 }}
             whileInView="inView"
@@ -148,7 +148,7 @@ export default function IndexPage() {
             <motion.div
               className="flex justify-end"
               initial="initial"
-              transition={{ duration: 0.75, ease: "circOut" }}
+              transition={{ duration: 0.5, ease: "circOut" }}
               variants={moveright}
               viewport={{ once: true, amount: 0.7 }}
               whileInView="inView"
@@ -171,7 +171,7 @@ export default function IndexPage() {
           <motion.div
             className="space-y-8"
             initial="initial"
-            transition={{ duration: 0.75, ease: "circOut" }}
+            transition={{ duration: 0.5, ease: "circOut" }}
             variants={moveup}
             viewport={{ once: true, amount: 0.1 }}
             whileInView="inView"
@@ -179,7 +179,7 @@ export default function IndexPage() {
             <motion.h1
               className="font-serif text-6xl"
               initial="initial"
-              transition={{ duration: 1, ease: "circOut" }}
+              transition={{ duration: 0.75, ease: "circOut" }}
               variants={moveright}
               viewport={{ once: true, amount: 0.2 }}
               whileInView="inView"
@@ -189,7 +189,7 @@ export default function IndexPage() {
             <motion.div
               className="relative flex items-center w-full"
               initial="initial"
-              transition={{ duration: 1.1, ease: "circOut" }}
+              transition={{ duration: 0.8, ease: "circOut" }}
               variants={moveleft}
               viewport={{ once: true, amount: 1 }}
               whileInView="inView"
@@ -207,7 +207,7 @@ export default function IndexPage() {
               <motion.div
                 className="flex justify-end"
                 initial="initial"
-                transition={{ duration: 0.75, ease: "circOut" }}
+                transition={{ duration: 0.5, ease: "circOut" }}
                 variants={moveright}
                 viewport={{ once: true, amount: 0.7 }}
                 whileInView="inView"
@@ -239,7 +239,7 @@ export default function IndexPage() {
           >
             <motion.h1
               initial="initial"
-              transition={{ duration: 0.75, ease: "circOut" }}
+              transition={{ duration: 0.5, ease: "circOut" }}
               variants={moveright}
               viewport={{ once: true, amount: 0.2 }}
               whileInView="inView"
@@ -262,7 +262,7 @@ export default function IndexPage() {
             <motion.div
               className="flex justify-end"
               initial="initial"
-              transition={{ duration: 0.75, ease: "circOut" }}
+              transition={{ duration: 0.5, ease: "circOut" }}
               variants={moveright}
               viewport={{ once: true, amount: 0.7 }}
               whileInView="inView"
