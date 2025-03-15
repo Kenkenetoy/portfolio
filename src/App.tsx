@@ -1,10 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import { SidebarProvider } from "@/context/SidebarContext"; // Ensure correct import path

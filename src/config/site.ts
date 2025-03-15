@@ -13,7 +13,6 @@ import {
   IconBrandVite,
   IconPalette,
   IconLayout,
-  IconCircleFilled,
   IconBrandTypescript,
   IconBrandCss3,
   IconBrandHtml5,
