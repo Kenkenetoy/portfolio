@@ -27,6 +27,7 @@ export function SidebarDemo() {
             >
               <Avatar
                 className="w-6 h-6 text-tiny shrink-0"
+                color="default"
                 src={siteConfig.logo}
               />
               <span className="font-medium uppercase whitespace-pre text-default-foreground">

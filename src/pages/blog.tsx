@@ -7,6 +7,7 @@ import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
 import Footer from "@/components/footer";
 import { moveleft, moveright, moveup, rotateBounce } from "@/anim/variants";
+import AlternatingCards from "@/components/alternating-cards";
 
 export default function DocsPage() {
   return (
@@ -77,9 +78,11 @@ export default function DocsPage() {
               </motion.div>
             </motion.h1>
 
-            <Divider className="flex-1" />
             <Divider />
           </motion.div>
+          <div className="max-w-screen-xl mx-auto">
+            <AlternatingCards />
+          </div>
           <Footer />
         </div>
       </DefaultLayout>

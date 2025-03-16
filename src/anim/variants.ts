@@ -37,3 +37,10 @@ export const rotateBounce = {
     times: [0, 0.3, 0.7, 1],
   },
 };
+
+export const moverightfar = {
+  initial: { x: -400, opacity: 0 },
+  inView: { x: 0, opacity: 1 },
+  outOfView: { x: -400, opacity: 0 },
+  transition: { duration: 0.35, ease: "circOut" },
+};

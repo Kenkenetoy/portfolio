@@ -13,8 +13,9 @@ export const Footer = () => {
   return (
     <div className="space-y-4">
       <footer className="p-10 space-y-4 overflow-hidden border bg-default-50 rounded-2xl text-default-foreground border-default">
-        <motion.div className="h-40 footer sm:footer-horizontal">
+        <motion.div className="items-start h-40 footer sm:footer-horizontal place-items-center">
           <motion.nav
+            className="justify-self-start"
             exit="outOfView"
             initial="initial"
             transition={{ duration: 1, ease: "circOut" }}
@@ -39,7 +40,7 @@ export const Footer = () => {
                   ease: "linear",
                 }}
               >
-                <text className="text-lg font-bold tracking-wide fill-default-foreground">
+                <text className="text-lg font-bold tracking-wide pointer-events-none fill-default-foreground">
                   <textPath
                     href="#mediumCirclePath"
                     startOffset="50%"
@@ -161,11 +162,13 @@ export const Footer = () => {
               whileInView="inView"
             >
               <Button
+                as={Link}
                 className="gap-2 text-3xl"
                 color="default"
                 radius="full"
                 size="lg"
                 variant="ghost"
+                href="/blog"
               >
                 <span>Get in Touch!</span>
                 <IconLink />

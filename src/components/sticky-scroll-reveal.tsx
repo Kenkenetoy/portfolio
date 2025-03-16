@@ -182,15 +182,14 @@ export const StickyScroll = ({
               showArrow={true}
             >
               <Button
+                as={Link}
                 color="secondary"
+                href={content[activeCard]?.url?.demo ?? "#"}
                 isDisabled={!content[activeCard].url?.demo}
                 radius="full"
                 size="lg"
+                target="_blank"
                 variant="ghost"
-                onPress={() =>
-                  content[activeCard].url?.demo &&
-                  window.open(content[activeCard].url.demo, "_blank")
-                }
               >
                 <IconLink />
                 Site Link
@@ -200,13 +199,13 @@ export const StickyScroll = ({
               <Button
                 isIconOnly
                 aria-label="GitHub"
+                as={Link}
                 color="default"
+                href={content[activeCard].url?.github}
                 radius="full"
                 size="lg"
+                target="_blank"
                 variant="ghost"
-                onPress={() =>
-                  window.open(content[activeCard].url?.github, "_blank")
-                }
               >
                 <IconBrandGithub size={20} />
               </Button>

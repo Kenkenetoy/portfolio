@@ -12,7 +12,7 @@ import { ShareModal } from "./modal-for-links";
 import { FloatingDock } from "./floating-dock";
 
 import { siteConfig } from "@/config/site"; // Import siteConfig directly
-import { movedown, moveright, moveup } from "@/anim/variants";
+import { movedown, moveright, moverightfar, moveup } from "@/anim/variants";
 
 const links = siteConfig.socials.map((social) => ({
   title: social.title,
@@ -20,7 +20,7 @@ const links = siteConfig.socials.map((social) => ({
   href: social.link,
 }));
 
-const HeroSection: React.FC = () => {
+export const HeroSection = ({ the }: { the: boolean }) => {
   return (
     <div className="h-full w-full bg-background dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex flex-col justify-center items-center">
       <div
@@ -35,20 +35,20 @@ const HeroSection: React.FC = () => {
 
       <div className="z-10 flex flex-col justify-between w-full h-full">
         {/* Top Section */}
-        <motion.div
-          className="flex flex-col items-center justify-center w-full h-24 transition-colors ease-in-out border-default-foreground border-b-1 duration-250"
+        {/* <motion.div
+          className="flex justify-center w-full h-24 transition-colors ease-in-out border-default-foreground border-b-1 duration-250"
           initial="initial"
           transition={{ duration: 1, ease: "easeInOut" }}
           variants={movedown}
           viewport={{ once: true, amount: 0.1 }}
           whileInView="inView"
         >
-          <div className="grid items-center w-full grid-cols-3 px-4 font-medium place-items-end">
-            <p className="w-32 justify-self-start">
-              {"// Design, Code, Execute"}
-            </p>
+          <div className="grid items-center w-full grid-cols-3 px-4 font-medium">
+            <p className="w-32">{"placeholder"}</p>
+            <p className="w-32 justify-self-center">{"placeholder"}</p>
+            <p className="w-32 justify-self-end">{"placeholder"}</p>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Middle Section */}
         <motion.div
@@ -59,55 +59,68 @@ const HeroSection: React.FC = () => {
           viewport={{ once: true, amount: 0.1 }}
           whileInView="inView"
         >
-          <div>
-            <GlareCard>
-              <DraggableMockupPhone />
-            </GlareCard>
+          <div className="relative group">
+            <div className="relative z-50">
+              <GlareCard>
+                <DraggableMockupPhone />
+              </GlareCard>
+            </div>
+
+            {/* Tooltip with extended line */}
+            <span className="z-30 absolute left-[-175px] top-1/2 bg-default-foreground text-default-50 text-sm p-2 px-6 rounded-full opacity-0 group-hover:opacity-100 transition">
+              Swipe Down
+              {/* Line Extension */}
+              <span className="absolute w-10 h-px bg-default-foreground left-full top-1/2" />
+            </span>
           </div>
 
           <motion.section
+            className="flex flex-col justify-center space-y-12 max-w-[36rem]"
             initial="initial"
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            variants={moveright}
+            variants={moverightfar}
             viewport={{ once: true, amount: 0.1 }}
             whileInView="inView"
-            className="flex flex-col justify-center space-y-12 max-w-[36rem]"
           >
             <div className="justify-center inline-block max-w-3xl space-y-8 text-center">
               <div className="space-y-2">
-                <p className="text-xl font-normal">
-                  Hi, I am {siteConfig.name} from {siteConfig.location.province}
+                <p className="mx-auto text-xl font-normal ">
+                  {`/* Hi, I am ${siteConfig.name} based in ${the ? "the" : null}
+                  ${siteConfig.location.country},`}
                 </p>
                 <motion.h1
+                  className="flex items-start justify-center font-serif font-medium text-default-foreground"
                   initial="initial"
                   transition={{ duration: 1.75, ease: "circOut" }}
-                  variants={moveright}
+                  variants={moverightfar}
                   viewport={{ once: true, amount: 0.1 }}
                   whileInView="inView"
-                  className="font-serif font-medium uppercase text-8xl text-default-foreground"
                 >
-                  {siteConfig.hero_big}
+                  <p className="translate-y-10 text-nowrap">I&apos;m a</p>
+                  <h1 className="uppercase text-start text-8xl">
+                    {siteConfig.hero_big}
+                  </h1>
                 </motion.h1>
                 <motion.p
+                  className="max-w-md mx-auto text-xl font-normal"
                   initial="initial"
                   transition={{ duration: 1.75, ease: "easeInOut" }}
-                  variants={moveright}
+                  variants={moverightfar}
                   viewport={{ once: true, amount: 0.1 }}
                   whileInView="inView"
-                  className="text-xl font-normal"
                 >
-                  {siteConfig.hero_small}
+                  {`${siteConfig.hero_small} */`}
                 </motion.p>
               </div>
 
               {/* Buttons */}
               <motion.div
+                className="flex gap-4 mx-auto w-fit"
                 initial="initial"
                 transition={{ duration: 1.75, ease: "circOut" }}
                 variants={movedown}
                 viewport={{ once: true, amount: 0.1 }}
                 whileInView="inView"
-                className="flex gap-4 mx-auto w-fit"
               >
                 <ShareModal
                   className="gap-2"
@@ -149,22 +162,34 @@ const HeroSection: React.FC = () => {
 
         {/* Bottom Section */}
         <motion.div
+          className="flex justify-center w-full h-24 transition-colors ease-in-out border-default-foreground border-t-1 duration-250"
           initial="initial"
           transition={{ duration: 1, ease: "easeInOut" }}
           variants={moveup}
           viewport={{ once: true, amount: 0.1 }}
           whileInView="inView"
-          className="flex flex-col items-center justify-center w-full h-24 transition-colors ease-in-out border-default-foreground border-t-1 duration-250"
         >
-          <div className="grid items-center w-full grid-cols-3 px-4 font-medium place-items-end">
-            <p className="w-32 justify-self-start">
-              {"// Design, Code, Execute"}
-            </p>
+          <div className="grid items-center w-full grid-cols-3 px-4 font-medium">
+            {/* Left Section */}
+            <Button
+              as={Link}
+              className="items-center gap-2 p-0 pl-4 h-fit w-fit"
+              radius="full"
+              size="lg"
+              variant="ghost"
+              href="/blog"
+            >
+              <span className="text-lg ">Contact</span>
+              <div className="p-3 transition-colors ease-in-out rounded-full bg-default-foreground text-default">
+                <IconMail />
+              </div>
+            </Button>
 
+            {/* Center Section */}
             <FloatingDock items={links} mobileClassName="translate-y-20" />
 
-            {/* Email Section */}
-            <div className="flex items-center gap-2 pr-4 transition-colors ease-in-out rounded-full border-default duration-250 border-1">
+            {/* Right Section */}
+            <div className="flex items-center gap-2 pr-4 transition-colors ease-in-out rounded-full justify-self-end border-default duration-250 border-1">
               <div className="p-3 transition-colors ease-in-out rounded-full bg-default-foreground text-default">
                 <IconMail />
               </div>

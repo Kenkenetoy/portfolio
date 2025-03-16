@@ -49,7 +49,7 @@ export default function IndexPage() {
 
       <DefaultLayout>
         <div className="h-screen">
-          <HeroSection />
+          <HeroSection the={true} />
         </div>
         <div className="mx-auto space-y-24 text-3xl max-w-screen-2xl">
           <div className="flex flex-col gap-8">
@@ -134,6 +134,7 @@ export default function IndexPage() {
                 radius="full"
                 size="lg"
                 variant="ghost"
+                as={Link}
               >
                 <span className="text-lg">About Me</span>
                 <span>
@@ -195,8 +196,9 @@ export default function IndexPage() {
                 whileInView="inView"
               >
                 <Button
+                  as={Link}
                   className="p-8 text-lg"
-                  href="/about"
+                  href="/blog"
                   radius="full"
                   size="lg"
                   variant="ghost"
