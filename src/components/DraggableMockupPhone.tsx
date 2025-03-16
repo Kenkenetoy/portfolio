@@ -60,29 +60,27 @@ const fetchCurrentlyPlaying = async (accessToken: string) => {
 };
 
 export const DraggableMockupPhone = () => {
-  const [currentlyPlaying, setCurrentlyPlaying] = useState<any>(null);
+  // const [currentlyPlaying, setCurrentlyPlaying] = useState<any>(null);
 
-  useEffect(() => {
-    const authorizationCode = getAuthorizationCodeFromUrl();
+  // useEffect(() => {
+  //   const authorizationCode = getAuthorizationCodeFromUrl();
 
-    if (authorizationCode) {
-      // Fetch access token from the authorization code
-      getAccessToken(authorizationCode)
-        .then((accessToken) => {
-          // Fetch currently playing song from Spotify API
-          fetchCurrentlyPlaying(accessToken)
-            .then((data) => {
-              setCurrentlyPlaying(data);
-            })
-            .catch((error) => {
-              console.error("Error fetching currently playing song:", error);
-            });
-        })
-        .catch((error) => {
-          console.error("Error fetching access token:", error);
-        });
-    }
-  }, []);
+  //   if (authorizationCode) {
+  //     getAccessToken(authorizationCode)
+  //       .then((accessToken) => {
+  //         fetchCurrentlyPlaying(accessToken)
+  //           .then((data) => {
+  //             setCurrentlyPlaying(data);
+  //           })
+  //           .catch((error) => {
+  //             console.error("Error fetching currently playing song:", error);
+  //           });
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error fetching access token:", error);
+  //       });
+  //   }
+  // }, []);
 
   return (
     <div className="select-none mockup-phone cursor-grab active:cursor-grabbing">
