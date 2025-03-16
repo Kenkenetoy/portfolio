@@ -67,8 +67,9 @@ export const HeroSection = ({ the }: { the: boolean }) => {
             </div>
 
             {/* Tooltip with extended line */}
-            <span className="z-30 absolute left-[-175px] top-1/2 bg-default-foreground text-default-50 text-sm p-2 px-6 rounded-full opacity-0 group-hover:opacity-100 transition">
-              Swipe Down
+            <span className="flex flex-col z-30 absolute left-[-175px] top-1/2 bg-default-foreground text-default-50 text-sm p-2 px-6 rounded-full opacity-0 group-hover:opacity-100 transition">
+              <p>Swipe Down</p>
+              <p className="text-xs font-light">#comming soon</p>
               {/* Line Extension */}
               <span className="absolute w-10 h-px bg-default-foreground left-full top-1/2" />
             </span>
@@ -200,7 +201,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
                       isExternal
                       showAnchorIcon
                       anchorIcon={<IconLink size={20} />}
-                      className="flex flex-col p-2 space-y-2"
+                      className="flex flex-col p-2 space-y-2 text-xs"
                       color="foreground"
                       href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.second}`}
                       isBlock={true}

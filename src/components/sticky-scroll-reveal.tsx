@@ -6,11 +6,10 @@ import { Image } from "@heroui/image";
 import { Link } from "@heroui/link";
 import { Tooltip } from "@heroui/tooltip";
 import { Divider } from "@heroui/divider";
-import { IconBrandGithub, IconLink } from "@tabler/icons-react";
+import { IconBrandGithub, IconDownload, IconLink } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
-import React from "react";
 
-import { siteConfig } from "@/config/site"; // Import siteConfig
+// import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 const cardAnimation = (activeCard: number, index: number) => ({
@@ -24,6 +23,7 @@ export const StickyScroll = ({
   contentClassName,
 }: {
   content: {
+    extra?: { directdownload: string; title: string; description: string };
     title: string;
     type: string;
     description: string;
@@ -73,7 +73,7 @@ export const StickyScroll = ({
   return (
     <motion.div ref={ref} className="relative flex justify-center space-x-12 ">
       <div className="relative flex flex-col w-5/6 my-16 space-y-24">
-        {content.map((item, index) => (
+        {content.slice(0, 3).map((item, index) => (
           <motion.div
             key={item.title + index}
             animate={cardAnimation(activeCard, index)}
@@ -89,31 +89,24 @@ export const StickyScroll = ({
                   {item.type}
                 </motion.h4>
 
-                {item.stack.map((tech, i) => {
-                  const stackInfo =
-                    siteConfig.stack[tech as keyof typeof siteConfig.stack];
-
-                  if (!stackInfo) return null; // Skip if stackInfo is undefined
-
-                  return (
-                    <span key={i} className="text-xs ">
-                      {stackInfo.title}
-                      {i < item.stack.length - 1 && ", "}
+                <div className="flex gap-3">
+                  {item.stack.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="gap-4 text-sm font-medium text-default-foreground"
+                    >
+                      {tech}
+                      {i < item.stack.length - 1 && ","}
                     </span>
-                  );
-                })}
+                  ))}
+                </div>
               </div>
             </div>
 
             <Divider />
 
             <motion.p className="text-sm text-default-foreground">
-              {item.description.split("\n").map((line, index) => (
-                <React.Fragment key={index}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
+              {item.description.split("\n\n")[0]}
             </motion.p>
           </motion.div>
         ))}
@@ -149,7 +142,7 @@ export const StickyScroll = ({
                       isExternal
                       showAnchorIcon
                       anchorIcon={<IconLink size={20} />}
-                      className="flex flex-col p-2 space-y-2"
+                      className="flex flex-col p-2 space-y-2 text-xs"
                       color="foreground"
                       href={content?.[activeCard]?.url?.demo}
                       isBlock={true}
@@ -195,6 +188,34 @@ export const StickyScroll = ({
                 Site Link
               </Button>
             </Tooltip>
+            {content[activeCard].extra?.directdownload && (
+              <Tooltip
+                content={
+                  <div className="px-1 py-2">
+                    <div className="font-bold text-small">
+                      {content[activeCard].extra.title}
+                    </div>
+                    <div className="text-tiny">
+                      {content[activeCard].extra.description}
+                    </div>
+                  </div>
+                }
+                showArrow={true}
+              >
+                <Button
+                  aria-label="GitHub"
+                  as={Link}
+                  color="default"
+                  href={content[activeCard].extra.directdownload}
+                  radius="full"
+                  size="lg"
+                  target="_blank"
+                  variant="ghost"
+                >
+                  Download <IconDownload size={20} />
+                </Button>
+              </Tooltip>
+            )}
             {content[activeCard].url?.github && (
               <Button
                 isIconOnly

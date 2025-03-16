@@ -1,15 +1,18 @@
 /* eslint-disable prettier/prettier */
 import { motion, useScroll, useSpring } from "framer-motion";
+import { memo, useEffect } from "react";
 
 import { SidebarDemo } from "@/components/sidebar-bar";
-
-import { memo } from "react";
 
 const MemoizedMain = memo(function Main({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Reset scroll position on page change
+  }, [children]);
+
   return (
     <motion.main
       animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}

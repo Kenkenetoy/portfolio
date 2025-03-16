@@ -80,7 +80,7 @@ export default function DocsPage() {
 
             <Divider />
           </motion.div>
-          <div className="max-w-screen-xl mx-auto">
+          <div className="mx-auto w-[95%]">
             <AlternatingCards />
           </div>
           <Footer />

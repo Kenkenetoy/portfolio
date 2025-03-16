@@ -125,7 +125,7 @@ export const ShareModal = ({
                 Connect with me
               </ModalHeader>
               <ModalBody>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-default-500">
                   Clicking the links below will open Gmail in a new tab. This
                   method is secure as it directly opens Gmail’s official
                   website.
@@ -137,7 +137,7 @@ export const ShareModal = ({
                         isExternal
                         showAnchorIcon
                         anchorIcon={<IconLink size={20} />}
-                        className="flex flex-col p-2 space-y-2"
+                        className="flex flex-col p-2 space-y-2 text-xs"
                         color="foreground"
                         href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
                         isBlock={true}

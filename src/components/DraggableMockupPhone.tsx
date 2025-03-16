@@ -107,7 +107,7 @@ export const DraggableMockupPhone = () => {
             <p className="text-lg text-neutral-700 dark:text-gray-300">
               {siteConfig.role}
             </p>
-            {currentlyPlaying ? (
+            {/* {currentlyPlaying ? (
               <>
                 <Image
                   alt={currentlyPlaying.item.name}
@@ -131,7 +131,7 @@ export const DraggableMockupPhone = () => {
               </>
             ) : (
               <div>Nothing is currently playing.</div>
-            )}
+            )} */}
           </div>
         </div>
       </div>

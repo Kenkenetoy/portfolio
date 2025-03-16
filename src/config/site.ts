@@ -49,11 +49,14 @@ import {
   GitOriginal,
   PhpOriginal,
   AxiosPlain,
+  XmlOriginal,
+  WordpressOriginal,
+  AmazonwebservicesOriginalWordmark,
 } from "devicons-react";
 
 export const siteConfig = {
   name: "Kenneth Aparece",
-  logo: "public/202010300.jpg",
+  logo: "202010300.jpg",
   hero_big: "designer & developer",
   hero_small:
     "I blend design and development to create smooth digital experiences.",
@@ -243,6 +246,25 @@ export const siteConfig = {
         "A high-level programming language known for its text-processing capabilities.",
       devicon: PerlOriginal,
     },
+
+    xml: {
+      title: "XML",
+      description:
+        "A markup language used for defining structured data, commonly utilized in KRpano for scene configurations and settings.",
+      devicon: XmlOriginal, // Custom placeholder, replace with an actual icon if needed
+    },
+    wordpress: {
+      title: "WordPress",
+      description:
+        "A popular content management system (CMS) used for building websites and blogs. Known for its flexibility, vast plugin ecosystem, and user-friendly interface.",
+      devicon: WordpressOriginal, // Custom placeholder, replace with an actual icon if needed
+    },
+    aws: {
+      title: "Amazon Web Services (AWS)",
+      description:
+        "A comprehensive cloud computing platform offering scalable infrastructure, hosting, and cloud services. Commonly used for web hosting, database management, and email handling (including MX records for mail servers).",
+      devicon: AmazonwebservicesOriginalWordmark, // Custom placeholder, replace with an actual icon if needed
+    },
   },
 
   contents: [
@@ -250,19 +272,145 @@ export const siteConfig = {
       title: "VLOG: 01",
       type: "Capstone Project - Game Development",
       description:
-        "Despite having no prior game development experience, our capstone team created what is, for now, our magnum opus—a 3D horror puzzle game set in my school. Players solve puzzles, navigate dark hallways, and uncover hidden secrets while avoiding lurking threats.",
-      imageSrc: "public/Poster.png",
-      stack: ["unity", "blender"],
+        "Our capstone team created our first ever game—a 3D horror puzzle game set in my school. Solve puzzles, navigate dark hallways, and uncover secrets while avoiding threats.\n\nI am the junior programmer and graphics programmer. I meticulously build and optimize game assets, and integrate visuals in the system.",
+      feature_list: [
+        {
+          title: "3D Horror Environment",
+          description:
+            "Explore a realistic school setting with eerie lighting and atmospheric details.",
+        },
+        {
+          title: "Puzzle Mechanics",
+          description:
+            "Solve interactive puzzles that require logic and exploration.",
+        },
+        {
+          title: "Dynamic Lighting",
+          description:
+            "Implemented optimized real-time shadows and light effects for immersion.",
+        },
+        {
+          title: "Enemy AI",
+          description:
+            "Designed AI behavior that reacts to player movement and sound cues.",
+        },
+        {
+          title: "Performance Optimization",
+          description:
+            "Reduced asset load times and optimized rendering for smooth gameplay.",
+        },
+      ],
+      extra: {
+        directdownload: "https://example.com/game-download.zip",
+        title: "Updated Release",
+        description: "Download the latest revised version directly.",
+      },
+      imageSrc: "Poster.png",
+      stack: ["unity", "C#", "blender"],
       url: {
         demo: "https://sites.google.com/view/vlog-01",
         github: "",
       },
     },
     {
+      title: "Costa Vida",
+      type: "Interactive Virtual Tour",
+      description:
+        "An immersive 360° virtual tour of Costa Vida using KRpano. Designed to provide potential customers with an engaging preview of the property through seamless panoramic navigation and interactive hotspots.",
+      feature_list: [
+        {
+          title: "360° Panoramic Navigation",
+          description:
+            "Allows users to explore the property as if they were there in person.",
+        },
+        {
+          title: "Interactive Hotspots",
+          description:
+            "Embedded hotspots provide additional details, links, and multimedia content.",
+        },
+        {
+          title: "Mobile & Desktop Compatibility",
+          description:
+            "Fully responsive design ensuring smooth experience across devices.",
+        },
+        {
+          title: "Integrated 3D Assets in Real-World Panoramas",
+          description:
+            "Seamlessly blended 3D-rendered objects with real-world panoramic images to create an immersive and interactive experience. Ensured accurate lighting, perspective alignment, and smooth transitions for a natural look.",
+        },
+      ],
+      imageSrc: "https://heroui.com/images/card-example-2.jpeg",
+      stack: ["krpano", "javascript", "xml", "css", "blender"],
+      url: {
+        demo: "https://your-krpano-project-demo.com/",
+      },
+    },
+    {
+      title: "The Flying Pig",
+      type: "Interactive Virtual Tour",
+      description:
+        "A high-quality 360° virtual tour developed for Borromeo Bros Real Estate. Created to showcase The Flying Pig venue with a focus on engaging potential vendors and buyers through interactive elements and a seamless user experience.",
+      feature_list: [
+        {
+          title: "High-Resolution Panoramas",
+          description:
+            "Crisp, clear visuals to highlight the venue’s unique architecture.",
+        },
+        {
+          title: "SEO Optimization",
+          description:
+            "Structured metadata for better discoverability in search engines.",
+        },
+      ],
+      imageSrc: "https://heroui.com/images/card-example-2.jpeg",
+      stack: ["krpano", "javascript", "xml", "css", "blender"],
+      url: {
+        demo: "https://your-krpano-project-demo.com/",
+      },
+    },
+    {
+      title: "Ehrlich Ph",
+      type: "Corporate Website",
+      description:
+        "Revamped and optimized the Ehrlich Ph website after inheriting a bloated version from a past developer. Redesigned the UI/UX using Figma for a cleaner and more intuitive layout, then rebuilt the site for improved performance and maintainability. Additionally, troubleshot and resolved an AWS mail (MX) overload issue to ensure reliable email delivery.",
+      imageSrc: "https://heroui.com/images/card-example-2.jpeg",
+      stack: ["wordpress", "php", "css", "figma", "aws"],
+      url: {
+        demo: "https://your-company-website.com/",
+      },
+    },
+    {
       title: "Portfolio",
       type: "Front-end Project",
       description:
-        "A sleek, responsive, and interactive web portfolio with smooth transitions—built as a study in motion design and user experience.",
+        "A sleek, interactive web portfolio designed to showcase my projects, skills, and technical expertise. Built with modern front-end technologies, incorporating smooth transitions, light/dark mode, and optimized for mobile responsiveness.",
+      feature_list: [
+        {
+          title: "Smooth Animations",
+          description:
+            "Framer Motion-based animations for a dynamic browsing experience.",
+        },
+        {
+          title: "Dark & Light Mode",
+          description:
+            "Easily switch between themes with persistent state management.",
+        },
+        {
+          title: "Project Showcases",
+          description:
+            "Interactive sections displaying key projects with detailed case studies.",
+        },
+        {
+          title: "SEO & Performance Optimization",
+          description:
+            "Fast load times and structured metadata for better visibility.",
+        },
+        {
+          title: "Responsive Layout",
+          description:
+            "Fully adaptable for an optimal experience across all devices.",
+        },
+      ],
       imageSrc: "https://heroui.com/images/card-example-2.jpeg",
       stack: ["react", "typescript", "tailwind", "git"],
       url: {
