@@ -28,12 +28,12 @@ export const Navbar = () => {
           </Link>
         </NavbarBrand>
         <div className="justify-start hidden gap-4 ml-2 lg:flex">
-          {siteConfig.navItems.map((item) => (
+          {Object.values(siteConfig.navItems).map((item) => (
             <NavbarItem key={item.href}>
               <Link
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "data-[active=true]:text-primary data-[active=true]:font-medium"
                 )}
                 color="foreground"
                 href={item.href}
