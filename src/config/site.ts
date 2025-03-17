@@ -26,7 +26,6 @@ import {
   IconHomeFilled,
   IconBriefcaseFilled,
   IconAlignBoxLeftMiddleFilled,
-  IconPhoneFilled,
   IconMailFilled,
 } from "@tabler/icons-react";
 import {

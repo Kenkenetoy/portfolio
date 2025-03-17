@@ -1,19 +1,13 @@
 /* eslint-disable prettier/prettier */
 import { Helmet } from "react-helmet-async";
 import { Divider } from "@heroui/divider";
-import { IconCodeCircle2, IconPhone } from "@tabler/icons-react";
+import { IconPhone } from "@tabler/icons-react";
 import { motion } from "motion/react";
 
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
 import Footer from "@/components/footer";
-import {
-  moveleft,
-  moveright,
-  moveup,
-  ringing,
-  rotateBounce,
-} from "@/anim/variants";
+import { moveleft, moveright, moveup, ringing } from "@/anim/variants";
 import AlternatingCards from "@/components/alternating-cards";
 export default function DocsPage() {
   return (
