@@ -1,8 +1,14 @@
 /* eslint-disable prettier/prettier */
 import { Helmet } from "react-helmet-async";
 import { Divider } from "@heroui/divider";
-import { IconMoodSmileBeam } from "@tabler/icons-react";
+import {
+  IconArrowRight,
+  IconMoodSmileBeam,
+  IconMoonStars,
+  IconRecharging,
+} from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import { Button } from "@heroui/button";
 
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
@@ -14,6 +20,25 @@ import {
   rotateBounce,
   movedown,
 } from "@/anim/variants";
+import { VscodeOriginal } from "devicons-react";
+
+const content = [
+  {
+    test: "Design",
+    test2:
+      "With a proven track record in designing websites, I deliver robust and user-friendly digital designs that are seamlessly integrated with development. My expertise ensures that each project not only looks great but also performs flawlessly, providing an exceptional user experience from start to finish.",
+  },
+  {
+    test: "Development",
+    test2:
+      "I build scalable websites from scratch that fit seamlessly with design. My focus is on micro animations, transitions, and interaction. I use Next.js and React.js for development and incorporate GSAP and Framer Motion for animations",
+  },
+  {
+    test: "The full package",
+    test2:
+      "What sets me apart is my ability to deliver complete full-stack applications from concept to implementation. My keen eye for design, along with my expertise in frontend and backend development, including database integration, allows me to create exceptional projects",
+  },
+];
 
 export default function DocsPage() {
   return (
@@ -42,7 +67,19 @@ export default function DocsPage() {
         <meta content={siteConfig.meta_image} name="twitter:image" />
       </Helmet>
       <DefaultLayout>
-        <div className="pt-24 mx-auto max-w-screen-2xl ">
+        <svg height="0" width="0">
+          <defs>
+            <filter height="300%" id="glow" width="300%" x="-100%" y="-100%">
+              <feGaussianBlur result="blurred" stdDeviation="10" />
+              <feMerge>
+                <feMergeNode in="blurred" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+        </svg>
+        <div className="pt-24 mx-auto space-y-16 max-w-screen-2xl">
+          {/* Section 1 */}
           <motion.div
             className="space-y-8"
             initial="initial"
@@ -68,15 +105,25 @@ export default function DocsPage() {
                   viewport={{ once: true, amount: 1 }}
                   whileInView="inView"
                 >
-                  <motion.div className="p-2 transition-colors ease-in-out rounded-full w-fit bg-default-foreground duration-250">
+                  <motion.div
+                    className="p-2 transition-colors ease-in-out rounded-full w-fit bg-warning dark:bg-default-800 duration-250"
+                    style={{ filter: "url(#glow)" }}
+                  >
                     <motion.div
                       initial="initial"
                       transition={rotateBounce.transition}
                       variants={rotateBounce}
                       whileHover="hover"
                     >
+                      {/* Light Mode Icon */}
                       <IconMoodSmileBeam
-                        className="w-20 h-20 text-default-50"
+                        className="w-20 h-20 text-default-50 dark:hidden"
+                        stroke={1}
+                      />
+
+                      {/* Dark Mode Icon */}
+                      <IconMoonStars
+                        className="hidden w-20 h-20 text-default-50 dark:block"
                         stroke={1}
                       />
                     </motion.div>
@@ -94,19 +141,80 @@ export default function DocsPage() {
                 {siteConfig.hero_small}
               </motion.h2>
             </div>
-
-            <Divider />
-
-            <div className="font-sans">
+            <motion.div
+              className="relative flex items-center w-full"
+              initial="initial"
+              transition={{ duration: 0.35, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 1 }}
+              whileInView="inView"
+            >
+              <Divider className="flex-1" />
+              <motion.div className="absolute p-2 transition-colors ease-in-out rounded-full bg-default-foreground left-[90%] duration-250">
+                <motion.div
+                  initial="initial"
+                  transition={rotateBounce.transition}
+                  variants={rotateBounce}
+                  whileHover="hover"
+                >
+                  <VscodeOriginal />
+                </motion.div>
+              </motion.div>
+            </motion.div>
+            <div className="flex justify-between font-sans">
               <h3 className="max-w-2xl text-2xl">
                 As a Software Engineer, I excel in building scalable
                 applications, enhancing user experiences, and streamlining
                 development processes.
               </h3>
+              <p className="text-xs w-60">
+                My proficiency in design, coding, and interaction sets me apart
+                within the domain of software engineering.
+              </p>
             </div>
           </motion.div>
-          <div className="mx-auto w-[95%]" />
-
+          {/* Section 2 */}
+          <div className="space-y-20">
+            <div className="flex flex-col space-y-4 w-fit">
+              <p className="mx-auto font-serif text-4xl text-primary">
+                I can help you with
+              </p>
+              <div className="flex gap-12">
+                {content.map((test, index) => (
+                  <div key={index} className="space-y-4">
+                    <p className="text-default-500">
+                      {String(index + 1).padStart(2, "0")}.
+                    </p>{" "}
+                    {/* Format as 01, 02, 03 */}
+                    <Divider />
+                    <h4 className="font-serif text-4xl">{test.test}</h4>
+                    <p>{test.test2}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <motion.div
+              className="relative flex items-center w-full"
+              initial="initial"
+              transition={{ duration: 0.8, ease: "circOut" }}
+              variants={moveleft}
+              viewport={{ once: true, amount: 1 }}
+              whileInView="inView"
+            >
+              <Divider className="flex-1" />
+              <motion.div className="absolute left-[80%]">
+                <Button
+                  className="p-8 text-xl bg-default-50"
+                  color="default"
+                  radius="full"
+                  size="lg"
+                  variant="ghost"
+                >
+                  Contact Me <IconArrowRight />
+                </Button>
+              </motion.div>
+            </motion.div>
+          </div>
           <Footer />
         </div>
       </DefaultLayout>

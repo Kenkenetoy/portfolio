@@ -74,7 +74,7 @@ export const InfiniteMovingCards = ({
       <svg width="0" height="0">
         <defs>
           <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="3" result="blurred" />
+            <feGaussianBlur stdDeviation="10" result="blurred" />
             <feMerge>
               <feMergeNode in="blurred" />
               <feMergeNode in="SourceGraphic" />
