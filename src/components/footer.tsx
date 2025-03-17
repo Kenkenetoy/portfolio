@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Link } from "@heroui/link";
 import { motion } from "framer-motion";
-import { IconCodeCircle2, IconLink } from "@tabler/icons-react";
+import { IconArrowRight, IconCodeCircle2, IconLink } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
 
 import { TextHoverEffect } from "./text-hover-effect";
@@ -13,7 +13,7 @@ export const Footer = () => {
   return (
     <div className="space-y-4">
       <footer className="p-10 space-y-4 overflow-hidden border bg-default-50 rounded-2xl text-default-foreground border-default">
-        <motion.div className="items-start h-40 footer sm:footer-horizontal place-items-center">
+        <motion.div className="items-start h-40 footer sm:footer-horizontal place-items-center justify-evenly">
           <motion.nav
             className="justify-self-start"
             exit="outOfView"
@@ -112,25 +112,22 @@ export const Footer = () => {
 
           {/* Follow Me Section */}
           <motion.nav
+            className="w-40"
             initial="initial"
             transition={{ duration: 0.75, ease: "circOut" }}
             variants={moveright}
             viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
             whileInView="inView"
           >
+            <h6 className="font-bold text-large text-primary">3d Experience</h6>
             <div className="z-10 flex flex-col gap-2">
-              {siteConfig.socials.map(({ link, icon: Icon, title }) => (
-                <Link
-                  key={link}
-                  className="gap-2"
-                  color="foreground"
-                  href={link}
-                  target="_blank"
-                >
-                  <Icon size={24} />
-                  <span>{title}</span>
-                </Link>
-              ))}
+              <p>
+                I will be putting up my 3d experience using a webgl framework
+                soon.
+              </p>
+              <Button isDisabled radius="full" size="lg" variant="ghost">
+                Coming soon <IconArrowRight />
+              </Button>
             </div>
           </motion.nav>
         </motion.div>
@@ -165,10 +162,10 @@ export const Footer = () => {
                 as={Link}
                 className="gap-2 text-3xl"
                 color="default"
+                href={siteConfig.navItems.Contact.href}
                 radius="full"
                 size="lg"
                 variant="ghost"
-                href="/blog"
               >
                 <span>Get in Touch!</span>
                 <IconLink />

@@ -26,6 +26,8 @@ import {
   IconHomeFilled,
   IconBriefcaseFilled,
   IconAlignBoxLeftMiddleFilled,
+  IconPhoneFilled,
+  IconMailFilled,
 } from "@tabler/icons-react";
 import {
   ReactOriginal,
@@ -58,21 +60,20 @@ export const siteConfig = {
   Devmode: true,
 
   name: "Kenneth Aparece",
-  logo: "https://portfolio-kenprce09.vercel.app/228041565_1204885213317442_2861452606248897561_n.webp",
+  logo: "228041565_1204885213317442_2861452606248897561_n.webp",
   hero_big: "designer & developer",
   hero_small:
     "I blend design and development to create smooth digital experiences.",
   location: { province: ["Bohol"], country: ["Philippines"] },
   role: "Software Engineer",
 
-  url: "https://portfolio-kenprce09.vercel.app/",
+  url: "",
 
   meta_type: "website",
   meta_title: "Kenneth Aparece",
   meta_description:
     "Check out Kenneth's portfolio showcasing  latest projects and skills!",
-  meta_image:
-    "https://portfolio-kenprce09.vercel.app/228041565_1204885213317442_2861452606248897561_n.webp",
+  meta_image: "228041565_1204885213317442_2861452606248897561_n.webp",
 
   email: {
     first: "kennethjoseaparece@gmail.com",
@@ -90,6 +91,11 @@ export const siteConfig = {
       label: "About Me",
       href: "/about",
       icon: IconAlignBoxLeftMiddleFilled,
+    },
+    Contact: {
+      label: "Contact Me",
+      href: "/contact",
+      icon: IconMailFilled,
     },
   },
 
@@ -349,8 +355,7 @@ export const siteConfig = {
             "Seamlessly blended 3D-rendered objects with real-world panoramic images to create an immersive and interactive experience. Ensured accurate lighting, perspective alignment, and smooth transitions for a natural look.",
         },
       ],
-      imageSrc:
-        "https://portfolio-kenprce09.vercel.app/Screenshot2025-03-17132127.png",
+      imageSrc: "Screenshot2025-03-17132127.png",
       stack: ["krpano", "javascript", "xml", "css", "blender"],
       url: {
         demo: "https://mata.ph/costavida/",
@@ -373,8 +378,7 @@ export const siteConfig = {
             "Structured metadata for better discoverability in search engines.",
         },
       ],
-      imageSrc:
-        "https://portfolio-kenprce09.vercel.app/Screenshot2025-03-17161055.png",
+      imageSrc: "Screenshot2025-03-17161055.png",
       stack: ["krpano", "javascript", "xml", "css", "blender"],
       url: {
         demo: "https://borromeo.ph/tfpvirtualtour/",
@@ -385,8 +389,7 @@ export const siteConfig = {
       type: "Corporate Website",
       description:
         "Revamped and optimized the Ehrlich Ph website after inheriting a bloated version from a past developer. Redesigned the UI/UX using Figma for a cleaner and more intuitive layout, then rebuilt the site for improved performance and maintainability. Additionally, troubleshot and resolved an AWS mail (MX) overload issue to ensure reliable email delivery.",
-      imageSrc:
-        "https://portfolio-kenprce09.vercel.app/Screenshot2025-03-17155511.png",
+      imageSrc: "Screenshot2025-03-17155511.png",
       stack: ["wordpress", "php", "css", "figma", "aws"],
       url: {
         demo: "https://ehrlich.ph/",
@@ -424,8 +427,7 @@ export const siteConfig = {
             "Fully adaptable for an optimal experience across all devices.",
         },
       ],
-      imageSrc:
-        "https://portfolio-kenprce09.vercel.app/Screenshot2025-03-17155713.png",
+      imageSrc: "Screenshot2025-03-17155713.png",
       stack: ["react", "typescript", "tailwind", "git"],
       url: {
         demo: "https://portfolio-gamma-seven-14.vercel.app/",
@@ -464,8 +466,7 @@ export const siteConfig = {
             "Admins can manage most features, while Super Admins (future feature) have full control.",
         },
       ],
-      imageSrc:
-        "https://portfolio-kenprce09.vercel.app/Screenshot2025-03-17161401.png",
+      imageSrc: "Screenshot2025-03-17161401.png",
       stack: ["java", "sql", "netbeans", "jdbc", "xampp"],
       url: {
         demo: "",

@@ -41,6 +41,19 @@ export const rotateBounce = {
   },
 };
 
+export const ringing = {
+  initial: { rotate: 0 },
+  hover: {
+    rotate: [0, 15, 0],
+    transition: {
+      repeat: Infinity,
+      duration: 0.25,
+      ease: "easeInOut",
+    },
+  },
+  exit: { rotate: 0 },
+};
+
 export const happyBounce: Variants = {
   initial: { scale: 1, y: 0 }, // Reset position & scale
   hover: {

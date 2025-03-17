@@ -7,6 +7,7 @@ import DefaultLayout from "@/layouts/default";
 import IndexPage from "@/pages/index";
 import ProjectPage from "@/pages/project";
 import AboutPage from "@/pages/about";
+import ContactPage from "@/pages/contact";
 
 function App() {
   const location = useLocation();
@@ -19,6 +20,7 @@ function App() {
             <Route element={<IndexPage />} path="/" />
             <Route element={<ProjectPage />} path="/projects" />
             <Route element={<AboutPage />} path="/about" />
+            <Route element={<ContactPage />} path="/contact" />
           </Routes>
         </AnimatePresence>
       </DefaultLayout>

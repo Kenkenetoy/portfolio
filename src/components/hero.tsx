@@ -194,7 +194,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
               radius="full"
               size="lg"
               variant="ghost"
-              href="/blog"
+              href={siteConfig.navItems.Contact.href}
             >
               <span className="text-lg ">Contact</span>
               <div className="p-3 transition-colors ease-in-out rounded-full bg-default-foreground text-default">
