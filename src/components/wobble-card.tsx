@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
+import { containerVariants, cardVariants } from "@/anim/variants";
 
 export const WobbleCard = ({
   children,
@@ -77,25 +78,6 @@ export const WobbleCard = ({
       </div>
     </motion.section>
   );
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, x: -20 },
-  show: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
 };
 
 export function WobbleCardComponent() {

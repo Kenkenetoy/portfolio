@@ -46,7 +46,7 @@ const AlternatingCards = () => {
         >
           {/* Image Side */}
           <motion.div
-            className="overflow-hidden rounded-lg shadow-lg max-w-[50%] h-fit w-fit"
+            className="overflow-hidden rounded-lg shadow-md max-w-[50%] h-fit w-fit"
             transition={{ duration: 0.3 }}
             whileHover={{ scale: 1.05 }}
           >

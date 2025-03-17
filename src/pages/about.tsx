@@ -8,7 +8,16 @@ import {
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import { Button } from "@heroui/button";
-import { VscodeOriginal } from "devicons-react";
+import {
+  AftereffectsOriginal,
+  BlenderOriginal,
+  FigmaOriginal,
+  PhotoshopOriginal,
+  ThreedsmaxOriginal,
+  VisualstudioOriginal,
+  VscodeOriginal,
+} from "devicons-react";
+import { useEffect, useState } from "react";
 
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
@@ -19,27 +28,68 @@ import {
   moveleft,
   rotateBounce,
   movedown,
+  happyBounce,
+  sleepingBounce,
+  cardVariants,
+  containerVariants,
+  cardVariantsDown,
+  containerVariantsDown,
 } from "@/anim/variants";
 
 const content = [
   {
     test: "Design",
     test2:
-      "With a proven track record in designing websites, I deliver robust and user-friendly digital designs that are seamlessly integrated with development. My expertise ensures that each project not only looks great but also performs flawlessly, providing an exceptional user experience from start to finish.",
+      "I create clean and user-friendly designs that not only look good but also make websites easy to use. Every detail is carefully considered to ensure a smooth and enjoyable experience.",
   },
   {
     test: "Development",
     test2:
-      "I build scalable websites from scratch that fit seamlessly with design. My focus is on micro animations, transitions, and interaction. I use Next.js and React.js for development and incorporate GSAP and Framer Motion for animations",
+      "I build fast and responsive websites that bring designs to life. I focus on smooth animations, interactions, and performance using tools like Next.js, React.js, GSAP, and Framer Motion.",
   },
   {
-    test: "The full package",
+    test: "Complete Solutions",
     test2:
-      "What sets me apart is my ability to deliver complete full-stack applications from concept to implementation. My keen eye for design, along with my expertise in frontend and backend development, including database integration, allows me to create exceptional projects",
+      "From design to development, I handle everything needed to build a fully functional website. Whether it's the front-end, back-end, or database, I make sure everything works together seamlessly.",
   },
 ];
 
+const icons = [
+  VscodeOriginal,
+  VisualstudioOriginal,
+  FigmaOriginal,
+  PhotoshopOriginal,
+  AftereffectsOriginal,
+  ThreedsmaxOriginal,
+  BlenderOriginal,
+];
+
 export default function DocsPage() {
+  // ✅ Load theme from localStorage or system preference
+  const [isDark, setIsDark] = useState(() => {
+    return (
+      localStorage.getItem("theme") === "dark" ||
+      (!localStorage.getItem("theme") &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    );
+  });
+
+  // ✅ Apply dark mode on first render & on toggle
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDark]);
+
+  // ✅ Toggle Function
+  const toggleTheme = () => {
+    setIsDark((prev) => !prev);
+  };
+
   return (
     <>
       <Helmet>
@@ -80,7 +130,7 @@ export default function DocsPage() {
         <div className="mx-auto space-y-16 max-w-screen-2xl">
           {/* Section 1 */}
           <motion.div
-            className="space-y-16"
+            className="space-y-8"
             initial="initial"
             transition={{ duration: 0.25, ease: "circOut" }}
             variants={moveup}
@@ -106,26 +156,26 @@ export default function DocsPage() {
                   whileInView="inView"
                 >
                   <motion.div
-                    className="p-2 transition-colors ease-in-out rounded-full w-fit bg-warning dark:bg-default-800 duration-250"
-                    style={{ filter: "url(#glow)" }}
+                    className="p-2 transition-colors ease-in-out rounded-full cursor-pointer w-fit bg-warning dark:bg-default-800"
+                    onClick={toggleTheme} // Toggle theme on click
                   >
                     <motion.div
+                      className="text-6xl"
                       initial="initial"
-                      transition={rotateBounce.transition}
-                      variants={rotateBounce}
+                      variants={isDark ? sleepingBounce : happyBounce}
                       whileHover="hover"
                     >
-                      {/* Light Mode Icon */}
-                      <IconMoodSmileBeam
-                        className="w-20 h-20 text-default-50 dark:hidden"
-                        stroke={1}
-                      />
-
-                      {/* Dark Mode Icon */}
-                      <IconMoonStars
-                        className="hidden w-20 h-20 text-default-50 dark:block"
-                        stroke={1}
-                      />
+                      {isDark ? (
+                        <IconMoonStars
+                          className="w-20 h-20 text-default-50"
+                          stroke={1}
+                        />
+                      ) : (
+                        <IconMoodSmileBeam
+                          className="w-20 h-20 text-default-50"
+                          stroke={1}
+                        />
+                      )}
                     </motion.div>
                   </motion.div>
                 </motion.div>
@@ -151,27 +201,41 @@ export default function DocsPage() {
               whileInView="inView"
             >
               <Divider className="flex-1" />
-              <motion.div className="absolute p-4 transition-colors ease-in-out rounded-full bg-default-50 left-[90%] duration-250 shadow-lg">
-                <motion.div
-                  initial="initial"
-                  transition={rotateBounce.transition}
-                  variants={rotateBounce}
-                  whileHover="hover"
-                >
-                  <VscodeOriginal size={50} />
-                </motion.div>
+              <motion.div
+                animate="show"
+                className="flex items-center gap-4 right-4"
+                initial="hidden"
+                variants={containerVariants}
+              >
+                <div className="text-medium">Tools Used:</div>
+                {icons.map((Icon, index) => (
+                  <motion.div
+                    key={index}
+                    className="p-4 transition-colors ease-in-out rounded-full shadow-md bg-default-50 duration-250"
+                    variants={cardVariants} // Apply stagger animation
+                  >
+                    <motion.div
+                      initial="initial"
+                      transition={rotateBounce.transition}
+                      variants={rotateBounce}
+                      whileHover="hover"
+                    >
+                      <Icon size={50} />
+                    </motion.div>
+                  </motion.div>
+                ))}
               </motion.div>
             </motion.div>
             {/* last */}
             <div className="flex justify-between font-sans">
               <h3 className="max-w-2xl text-2xl">
-                As a Software Engineer, I excel in building scalable
-                applications, enhancing user experiences, and streamlining
-                development processes.
+                As a Software Engineer, I specialize in developing scalable
+                applications, optimizing user experiences, and improving
+                development workflows.
               </h3>
               <p className="text-xs w-60">
-                My proficiency in design, coding, and interaction sets me apart
-                within the domain of software engineering.
+                My expertise in design, coding, and user interaction
+                distinguishes me in the field of software engineering.
               </p>
             </div>
           </motion.div>
@@ -181,19 +245,27 @@ export default function DocsPage() {
               <p className="mx-auto font-serif text-4xl text-primary">
                 I can help you with
               </p>
-              <div className="flex gap-12">
+              <motion.div
+                animate="show"
+                className="flex gap-12"
+                initial="hidden"
+                variants={containerVariantsDown}
+              >
                 {content.map((test, index) => (
-                  <div key={index} className="space-y-4">
+                  <motion.div
+                    key={index}
+                    className="space-y-4"
+                    variants={cardVariantsDown}
+                  >
                     <p className="text-default-500">
                       {String(index + 1).padStart(2, "0")}.
-                    </p>{" "}
-                    {/* Format as 01, 02, 03 */}
+                    </p>
                     <Divider />
                     <h4 className="font-serif text-4xl">{test.test}</h4>
                     <p>{test.test2}</p>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
             <motion.div
               className="relative flex items-center w-full"
@@ -204,7 +276,7 @@ export default function DocsPage() {
               whileInView="inView"
             >
               <Divider className="flex-1" />
-              <motion.div className="absolute left-[80%]">
+              <motion.div>
                 <Button
                   className="p-8 text-xl bg-default-50"
                   color="default"
