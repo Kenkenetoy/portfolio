@@ -374,7 +374,8 @@ export const siteConfig = {
       type: "Corporate Website",
       description:
         "Revamped and optimized the Ehrlich Ph website after inheriting a bloated version from a past developer. Redesigned the UI/UX using Figma for a cleaner and more intuitive layout, then rebuilt the site for improved performance and maintainability. Additionally, troubleshot and resolved an AWS mail (MX) overload issue to ensure reliable email delivery.",
-      imageSrc: "https://heroui.com/images/card-example-2.jpeg",
+      imageSrc:
+        "https://portfolio-kenprce09.vercel.app/Screenshot2025-03-17155511.png",
       stack: ["wordpress", "php", "css", "figma", "aws"],
       url: {
         demo: "https://your-company-website.com/",
@@ -412,7 +413,8 @@ export const siteConfig = {
             "Fully adaptable for an optimal experience across all devices.",
         },
       ],
-      imageSrc: "https://heroui.com/images/card-example-2.jpeg",
+      imageSrc:
+        "https://portfolio-kenprce09.vercel.app/Screenshot2025-03-17155713.png",
       stack: ["react", "typescript", "tailwind", "git"],
       url: {
         demo: "https://portfolio-gamma-seven-14.vercel.app/",
