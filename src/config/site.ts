@@ -345,7 +345,7 @@ export const siteConfig = {
         "https://portfolio-kenprce09.vercel.app/Screenshot2025-03-17132127.png",
       stack: ["krpano", "javascript", "xml", "css", "blender"],
       url: {
-        demo: "https://your-krpano-project-demo.com/",
+        demo: "https://mata.ph/costavida/",
       },
     },
     {
@@ -365,10 +365,11 @@ export const siteConfig = {
             "Structured metadata for better discoverability in search engines.",
         },
       ],
-      imageSrc: "https://heroui.com/images/card-example-2.jpeg",
+      imageSrc:
+        "https://portfolio-kenprce09.vercel.app/Screenshot2025-03-17161055.png",
       stack: ["krpano", "javascript", "xml", "css", "blender"],
       url: {
-        demo: "https://your-krpano-project-demo.com/",
+        demo: "https://borromeo.ph/tfpvirtualtour/",
       },
     },
     {
@@ -380,7 +381,7 @@ export const siteConfig = {
         "https://portfolio-kenprce09.vercel.app/Screenshot2025-03-17155511.png",
       stack: ["wordpress", "php", "css", "figma", "aws"],
       url: {
-        demo: "https://your-company-website.com/",
+        demo: "https://ehrlich.ph/",
       },
     },
     {
