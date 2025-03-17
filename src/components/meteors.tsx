@@ -19,7 +19,7 @@ export const Meteors = ({
       initial={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {meteors.map((el, idx) => {
+      {meteors.map((idx) => {
         const meteorCount = number || 20;
         // Calculate position to evenly distribute meteors across container width
         const position = idx * (800 / meteorCount) - 400; // Spread across 800px range, centered
