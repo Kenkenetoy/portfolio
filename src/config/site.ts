@@ -56,7 +56,7 @@ import {
 
 export const siteConfig = {
   name: "Kenneth Aparece",
-  logo: "202010300.jpg",
+  logo: "https://portfolio-kenprce09.vercel.app/202010300.jpg",
   hero_big: "designer & developer",
   hero_small:
     "I blend design and development to create smooth digital experiences.",
