@@ -5,10 +5,10 @@ import {
   IconArrowRight,
   IconMoodSmileBeam,
   IconMoonStars,
-  IconRecharging,
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import { Button } from "@heroui/button";
+import { VscodeOriginal } from "devicons-react";
 
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
@@ -20,7 +20,6 @@ import {
   rotateBounce,
   movedown,
 } from "@/anim/variants";
-import { VscodeOriginal } from "devicons-react";
 
 const content = [
   {
@@ -78,7 +77,7 @@ export default function DocsPage() {
             </filter>
           </defs>
         </svg>
-        <div className="pt-24 mx-auto space-y-16 max-w-screen-2xl">
+        <div className="mx-auto space-y-16 max-w-screen-2xl">
           {/* Section 1 */}
           <motion.div
             className="space-y-8"
@@ -97,7 +96,7 @@ export default function DocsPage() {
                 viewport={{ once: true, amount: 0.2 }}
                 whileInView="inView"
               >
-                Hello I am {siteConfig.name}{" "}
+                Hello, I am {siteConfig.name}{" "}
                 <motion.div
                   initial="initial"
                   transition={{ duration: 0.75, ease: "circOut" }}
