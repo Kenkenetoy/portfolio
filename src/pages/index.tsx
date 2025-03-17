@@ -130,7 +130,7 @@ export default function IndexPage() {
             >
               <Button
                 className="p-8 text-lg"
-                href="/about"
+                href={siteConfig.navItems.About.href}
                 radius="full"
                 size="lg"
                 variant="ghost"
@@ -198,7 +198,7 @@ export default function IndexPage() {
                 <Button
                   as={Link}
                   className="p-8 text-lg"
-                  href="/blog"
+                  href={siteConfig.navItems.Projects.href}
                   radius="full"
                   size="lg"
                   variant="ghost"
@@ -253,7 +253,7 @@ export default function IndexPage() {
             >
               <Link
                 className="p-8 text-lg text-default-foreground"
-                href="/about"
+                href={siteConfig.navItems.About.href}
                 underline="always"
               >
                 <span>See More In About Me</span>

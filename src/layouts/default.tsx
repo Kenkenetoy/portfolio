@@ -39,12 +39,10 @@ export default function DefaultLayout({
 
   return (
     <div className="relative flex min-h-screen font-sans">
-      {/* ✅ Sidebar is static */}
       <div className="z-50 ">
         <SidebarDemo />
       </div>
 
-      {/* Scroll Progress Bar */}
       <motion.div
         className="fixed z-50 top-0 left-0 right-0 h-[5px] bg-secondary origin-left"
         style={{ scaleX }}

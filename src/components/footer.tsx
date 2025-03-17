@@ -77,7 +77,7 @@ export const Footer = () => {
           >
             <h6 className="font-bold text-large text-danger">Explore</h6>
             <div className="z-10 flex flex-col gap-2">
-              {siteConfig.navItems.map((item) => (
+              {Object.values(siteConfig.navItems).map((item) => (
                 <Link key={item.label} color="foreground" href={item.href}>
                   {item.label}
                 </Link>

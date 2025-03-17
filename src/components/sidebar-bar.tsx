@@ -35,7 +35,7 @@ export function SidebarDemo() {
               </span>
             </Link>
             <div className="flex flex-col gap-2 mt-8">
-              {siteConfig.navItems.map((navItem, idx) => (
+              {Object.values(siteConfig.navItems).map((navItem, idx) => (
                 <SidebarLink
                   key={idx}
                   link={{

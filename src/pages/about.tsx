@@ -36,7 +36,6 @@ import {
   cardVariantsDown,
   containerVariantsDown,
 } from "@/anim/variants";
-import { Meteors } from "@/components/meteors";
 
 const content = [
   {
@@ -285,7 +284,6 @@ export default function DocsPage() {
             </motion.div>
           </div>
           <Footer />
-          <Meteors className="w-fit h-fit" number={20} />
         </div>
       </DefaultLayout>
     </>

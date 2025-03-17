@@ -79,11 +79,19 @@ export const siteConfig = {
     second: "yonascarren@gmail.com",
   },
 
-  navItems: [
-    { label: "Home", href: "/", icon: IconHomeFilled },
-    { label: "Projects", href: "/blog", icon: IconBriefcaseFilled },
-    { label: "About Me", href: "/about", icon: IconAlignBoxLeftMiddleFilled },
-  ],
+  navItems: {
+    Home: { label: "Home", href: "/", icon: IconHomeFilled },
+    Projects: {
+      label: "Projects",
+      href: "/projects",
+      icon: IconBriefcaseFilled,
+    },
+    About: {
+      label: "About Me",
+      href: "/about",
+      icon: IconAlignBoxLeftMiddleFilled,
+    },
+  },
 
   navMenuItems: [{ label: "Projects", href: "/projects" }],
 
