@@ -98,7 +98,7 @@ export const DraggableMockupPhone = () => {
             alt="Woman listening to music"
             className="object-cover pointer-events-none select-none"
             draggable={false}
-            src="public\202010300.jpg"
+            src={siteConfig.logo}
           />
           <div>
             <p className="text-2xl text-neutral-900 dark:text-whitetext-neutral-900 dark:text-white">
@@ -107,30 +107,31 @@ export const DraggableMockupPhone = () => {
             <p className="text-lg text-neutral-700 dark:text-gray-300">
               {siteConfig.role}
             </p>
-            {currentlyPlaying ? (
-              <>
-                <Image
-                  alt={currentlyPlaying.item.name}
-                  className="object-cover pointer-events-none select-none"
-                  draggable={false}
-                  src={currentlyPlaying.item.album.images[0].url}
-                />
-                <div>
-                  <p className="text-2xl text-neutral-900 dark:text-whitetext-neutral-900 dark:text-white">
-                    {currentlyPlaying.item.name}
-                  </p>
-                  <p className="text-lg text-neutral-700 dark:text-gray-300">
-                    {currentlyPlaying.item.artists
-                      .map((artist: any) => artist.name)
-                      .join(", ")}
-                  </p>
-                  <p className="text-lg text-neutral-700 dark:text-gray-300">
-                    Now Playing on Spotify
-                  </p>
-                </div>
-              </>
-            ) : null
-            // <div>Nothing is currently playing.</div>
+            {
+              currentlyPlaying ? (
+                <>
+                  <Image
+                    alt={currentlyPlaying.item.name}
+                    className="object-cover pointer-events-none select-none"
+                    draggable={false}
+                    src={currentlyPlaying.item.album.images[0].url}
+                  />
+                  <div>
+                    <p className="text-2xl text-neutral-900 dark:text-whitetext-neutral-900 dark:text-white">
+                      {currentlyPlaying.item.name}
+                    </p>
+                    <p className="text-lg text-neutral-700 dark:text-gray-300">
+                      {currentlyPlaying.item.artists
+                        .map((artist: any) => artist.name)
+                        .join(", ")}
+                    </p>
+                    <p className="text-lg text-neutral-700 dark:text-gray-300">
+                      Now Playing on Spotify
+                    </p>
+                  </div>
+                </>
+              ) : null
+              // <div>Nothing is currently playing.</div>
             }
           </div>
         </div>

@@ -339,7 +339,8 @@ export const siteConfig = {
             "Seamlessly blended 3D-rendered objects with real-world panoramic images to create an immersive and interactive experience. Ensured accurate lighting, perspective alignment, and smooth transitions for a natural look.",
         },
       ],
-      imageSrc: "https://heroui.com/images/card-example-2.jpeg",
+      imageSrc:
+        "https://portfolio-kenprce09.vercel.app/Screenshot2025-03-17132127.png",
       stack: ["krpano", "javascript", "xml", "css", "blender"],
       url: {
         demo: "https://your-krpano-project-demo.com/",
