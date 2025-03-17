@@ -28,8 +28,8 @@ export const Navbar = () => {
           </Link>
         </NavbarBrand>
         <div className="justify-start hidden gap-4 ml-2 lg:flex">
-          {Object.values(siteConfig.navItems).map((item) => (
-            <NavbarItem key={item.href}>
+          {Object.values(siteConfig.navItems).map((item, idx) => (
+            <NavbarItem key={idx}>
               <Link
                 className={clsx(
                   linkStyles({ color: "foreground" }),
