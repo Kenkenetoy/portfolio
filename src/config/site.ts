@@ -58,7 +58,7 @@ export const siteConfig = {
   Devmode: true,
 
   name: "Kenneth Aparece",
-  logo: "https://portfolio-kenprce09.vercel.app/202010300.jpg",
+  logo: "https://portfolio-kenprce09.vercel.app/228041565_1204885213317442_2861452606248897561_n.webp",
   hero_big: "designer & developer",
   hero_small:
     "I blend design and development to create smooth digital experiences.",

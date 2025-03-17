@@ -17,7 +17,8 @@ import {
   VisualstudioOriginal,
   VscodeOriginal,
 } from "devicons-react";
-import { useEffect, useState } from "react";
+import { useTheme } from "@heroui/use-theme";
+import { useState, useEffect } from "react";
 
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
@@ -35,6 +36,7 @@ import {
   cardVariantsDown,
   containerVariantsDown,
 } from "@/anim/variants";
+import { Meteors } from "@/components/meteors";
 
 const content = [
   {
@@ -65,29 +67,18 @@ const icons = [
 ];
 
 export default function DocsPage() {
-  // ✅ Load theme from localStorage or system preference
-  const [isDark, setIsDark] = useState(() => {
-    return (
-      localStorage.getItem("theme") === "dark" ||
-      (!localStorage.getItem("theme") &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    );
-  });
+  const { theme, setTheme } = useTheme();
+  const [currentTheme, setCurrentTheme] = useState(theme);
 
-  // ✅ Apply dark mode on first render & on toggle
   useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [isDark]);
+    setCurrentTheme(theme); // Update state when theme changes
+  }, [theme]);
 
-  // ✅ Toggle Function
   const toggleTheme = () => {
-    setIsDark((prev) => !prev);
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+
+    setTheme(newTheme);
+    setCurrentTheme(newTheme); // Ensure local state updates
   };
 
   return (
@@ -156,26 +147,30 @@ export default function DocsPage() {
                   whileInView="inView"
                 >
                   <motion.div
-                    className="p-2 transition-colors ease-in-out rounded-full cursor-pointer w-fit bg-warning dark:bg-default-800"
+                    className="p-2 transition-colors ease-in-out rounded-full cursor-pointer select-none w-fit bg-warning dark:bg-default-800"
                     onClick={toggleTheme} // Toggle theme on click
                   >
                     <motion.div
-                      className="text-6xl"
+                      className="hidden text-6xl dark:block"
                       initial="initial"
-                      variants={isDark ? sleepingBounce : happyBounce}
+                      variants={sleepingBounce}
                       whileHover="hover"
                     >
-                      {isDark ? (
-                        <IconMoonStars
-                          className="w-20 h-20 text-default-50"
-                          stroke={1}
-                        />
-                      ) : (
-                        <IconMoodSmileBeam
-                          className="w-20 h-20 text-default-50"
-                          stroke={1}
-                        />
-                      )}
+                      <IconMoonStars
+                        className="w-20 h-20 text-default-50"
+                        stroke={1}
+                      />
+                    </motion.div>
+                    <motion.div
+                      className="block text-6xl dark:hidden"
+                      initial="initial"
+                      variants={happyBounce}
+                      whileHover="hover"
+                    >
+                      <IconMoodSmileBeam
+                        className="w-20 h-20 text-default-50 dark:hidden"
+                        stroke={1}
+                      />
                     </motion.div>
                   </motion.div>
                 </motion.div>
@@ -290,6 +285,7 @@ export default function DocsPage() {
             </motion.div>
           </div>
           <Footer />
+          <Meteors className="w-fit h-fit" number={20} />
         </div>
       </DefaultLayout>
     </>

@@ -72,11 +72,12 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           ),
         })}
       >
-        {isSelected ? (
+        <div className="hidden dark:block">
           <MoonFilledIcon size={22} />
-        ) : (
+        </div>
+        <div className="block dark:hidden">
           <SunFilledIcon size={22} />
-        )}
+        </div>
       </div>
     </Component>
   );

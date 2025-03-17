@@ -97,7 +97,9 @@ export const HeroSection = ({ the }: { the: boolean }) => {
                   viewport={{ once: true, amount: 0.1 }}
                   whileInView="inView"
                 >
-                  <p className="translate-y-10 text-nowrap">I&apos;m a</p>
+                  <p className="font-normal translate-y-10 text-nowrap">
+                    I&apos;m a
+                  </p>
                   <h1 className="uppercase text-start text-8xl">
                     {siteConfig.hero_big}
                   </h1>
