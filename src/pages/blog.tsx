@@ -8,7 +8,6 @@ import { siteConfig } from "@/config/site";
 import Footer from "@/components/footer";
 import { moveleft, moveright, moveup, rotateBounce } from "@/anim/variants";
 import AlternatingCards from "@/components/alternating-cards";
-
 export default function DocsPage() {
   return (
     <>
@@ -83,6 +82,7 @@ export default function DocsPage() {
           <div className="mx-auto w-[95%]">
             <AlternatingCards />
           </div>
+
           <Footer />
         </div>
       </DefaultLayout>

@@ -418,6 +418,85 @@ export const siteConfig = {
         github: "https://github.com/Kenkenetoy/portfolio",
       },
     },
+    {
+      title: "Realty CMS",
+      type: "Full-Stack Application",
+      description:
+        "A simple CMS built for realtors using Java and SQL, allowing real estate professionals to manage properties, user accounts, and statistics through an interactive and stylish dashboard. Features automated SQL setup for new devices and extensive CRUD functionality.\n\nRequires Java JDK and Xampp/Laragon",
+      feature_list: [
+        {
+          title: "Automated SQL Generation",
+          description:
+            "Automatically configures the database when deployed on a new device.",
+        },
+        {
+          title: "User Authentication & Management",
+          description:
+            "Users can register, log in, and modify credentials securely.",
+        },
+        {
+          title: "Property Management",
+          description:
+            "Create, edit, archive, and delete property listings with images and value adjustments.",
+        },
+        {
+          title: "Realty Statistics Dashboard",
+          description:
+            "Provides insights into real estate performance and property records.",
+        },
+        {
+          title: "Admin Privileges & Security",
+          description:
+            "Admins can manage most features, while Super Admins (future feature) have full control.",
+        },
+      ],
+      imageSrc: "https://heroui.com/images/card-example-2.jpeg",
+      stack: ["java", "sql", "netbeans", "jdbc", "xampp"],
+      url: {
+        demo: "",
+        github: "",
+      },
+    },
+
+    {
+      title: "Down ATM",
+      type: "Web Application",
+      description:
+        "A fictional tourism promotion website for the Philippines, built using Laravel 11 and Bootstrap 5.3. Features an intuitive UI for browsing attractions, making reservations, and managing users through an administrative panel.",
+      feature_list: [
+        {
+          title: "Tourist Attraction Listings",
+          description:
+            "Users can browse available destinations with descriptions and images.",
+        },
+        {
+          title: "User Authentication & Booking",
+          description:
+            "Visitors can register, log in, and make reservations seamlessly.",
+        },
+        {
+          title: "Admin & Superadmin Dashboard",
+          description:
+            "Admins manage attractions and user data, while Superadmins have full privileges, including restoring archived data and granting/removing admin roles.",
+        },
+        {
+          title: "Model-View-Controller (MVC) Architecture",
+          description:
+            "Laravel’s structured approach improves maintainability and scalability.",
+        },
+        {
+          title: "Bootstrap-Powered Responsiveness",
+          description:
+            "Ensures a clean, mobile-friendly design for all screen sizes.",
+        },
+      ],
+      imageSrc: "https://heroui.com/images/card-example-2.jpeg",
+      stack: ["laravel", "php", "bootstrap", "mysql"],
+      url: {
+        demo: "",
+        github: "",
+      },
+    },
   ],
 
   whatIDoData: [

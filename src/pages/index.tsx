@@ -103,7 +103,7 @@ export default function IndexPage() {
               viewport={{ once: true, amount: 1 }}
               whileInView="inView"
             >
-              <p className="text-4xl font-medium w-96 text-secondary">
+              <p className="text-4xl font-medium w-96 text-primary">
                 Engineering Scalable Systems
               </p>
             </motion.div>

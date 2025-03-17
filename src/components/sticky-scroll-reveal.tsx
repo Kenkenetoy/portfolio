@@ -127,7 +127,6 @@ export const StickyScroll = ({
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           <Image
-            isBlurred
             alt={content[activeCard].title}
             className="object-cover w-full aspect-[6/3]" // Adjust aspect ratio as needed
             src={content[activeCard].imageSrc}
@@ -176,13 +175,13 @@ export const StickyScroll = ({
             >
               <Button
                 as={Link}
-                color="secondary"
+                color="primary"
                 href={content[activeCard]?.url?.demo ?? "#"}
                 isDisabled={!content[activeCard].url?.demo}
                 radius="full"
                 size="lg"
                 target="_blank"
-                variant="ghost"
+                variant="solid"
               >
                 <IconLink />
                 Site Link

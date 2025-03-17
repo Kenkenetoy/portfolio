@@ -21,6 +21,7 @@
     "@heroui/link": "2.2.11",
     "@heroui/modal": "^2.2.12",
     "@heroui/navbar": "2.2.12",
+    "@heroui/pagination": "^2.2.14",
     "@heroui/switch": "2.2.12",
     "@heroui/system": "2.4.10",
     "@heroui/tabs": "^2.2.13",

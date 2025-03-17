@@ -125,10 +125,10 @@ export const HeroSection = ({ the }: { the: boolean }) => {
               >
                 <ShareModal
                   className="gap-2"
-                  color="secondary"
+                  color="primary"
                   radius="full"
                   size="lg"
-                  variant="ghost"
+                  variant="shadow"
                 >
                   <span className="text-lg ">Contact</span>
                   <span>
