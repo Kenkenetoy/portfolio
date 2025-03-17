@@ -80,13 +80,14 @@ export default function DocsPage() {
         <div className="mx-auto space-y-16 max-w-screen-2xl">
           {/* Section 1 */}
           <motion.div
-            className="space-y-8"
+            className="space-y-16"
             initial="initial"
             transition={{ duration: 0.25, ease: "circOut" }}
             variants={moveup}
             viewport={{ once: true, amount: 0.1 }}
             whileInView="inView"
           >
+            {/* 1st */}
             <div className="space-y-4 font-serif">
               <motion.h1
                 className="flex items-center gap-8 text-7xl"
@@ -140,6 +141,7 @@ export default function DocsPage() {
                 {siteConfig.hero_small}
               </motion.h2>
             </div>
+            {/* 2nd */}
             <motion.div
               className="relative flex items-center w-full"
               initial="initial"
@@ -149,17 +151,18 @@ export default function DocsPage() {
               whileInView="inView"
             >
               <Divider className="flex-1" />
-              <motion.div className="absolute p-2 transition-colors ease-in-out rounded-full bg-default-foreground left-[90%] duration-250">
+              <motion.div className="absolute p-4 transition-colors ease-in-out rounded-full bg-default-50 left-[90%] duration-250 shadow-lg">
                 <motion.div
                   initial="initial"
                   transition={rotateBounce.transition}
                   variants={rotateBounce}
                   whileHover="hover"
                 >
-                  <VscodeOriginal />
+                  <VscodeOriginal size={50} />
                 </motion.div>
               </motion.div>
             </motion.div>
+            {/* last */}
             <div className="flex justify-between font-sans">
               <h3 className="max-w-2xl text-2xl">
                 As a Software Engineer, I excel in building scalable

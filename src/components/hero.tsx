@@ -112,6 +112,17 @@ export const HeroSection = ({ the }: { the: boolean }) => {
                 >
                   {`${siteConfig.hero_small} */`}
                 </motion.p>
+                <motion.p
+                  className="max-w-md mx-auto text-xl font-normal text-primary"
+                  initial="initial"
+                  transition={{ duration: 1.75, ease: "easeInOut" }}
+                  variants={moverightfar}
+                  viewport={{ once: true, amount: 0.1 }}
+                  whileInView="inView"
+                >
+                  This site is currently under construction. Some media, links,
+                  and pages may be unavailable. But feel free to look around!
+                </motion.p>
               </div>
 
               {/* Buttons */}
