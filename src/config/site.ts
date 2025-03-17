@@ -55,6 +55,8 @@ import {
 } from "devicons-react";
 
 export const siteConfig = {
+  Devmode: true,
+
   name: "Kenneth Aparece",
   logo: "https://portfolio-kenprce09.vercel.app/202010300.jpg",
   hero_big: "designer & developer",
@@ -453,7 +455,8 @@ export const siteConfig = {
             "Admins can manage most features, while Super Admins (future feature) have full control.",
         },
       ],
-      imageSrc: "https://heroui.com/images/card-example-2.jpeg",
+      imageSrc:
+        "https://portfolio-kenprce09.vercel.app/Screenshot2025-03-17161401.png",
       stack: ["java", "sql", "netbeans", "jdbc", "xampp"],
       url: {
         demo: "",
