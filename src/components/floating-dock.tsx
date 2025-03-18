@@ -104,7 +104,7 @@ const FloatingDockDesktop = ({
   return (
     <motion.div
       className={cn(
-        "mx-auto flex gap-4 items-end rounded-full border border-gray-300 dark:border-neutral-800  overflow-visible min-w-max h-[50px] "
+        "mx-auto flex gap-2 items-end rounded-full border border-gray-300 dark:border-neutral-800  overflow-visible min-w-max h-[50px] "
       )}
       onMouseLeave={() => mouseX.set(Infinity)}
       onMouseMove={(e) => mouseX.set(e.pageX)}
@@ -192,6 +192,7 @@ function IconContainer({
             </motion.div>
           )}
         </AnimatePresence>
+        
         <div className="flex items-center justify-center w-12 h-12 transition ease-in-out rounded-full duration-250 bg-default-foreground">
           <motion.div
             className="flex items-center justify-center"

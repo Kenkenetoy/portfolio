@@ -13,7 +13,7 @@ import { ShareModal } from "./modal-for-links";
 import { FloatingDock } from "./floating-dock";
 
 import { siteConfig } from "@/config/site"; // Import siteConfig directly
-import { movedown, moveright, moverightfar, moveup } from "@/anim/variants";
+import { movedown, moveright, moveup } from "@/anim/variants";
 
 const links = siteConfig.socials.map((social) => ({
   title: social.title,
@@ -36,7 +36,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
   }, []);
 
   return (
-    <div className="h-full  w-full bg-background dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex flex-col justify-center items-center">
+    <div className="h-full w-screen md:w-full bg-background dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex flex-col justify-center items-center">
       <div
         className="absolute inset-0 flex items-center justify-center bg-background "
         style={{
@@ -48,22 +48,6 @@ export const HeroSection = ({ the }: { the: boolean }) => {
       />
 
       <div className="z-10 flex flex-col justify-between w-full h-full">
-        {/* Top Section */}
-        {/* <motion.div
-          className="flex justify-center w-full h-24 transition-colors ease-in-out border-default-foreground border-b-1 duration-250"
-          initial="initial"
-          transition={{ duration: 1, ease: "easeInOut" }}
-          variants={movedown}
-          viewport={{ once: true, amount: 0.1 }}
-          whileInView="inView"
-        >
-          <div className="grid items-center w-full grid-cols-3 px-4 font-medium">
-            <p className="w-32">{"placeholder"}</p>
-            <p className="w-32 justify-self-center">{"placeholder"}</p>
-            <p className="w-32 justify-self-end">{"placeholder"}</p>
-          </div>
-        </motion.div> */}
-
         {/* Middle Section */}
         <motion.div
           className="flex items-center justify-center h-full gap-12 font-bold text-center"
@@ -90,40 +74,58 @@ export const HeroSection = ({ the }: { the: boolean }) => {
               <span className="absolute w-10 h-px bg-default-foreground left-full top-1/2" />
             </span>
           </div>
-
+          {/* Text Block */}
           <motion.section
-            className="flex flex-col justify-center space-y-12 max-w-[36rem]"
+            className="flex flex-col justify-center space-y-8 max-w-[36rem] p-4 md:p-0"
             initial="initial"
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            variants={moverightfar}
+            variants={moveright}
             viewport={{ once: true, amount: 0.1 }}
             whileInView="inView"
           >
-            <div className="space-y-2">
-              <p className="mx-auto text-xl font-normal ">
-                {`/* Hi, I am ${siteConfig.name} based in ${the ? "the" : null}
-                  ${siteConfig.location.country},`}
-              </p>
-              <motion.h1
-                className="flex items-start justify-center font-serif font-medium text-default-foreground"
+            <div className="space-y-2 ">
+              <motion.div
+                className="block mx-auto md:hidden lg:hidden w-fit"
                 initial="initial"
                 transition={{ duration: 1.75, ease: "circOut" }}
-                variants={moverightfar}
+                variants={moveright}
                 viewport={{ once: true, amount: 0.1 }}
                 whileInView="inView"
               >
-                <p className="font-normal md:translate-y-10 text-nowrap">
+                <Image
+                  alt="Kenneth's Profile Picture"
+                  shadow="md"
+                  draggable={false}
+                  width={200}
+                  radius="full"
+                  src={siteConfig.logo}
+                />
+              </motion.div>
+
+              <p className="mx-auto text-sm font-normal sm:text-base md:text-xl">
+                {`/* Hi, I am ${siteConfig.name} based in ${the ? "the" : ""}
+        ${siteConfig.location.country},`}
+              </p>
+              <motion.h1
+                className="flex items-center justify-center gap-2 font-serif font-medium md:gap-0 text-default-foreground"
+                initial="initial"
+                transition={{ duration: 1.75, ease: "circOut" }}
+                variants={moveright}
+                viewport={{ once: true, amount: 0.1 }}
+                whileInView="inView"
+              >
+                <p className="text-xs font-normal -translate-y-0 md:-translate-y-10 sm:text-sm md:text-lg text-nowrap">
                   I&apos;m a
                 </p>
-                <h1 className="text-4xl uppercase text-start md:text-8xl">
+                <h1 className="text-2xl uppercase sm:text-4xl md:text-6xl lg:text-8xl text-start">
                   {siteConfig.hero_big}
                 </h1>
               </motion.h1>
               <motion.p
-                className="max-w-md mx-auto text-xl font-normal"
+                className="max-w-xs mx-auto text-sm font-normal md:max-w-none sm:text-base md:text-xl"
                 initial="initial"
                 transition={{ duration: 1.75, ease: "easeInOut" }}
-                variants={moverightfar}
+                variants={moveright}
                 viewport={{ once: true, amount: 0.1 }}
                 whileInView="inView"
               >
@@ -131,10 +133,10 @@ export const HeroSection = ({ the }: { the: boolean }) => {
               </motion.p>
               {siteConfig.Devmode ? (
                 <motion.p
-                  className="max-w-md mx-auto text-xl font-normal text-primary"
+                  className="max-w-md mx-auto text-sm font-normal sm:text-base md:text-xl text-primary"
                   initial="initial"
                   transition={{ duration: 1.75, ease: "easeInOut" }}
-                  variants={moverightfar}
+                  variants={moveright}
                   viewport={{ once: true, amount: 0.1 }}
                   whileInView="inView"
                 >
@@ -160,7 +162,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
                 size="lg"
                 variant="shadow"
               >
-                <span className="text-lg ">Contact</span>
+                <span className="text-sm sm:text-lg">Contact</span>
                 <span>
                   <IconLink />
                 </span>
@@ -172,7 +174,6 @@ export const HeroSection = ({ the }: { the: boolean }) => {
                 variant="ghost"
                 onPress={() => {
                   const link = document.createElement("a");
-
                   link.href =
                     "https://drive.google.com/uc?export=download&id=1IED6anEob_8QUZd1MjLJJanHRPIc8aV7";
                   link.target = "_blank";
@@ -181,7 +182,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
                   document.body.removeChild(link);
                 }}
               >
-                <span className="text-lg ">Resume</span>
+                <span className="text-sm sm:text-lg">Resume</span>
                 <span>
                   <IconDownload />
                 </span>
@@ -219,7 +220,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
           <FloatingDock items={links} />
 
           {/* Right Section */}
-          <div className="flex items-center gap-2 transition-colors ease-in-out rounded-full md:pr-4 justify-self-end border-default duration-250 border-1">
+          <div className="items-center hidden gap-2 transition-colors ease-in-out rounded-full md:flex md:pr-4 justify-self-end border-default duration-250 border-1">
             <div className="p-3 transition-colors ease-in-out rounded-full bg-default-foreground text-default">
               <IconMail />
             </div>

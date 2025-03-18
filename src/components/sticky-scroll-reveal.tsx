@@ -71,29 +71,32 @@ export const StickyScroll = ({
   }, [activeCard]);
 
   return (
-    <motion.div ref={ref} className="relative flex justify-center space-x-12 ">
-      <div className="relative flex flex-col w-5/6 my-16 space-y-24">
+    <motion.div
+      ref={ref}
+      className="relative flex justify-center space-x-6 sm:space-x-12"
+    >
+      <div className="relative flex flex-col w-full max-w-xs my-0 mb-0 space-y-16 md:mb-24 md:my-16 sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-5xl sm:space-y-24">
         {content.slice(0, 3).map((item, index) => (
           <motion.div
             key={item.title + index}
             animate={cardAnimation(activeCard, index)}
-            className="space-y-8 scale-100 scroll-section"
+            className="space-y-6 scale-100 sm:space-y-8 scroll-section"
             transition={{ duration: 0.25, ease: "easeInOut" }}
           >
-            <div className="flex justify-between">
-              <motion.h2 className="font-serif text-5xl text-default-foreground">
+            <div className="flex flex-col justify-between md:flex-row">
+              <motion.h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-5xl text-default-foreground max-w-[90%] sm:max-w-full">
                 {item.title}
               </motion.h2>
-              <div className="w-96">
-                <motion.h4 className="text-lg text-default-foreground">
+              <div className="w-full sm:w-80 md:w-96">
+                <motion.h4 className="text-base sm:text-lg md:text-xl lg:text-xl text-default-foreground">
                   {item.type}
                 </motion.h4>
 
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-2">
                   {item.stack.map((tech, i) => (
                     <span
                       key={i}
-                      className="gap-4 text-sm font-medium text-default-foreground"
+                      className="text-xs font-medium sm:text-sm text-default-foreground"
                     >
                       {tech}
                       {i < item.stack.length - 1 && ","}
@@ -105,16 +108,52 @@ export const StickyScroll = ({
 
             <Divider />
 
-            <motion.p className="text-sm text-default-foreground">
+            <motion.p className="max-w-xs text-xs sm:text-sm md:text-base text-default-foreground sm:max-w-sm md:max-w-lg">
               {item.description.split("\n\n")[0]}
             </motion.p>
+
+            <div className="flex justify-center w-full p-2 space-x-4 md:hidden">
+              <Button
+                as={Link}
+                color="primary"
+                href={content[activeCard]?.url?.demo ?? "#"}
+                isDisabled={!content[activeCard].url?.demo}
+                radius="full"
+                size="lg"
+                target="_blank"
+                variant="solid"
+              >
+                <IconLink />
+                <span className="text-sm sm:text-base md:text-base">
+                  Site Link
+                </span>
+              </Button>
+              {content[activeCard].url?.github && (
+                <Button
+                  isIconOnly
+                  aria-label="GitHub"
+                  as={Link}
+                  color="default"
+                  href={content[activeCard].url?.github}
+                  radius="full"
+                  size="lg"
+                  target="_blank"
+                  variant="ghost"
+                >
+                  <IconBrandGithub
+                    className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+                    size={16}
+                  />
+                </Button>
+              )}
+            </div>
           </motion.div>
         ))}
       </div>
 
       <div
         className={cn(
-          "hidden lg:block h-full w-1/2 rounded-md sticky top-[33vh]",
+          "hidden lg:block h-full w-1/2 max-w-lg xl:max-w-xl rounded-md sticky top-[33vh]",
           contentClassName
         )}
       >
@@ -128,7 +167,7 @@ export const StickyScroll = ({
         >
           <Image
             alt={content[activeCard].title}
-            className="object-cover w-full aspect-[6/3]" // Adjust aspect ratio as needed
+            className="object-cover w-full aspect-[6/3] max-w-sm sm:max-w-md md:max-w-lg" // Width limit
             src={content[activeCard].imageSrc}
           />
 
@@ -136,35 +175,33 @@ export const StickyScroll = ({
             <Tooltip
               content={
                 content[activeCard].url?.demo ? (
-                  <>
-                    <Link
-                      isExternal
-                      showAnchorIcon
-                      anchorIcon={<IconLink size={20} />}
-                      className="flex flex-col p-2 space-y-2 text-xs"
-                      color="foreground"
-                      href={content?.[activeCard]?.url?.demo}
-                      isBlock={true}
-                      size="sm"
-                      target="_blank"
-                    >
-                      <span>
-                        <Image
-                          alt={content?.[activeCard]?.url?.demo}
-                          className="z-0 object-cover w-full h-full"
-                          height={200}
-                          src={`https://api.microlink.io/?url=${encodeURIComponent(
-                            content[activeCard].url.demo
-                          )}&screenshot=true&meta=false&embed=screenshot.url`}
-                          width={200}
-                        />
-                      </span>
+                  <Link
+                    isExternal
+                    showAnchorIcon
+                    anchorIcon={<IconLink size={20} />}
+                    className="flex flex-col p-2 space-y-2 text-xs"
+                    color="foreground"
+                    href={content?.[activeCard]?.url?.demo}
+                    isBlock={true}
+                    size="sm"
+                    target="_blank"
+                  >
+                    <span>
+                      <Image
+                        alt={content?.[activeCard]?.url?.demo}
+                        className="z-0 object-cover w-full h-full"
+                        height={200}
+                        src={`https://api.microlink.io/?url=${encodeURIComponent(
+                          content[activeCard].url.demo
+                        )}&screenshot=true&meta=false&embed=screenshot.url`}
+                        width={200}
+                      />
+                    </span>
 
-                      <span className="w-48 overflow-hidden text-ellipsis">
-                        {content[activeCard].url?.demo}
-                      </span>
-                    </Link>
-                  </>
+                    <span className="w-48 overflow-hidden text-ellipsis">
+                      {content[activeCard].url?.demo}
+                    </span>
+                  </Link>
                 ) : (
                   "No Preview Available"
                 )

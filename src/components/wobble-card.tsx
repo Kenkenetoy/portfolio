@@ -60,7 +60,7 @@ export const WobbleCard = ({
         >
           <div
             className={cn(
-              "group w-full cursor-pointer overflow-hidden relative card h-[35rem] rounded-md shadow-xl mx-auto flex flex-col justify-end  dark:border-neutral-800",
+              "group w-full cursor-pointer overflow-hidden relative card h-[20rem] md:h-[35rem] rounded-md shadow-xl mx-auto flex flex-col justify-end  dark:border-neutral-800",
               "bg-[url(https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80)] bg-cover",
               // Preload hover image by setting it in a pseudo-element
               "before:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)] before:fixed before:inset-0 before:opacity-0 before:z-[-1]",
@@ -86,29 +86,33 @@ export function WobbleCardComponent() {
       className="grid w-full grid-cols-1 gap-4 mx-auto lg:grid-cols-4"
       initial="hidden"
       variants={containerVariants}
-      viewport={{ once: true, amount: 0.4 }}
+      viewport={{ once: true, amount: 0.1 }}
       whileInView="show"
     >
       {siteConfig.whatIDoData.map((card, index) => (
         <motion.div key={index} variants={cardVariants}>
           <WobbleCard
             className=""
-            containerClassName={`border border-1 border-default col-span-1  ${card.backgroundClass}`}
+            containerClassName={`border border-1 border-default col-span-1 ${card.backgroundClass}`}
           >
-            <div className="flex flex-col items-start max-w-xs transition-colors ease-in-out duration-250">
-              <card.icon
-                className={`text-3xl text-${card.iconColor}`}
-                size={40}
-              />
-              <h2
-                className={cn(
-                  "mt-4 text-left text-balance text-2xl font-serif tracking-[-0.015em]",
-                  card.textColorClass
-                )}
-              >
-                {card.title}
-              </h2>
-              <p className="mt-2 text-sm text-left">{card.description}</p>
+            <div className="flex flex-col items-start h-24 max-w-xs transition-colors ease-in-out sm:h-28 md:h-40 duration-250">
+              <div className="flex items-center gap-2">
+                <card.icon
+                  className={`text-${card.iconColor}`}
+                  size={28} // Smaller on mobile
+                />
+                <h2
+                  className={cn(
+                    "text-lg sm:text-xl md:text-2xl font-serif",
+                    card.textColorClass
+                  )}
+                >
+                  {card.title}
+                </h2>
+              </div>
+              <p className="mt-2 text-xs text-left sm:text-sm md:text-base">
+                {card.description}
+              </p>
             </div>
           </WobbleCard>
         </motion.div>

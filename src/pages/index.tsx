@@ -18,7 +18,6 @@ import { Footer } from "@/components/footer";
 import { StickyScroll } from "@/components/sticky-scroll-reveal";
 import { InfiniteMovingCards } from "@/components/infinite-moving-cards";
 import { moveright, moveleft, moveup, rotateBounce } from "@/anim/variants";
-import AnimatedDiv from "@/components/animated-div";
 
 export default function IndexPage() {
   return (
@@ -51,46 +50,57 @@ export default function IndexPage() {
         <div className="h-screen ">
           <HeroSection the={true} />
         </div>
-        <div className="w-screen mx-auto space-y-24 text-3xl  max-w-screen-2xl">
+        <div className="w-screen px-4 mx-auto space-y-8 md:space-y-24 md:text-3xl max-w-screen-2xl">
           {" "}
           <div className="flex flex-col gap-8">
-            <AnimatedDiv className="flex justify-between" variants={moveright}>
-              <p className="w-1/2">
+            <motion.div
+              className="flex flex-col justify-between gap-4 md:flex-row md:gap-0"
+              initial="initial"
+              transition={{ duration: 0.35, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 0.5 }}
+              whileInView="inView"
+            >
+              <p className="w-full text-base md:w-2/3 lg:w-1/2 sm:text-lg">
                 I build fast, scalable apps using Laravel, React, and
                 WebGPU—seamlessly combining backend power with interactive,
                 immersive frontends.
               </p>
               <motion.p
-                className="text-sm w-96"
+                className="w-full text-sm sm:text-base md:w-80 lg:w-96"
                 initial="initial"
                 transition={{ duration: 0.35, ease: "circOut" }}
                 variants={moveright}
-                viewport={{ once: true, amount: 1 }}
+                viewport={{ once: true, amount: 0.5 }}
                 whileInView="inView"
               >
                 My expertise in full-stack development, 3D visualization, and
                 interactive web design sets me apart in the tech industry.
               </motion.p>
-            </AnimatedDiv>
+            </motion.div>
 
+            {/* Fixed Fade-in Trigger Issue */}
             <motion.div
-              className="relative flex items-center w-full"
+              className="relative w-full overflow-hidden"
               initial="initial"
               transition={{ duration: 0.35, ease: "circOut" }}
-              variants={moveright}
-              viewport={{ once: true, amount: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
               whileInView="inView"
             >
               <Divider className="flex-1" />
-              <motion.div className="absolute p-2 transition-colors ease-in-out rounded-full bg-default-foreground left-[90%] duration-250">
+              <motion.div
+                animate={{ opacity: 1, y: 0 }}
+                className="absolute p-2 transition-colors ease-in-out rounded-full bg-default-foreground left-[85%] sm:left-[90%] duration-250"
+                initial={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
                 <motion.div
-                  initial="initial"
                   transition={rotateBounce.transition}
                   variants={rotateBounce}
                   whileHover="hover"
                 >
                   <IconRecharging
-                    className="w-20 h-20 text-default-50"
+                    className="w-16 h-16 sm:w-20 sm:h-20 text-default-50"
                     stroke={1}
                   />
                 </motion.div>
@@ -98,13 +108,13 @@ export default function IndexPage() {
             </motion.div>
 
             <motion.div
-              initial="initial"
-              transition={{ duration: 0.35, ease: "circOut" }}
-              variants={moveright}
-              viewport={{ once: true, amount: 1 }}
+              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.3 }}
               whileInView="inView"
             >
-              <p className="text-4xl font-medium w-96 text-primary">
+              <p className="w-full text-2xl font-medium sm:text-3xl lg:text-4xl text-primary sm:w-3/4 md:w-96">
                 Engineering Scalable Systems
               </p>
             </motion.div>
@@ -117,7 +127,10 @@ export default function IndexPage() {
             viewport={{ once: true, amount: 0.2 }}
             whileInView="inView"
           >
-            <h1 className="font-serif text-6xl">What I Do</h1>
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl">
+              What I Do
+            </h1>
+
             <Divider />
             <WobbleCardComponent />
             <motion.div
@@ -129,16 +142,18 @@ export default function IndexPage() {
               whileInView="inView"
             >
               <Button
-                className="p-8 text-lg"
+                as={Link}
+                className="flex items-center gap-2 p-4 text-base sm:p-6 md:p-8 sm:text-lg md:text-xl"
                 href={siteConfig.navItems.About.href}
                 radius="full"
                 size="lg"
                 variant="ghost"
-                as={Link}
               >
-                <span className="text-lg">About Me</span>
+                <span className="text-base sm:text-lg md:text-xl">
+                  About Me
+                </span>
                 <span>
-                  <IconArrowRight />
+                  <IconArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                 </span>
               </Button>
             </motion.div>
@@ -152,7 +167,7 @@ export default function IndexPage() {
             whileInView="inView"
           >
             <motion.h1
-              className="font-serif text-6xl"
+              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl"
               initial="initial"
               transition={{ duration: 0.75, ease: "circOut" }}
               variants={moveright}
@@ -161,8 +176,9 @@ export default function IndexPage() {
             >
               My Projects
             </motion.h1>
+
             <motion.div
-              className="relative flex items-center w-full"
+              className="relative items-center hidden w-full md:flex"
               initial="initial"
               transition={{ duration: 0.8, ease: "circOut" }}
               variants={moveleft}
@@ -184,7 +200,7 @@ export default function IndexPage() {
                 </motion.div>
               </motion.div>
             </motion.div>
-            <div className="mx-auto max-w-[90rem] space-y-8">
+            <div className="mx-auto max-w-[95%] space-y-8">
               <StickyScroll content={siteConfig.contents} />
               <motion.div
                 className="flex justify-end"
@@ -196,15 +212,17 @@ export default function IndexPage() {
               >
                 <Button
                   as={Link}
-                  className="p-8 text-lg"
+                  className="p-4 text-base sm:p-6 md:p-8 sm:text-lg md:text-xl" // Adjust padding & text size
                   href={siteConfig.navItems.Projects.href}
                   radius="full"
                   size="lg"
                   variant="ghost"
                 >
-                  <span className="text-lg">Load More</span>
+                  <span className="text-base sm:text-lg md:text-xl">
+                    Load More
+                  </span>
                   <span>
-                    <IconArrowRight />
+                    <IconArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                   </span>
                 </Button>
               </motion.div>
@@ -220,7 +238,7 @@ export default function IndexPage() {
             whileInView="inView"
           >
             <motion.h1
-              className="font-serif text-6xl"
+              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl"
               initial="initial"
               transition={{ duration: 0.5, ease: "circOut" }}
               variants={moveright}
@@ -229,7 +247,8 @@ export default function IndexPage() {
             >
               My Tech Stack
             </motion.h1>
-            <p className="text-lg">
+
+            <p className="text-base sm:text-lg md:text-xl">
               I work with a variety of technologies to build creative and
               efficient solutions for different platforms.
             </p>
@@ -250,13 +269,15 @@ export default function IndexPage() {
               whileInView="inView"
             >
               <Link
-                className="p-8 text-lg text-default-foreground"
+                className="flex items-center gap-2 p-4 text-base sm:p-6 md:p-8 sm:text-lg md:text-xl text-default-foreground"
                 href={siteConfig.navItems.About.href}
                 underline="always"
               >
-                <span>See More In About Me</span>
+                <span className="text-base sm:text-lg md:text-xl">
+                  See More In About Me
+                </span>
                 <span>
-                  <IconArrowRight />
+                  <IconArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                 </span>
               </Link>
             </motion.div>
