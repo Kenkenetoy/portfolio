@@ -4,7 +4,7 @@ import { Divider } from "@heroui/divider";
 import { IconPhone } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { Button } from "@heroui/button";
-import { Input } from "@heroui/Input";
+import { Input } from "@heroui/input";
 import { Link } from "@heroui/link";
 import { Image } from "@heroui/image";
 import { Form } from "@heroui/form";
