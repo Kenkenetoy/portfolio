@@ -10,7 +10,6 @@ import { Image } from "@heroui/image";
 import { Form } from "@heroui/form";
 import { addToast } from "@heroui/toast";
 import emailjs from "emailjs-com";
-import { useState } from "react";
 
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
@@ -18,10 +17,6 @@ import Footer from "@/components/footer";
 import { moveleft, moveright, moveup, ringing } from "@/anim/variants";
 
 export default function DocsPage() {
-  const [submitted, setSubmitted] = useState<Record<string, string> | null>(
-    null
-  ); // Fix 2
-
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -40,17 +35,17 @@ export default function DocsPage() {
         "LJRo4VXi016kGcTuV"
       );
 
-      setSubmitted(data);
-
       addToast({
         title: "Success!",
         description: "Your message has been sent successfully.",
         color: "success",
       });
     } catch (error) {
+      const errorMessage = (error as Error).message;
+
       addToast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: `Failed to send message: ${errorMessage}`,
         color: "danger",
       });
     }
