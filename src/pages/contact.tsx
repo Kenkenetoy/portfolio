@@ -8,6 +8,7 @@ import { Input } from "@heroui/input";
 import { Link } from "@heroui/link";
 import { Image } from "@heroui/image";
 import { Form } from "@heroui/form";
+import { addToast } from "@heroui/toast";
 import emailjs from "emailjs-com";
 import { useState } from "react";
 
@@ -22,28 +23,36 @@ export default function DocsPage() {
   ); // Fix 2
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    // Fix 1
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const data: Record<string, string> = {}; // Fix 3 (Ensures all values are strings)
+    const data: Record<string, string> = {};
 
     formData.forEach((value, key) => {
-      data[key] = value.toString(); // Convert FormDataEntryValue to string
+      data[key] = value.toString();
     });
 
     try {
-      const response = await emailjs.send(
+      await emailjs.send(
         "service_jczfwad",
         "template_zm5m5js",
         data,
         "LJRo4VXi016kGcTuV"
       );
 
-      console.log("Email sent:", response);
       setSubmitted(data);
+
+      addToast({
+        title: "Success!",
+        description: "Your message has been sent successfully.",
+        color: "success",
+      });
     } catch (error) {
-      console.error("Email error:", error);
+      addToast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        color: "danger",
+      });
     }
   };
 
@@ -123,6 +132,7 @@ export default function DocsPage() {
                 </h2>
               </motion.div>
               <motion.div
+                className="max-w-7xl"
                 initial="initial"
                 transition={{ duration: 0.75, ease: "circOut" }}
                 variants={moveright}
@@ -198,15 +208,11 @@ export default function DocsPage() {
                   >
                     Submit
                   </Button>
-                  {submitted && (
-                    <div className="text-small text-default-500">
-                      You submitted: <code>{JSON.stringify(submitted)}</code>
-                    </div>
-                  )}
                 </Form>
               </motion.div>
             </div>
 
+            {/* Sidebar */}
             <motion.div
               className="flex flex-col items-center my-auto space-y-12 h-fit w-96"
               initial={{ opacity: 0, x: 50 }}

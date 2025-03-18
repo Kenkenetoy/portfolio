@@ -117,7 +117,7 @@ export default function DocsPage() {
             </filter>
           </defs>
         </svg>
-        <div className="mx-auto space-y-16 max-w-screen-2xl">
+        <div className="mx-auto mt-20 space-y-16 max-w-screen-2xl">
           {/* Section 1 */}
           <motion.div
             className="space-y-8"

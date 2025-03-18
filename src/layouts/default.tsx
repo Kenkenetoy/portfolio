@@ -2,6 +2,8 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import { memo, useEffect } from "react";
 
+import { Provider } from "../provider";
+
 import { SidebarDemo } from "@/components/sidebar-bar";
 
 const MemoizedMain = memo(function Main({
@@ -20,7 +22,7 @@ const MemoizedMain = memo(function Main({
       exit={{ opacity: 0, y: -20, transition: { duration: 0.3 } }}
       initial={{ opacity: 0, y: 20 }}
     >
-      {children}
+      <Provider>{children}</Provider>
     </motion.main>
   );
 });
