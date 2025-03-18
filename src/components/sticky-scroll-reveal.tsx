@@ -117,45 +117,41 @@ export const StickyScroll = ({
               />
             </div>
 
-            {/* Side by side on mobile */}
-            <div className="flex flex-wrap space-x-4 space-y-6 sm:space-y-8">
-              {" "}
-              <div className="block lg:hidden">
-                <Divider />
-              </div>
-              {/* Left Content on mobile */}
-              <div className="flex flex-col justify-between w-48 xl:flex-row md:w-full">
-                <motion.h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-5xl text-default-foreground max-w-[90%] sm:max-w-full">
-                  {item.title}
-                </motion.h2>
-                <div className="w-fit ">
-                  <motion.h4 className="text-base text-start xl:text-end sm:text-lg md:text-xl lg:text-xl text-default-foreground">
-                    {item.type}
-                  </motion.h4>
+            <div className="block lg:hidden">
+              <Divider />
+            </div>
+            {/* Left Content on mobile */}
+            <div className="flex flex-col justify-between mb-6 mr-6 xl:flex-row md:w-full">
+              <motion.h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-5xl text-default-foreground max-w-[90%] sm:max-w-full">
+                {item.title}
+              </motion.h2>
+              <div className="w-fit ">
+                <motion.h4 className="text-base text-start xl:text-end sm:text-lg md:text-xl lg:text-xl text-default-foreground">
+                  {item.type}
+                </motion.h4>
 
-                  <div className="flex flex-wrap justify-start gap-1 md:gap-2 xl:justify-end">
-                    {item.stack.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="text-xs font-medium sm:text-sm text-default-foreground"
-                      >
-                        {tech}
-                        {i < item.stack.length - 1 && ","}
-                      </span>
-                    ))}
-                  </div>
+                <div className="flex flex-wrap justify-start gap-1 md:gap-2 xl:justify-end">
+                  {item.stack.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="text-xs font-medium sm:text-sm text-default-foreground"
+                    >
+                      {tech}
+                      {i < item.stack.length - 1 && ","}
+                    </span>
+                  ))}
                 </div>
               </div>
-              <div className="hidden lg:block">
-                <Divider />
-              </div>
-              {/* Right Content on mobile */}
-              <motion.p className="max-w-xs text-xs w-60 sm:w-full sm:text-xs md:text-sm text-default-foreground sm:max-w-sm md:max-w-lg">
-                {item.description.split("\n\n")[0]}
-              </motion.p>
             </div>
+            <div className="hidden lg:block">
+              <Divider />
+            </div>
+            {/* Right Content on mobile */}
+            <motion.p className="w-auto max-w-xs text-xs sm:w-full sm:text-xs md:text-sm text-default-foreground sm:max-w-sm md:max-w-lg">
+              {item.description.split("\n\n")[0]}
+            </motion.p>
 
-            <div className="flex justify-center w-full p-2 space-x-4 lg:hidden">
+            <div className="flex justify-start w-full p-2 space-x-4 lg:hidden">
               <Button
                 as={Link}
                 color="primary"
@@ -196,7 +192,7 @@ export const StickyScroll = ({
 
       <div
         className={cn(
-          "hidden lg:block h-full w-1/2 max-w-lg xl:max-w-xl rounded-md sticky top-[33vh]",
+          "hidden lg:block h-full min-w-fit w-auto xl:max-w-xl rounded-md sticky top-[33vh]",
           contentClassName
         )}
       >

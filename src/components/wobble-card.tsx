@@ -70,8 +70,10 @@ export const WobbleCard = ({
             )}
           >
             {/* Content */}
-            <div className="absolute bottom-0 z-50 bg-default-50">
-              <div className="p-12 pt-4">{children}</div>
+            <div className="absolute bottom-0 z-50 w-full min-h-40 md:h-48 lg:h-60 bg-default-50">
+              <div className="px-2 py-4 sm:pt-4 md:pt-8 md:px-4 lg:pt-12 lg:px-8">
+                {children}
+              </div>
             </div>
           </div>
         </motion.div>
@@ -83,19 +85,19 @@ export const WobbleCard = ({
 export function WobbleCardComponent() {
   return (
     <motion.div
-      className="grid w-full grid-cols-1 gap-4 mx-auto sm:grid-cols-2 lg:grid-cols-4"
+      className="flex flex-wrap justify-center gap-4 mx-auto"
       initial="hidden"
       variants={containerVariants}
       viewport={{ once: true, amount: 0.1 }}
       whileInView="show"
     >
       {siteConfig.whatIDoData.map((card, index) => (
-        <motion.div key={index} variants={cardVariants}>
+        <motion.div key={index} variants={cardVariants} className="flex-grow">
           <WobbleCard
-            className=""
-            containerClassName={`max-w-96 border border-1 border-default col-span-1 ${card.backgroundClass}`}
+            className="flex-1 min-w-[200px] w-full"
+            containerClassName={`border border-1 border-default ${card.backgroundClass}`}
           >
-            <div className="flex flex-col items-start h-16 transition-colors ease-in-out sm:h-24 md:h-32 lg:h-40 xl:h-48 duration-250">
+            <div className="flex flex-col items-start transition-colors ease-in-out duration-250">
               <div className="flex items-center gap-2">
                 <card.icon className={`text-${card.iconColor}`} />
                 <h2

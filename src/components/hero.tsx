@@ -49,7 +49,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
       <div className="z-10 flex flex-col justify-between w-full h-full">
         {/* Middle Section */}
         <motion.div
-          className="flex items-center justify-center h-full gap-12 font-bold text-center"
+          className="flex items-center justify-center h-full gap-12 py-24 font-bold text-center"
           initial="initial"
           transition={{ duration: 0.75, ease: "easeInOut" }}
           variants={moveright}
@@ -92,7 +92,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
                 whileInView="inView"
               >
                 <Image
-                  alt="Kenneth's Profile Picture"
+                  alt={`${siteConfig.name}'s Profile Picture`}
                   draggable={false}
                   radius="full"
                   shadow="md"
