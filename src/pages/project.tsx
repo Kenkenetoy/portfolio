@@ -46,7 +46,7 @@ export default function DocsPage() {
             whileInView="inView"
           >
             <motion.h1
-              className="flex gap-12 font-serif text-8xl"
+              className="flex items-center gap-2 mx-auto font-serif text-4xl sm:gap-4 md:gap-6 lg:gap-8 xl:gap-12 sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl w-fit lg:mx-0"
               initial="initial"
               transition={{ duration: 0.75, ease: "circOut" }}
               variants={moveright}
@@ -58,7 +58,7 @@ export default function DocsPage() {
                 initial="initial"
                 transition={{ duration: 0.75, ease: "circOut" }}
                 variants={moveleft}
-                viewport={{ once: true, amount: 1 }}
+                viewport={{ once: true, amount: 0.1 }}
                 whileInView="inView"
               >
                 <motion.div className="p-2 transition-colors ease-in-out rounded-full w-fit bg-default-foreground duration-250">
@@ -69,7 +69,7 @@ export default function DocsPage() {
                     whileHover="hover"
                   >
                     <IconCodeCircle2
-                      className="w-20 h-20 text-default-50"
+                      className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-20 xl:h-20 text-default-50"
                       stroke={1}
                     />
                   </motion.div>
