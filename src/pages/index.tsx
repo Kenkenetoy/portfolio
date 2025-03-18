@@ -54,20 +54,20 @@ export default function IndexPage() {
           {" "}
           <div className="flex flex-col gap-8">
             <motion.div
-              className="flex flex-col justify-between gap-4 md:flex-row md:gap-0"
+              className="flex flex-col justify-between gap-4 md:flex-row"
               initial="initial"
               transition={{ duration: 0.35, ease: "circOut" }}
               variants={moveright}
               viewport={{ once: true, amount: 0.5 }}
               whileInView="inView"
             >
-              <p className="w-full text-base md:w-2/3 lg:w-1/2 sm:text-lg">
+              <p className="w-full max-w-2xl text-base sm:text-lg md:text-xl lg:text-2xl">
                 I build fast, scalable apps using Laravel, React, and
                 WebGPU—seamlessly combining backend power with interactive,
                 immersive frontends.
               </p>
               <motion.p
-                className="w-full text-sm sm:text-base md:w-80 lg:w-96"
+                className="w-full text-xs md:w-96 md:text-sm lg:text-base"
                 initial="initial"
                 transition={{ duration: 0.35, ease: "circOut" }}
                 variants={moveright}
@@ -77,20 +77,39 @@ export default function IndexPage() {
                 My expertise in full-stack development, 3D visualization, and
                 interactive web design sets me apart in the tech industry.
               </motion.p>
+
+              <motion.div
+                animate={{ opacity: 1, y: 0 }}
+                className="p-2 mx-auto transition-colors ease-in-out rounded-full w-fit h-fit lg:hidden bg-default-foreground duration-250"
+                initial={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                <motion.div
+                  transition={rotateBounce.transition}
+                  variants={rotateBounce}
+                  whileHover="hover"
+                >
+                  <IconRecharging
+                    className="w-16 h-16 sm:w-20 sm:h-20 text-default-50"
+                    stroke={1}
+                  />
+                </motion.div>
+              </motion.div>
             </motion.div>
 
             {/* Fixed Fade-in Trigger Issue */}
             <motion.div
-              className="relative w-full overflow-hidden"
+              className="relative flex items-center w-full"
               initial="initial"
-              transition={{ duration: 0.35, ease: "circOut" }}
-              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: "circOut" }}
+              variants={moveleft}
+              viewport={{ once: true, amount: 1 }}
               whileInView="inView"
             >
               <Divider className="flex-1" />
               <motion.div
                 animate={{ opacity: 1, y: 0 }}
-                className="absolute p-2 transition-colors ease-in-out rounded-full bg-default-foreground left-[85%] sm:left-[90%] duration-250"
+                className="hidden lg:block absolute p-2 transition-colors ease-in-out rounded-full bg-default-foreground left-[85%] duration-250"
                 initial={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
               >
@@ -178,7 +197,7 @@ export default function IndexPage() {
             </motion.h1>
 
             <motion.div
-              className="relative items-center hidden w-full md:flex"
+              className="relative flex items-center w-full"
               initial="initial"
               transition={{ duration: 0.8, ease: "circOut" }}
               variants={moveleft}
@@ -186,21 +205,26 @@ export default function IndexPage() {
               whileInView="inView"
             >
               <Divider className="flex-1" />
-              <motion.div className="absolute p-2 transition-colors ease-in-out rounded-full bg-default-foreground left-[50%] duration-250">
+              <motion.div
+                animate={{ opacity: 1, y: 0 }}
+                className="hidden lg:block absolute p-2 transition-colors ease-in-out rounded-full bg-default-foreground left-[50%] duration-250"
+                initial={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
                 <motion.div
-                  initial="initial"
                   transition={rotateBounce.transition}
                   variants={rotateBounce}
                   whileHover="hover"
                 >
                   <IconCodeCircle2
-                    className="w-20 h-20 text-default-50"
+                    className="w-16 h-16 sm:w-20 sm:h-20 text-default-50"
                     stroke={1}
                   />
                 </motion.div>
               </motion.div>
             </motion.div>
-            <div className="mx-auto max-w-[95%] space-y-8">
+
+            <div className="pt-0 md:pt-12 mx-auto max-w-[95%] space-y-8">
               <StickyScroll content={siteConfig.contents} />
               <motion.div
                 className="flex justify-end"

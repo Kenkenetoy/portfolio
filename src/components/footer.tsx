@@ -13,7 +13,7 @@ export const Footer = () => {
   return (
     <div className="space-y-4">
       <footer className="p-10 space-y-4 overflow-hidden border bg-default-50 rounded-2xl text-default-foreground border-default">
-        <motion.div className="items-start footer sm:footer-horizontal place-items-center justify-evenly">
+        <motion.div className="flex flex-wrap items-start gap-4 footer sm:footer-horizontal place-items-center justify-evenly">
           <motion.nav
             className="justify-self-start"
             exit="outOfView"
@@ -40,7 +40,7 @@ export const Footer = () => {
                   ease: "linear",
                 }}
               >
-                <text className="text-lg font-bold tracking-wide pointer-events-none fill-default-foreground">
+                <text className="text-lg tracking-wide pointer-events-none fill-default-foreground">
                   <textPath
                     href="#mediumCirclePath"
                     startOffset="50%"
@@ -72,7 +72,7 @@ export const Footer = () => {
             initial="initial"
             transition={{ duration: 0.75, ease: "circOut" }}
             variants={moveright}
-            viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
+            viewport={{ once: true, amount: 0.1 }}
             whileInView="inView"
           >
             <h6 className="font-bold text-large text-danger">Explore</h6>
@@ -90,7 +90,7 @@ export const Footer = () => {
             initial="initial"
             transition={{ duration: 0.75, ease: "circOut" }}
             variants={moveright}
-            viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
+            viewport={{ once: true, amount: 0.1 }}
             whileInView="inView"
           >
             <h6 className="font-bold text-large text-primary">Follow Me</h6>
@@ -116,7 +116,7 @@ export const Footer = () => {
             initial="initial"
             transition={{ duration: 0.75, ease: "circOut" }}
             variants={moveright}
-            viewport={{ once: true, amount: 1 }} // 👈 Fix viewport detection
+            viewport={{ once: true, amount: 0.1 }}
             whileInView="inView"
           >
             <h6 className="font-bold text-large text-primary">3d Experience</h6>
@@ -134,27 +134,26 @@ export const Footer = () => {
 
         {/* Footer Branding */}
         <motion.div
-          className="z-0 w-full mx-auto font-sans text-3xl md:-space-y-8"
+          className="z-0 w-full mx-auto font-sans text-3xl text-center lg:text-start 2xl:-space-y-8"
           initial="initial"
           transition={{ duration: 0.5, ease: "circOut" }}
           variants={moveup}
           viewport={{ once: false, amount: 0.001 }}
           whileInView="inView"
         >
-          <h1 className="md:hidden lg:hidden">Kenneth Aparece</h1>
-          <div className="hidden md:block">
-            <TextHoverEffect text={siteConfig.name} />
-          </div>
+          <TextHoverEffect text={siteConfig.name} />
 
           <motion.div
-            className="items-center gap-4 font-serif md:flex "
+            className="flex flex-col items-center gap-0 font-serif md:items-start xl:gap-4 xl:flex-row"
             initial="initial"
             transition={{ duration: 1, ease: "circOut" }}
             variants={moveright}
             viewport={{ once: false, amount: 0.2 }}
             whileInView="inView"
           >
-            <p>Let&apos;s create something awesome</p>
+            <p className="text-lg sm:text-xl md:text-4xl">
+              Let&apos;s create something awesome
+            </p>
             <motion.div
               initial="initial"
               transition={{ duration: 1.5, ease: "circOut" }}
@@ -179,7 +178,7 @@ export const Footer = () => {
         </motion.div>
       </footer>
 
-      <span className="flex justify-between text-base">
+      <span className="flex flex-wrap justify-between text-xs sm:text-sm md:text-base">
         <p>
           {siteConfig.name} ©{new Date().getFullYear()} - Privacy Policy
         </p>

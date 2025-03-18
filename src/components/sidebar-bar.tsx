@@ -6,15 +6,15 @@ import { Sidebar, SidebarBody, SidebarLink } from "@/components/sidebar";
 import { cn } from "@/lib/utils";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { siteConfig } from "@/config/site";
-import { useSidebar } from "@/context/SidebarContext"; // ✅ Use context
+import { useSidebar } from "@/context/SidebarContext";
 
 export function SidebarDemo() {
-  const { open, setOpen } = useSidebar(); // ✅ Get global state
+  const { open, setOpen } = useSidebar();
 
   return (
     <div
       className={cn(
-        "fixed left-4 top-1/2 -translate-y-1/2 h-fit bg-default-50 shadow-lg transition-all hidden md:block",
+        "fixed left-4 top-1/2 -translate-y-1/2 h-fit bg-default-50 shadow-lg transition-all hidden xl:block",
         open ? "w-64 rounded-3xl" : "w-14 rounded-3xl"
       )}
     >

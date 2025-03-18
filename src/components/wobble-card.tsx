@@ -60,7 +60,7 @@ export const WobbleCard = ({
         >
           <div
             className={cn(
-              "group w-full cursor-pointer overflow-hidden relative card h-[20rem] md:h-[35rem] rounded-md shadow-xl mx-auto flex flex-col justify-end  dark:border-neutral-800",
+              "group w-full cursor-pointer overflow-hidden relative card h-[20rem] sm:h-[25rem] md:h-[30rem] lg:h-[35rem] xl:h-[40rem] rounded-md shadow-xl mx-auto flex flex-col justify-end  dark:border-neutral-800",
               "bg-[url(https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80)] bg-cover",
               // Preload hover image by setting it in a pseudo-element
               "before:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)] before:fixed before:inset-0 before:opacity-0 before:z-[-1]",
@@ -71,7 +71,7 @@ export const WobbleCard = ({
           >
             {/* Content */}
             <div className="absolute bottom-0 z-50 bg-default-50">
-              <div className="p-12 pt-4 ">{children}</div>
+              <div className="p-12 pt-4">{children}</div>
             </div>
           </div>
         </motion.div>
@@ -83,7 +83,7 @@ export const WobbleCard = ({
 export function WobbleCardComponent() {
   return (
     <motion.div
-      className="grid w-full grid-cols-1 gap-4 mx-auto lg:grid-cols-4"
+      className="grid w-full grid-cols-1 gap-4 mx-auto sm:grid-cols-2 lg:grid-cols-4"
       initial="hidden"
       variants={containerVariants}
       viewport={{ once: true, amount: 0.1 }}
@@ -93,24 +93,21 @@ export function WobbleCardComponent() {
         <motion.div key={index} variants={cardVariants}>
           <WobbleCard
             className=""
-            containerClassName={`border border-1 border-default col-span-1 ${card.backgroundClass}`}
+            containerClassName={`max-w-96 border border-1 border-default col-span-1 ${card.backgroundClass}`}
           >
-            <div className="flex flex-col items-start h-24 max-w-xs transition-colors ease-in-out sm:h-28 md:h-40 duration-250">
+            <div className="flex flex-col items-start h-16 transition-colors ease-in-out sm:h-24 md:h-32 lg:h-40 xl:h-48 duration-250">
               <div className="flex items-center gap-2">
-                <card.icon
-                  className={`text-${card.iconColor}`}
-                  size={28} // Smaller on mobile
-                />
+                <card.icon className={`text-${card.iconColor}`} />
                 <h2
                   className={cn(
-                    "text-lg sm:text-xl md:text-2xl font-serif",
+                    "text-base sm:text-lg md:text-xl font-serif",
                     card.textColorClass
                   )}
                 >
                   {card.title}
                 </h2>
               </div>
-              <p className="mt-2 text-xs text-left sm:text-sm md:text-base">
+              <p className="mt-2 text-xs text-left lg:text-sm xl:text-base">
                 {card.description}
               </p>
             </div>

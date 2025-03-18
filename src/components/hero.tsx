@@ -9,7 +9,6 @@ import { useState, useEffect } from "react";
 
 import { DraggableMockupPhone } from "./DraggableMockupPhone";
 import { GlareCard } from "./glare-card";
-import { ShareModal } from "./modal-for-links";
 import { FloatingDock } from "./floating-dock";
 
 import { siteConfig } from "@/config/site"; // Import siteConfig directly
@@ -58,7 +57,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
           whileInView="inView"
         >
           {/* Phone, hidden on small devices */}
-          <div className="relative hidden group md:block">
+          <div className="relative hidden group xl:block">
             {/* Phone */}
             <div className="relative z-50 ">
               <GlareCard>
@@ -76,7 +75,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
           </div>
           {/* Text Block */}
           <motion.section
-            className="flex flex-col justify-center space-y-8 max-w-[36rem] p-4 md:p-0"
+            className="flex flex-col justify-center space-y-8 max-w-[40rem] p-4 md:p-0"
             initial="initial"
             transition={{ duration: 1.5, ease: "easeInOut" }}
             variants={moveright}
@@ -85,7 +84,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
           >
             <div className="space-y-2 ">
               <motion.div
-                className="block mx-auto md:hidden lg:hidden w-fit"
+                className="block mx-auto xl:hidden w-fit"
                 initial="initial"
                 transition={{ duration: 1.75, ease: "circOut" }}
                 variants={moveright}
@@ -94,35 +93,36 @@ export const HeroSection = ({ the }: { the: boolean }) => {
               >
                 <Image
                   alt="Kenneth's Profile Picture"
-                  shadow="md"
                   draggable={false}
-                  width={200}
                   radius="full"
+                  shadow="md"
                   src={siteConfig.logo}
+                  width={200}
                 />
               </motion.div>
 
-              <p className="mx-auto text-sm font-normal sm:text-base md:text-xl">
-                {`/* Hi, I am ${siteConfig.name} based in ${the ? "the" : ""}
-        ${siteConfig.location.country},`}
+              <p className="mx-auto text-xs font-normal sm:text-sm md:text-lg lg:text-xl xl:text-2xl">
+                {`/* Hi, I am ${siteConfig.name} based in ${the ? "the" : ""} ${siteConfig.location.country},`}
               </p>
+
               <motion.h1
-                className="flex items-center justify-center gap-2 font-serif font-medium md:gap-0 text-default-foreground"
+                className="flex flex-col items-center justify-center gap-2 font-serif font-medium lg:flex-row text-default-foreground"
                 initial="initial"
                 transition={{ duration: 1.75, ease: "circOut" }}
                 variants={moveright}
                 viewport={{ once: true, amount: 0.1 }}
                 whileInView="inView"
               >
-                <p className="text-xs font-normal -translate-y-0 md:-translate-y-10 sm:text-sm md:text-lg text-nowrap">
+                <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-nowrap">
                   I&apos;m a
                 </p>
-                <h1 className="text-2xl uppercase sm:text-4xl md:text-6xl lg:text-8xl text-start">
+                <h1 className="text-2xl uppercase sm:text-4xl md:text-6xl lg:text-8xl">
                   {siteConfig.hero_big}
                 </h1>
               </motion.h1>
+
               <motion.p
-                className="max-w-xs mx-auto text-sm font-normal md:max-w-none sm:text-base md:text-xl"
+                className="max-w-sm mx-auto text-xs font-normal sm:max-w-md md:max-w-lg lg:max-w-2xl sm:text-sm md:text-lg lg:text-xl"
                 initial="initial"
                 transition={{ duration: 1.75, ease: "easeInOut" }}
                 variants={moveright}
@@ -131,9 +131,10 @@ export const HeroSection = ({ the }: { the: boolean }) => {
               >
                 {`${siteConfig.hero_small} */`}
               </motion.p>
+
               {siteConfig.Devmode ? (
                 <motion.p
-                  className="max-w-md mx-auto text-sm font-normal sm:text-base md:text-xl text-primary"
+                  className="max-w-md mx-auto text-xs font-normal sm:max-w-lg md:max-w-xl lg:max-w-2xl sm:text-sm md:text-lg lg:text-xl text-primary"
                   initial="initial"
                   transition={{ duration: 1.75, ease: "easeInOut" }}
                   variants={moveright}
@@ -148,16 +149,18 @@ export const HeroSection = ({ the }: { the: boolean }) => {
 
             {/* Buttons */}
             <motion.div
-              className="flex gap-4 mx-auto w-fit"
+              className="flex flex-col gap-4 mx-auto sm:flex-row w-fit"
               initial="initial"
               transition={{ duration: 1.75, ease: "circOut" }}
               variants={movedown}
               viewport={{ once: true, amount: 0.1 }}
               whileInView="inView"
             >
-              <ShareModal
+              <Button
+                as={Link}
                 className="gap-2"
                 color="primary"
+                href={siteConfig.navItems.Contact.href}
                 radius="full"
                 size="lg"
                 variant="shadow"
@@ -166,7 +169,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
                 <span>
                   <IconLink />
                 </span>
-              </ShareModal>
+              </Button>
 
               <Button
                 radius="full"
@@ -174,6 +177,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
                 variant="ghost"
                 onPress={() => {
                   const link = document.createElement("a");
+
                   link.href =
                     "https://drive.google.com/uc?export=download&id=1IED6anEob_8QUZd1MjLJJanHRPIc8aV7";
                   link.target = "_blank";

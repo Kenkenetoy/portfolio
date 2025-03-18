@@ -12,11 +12,23 @@ import { Button } from "@heroui/button";
 // import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-const cardAnimation = (activeCard: number, index: number) => ({
-  scale: activeCard === index ? 1 : 0.95,
-  opacity: activeCard === index ? 1 : 0.3,
-  originX: 1, // Ensures animation happens from right to left
-});
+const isLargeScreen = () => window.matchMedia("(min-width: 1024px)").matches;
+
+const cardAnimation = (
+  activeCard: number,
+  index: number,
+  enableAnimation: boolean
+) => {
+  if (!enableAnimation) {
+    return { scale: 1, opacity: 1, originX: 1 };
+  }
+
+  return {
+    scale: activeCard === index ? 1 : 0.95,
+    opacity: activeCard === index ? 1 : 0.3,
+    originX: 1,
+  };
+};
 
 export const StickyScroll = ({
   content,
@@ -35,6 +47,16 @@ export const StickyScroll = ({
 }) => {
   const [activeCard, setActiveCard] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
+
+  const [enableAnimation, setEnableAnimation] = useState(isLargeScreen());
+
+  useEffect(() => {
+    const handleResize = () => setEnableAnimation(isLargeScreen());
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,44 +97,65 @@ export const StickyScroll = ({
       ref={ref}
       className="relative flex justify-center space-x-6 sm:space-x-12"
     >
-      <div className="relative flex flex-col w-full max-w-xs my-0 mb-0 space-y-16 md:mb-24 md:my-16 sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-5xl sm:space-y-24">
-        {content.slice(0, 3).map((item, index) => (
+      <div className="relative grid w-full grid-cols-1 gap-8 mb-0 sm:grid-cols-2 lg:flex-col lg:space-y-16 lg:flex lg:mb-24">
+        {content.slice(0, 4).map((item, index) => (
           <motion.div
             key={item.title + index}
-            animate={cardAnimation(activeCard, index)}
+            animate={cardAnimation(activeCard, index, enableAnimation)}
             className="space-y-6 scale-100 sm:space-y-8 scroll-section"
-            transition={{ duration: 0.25, ease: "easeInOut" }}
+            transition={
+              enableAnimation
+                ? { duration: 0.25, ease: "easeInOut" }
+                : undefined
+            }
           >
-            <div className="flex flex-col justify-between md:flex-row">
-              <motion.h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-5xl text-default-foreground max-w-[90%] sm:max-w-full">
-                {item.title}
-              </motion.h2>
-              <div className="w-full sm:w-80 md:w-96">
-                <motion.h4 className="text-base sm:text-lg md:text-xl lg:text-xl text-default-foreground">
-                  {item.type}
-                </motion.h4>
-
-                <div className="flex flex-wrap gap-2">
-                  {item.stack.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="text-xs font-medium sm:text-sm text-default-foreground"
-                    >
-                      {tech}
-                      {i < item.stack.length - 1 && ","}
-                    </span>
-                  ))}
-                </div>
-              </div>
+            <div className="flex justify-center py-4 rounded-md lg:hidden bg-default-50">
+              <Image
+                alt="Email preview"
+                className="z-0 object-cover h-48 w-96 border-5 border-slate-800"
+                src={item.imageSrc}
+              />
             </div>
 
-            <Divider />
+            {/* Side by side on mobile */}
+            <div className="flex flex-wrap space-x-4 space-y-6 sm:space-y-8">
+              {" "}
+              <div className="block lg:hidden">
+                <Divider />
+              </div>
+              {/* Left Content on mobile */}
+              <div className="flex flex-col justify-between w-48 xl:flex-row md:w-full">
+                <motion.h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-5xl text-default-foreground max-w-[90%] sm:max-w-full">
+                  {item.title}
+                </motion.h2>
+                <div className="w-fit ">
+                  <motion.h4 className="text-base text-start xl:text-end sm:text-lg md:text-xl lg:text-xl text-default-foreground">
+                    {item.type}
+                  </motion.h4>
 
-            <motion.p className="max-w-xs text-xs sm:text-sm md:text-base text-default-foreground sm:max-w-sm md:max-w-lg">
-              {item.description.split("\n\n")[0]}
-            </motion.p>
+                  <div className="flex flex-wrap justify-start gap-1 md:gap-2 xl:justify-end">
+                    {item.stack.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="text-xs font-medium sm:text-sm text-default-foreground"
+                      >
+                        {tech}
+                        {i < item.stack.length - 1 && ","}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="hidden lg:block">
+                <Divider />
+              </div>
+              {/* Right Content on mobile */}
+              <motion.p className="max-w-xs text-xs w-60 sm:w-full sm:text-xs md:text-sm text-default-foreground sm:max-w-sm md:max-w-lg">
+                {item.description.split("\n\n")[0]}
+              </motion.p>
+            </div>
 
-            <div className="flex justify-center w-full p-2 space-x-4 md:hidden">
+            <div className="flex justify-center w-full p-2 space-x-4 lg:hidden">
               <Button
                 as={Link}
                 color="primary"
