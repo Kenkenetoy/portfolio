@@ -23,7 +23,7 @@ import { cn } from "@/lib/utils";
 export const FloatingDock = ({
   items,
   desktopClassName,
-  mobileClassName,
+  // mobileClassName,
 }: {
   items: { title: string; icon: React.ReactNode; href: string }[];
   desktopClassName?: string;
@@ -32,66 +32,66 @@ export const FloatingDock = ({
   return (
     <>
       <FloatingDockDesktop className={desktopClassName} items={items} />
-      <FloatingDockMobile className={mobileClassName} items={items} />
+      {/* <FloatingDockMobile className={mobileClassName} items={items} /> */}
     </>
   );
 };
 
-const FloatingDockMobile = ({
-  items,
-  className,
-}: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
-  className?: string;
-}) => {
-  const [open, setOpen] = useState(false);
+// const FloatingDockMobile = ({
+//   items,
+//   className,
+// }: {
+//   items: { title: string; icon: React.ReactNode; href: string }[];
+//   className?: string;
+// }) => {
+//   const [open, setOpen] = useState(false);
 
-  return (
-    <div className={cn("relative block md:hidden", className)}>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            className="absolute inset-x-0 flex flex-col gap-2 mb-2 bottom-full"
-            layoutId="nav"
-          >
-            {items.map((item, idx) => (
-              <motion.div
-                key={item.title}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  y: 10,
-                  transition: {
-                    delay: idx * 0.05,
-                  },
-                }}
-                initial={{ opacity: 0, y: 10 }}
-                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-              >
-                <Link
-                  key={item.title}
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-default"
-                  href={item.href}
-                >
-                  <div className="w-4 h-4">{item.icon}</div>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <button
-        className="flex items-center justify-center w-10 h-10 rounded-full bg-default"
-        onClick={() => setOpen(!open)}
-      >
-        <IconLayoutNavbarCollapse className="w-5 h-5 " />
-      </button>
-    </div>
-  );
-};
+//   return (
+//     <div className={cn("relative block md:hidden", className)}>
+//       <AnimatePresence>
+//         {open && (
+//           <motion.div
+//             className="absolute inset-x-0 flex flex-col gap-2 mb-2 bottom-full"
+//             layoutId="nav"
+//           >
+//             {items.map((item, idx) => (
+//               <motion.div
+//                 key={item.title}
+//                 animate={{
+//                   opacity: 1,
+//                   y: 0,
+//                 }}
+//                 exit={{
+//                   opacity: 0,
+//                   y: 10,
+//                   transition: {
+//                     delay: idx * 0.05,
+//                   },
+//                 }}
+//                 initial={{ opacity: 0, y: 10 }}
+//                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
+//               >
+//                 <Link
+//                   key={item.title}
+//                   className="flex items-center justify-center w-10 h-10 rounded-full bg-default"
+//                   href={item.href}
+//                 >
+//                   <div className="w-4 h-4">{item.icon}</div>
+//                 </Link>
+//               </motion.div>
+//             ))}
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+//       <button
+//         className="flex items-center justify-center w-10 h-10 rounded-full bg-default"
+//         onClick={() => setOpen(!open)}
+//       >
+//         <IconLayoutNavbarCollapse className="w-5 h-5 " />
+//       </button>
+//     </div>
+//   );
+// };
 
 const FloatingDockDesktop = ({
   items,
@@ -104,7 +104,7 @@ const FloatingDockDesktop = ({
   return (
     <motion.div
       className={cn(
-        "mx-auto hidden md:flex gap-4 items-end rounded-full border border-gray-300 dark:border-neutral-800  overflow-visible min-w-max h-[50px] "
+        "mx-auto flex gap-4 items-end rounded-full border border-gray-300 dark:border-neutral-800  overflow-visible min-w-max h-[50px] "
       )}
       onMouseLeave={() => mouseX.set(Infinity)}
       onMouseMove={(e) => mouseX.set(e.pageX)}

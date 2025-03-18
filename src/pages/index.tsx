@@ -48,10 +48,11 @@ export default function IndexPage() {
       </Helmet>
 
       <DefaultLayout>
-        <div className="h-screen">
+        <div className="h-screen ">
           <HeroSection the={true} />
         </div>
-        <div className="mx-auto space-y-24 text-3xl max-w-screen-2xl">
+        <div className="w-screen mx-auto space-y-24 text-3xl  max-w-screen-2xl">
+          {" "}
           <div className="flex flex-col gap-8">
             <AnimatedDiv className="flex justify-between" variants={moveright}>
               <p className="w-1/2">
@@ -108,7 +109,6 @@ export default function IndexPage() {
               </p>
             </motion.div>
           </div>
-
           <motion.div
             className="space-y-8"
             initial="initial"
@@ -143,7 +143,6 @@ export default function IndexPage() {
               </Button>
             </motion.div>
           </motion.div>
-
           <motion.div
             className="space-y-8"
             initial="initial"
@@ -212,7 +211,6 @@ export default function IndexPage() {
             </div>
             <Divider />
           </motion.div>
-
           <motion.div
             className="space-y-8"
             initial="initial"
@@ -263,7 +261,6 @@ export default function IndexPage() {
               </Link>
             </motion.div>
           </motion.div>
-
           <Footer />
         </div>
       </DefaultLayout>

@@ -121,7 +121,7 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          "h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between bg-default w-full"
+          "h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between w-full"
         )}
         {...props}
       >
@@ -136,7 +136,7 @@ export const MobileSidebar = ({
             <motion.div
               animate={{ x: 0, opacity: 1 }}
               className={cn(
-                "fixed h-full w-full inset-0 bg-default p-10 z-[100] flex flex-col justify-between",
+                "fixed h-full w-full inset-0 bg-default-50 p-10 z-[100] flex flex-col justify-between",
                 className
               )}
               exit={{ x: "-100%", opacity: 0 }}
@@ -147,7 +147,7 @@ export const MobileSidebar = ({
               }}
             >
               <div
-                className="absolute z-50 cursor-pointer right-10 top-10 text-default-foreground"
+                className="z-50 cursor-pointer right-10 text-default-foreground"
                 role="button"
                 tabIndex={0}
                 onClick={() => setOpen(!open)}

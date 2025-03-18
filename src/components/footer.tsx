@@ -13,7 +13,7 @@ export const Footer = () => {
   return (
     <div className="space-y-4">
       <footer className="p-10 space-y-4 overflow-hidden border bg-default-50 rounded-2xl text-default-foreground border-default">
-        <motion.div className="items-start h-40 footer sm:footer-horizontal place-items-center justify-evenly">
+        <motion.div className="items-start footer sm:footer-horizontal place-items-center justify-evenly">
           <motion.nav
             className="justify-self-start"
             exit="outOfView"
@@ -110,7 +110,7 @@ export const Footer = () => {
             </div>
           </motion.nav>
 
-          {/* Follow Me Section */}
+          {/* Coming SOon */}
           <motion.nav
             className="w-40"
             initial="initial"
@@ -134,16 +134,20 @@ export const Footer = () => {
 
         {/* Footer Branding */}
         <motion.div
-          className="z-0 w-full mx-auto -space-y-8 font-sans text-3xl"
+          className="z-0 w-full mx-auto font-sans text-3xl md:-space-y-8"
           initial="initial"
           transition={{ duration: 0.5, ease: "circOut" }}
           variants={moveup}
           viewport={{ once: false, amount: 0.001 }}
           whileInView="inView"
         >
-          <TextHoverEffect text={siteConfig.name} />
+          <h1 className="md:hidden lg:hidden">Kenneth Aparece</h1>
+          <div className="hidden md:block">
+            <TextHoverEffect text={siteConfig.name} />
+          </div>
+
           <motion.div
-            className="flex items-center gap-4 font-serif"
+            className="items-center gap-4 font-serif md:flex "
             initial="initial"
             transition={{ duration: 1, ease: "circOut" }}
             variants={moveright}
@@ -179,7 +183,7 @@ export const Footer = () => {
         <p>
           {siteConfig.name} ©{new Date().getFullYear()} - Privacy Policy
         </p>
-        <p>
+        <p className="text-end">
           {siteConfig.location.province}, {siteConfig.location.country}
         </p>
       </span>

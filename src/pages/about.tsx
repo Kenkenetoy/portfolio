@@ -36,6 +36,7 @@ import {
   cardVariantsDown,
   containerVariantsDown,
 } from "@/anim/variants";
+import { Link } from "@heroui/link";
 
 const content = [
   {
@@ -272,11 +273,13 @@ export default function DocsPage() {
               <Divider className="flex-1" />
               <motion.div>
                 <Button
+                  as={Link}
                   className="p-8 text-xl bg-default-50"
                   color="default"
                   radius="full"
                   size="lg"
                   variant="ghost"
+                  href={siteConfig.navItems.Contact.href}
                 >
                   Contact Me <IconArrowRight />
                 </Button>

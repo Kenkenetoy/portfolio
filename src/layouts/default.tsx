@@ -40,7 +40,7 @@ export default function DefaultLayout({
   });
 
   return (
-    <div className="relative flex min-h-screen font-sans">
+    <div className="relative flex min-h-screen font-sans ">
       <div className="z-50 ">
         <SidebarDemo />
       </div>

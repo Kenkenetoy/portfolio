@@ -56,7 +56,7 @@ import {
 } from "devicons-react";
 
 export const siteConfig = {
-  Devmode: true,
+  Devmode: false,
 
   name: "Kenneth Aparece",
   logo: "228041565_1204885213317442_2861452606248897561_n.webp",
