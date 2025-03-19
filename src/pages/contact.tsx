@@ -233,7 +233,7 @@ export default function DocsPage() {
                     variant="underlined"
                   />
                   <Button
-                    className="p-8 mx-auto my-auto text-2xl lg:mr-0 lg:ml-auto w-fit"
+                    className="px-8 py-2 mx-auto my-auto text-base md:px-10 lg:px-12 md:py-4 lg:py-6 xl:py-8 md:text-lg lg:text-xl xl:text-2xl lg:mr-0 lg:ml-auto w-fit"
                     radius="full"
                     size="lg"
                     type="submit"

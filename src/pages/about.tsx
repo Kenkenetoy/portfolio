@@ -19,6 +19,7 @@ import {
 } from "devicons-react";
 import { useTheme } from "@heroui/use-theme";
 import { useState, useEffect } from "react";
+import { Link } from "@heroui/link";
 
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
@@ -26,7 +27,6 @@ import { Footer } from "@/components/footer";
 import {
   moveup,
   moveright,
-  moveleft,
   rotateBounce,
   movedown,
   happyBounce,
@@ -36,7 +36,6 @@ import {
   cardVariantsDown,
   containerVariantsDown,
 } from "@/anim/variants";
-import { Link } from "@heroui/link";
 
 const content = [
   {
@@ -107,7 +106,7 @@ export default function DocsPage() {
         <meta content={siteConfig.meta_image} name="twitter:image" />
       </Helmet>
       <DefaultLayout>
-        <svg height="0" width="0">
+        {/* <svg height="0" width="0">
           <defs>
             <filter height="300%" id="glow" width="300%" x="-100%" y="-100%">
               <feGaussianBlur result="blurred" stdDeviation="10" />
@@ -117,9 +116,8 @@ export default function DocsPage() {
               </feMerge>
             </filter>
           </defs>
-        </svg>
-        <div className="px-4 mx-auto mt-20 space-y-16 max-w-screen-2xl">
-          {/* Section 1 */}
+        </svg> */}
+        <div className="w-screen px-4 pt-24 mx-auto space-y-12 md:space-y-24 max-w-screen-2xl">
           <motion.div
             className="space-y-8"
             initial="initial"
@@ -128,10 +126,9 @@ export default function DocsPage() {
             viewport={{ once: true, amount: 0.1 }}
             whileInView="inView"
           >
-            {/* 1st */}
             <div className="space-y-4 font-serif">
               <motion.h1
-                className="flex items-center gap-8 text-7xl"
+                className="flex flex-col-reverse items-center gap-8 text-3xl sm:text-5xl md:text-6xl lg:text-7xl md:flex-row"
                 initial="initial"
                 transition={{ duration: 0.75, ease: "circOut" }}
                 variants={movedown}
@@ -142,7 +139,7 @@ export default function DocsPage() {
                 <motion.div
                   initial="initial"
                   transition={{ duration: 0.75, ease: "circOut" }}
-                  variants={moveleft}
+                  variants={moveright}
                   viewport={{ once: true, amount: 1 }}
                   whileInView="inView"
                 >
@@ -151,7 +148,7 @@ export default function DocsPage() {
                     onClick={toggleTheme} // Toggle theme on click
                   >
                     <motion.div
-                      className="hidden text-6xl dark:block"
+                      className="hidden dark:block"
                       initial="initial"
                       variants={sleepingBounce}
                       whileHover="hover"
@@ -162,7 +159,7 @@ export default function DocsPage() {
                       />
                     </motion.div>
                     <motion.div
-                      className="block text-6xl dark:hidden"
+                      className="block dark:hidden"
                       initial="initial"
                       variants={happyBounce}
                       whileHover="hover"
@@ -175,8 +172,9 @@ export default function DocsPage() {
                   </motion.div>
                 </motion.div>
               </motion.h1>
+
               <motion.h2
-                className="text-4xl "
+                className="text-2xl sm:text-3xl md:text-4xl"
                 initial="initial"
                 transition={{ duration: 0.75, ease: "circOut" }}
                 variants={moveright}
@@ -186,55 +184,60 @@ export default function DocsPage() {
                 {siteConfig.hero_small}
               </motion.h2>
             </div>
-            {/* 2nd */}
+
             <motion.div
-              className="relative flex items-center w-full"
+              className="relative flex items-center w-full "
               initial="initial"
               transition={{ duration: 0.35, ease: "circOut" }}
               variants={moveright}
-              viewport={{ once: true, amount: 1 }}
+              viewport={{ once: true, amount: 0.1 }}
               whileInView="inView"
             >
               <Divider className="flex-1" />
-              <motion.div
-                animate="show"
-                className="flex items-center gap-4 right-4"
-                initial="hidden"
-                variants={containerVariants}
-              >
+
+              <div className="flex flex-col items-center gap-4 md:flex-row">
                 <div className="text-medium">Tools Used:</div>
-                {icons.map((Icon, index) => (
-                  <motion.div
-                    key={index}
-                    className="p-4 transition-colors ease-in-out rounded-full shadow-md bg-default-50 duration-250"
-                    variants={cardVariants} // Apply stagger animation
-                  >
+
+                <motion.div
+                  animate="show"
+                  className="flex flex-wrap items-center justify-center gap-4"
+                  initial="hidden"
+                  variants={containerVariants}
+                >
+                  {icons.map((Icon, index) => (
                     <motion.div
-                      initial="initial"
-                      transition={rotateBounce.transition}
-                      variants={rotateBounce}
-                      whileHover="hover"
+                      key={index}
+                      className="p-4 transition-colors ease-in-out rounded-full shadow-md bg-default-50 duration-250"
+                      variants={cardVariants} // Apply stagger animation
                     >
-                      <Icon size={50} />
+                      <motion.div
+                        initial="initial"
+                        transition={rotateBounce.transition}
+                        variants={rotateBounce}
+                        whileHover="hover"
+                      >
+                        <Icon size={50} />
+                      </motion.div>
                     </motion.div>
-                  </motion.div>
-                ))}
-              </motion.div>
+                  ))}
+                </motion.div>
+              </div>
             </motion.div>
-            {/* last */}
-            <div className="flex justify-between font-sans">
-              <h3 className="max-w-2xl text-2xl">
+
+            <div className="flex flex-col justify-between gap-8 font-sans md:flex-row">
+              <h3 className="max-w-2xl text-base sm:text-lg md:text-xl lg:text-2xl">
                 As a Software Engineer, I specialize in developing scalable
                 applications, optimizing user experiences, and improving
                 development workflows.
               </h3>
+
               <p className="text-xs w-60">
                 My expertise in design, coding, and user interaction
                 distinguishes me in the field of software engineering.
               </p>
             </div>
           </motion.div>
-          {/* Section 2 */}
+
           <div className="space-y-20">
             <div className="flex flex-col space-y-4 w-fit">
               <p className="mx-auto font-serif text-4xl text-primary">
@@ -266,26 +269,30 @@ export default function DocsPage() {
               className="relative flex items-center w-full"
               initial="initial"
               transition={{ duration: 0.8, ease: "circOut" }}
-              variants={moveleft}
-              viewport={{ once: true, amount: 1 }}
+              variants={moveright}
+              viewport={{ once: true, amount: 0.1 }}
               whileInView="inView"
             >
               <Divider className="flex-1" />
-              <motion.div>
-                <Button
-                  as={Link}
-                  className="p-8 text-xl bg-default-50"
-                  color="default"
-                  radius="full"
-                  size="lg"
-                  variant="ghost"
-                  href={siteConfig.navItems.Contact.href}
-                >
-                  Contact Me <IconArrowRight />
-                </Button>
-              </motion.div>
+              <Button
+                as={Link}
+                className="flex items-center gap-2 p-4 text-base sm:p-6 md:p-8 sm:text-lg md:text-xl"
+                href={siteConfig.navItems.Contact.href}
+                radius="full"
+                size="lg"
+                variant="ghost"
+              >
+                <span className="text-base sm:text-lg md:text-xl">
+                  Contact Me
+                </span>
+                <span>
+                  <IconArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                </span>
+              </Button>
+              <Divider className="flex-1 block md:hidden" />
             </motion.div>
           </div>
+
           <Footer />
         </div>
       </DefaultLayout>

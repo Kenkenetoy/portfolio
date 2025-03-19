@@ -123,6 +123,7 @@ export default function IndexPage() {
                   />
                 </motion.div>
               </motion.div>
+              <Divider className="flex-1 block md:hidden" />
             </motion.div>
 
             <motion.div
@@ -221,6 +222,7 @@ export default function IndexPage() {
                   />
                 </motion.div>
               </motion.div>
+              <Divider className="flex-1 block md:hidden" />
             </motion.div>
 
             <div className="pt-0 md:pt-12 mx-auto max-w-[95%] space-y-8">
