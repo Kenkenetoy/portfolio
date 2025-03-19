@@ -125,7 +125,7 @@ export const MobileSidebar = ({
         )}
         {...props}
       >
-        <div className="z-20 flex justify-end w-full">
+        <div className="z-20 flex flex-row justify-end w-full">
           <IconMenu2
             className="text-default-foreground-200"
             onClick={() => setOpen(!open)}
@@ -182,7 +182,7 @@ export const SidebarLink = ({
   return (
     <Link
       className={cn(
-        "flex items-center justify-start gap-2  group/sidebar py-2",
+        "flex items-center justify-start gap-2 group/sidebar py-2",
         className
       )}
       href={link.href}
