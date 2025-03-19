@@ -250,7 +250,7 @@ export default function DocsPage() {
               className="hidden md:flex flex-col items-center my-auto space-y-8 sm:space-y-10 md:space-y-12 h-fit w-[90%] sm:w-80 md:w-96"
               initial={{ opacity: 0, x: 50 }}
               transition={{ duration: 0.75, ease: "circOut" }}
-              viewport={{ once: true, amount: 1 }}
+              viewport={{ once: true, amount: 0.1 }}
               whileInView={{ opacity: 1, x: 0 }}
             >
               <Image

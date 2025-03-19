@@ -22,10 +22,14 @@ const links = siteConfig.socials.map((social) => ({
 
 export const HeroSection = ({ the }: { the: boolean }) => {
   const [isIconOnly, setIsIconOnly] = useState(false);
+  const [isPhoneMode, setPhoneMode] = useState<"sm" | "md" | "lg" | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     const handleResize = () => {
-      setIsIconOnly(window.innerWidth < 768); // Set true if screen is less than 768px (md breakpoint)
+      setIsIconOnly(window.innerWidth < 1020);
+      setPhoneMode(window.innerWidth < 1020 ? "sm" : "lg");
     };
 
     handleResize(); // Call on mount
@@ -57,7 +61,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
           whileInView="inView"
         >
           {/* Phone, hidden on small devices */}
-          <div className="relative hidden group xl:block">
+          <div className="relative hidden group lg:block">
             {/* Phone */}
             <div className="relative z-50 ">
               <GlareCard>
@@ -84,7 +88,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
           >
             <div className="space-y-2 ">
               <motion.div
-                className="block mx-auto xl:hidden w-fit"
+                className="block mx-auto lg:hidden w-fit"
                 initial="initial"
                 transition={{ duration: 1.75, ease: "circOut" }}
                 variants={moveright}
@@ -207,14 +211,14 @@ export const HeroSection = ({ the }: { the: boolean }) => {
           {/* Left Section */}
           <Button
             as={Link}
-            className="items-center gap-2 p-0 pl-0 md:pl-4 h-fit w-fit"
+            className="items-center gap-2 p-0 pl-0 lg:pl-4 h-fit w-fit"
             href={siteConfig.navItems.Contact.href}
-            isIconOnly={isIconOnly} // Dynamically set
+            isIconOnly={isIconOnly}
             radius="full"
-            size="lg"
+            size={isPhoneMode}
             variant="ghost"
           >
-            <span className="hidden text-lg md:block">Contact</span>
+            <span className="hidden text-lg lg:block">Contact</span>
             <div className="p-3 transition-colors ease-in-out rounded-full bg-default-foreground text-default">
               <IconMail />
             </div>
@@ -224,21 +228,21 @@ export const HeroSection = ({ the }: { the: boolean }) => {
           <FloatingDock items={links} />
 
           {/* Right Section */}
-          <div className="items-center hidden gap-2 transition-colors ease-in-out rounded-full md:flex md:pr-4 justify-self-end border-default duration-250 border-1">
+          <div className="items-center hidden gap-2 transition-colors ease-in-out rounded-full lg:flex lg:pr-4 justify-self-end border-default duration-250 border-1">
             <div className="p-3 transition-colors ease-in-out rounded-full bg-default-foreground text-default">
               <IconMail />
             </div>
             <Tooltip
-              className="hidden md:block"
+              className="hidden lg:block"
               content={
-                `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.second}` ? (
+                `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}` ? (
                   <Link
                     isExternal
                     showAnchorIcon
                     anchorIcon={<IconLink size={20} />}
                     className="flex flex-col p-2 space-y-2 text-xs"
                     color="foreground"
-                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.second}`}
+                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
                     isBlock={true}
                     size="sm"
                     target="_blank"
@@ -249,13 +253,13 @@ export const HeroSection = ({ the }: { the: boolean }) => {
                         className="z-0 object-cover w-full h-full"
                         height={200}
                         src={`https://api.microlink.io/?url=${encodeURIComponent(
-                          `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.second}`
+                          `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`
                         )}&screenshot=true&meta=false&embed=screenshot.url`}
                         width={200}
                       />
                     </span>
                     <span className="w-48 overflow-hidden text-ellipsis">
-                      {`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.second}`}
+                      {`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
                     </span>
                   </Link>
                 ) : (
@@ -270,10 +274,10 @@ export const HeroSection = ({ the }: { the: boolean }) => {
                 anchorIcon={<IconLink size={20} />}
                 className="hidden gap-2 w-fit md:block"
                 color="foreground"
-                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.second}`}
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
                 target="_blank"
               >
-                {siteConfig.email.second}
+                {siteConfig.email.first}
               </Link>
             </Tooltip>
           </div>

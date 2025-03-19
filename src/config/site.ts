@@ -2,7 +2,7 @@
 import {
   IconBrandLinkedin,
   IconBrandGithub,
-  // IconBrandLeetcode,
+  IconBrandLeetcode,
   IconCode,
   IconDevices,
   IconBrandBlender,
@@ -66,7 +66,7 @@ export const siteConfig = {
   location: { province: ["Bohol"], country: ["Philippines"] },
   role: "Software Engineer",
 
-  url: "",
+  url: "https://www.portfolio-kenprce09.vercel.app",
 
   meta_type: "website",
   meta_title: "Kenneth Aparece",
@@ -103,19 +103,19 @@ export const siteConfig = {
   socials: [
     {
       title: "LinkedIn",
-      link: "https://linkedin.com/in/kenneth",
+      link: "https://www.linkedin.com/in/kenkenetoy/",
       icon: IconBrandLinkedin,
     },
     {
       title: "GitHub",
-      link: "https://github.com/kenneth",
+      link: "https://github.com/Kenkenetoy",
       icon: IconBrandGithub,
     },
-    // {
-    //   title: "LeetCode",
-    //   link: "https://leetcode.com/kenneth",
-    //   icon: IconBrandLeetcode,
-    // },
+    {
+      title: "LeetCode",
+      link: "https://leetcode.com/u/Kenkenetoy/",
+      icon: IconBrandLeetcode,
+    },
   ],
 
   stack: {
