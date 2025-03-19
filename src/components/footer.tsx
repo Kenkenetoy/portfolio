@@ -13,7 +13,7 @@ export const Footer = () => {
   return (
     <div className="space-y-4">
       <footer className="p-10 space-y-4 overflow-hidden border bg-default-50 rounded-2xl text-default-foreground border-default">
-        <motion.div className="flex flex-wrap items-start gap-4 footer sm:footer-horizontal place-items-center justify-evenly">
+        <div className="flex flex-col gap-12 md:flex-row">
           <motion.nav
             className="justify-self-start"
             exit="outOfView"
@@ -66,71 +66,78 @@ export const Footer = () => {
               </foreignObject>
             </svg>
           </motion.nav>
+          <motion.div className="flex flex-wrap items-start gap-4 footer sm:footer-horizontal place-items-center justify-evenly">
+            {/* Explore Section */}
+            <motion.nav
+              initial="initial"
+              transition={{ duration: 0.75, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 0.1 }}
+              whileInView="inView"
+            >
+              <h6 className="w-full font-bold text-center text-large text-primary md:text-start">
+                Explore
+              </h6>
+              <div className="z-10 flex flex-col items-center gap-2 md:items-start">
+                {Object.values(siteConfig.navItems).map((item) => (
+                  <Link key={item.label} color="foreground" href={item.href}>
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </motion.nav>
 
-          {/* Explore Section */}
-          <motion.nav
-            initial="initial"
-            transition={{ duration: 0.75, ease: "circOut" }}
-            variants={moveright}
-            viewport={{ once: true, amount: 0.1 }}
-            whileInView="inView"
-          >
-            <h6 className="font-bold text-large text-danger">Explore</h6>
-            <div className="z-10 flex flex-col gap-2">
-              {Object.values(siteConfig.navItems).map((item) => (
-                <Link key={item.label} color="foreground" href={item.href}>
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </motion.nav>
+            {/* Follow Me Section */}
+            <motion.nav
+              initial="initial"
+              transition={{ duration: 0.75, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 0.1 }}
+              whileInView="inView"
+            >
+              <h6 className="w-full font-bold text-center text-large text-primary md:text-start">
+                Follow Me
+              </h6>
+              <div className="z-10 flex flex-col items-center gap-2 md:items-start">
+                {siteConfig.socials.map(({ link, icon: Icon, title }) => (
+                  <Link
+                    key={link}
+                    className="gap-2"
+                    color="foreground"
+                    href={link}
+                    target="_blank"
+                  >
+                    <Icon size={24} />
+                    <span>{title}</span>
+                  </Link>
+                ))}
+              </div>
+            </motion.nav>
 
-          {/* Follow Me Section */}
-          <motion.nav
-            initial="initial"
-            transition={{ duration: 0.75, ease: "circOut" }}
-            variants={moveright}
-            viewport={{ once: true, amount: 0.1 }}
-            whileInView="inView"
-          >
-            <h6 className="font-bold text-large text-primary">Follow Me</h6>
-            <div className="z-10 flex flex-col gap-2">
-              {siteConfig.socials.map(({ link, icon: Icon, title }) => (
-                <Link
-                  key={link}
-                  className="gap-2"
-                  color="foreground"
-                  href={link}
-                  target="_blank"
-                >
-                  <Icon size={24} />
-                  <span>{title}</span>
-                </Link>
-              ))}
-            </div>
-          </motion.nav>
-
-          {/* Coming SOon */}
-          <motion.nav
-            className="w-40"
-            initial="initial"
-            transition={{ duration: 0.75, ease: "circOut" }}
-            variants={moveright}
-            viewport={{ once: true, amount: 0.1 }}
-            whileInView="inView"
-          >
-            <h6 className="font-bold text-large text-primary">3d Experience</h6>
-            <div className="z-10 flex flex-col gap-2">
-              <p>
-                I will be putting up my 3d experience using a webgl framework
-                soon.
-              </p>
-              <Button isDisabled radius="full" size="lg" variant="ghost">
-                Coming soon <IconArrowRight />
-              </Button>
-            </div>
-          </motion.nav>
-        </motion.div>
+            {/* Coming SOon */}
+            <motion.nav
+              className="items-center w-full text-center sm:text-start sm:w-40 justify lg:items-start"
+              initial="initial"
+              transition={{ duration: 0.75, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 0.1 }}
+              whileInView="inView"
+            >
+              <h6 className="w-full font-bold text-center text-large text-primary sm:text-start">
+                3d Experience
+              </h6>
+              <div className="z-10 flex flex-col gap-2">
+                <p>
+                  I will be putting up my 3d experience using a webgl framework
+                  soon.
+                </p>
+                <Button isDisabled radius="full" size="lg" variant="ghost">
+                  Coming soon <IconArrowRight />
+                </Button>
+              </div>
+            </motion.nav>
+          </motion.div>
+        </div>
 
         {/* Footer Branding */}
         <motion.div

@@ -38,14 +38,12 @@ export default function DocsPage() {
       data[key] = value.toString();
     });
 
-    // 1️⃣ Honeypot Check (Bots will fill this, real users won’t)
     if (honeypotRef.current?.value) {
       console.warn("Bot detected - ignoring submission.");
 
       return;
     }
 
-    // 2️⃣ Rate Limit (Prevent spam submissions)
     const now = Date.now();
 
     if (now - lastSubmission < 5000) {
@@ -60,7 +58,6 @@ export default function DocsPage() {
     }
     setLastSubmission(now);
 
-    // 3️⃣ Spam Content Filtering
     if (isSpam(data.message)) {
       addToast({
         title: "Spam Detected!",
@@ -236,7 +233,7 @@ export default function DocsPage() {
                     variant="underlined"
                   />
                   <Button
-                    className="p-8 ml-auto text-2xl w-fit"
+                    className="p-8 mx-auto my-auto text-2xl lg:mr-0 lg:ml-auto w-fit"
                     radius="full"
                     size="lg"
                     type="submit"
