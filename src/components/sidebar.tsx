@@ -76,10 +76,10 @@ export const Sidebar = ({
 
 export const SidebarBody = (props: React.ComponentProps<typeof motion.div>) => {
   return (
-    <>
+    <div className="flex">
       <DesktopSidebar {...props} />
       <MobileSidebar {...(props as React.ComponentProps<"div">)} />
-    </>
+    </div>
   );
 };
 
@@ -125,7 +125,7 @@ export const MobileSidebar = ({
         )}
         {...props}
       >
-        <div className="z-20 flex flex-row justify-end w-full">
+        <div className="z-20 flex flex-row w-full">
           <IconMenu2
             className="text-default-foreground-200"
             onClick={() => setOpen(!open)}
@@ -136,7 +136,7 @@ export const MobileSidebar = ({
             <motion.div
               animate={{ x: 0, opacity: 1 }}
               className={cn(
-                "fixed h-full w-full inset-0 bg-default-50 p-4 z-[100] flex flex-col justify-between rounded-2xl overflow-hidden",
+                "fixed h-full w-full inset-0 bg-default-50 p-4 z-[50] flex flex-col justify-between rounded-3xl overflow-hidden",
                 className
               )}
               exit={{ x: "-100%", opacity: 0 }}
@@ -181,18 +181,19 @@ export const SidebarLink = ({
 
   return (
     <Link
-      className={cn(
-        "flex items-center justify-start gap-2 group/sidebar py-2",
-        className
-      )}
+      className={cn("flex items-center  gap-2 group/sidebar py-2", className)}
       href={link.href}
       {...props}
     >
-      {link.icon}
+      <span className="hidden md:inline">{link.icon}</span>
 
       <motion.span
         animate={{
-          display: animate ? (open ? "inline-block" : "none") : "inline-block",
+          display: animate
+            ? open
+              ? "inline-block"
+              : "hidden"
+            : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
         className="text-default-foreground text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"

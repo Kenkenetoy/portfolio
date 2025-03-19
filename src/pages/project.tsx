@@ -83,7 +83,6 @@ export default function DocsPage() {
           <div className="mx-auto w-[95%]">
             <AlternatingCards />
           </div>
-
           <Footer />
         </div>
       </DefaultLayout>
