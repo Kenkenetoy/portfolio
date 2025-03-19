@@ -521,8 +521,12 @@ export const siteConfig = {
         "I craft intuitive, user-friendly interfaces that make apps easy to use and visually appealing.",
       backgroundClass: "bg-default-50",
       textColorClass: "text-primary",
-      icon: IconLayout, // Consider an icon more focused on design or user interaction
+      icon: IconLayout,
       iconColor: "primary",
+      image:
+        "https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80",
+      hoverImage:
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif",
     },
     {
       title: "Full-Stack Development",
@@ -530,8 +534,11 @@ export const siteConfig = {
         "I build seamless web and mobile apps, handling both front-end and back-end for a smooth user experience.",
       backgroundClass: "bg-default-50",
       textColorClass: "text-secondary",
-      icon: IconCode, // A general development or coding icon
+      icon: IconCode,
       iconColor: "secondary",
+      image:
+        "https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80",
+      hoverImage: "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
     },
     {
       title: "Mobile & Web Apps",
@@ -539,8 +546,10 @@ export const siteConfig = {
         "I create fast, responsive apps that work smoothly across all devices and platforms.",
       backgroundClass: "bg-default-50",
       textColorClass: "text-warning",
-      icon: IconDevices, // A device-related icon for web and mobile
+      icon: IconDevices,
       iconColor: "warning",
+      image: "https://source.unsplash.com/1600x900/?mobile,app",
+      hoverImage: "https://media.giphy.com/media/l1J9Jzcs9o9U8z8Wc/giphy.gif",
     },
     {
       title: "Creative Direction",
@@ -548,8 +557,11 @@ export const siteConfig = {
         "I lead the visual design, crafting concepts that tell a story and connect with your audience.",
       backgroundClass: "bg-default-50",
       textColorClass: "text-danger",
-      icon: IconPalette, // A more creative and artistic icon (like a palette or brush)
+      icon: IconPalette,
       iconColor: "danger",
+      image:
+        "https://portfolio-kenprce09.vercel.app/228041565_1204885213317442_2861452606248897561_n.webp",
+      hoverImage: "https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif",
     },
   ],
 };

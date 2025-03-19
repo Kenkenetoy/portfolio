@@ -11,10 +11,14 @@ export const WobbleCard = ({
   children,
   containerClassName,
   className,
+  image,
+  hoverImage,
 }: {
   children: React.ReactNode;
   containerClassName?: string;
   className?: string;
+  image: string;
+  hoverImage: string;
 }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -60,11 +64,10 @@ export const WobbleCard = ({
         >
           <div
             className={cn(
-              "group w-full cursor-pointer overflow-hidden relative card h-[20rem] sm:h-[25rem] md:h-[30rem] lg:h-[35rem] xl:h-[40rem] rounded-md shadow-xl mx-auto flex flex-col justify-end  dark:border-neutral-800",
-              "bg-[url(https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80)] bg-cover",
-              // Preload hover image by setting it in a pseudo-element
-              "before:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)] before:fixed before:inset-0 before:opacity-0 before:z-[-1]",
-              "hover:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)]",
+              "group w-full cursor-pointer overflow-hidden relative card h-[20rem] sm:h-[25rem] md:h-[30rem] lg:h-[35rem] xl:h-[40rem] rounded-md shadow-xl mx-auto flex flex-col justify-end dark:border-neutral-800",
+              `bg-[url(${image})] bg-cover`,
+              `before:bg-[url(${hoverImage})] before:fixed before:inset-0 before:opacity-0 before:z-[-1]`,
+              `hover:bg-[url(${hoverImage})]`,
               "hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:bg-black hover:after:opacity-50",
               "transition-all duration-500"
             )}
@@ -92,14 +95,17 @@ export function WobbleCardComponent() {
       whileInView="show"
     >
       {siteConfig.whatIDoData.map((card, index) => (
-        <motion.div key={index} variants={cardVariants} className="flex-grow">
+        <motion.div key={index} className="flex-grow" variants={cardVariants}>
           <WobbleCard
             className="flex-1 min-w-[200px] w-full"
             containerClassName={`border border-1 border-default ${card.backgroundClass}`}
+            hoverImage={card.hoverImage}
+            image={card.image}
           >
             <div className="flex flex-col items-start transition-colors ease-in-out duration-250">
               <div className="flex items-center gap-2">
                 <card.icon className={`text-${card.iconColor}`} />
+
                 <h2
                   className={cn(
                     "text-base sm:text-lg md:text-xl font-serif",

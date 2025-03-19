@@ -1,7 +1,4 @@
 /* eslint-disable prettier/prettier */
-import { Link } from "@heroui/link";
-import { Avatar } from "@heroui/avatar";
-
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/sidebar";
 import { cn } from "@/lib/utils";
 import { ThemeSwitch } from "@/components/theme-switch";

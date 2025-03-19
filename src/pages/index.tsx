@@ -61,9 +61,8 @@ export default function IndexPage() {
               whileInView="inView"
             >
               <p className="w-full max-w-2xl text-base sm:text-lg md:text-xl lg:text-2xl">
-                I build fast, scalable apps using Laravel, React, and
-                WebGPU—seamlessly combining backend power with interactive,
-                immersive frontends.
+                I build fast, scalable apps using Laravel, and React—seamlessly
+                combining backend power with interactive, immersive frontends.
               </p>
               <motion.p
                 className="w-full text-xs md:w-96 md:text-sm lg:text-base"
@@ -73,7 +72,7 @@ export default function IndexPage() {
                 viewport={{ once: true, amount: 0.5 }}
                 whileInView="inView"
               >
-                My expertise in full-stack development, 3D visualization, and
+                My expertise in full-stack development, visualization, and
                 interactive web design sets me apart in the tech industry.
               </motion.p>
 
