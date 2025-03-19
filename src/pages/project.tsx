@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
 import Footer from "@/components/footer";
-import { moveleft, moveright, moveup, rotateBounce } from "@/anim/variants";
+import { moveright, moveup, rotateBounce } from "@/anim/variants";
 import AlternatingCards from "@/components/alternating-cards";
 export default function DocsPage() {
   return (
@@ -36,7 +36,7 @@ export default function DocsPage() {
       </Helmet>
 
       <DefaultLayout>
-        <div className="pt-24 mx-auto max-w-screen-2xl">
+        <div className="w-screen px-4 pt-24 mx-auto space-y-12 md:space-y-24 max-w-screen-2xl">
           <motion.div
             className="space-y-8"
             initial="initial"
@@ -57,7 +57,7 @@ export default function DocsPage() {
               <motion.div
                 initial="initial"
                 transition={{ duration: 0.75, ease: "circOut" }}
-                variants={moveleft}
+                variants={moveright}
                 viewport={{ once: true, amount: 0.1 }}
                 whileInView="inView"
               >

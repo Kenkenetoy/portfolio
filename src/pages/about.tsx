@@ -118,7 +118,7 @@ export default function DocsPage() {
             </filter>
           </defs>
         </svg>
-        <div className="mx-auto mt-20 space-y-16 max-w-screen-2xl">
+        <div className="px-4 mx-auto mt-20 space-y-16 max-w-screen-2xl">
           {/* Section 1 */}
           <motion.div
             className="space-y-8"
@@ -242,7 +242,7 @@ export default function DocsPage() {
               </p>
               <motion.div
                 animate="show"
-                className="flex gap-12"
+                className="flex flex-col gap-12 lg:flex-row"
                 initial="hidden"
                 variants={containerVariantsDown}
               >

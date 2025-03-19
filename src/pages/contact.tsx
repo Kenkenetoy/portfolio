@@ -4,28 +4,72 @@ import { Divider } from "@heroui/divider";
 import { IconPhone } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { Button } from "@heroui/button";
-import { Input } from "@heroui/input";
+import { Textarea, Input } from "@heroui/input";
 import { Link } from "@heroui/link";
 import { Image } from "@heroui/image";
 import { Form } from "@heroui/form";
 import { addToast } from "@heroui/toast";
 import emailjs from "emailjs-com";
+import { useState, useRef } from "react";
 
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
 import Footer from "@/components/footer";
-import { moveleft, moveright, moveup, ringing } from "@/anim/variants";
+import { moveright, moveup, ringing } from "@/anim/variants";
 
 export default function DocsPage() {
+  const [lastSubmission, setLastSubmission] = useState<number>(0);
+  const honeypotRef = useRef<HTMLInputElement>(null);
+
+  const isSpam = (message: string) => {
+    const spamWords = ["free money", "viagra", "lottery", "click here"];
+
+    return spamWords.some((word) => message.toLowerCase().includes(word));
+  };
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const data: Record<string, string> = {};
 
     formData.forEach((value, key) => {
       data[key] = value.toString();
     });
+
+    // 1️⃣ Honeypot Check (Bots will fill this, real users won’t)
+    if (honeypotRef.current?.value) {
+      console.warn("Bot detected - ignoring submission.");
+
+      return;
+    }
+
+    // 2️⃣ Rate Limit (Prevent spam submissions)
+    const now = Date.now();
+
+    if (now - lastSubmission < 5000) {
+      // 5-second cooldown
+      addToast({
+        title: "Slow Down!",
+        description: "Please wait before submitting again.",
+        color: "warning",
+      });
+
+      return;
+    }
+    setLastSubmission(now);
+
+    // 3️⃣ Spam Content Filtering
+    if (isSpam(data.message)) {
+      addToast({
+        title: "Spam Detected!",
+        description: "Your message contains spam-like content.",
+        color: "danger",
+      });
+
+      return;
+    }
 
     try {
       await emailjs.send(
@@ -34,18 +78,16 @@ export default function DocsPage() {
         data,
         "LJRo4VXi016kGcTuV"
       );
-
       addToast({
         title: "Success!",
         description: "Your message has been sent successfully.",
         color: "success",
       });
+      form.reset();
     } catch (error) {
-      const errorMessage = (error as Error).message;
-
       addToast({
-        title: "Error",
-        description: `Failed to send message: ${errorMessage}`,
+        title: `Error: ${error}`,
+        description: "Failed to send message.",
         color: "danger",
       });
     }
@@ -78,8 +120,8 @@ export default function DocsPage() {
       </Helmet>
 
       <DefaultLayout>
-        <div className="pt-24 mx-auto space-y-12 max-w-screen-2xl">
-          <div className="flex gap-12">
+        <div className="w-screen px-4 pt-24 mx-auto space-y-12 md:space-y-24 max-w-screen-2xl">
+          <div className="flex flex-col gap-12 md:flex-row">
             <div className="space-y-12">
               <motion.div
                 className="space-y-8"
@@ -90,7 +132,7 @@ export default function DocsPage() {
                 whileInView="inView"
               >
                 <motion.h1
-                  className="flex gap-12 font-serif text-8xl"
+                  className="flex items-center gap-2 mx-auto font-serif text-4xl sm:gap-4 md:gap-6 lg:gap-8 xl:gap-12 sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl w-fit lg:mx-0"
                   initial="initial"
                   transition={{ duration: 0.75, ease: "circOut" }}
                   variants={moveright}
@@ -101,8 +143,8 @@ export default function DocsPage() {
                   <motion.div
                     initial="initial"
                     transition={{ duration: 0.75, ease: "circOut" }}
-                    variants={moveleft}
-                    viewport={{ once: true, amount: 1 }}
+                    variants={moveright}
+                    viewport={{ once: true, amount: 0.1 }}
                     whileInView="inView"
                   >
                     <motion.div className="p-2 transition-colors ease-in-out rounded-full w-fit bg-default-foreground duration-250">
@@ -112,14 +154,14 @@ export default function DocsPage() {
                         whileHover="hover"
                       >
                         <IconPhone
-                          className="w-20 h-20 text-default-50"
+                          className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-20 xl:h-20 text-default-50"
                           stroke={1}
                         />
                       </motion.div>
                     </motion.div>
                   </motion.div>
                 </motion.h1>
-                <h2 className="w-[75%] text-2xl">
+                <h2 className="w-[90%] text-lg sm:text-xl md:text-2xl lg:text-3xl">
                   Whether you&apos;re looking to collaborate on a project, need
                   a solution to a challenging problem, or just want to talk
                   tech, feel free to reach out. Together, we can turn ideas into
@@ -136,64 +178,63 @@ export default function DocsPage() {
               >
                 <Form className="w-full space-y-8" onSubmit={onSubmit}>
                   <Divider />
-
+                  <input
+                    ref={honeypotRef}
+                    className="hidden"
+                    name="honeypot"
+                    type="text"
+                  />
                   <Input
                     isRequired
                     errorMessage="Please enter a valid name"
                     label="What’s your name?"
-                    labelPlacement="outside"
+                    labelPlacement="inside"
                     name="name"
-                    placeholder="John Doe"
                     size="lg"
                     type="text"
+                    variant="underlined"
                   />
-                  <Divider />
-
                   <Input
                     isRequired
                     errorMessage="Please enter a valid email"
                     label="What’s your email?"
-                    labelPlacement="outside"
+                    labelPlacement="inside"
                     name="email"
-                    placeholder="john.doe@example.com"
                     size="lg"
                     type="email"
+                    variant="underlined"
                   />
-                  <Divider />
                   <Input
                     isRequired
                     errorMessage="Please enter a valid organization"
                     label="What is the name of your organization?"
-                    labelPlacement="outside"
+                    labelPlacement="inside"
                     name="organization"
-                    placeholder="X Company"
                     size="lg"
                     type="text"
+                    variant="underlined"
                   />
-                  <Divider />
                   <Input
                     isRequired
                     errorMessage="Please enter a valid task"
                     label="What specific area or task do you need help with?"
-                    labelPlacement="outside"
+                    labelPlacement="inside"
                     name="task"
-                    placeholder="To improve the performance of my Laravel application"
                     size="lg"
                     type="text"
+                    variant="underlined"
                   />
-                  <Divider />
-                  <Input
+                  <Textarea
+                    isClearable
                     isRequired
                     errorMessage="Please enter a valid message"
                     label="Your message"
-                    labelPlacement="outside"
+                    labelPlacement="inside"
                     name="message"
-                    placeholder="Hey Kenneth, can you help me with...?"
                     size="lg"
                     type="text"
+                    variant="underlined"
                   />
-                  <Divider />
-
                   <Button
                     className="p-8 ml-auto text-2xl w-fit"
                     radius="full"
@@ -209,20 +250,22 @@ export default function DocsPage() {
 
             {/* Sidebar */}
             <motion.div
-              className="flex flex-col items-center my-auto space-y-12 h-fit w-96"
+              className="hidden md:flex flex-col items-center my-auto space-y-8 sm:space-y-10 md:space-y-12 h-fit w-[90%] sm:w-80 md:w-96"
               initial={{ opacity: 0, x: 50 }}
               transition={{ duration: 0.75, ease: "circOut" }}
               viewport={{ once: true, amount: 1 }}
               whileInView={{ opacity: 1, x: 0 }}
             >
               <Image
-                alt="Woman listening to music"
+                alt={`${siteConfig.name}'s Profile Picture`}
+                className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56"
                 draggable={false}
                 radius="full"
                 src={siteConfig.logo}
               />
+
               <motion.div
-                className="space-y-12 h-fit w-fit"
+                className="space-y-8 sm:space-y-10 md:space-y-12 h-fit w-fit"
                 initial={{ opacity: 0, y: 30 }}
                 transition={{ duration: 0.75 }}
                 viewport={{ once: true }}
@@ -235,8 +278,12 @@ export default function DocsPage() {
                   viewport={{ once: true }}
                   whileInView={{ opacity: 1, y: 0 }}
                 >
-                  <h1>CONTACT DETAILS</h1>
-                  <p>{siteConfig.email.first}</p>
+                  <h1 className="text-lg sm:text-xl md:text-2xl">
+                    CONTACT DETAILS
+                  </h1>
+                  <p className="text-sm sm:text-base md:text-lg">
+                    {siteConfig.email.first}
+                  </p>
                 </motion.div>
 
                 <motion.div
@@ -246,8 +293,8 @@ export default function DocsPage() {
                   viewport={{ once: true }}
                   whileInView={{ opacity: 1, y: 0 }}
                 >
-                  <h6 className="text-large">SOCIALS</h6>
-                  <div className="z-10 flex flex-col gap-2">
+                  <h6 className="text-base sm:text-lg md:text-xl">SOCIALS</h6>
+                  <div className="z-10 flex flex-col gap-2 sm:gap-3 md:gap-4">
                     {siteConfig.socials.map(({ link, icon: Icon, title }) => (
                       <motion.div
                         key={link}
@@ -255,12 +302,12 @@ export default function DocsPage() {
                         whileTap={{ scale: 0.95 }}
                       >
                         <Link
-                          className="gap-2"
+                          className="flex items-center gap-2 text-sm sm:text-base md:text-lg"
                           color="foreground"
                           href={link}
                           target="_blank"
                         >
-                          <Icon size={24} />
+                          <Icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
                           <span>{title}</span>
                         </Link>
                       </motion.div>
