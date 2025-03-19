@@ -97,7 +97,7 @@ export const DesktopSidebar = ({
           width: animate ? (open ? "300px" : "60px") : "300px",
         }}
         className={cn(
-          "h-full px-4 py-4 hidden lg:flex lg:flex-col  w-[300px] shrink-0",
+          "h-full lg:px-4 lg:py-4 hidden lg:flex lg:flex-col  w-[300px] shrink-0",
           className
         )}
         onMouseEnter={() => setOpen(true)}
@@ -185,7 +185,7 @@ export const SidebarLink = ({
       href={link.href}
       {...props}
     >
-      <span className="hidden md:inline">{link.icon}</span>
+      {link.icon}
 
       <motion.span
         animate={{
@@ -196,7 +196,7 @@ export const SidebarLink = ({
             : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
-        className="text-default-foreground text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+        className="text-default-foreground text-base group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
       >
         {link.label}
       </motion.span>

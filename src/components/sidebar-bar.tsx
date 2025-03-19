@@ -14,14 +14,14 @@ export function SidebarDemo() {
   return (
     <div
       className={cn(
-        "fixed lg:left-4 top-20 lg:top-1/2 -translate-y-1/2 h-fit bg-default-50 shadow-lg transition-all scale-75 lg:scale-100 overflow-clip",
+        "fixed left-4 lg:left-4 top-40 lg:top-1/2 -translate-y-1/2 h-fit bg-default-50 shadow-lg transition-all scale-75 lg:scale-100 overflow-clip",
         open
-          ? "lg:w-64 lg:h-fit h-14 w-fit rounded-3xl"
-          : "lg:w-14 lg:h-fit h-14 w-20 rounded-3xl"
+          ? "lg:w-64 lg:h-fit h-80 w-60 rounded-3xl"
+          : "lg:w-14 lg:h-fit h-14 w-14 rounded-full lg:rounded-3xl"
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="flex flex-row justify-between flex-1 w-full h-full gap-4 overflow-x-hidden overflow-y-auto lg:flex-col ">
+        <SidebarBody className="flex flex-col justify-between flex-1 w-full h-full gap-4 overflow-x-hidden overflow-y-auto ">
           {/* mobile friendly */}
           {Object.values(siteConfig.navItems).map((navItem, idx) => (
             <SidebarLink
