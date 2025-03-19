@@ -560,7 +560,7 @@ export const siteConfig = {
       icon: IconPalette,
       iconColor: "danger",
       image:
-        "https://portfolio-kenprce09.vercel.app/228041565_1204885213317442_2861452606248897561_n.webp",
+        "https://www.facebook.com/photo/?fbid=974708283685950&set=a.110066923483428",
       hoverImage: "https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif",
     },
   ],

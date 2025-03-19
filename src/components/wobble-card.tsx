@@ -65,12 +65,16 @@ export const WobbleCard = ({
           <div
             className={cn(
               "group w-full cursor-pointer overflow-hidden relative card h-[20rem] sm:h-[25rem] md:h-[30rem] lg:h-[35rem] xl:h-[40rem] rounded-md shadow-xl mx-auto flex flex-col justify-end dark:border-neutral-800",
-              `bg-[url(${image})] bg-cover`,
-              `before:bg-[url(${hoverImage})] before:fixed before:inset-0 before:opacity-0 before:z-[-1]`,
-              `hover:bg-[url(${hoverImage})]`,
               "hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:bg-black hover:after:opacity-50",
               "transition-all duration-500"
             )}
+            style={{
+              backgroundImage: `url(${isHovering ? hoverImage : image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
           >
             {/* Content */}
             <div className="absolute bottom-0 z-50 w-full min-h-40 md:h-48 lg:h-60 bg-default-50">
