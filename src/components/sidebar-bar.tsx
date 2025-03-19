@@ -14,12 +14,12 @@ export function SidebarDemo() {
   return (
     <div
       className={cn(
-        "fixed left-4 top-1/2 -translate-y-1/2 h-fit bg-default-50 shadow-lg transition-all hidden lg:block",
+        "fixed lg:left-4 top-1/2 -translate-y-1/2 h-fit bg-default-50 shadow-lg transition-all scale-75 lg:scale-100",
         open ? "w-64 rounded-3xl" : "w-14 rounded-3xl"
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="flex flex-col justify-between h-full gap-10">
+        <SidebarBody className="flex flex-col justify-between h-full gap-4 lg:gap-10">
           <div className="flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
             <Link
               className="relative z-20 flex items-center py-1 space-x-2 text-base font-normal text-default-foreground"

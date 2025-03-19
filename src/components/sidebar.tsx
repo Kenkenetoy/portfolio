@@ -97,7 +97,7 @@ export const DesktopSidebar = ({
           width: animate ? (open ? "300px" : "60px") : "300px",
         }}
         className={cn(
-          "h-full px-4 py-4 hidden  md:flex md:flex-col  w-[300px] shrink-0",
+          "h-full px-4 py-4 hidden lg:flex lg:flex-col  w-[300px] shrink-0",
           className
         )}
         onMouseEnter={() => setOpen(true)}
@@ -121,7 +121,7 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          "h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between w-full"
+          "px-4 py-4 flex flex-col lg:hidden items-center justify-between w-full"
         )}
         {...props}
       >
@@ -136,18 +136,18 @@ export const MobileSidebar = ({
             <motion.div
               animate={{ x: 0, opacity: 1 }}
               className={cn(
-                "fixed h-full w-full inset-0 bg-default-50 p-10 z-[100] flex flex-col justify-between",
+                "fixed h-full w-full inset-0 bg-default-50 p-4 z-[100] flex flex-col justify-between rounded-2xl overflow-hidden",
                 className
               )}
               exit={{ x: "-100%", opacity: 0 }}
               initial={{ x: "-100%", opacity: 0 }}
               transition={{
-                duration: 0.3,
+                duration: 0.1,
                 ease: "easeInOut",
               }}
             >
               <div
-                className="z-50 cursor-pointer right-10 text-default-foreground"
+                className="z-50 cursor-pointer text-default-foreground"
                 role="button"
                 tabIndex={0}
                 onClick={() => setOpen(!open)}
@@ -157,7 +157,7 @@ export const MobileSidebar = ({
                   }
                 }}
               >
-                <IconX />
+                <IconX className="" />
               </div>
               {children}
             </motion.div>

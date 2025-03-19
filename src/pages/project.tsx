@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Helmet } from "react-helmet-async";
 import { Divider } from "@heroui/divider";
 import { IconCodeCircle2 } from "@tabler/icons-react";
