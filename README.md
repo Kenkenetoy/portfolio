@@ -9,3 +9,6 @@
 - [TypeScript](https://www.typescriptlang.org)
 - [Framer Motion](https://www.framer.com/motion)
 - [Tabler Icons](https://tabler.io/icons)
+
+Feel free to empty my api tokens as i totally forgot to hide it :D
+fml
