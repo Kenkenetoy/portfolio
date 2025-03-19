@@ -11,13 +11,13 @@ export const WobbleCard = ({
   children,
   containerClassName,
   className,
-  image,
+  // image,
   hoverImage,
 }: {
   children: React.ReactNode;
   containerClassName?: string;
   className?: string;
-  image: string;
+  // image: string;
   hoverImage: string;
 }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -65,11 +65,13 @@ export const WobbleCard = ({
           <div
             className={cn(
               "group w-full cursor-pointer overflow-hidden relative card h-[20rem] sm:h-[25rem] md:h-[30rem] lg:h-[35rem] xl:h-[40rem] rounded-md shadow-xl mx-auto flex flex-col justify-end dark:border-neutral-800",
-              "hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:bg-black hover:after:opacity-50",
+              "hover:after:content-[''] hover:after:absolute hover:after:inset-0 ",
+              // "hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:bg-black hover:after:opacity-50",
               "transition-all duration-500"
             )}
             style={{
-              backgroundImage: `url(${isHovering ? hoverImage : image})`,
+              backgroundImage: `url(${hoverImage})`,
+              // backgroundImage: `url(${isHovering ? hoverImage : image})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -104,7 +106,7 @@ export function WobbleCardComponent() {
             className="flex-1 min-w-[200px] w-full"
             containerClassName={`border border-1 border-default ${card.backgroundClass}`}
             hoverImage={card.hoverImage}
-            image={card.image}
+            // image={card.image}
           >
             <div className="flex flex-col items-start transition-colors ease-in-out duration-250">
               <div className="flex items-center gap-2">

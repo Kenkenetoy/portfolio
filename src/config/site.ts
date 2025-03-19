@@ -357,7 +357,7 @@ export const siteConfig = {
       imageSrc: "Screenshot2025-03-17132127.png",
       stack: ["krpano", "javascript", "xml", "css", "blender"],
       url: {
-        demo: "https://mata.ph/costavida/",
+        demo: "https://mata.ph/mactannewtown/",
       },
     },
     {
@@ -523,10 +523,9 @@ export const siteConfig = {
       textColorClass: "text-primary",
       icon: IconLayout,
       iconColor: "primary",
-      image:
-        "https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80",
+      // image: "Screenshot2025-03-19183302.png",
       hoverImage:
-        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif",
+        "https://blog.tubikstudio.com/wp-content/uploads/2015/12/ui-concept-animation-design-1-1.gif",
     },
     {
       title: "Full-Stack Development",
@@ -536,8 +535,7 @@ export const siteConfig = {
       textColorClass: "text-secondary",
       icon: IconCode,
       iconColor: "secondary",
-      image:
-        "https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80",
+      // image: "Screenshot2025-03-19184009.png",
       hoverImage: "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
     },
     {
@@ -548,8 +546,8 @@ export const siteConfig = {
       textColorClass: "text-warning",
       icon: IconDevices,
       iconColor: "warning",
-      image: "https://source.unsplash.com/1600x900/?mobile,app",
-      hoverImage: "https://media.giphy.com/media/l1J9Jzcs9o9U8z8Wc/giphy.gif",
+      // image: "Screenshot2025-03-19193016-left(1).jpg",
+      hoverImage: "2025-03-1918-46-14-ezgif.com-video-to-gif-converter.gif",
     },
     {
       title: "Creative Direction",
@@ -559,8 +557,8 @@ export const siteConfig = {
       textColorClass: "text-danger",
       icon: IconPalette,
       iconColor: "danger",
-      image:
-        "https://www.facebook.com/photo/?fbid=974708283685950&set=a.110066923483428",
+      // image:
+      // "https://www.facebook.com/photo/?fbid=974708283685950&set=a.110066923483428",
       hoverImage: "https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif",
     },
   ],
