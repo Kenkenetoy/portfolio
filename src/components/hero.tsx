@@ -12,7 +12,7 @@ import { GlareCard } from "./glare-card";
 import { FloatingDock } from "./floating-dock";
 
 import { siteConfig } from "@/config/site"; // Import siteConfig directly
-import { movedown, moveright, moveup } from "@/anim/variants";
+import { movedown, moveright, moveup, rotateBounce } from "@/anim/variants";
 
 const links = siteConfig.socials.map((social) => ({
   title: social.title,
@@ -20,7 +20,7 @@ const links = siteConfig.socials.map((social) => ({
   href: social.link,
 }));
 
-export const HeroSection = ({ the }: { the: boolean }) => {
+export const HeroSection = () => {
   const [isIconOnly, setIsIconOnly] = useState(false);
   const [isPhoneMode, setPhoneMode] = useState<"sm" | "md" | "lg" | undefined>(
     undefined
@@ -105,12 +105,27 @@ export const HeroSection = ({ the }: { the: boolean }) => {
                 />
               </motion.div>
 
-              <p className="mx-auto text-xs font-normal sm:text-sm md:text-lg lg:text-xl xl:text-2xl">
-                {`/* Hi, I am ${siteConfig.name} based in ${the ? "the" : ""} ${siteConfig.location.country},`}
-              </p>
+              <div className="flex items-center gap-2 mx-auto lg:gap-4 w-fit">
+                <motion.div
+                  className="p-2 rounded-full sm:p-3 lg:p-4 w-fit h-fit bg-terracotta"
+                  transition={rotateBounce.transition}
+                  variants={rotateBounce}
+                  whileHover="hover"
+                >
+                  <img
+                    alt="Logo"
+                    className="w-4 h-4 sm:w-6 sm:h-6 md:h-8 md:w-8 lg:w-12 lg:h-12"
+                    src="/logo-onlyletter.svg"
+                  />
+                </motion.div>
+
+                <p className="text-xs font-normal whitespace-pre-line sm:text-sm md:text-lg lg:text-xl xl:text-2xl">
+                  {` /* Hi, I am ${siteConfig.name} \n Aparece based in ${siteConfig.location.country}, `}
+                </p>
+              </div>
 
               <motion.h1
-                className="flex flex-col items-center justify-center gap-2 font-serif font-medium lg:flex-row text-default-foreground"
+                className="flex flex-col items-center justify-center gap-0 font-serif font-medium mg:gap-2 lg:gap-4 lg:flex-row text-default-foreground"
                 initial="initial"
                 transition={{ duration: 1.75, ease: "circOut" }}
                 variants={moveright}
@@ -120,7 +135,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
                 <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-nowrap">
                   I&apos;m a
                 </p>
-                <h1 className="text-2xl uppercase sm:text-4xl md:text-6xl lg:text-8xl">
+                <h1 className="text-2xl uppercase sm:text-4xl md:text-6xl lg:text-8xl lg:text-start">
                   {siteConfig.hero_big}
                 </h1>
               </motion.h1>

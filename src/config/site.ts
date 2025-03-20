@@ -59,11 +59,11 @@ export const siteConfig = {
   Devmode: false,
 
   name: "Kenneth Aparece",
-  logo: "c79a6145-cb47-48fb-bda7-da86f5b61302.jpg",
+  logo: "339638376_1064728391582143_6807557032942108900_n.webp",
   hero_big: "designer & developer",
   hero_small:
     "I blend design and development to create smooth digital experiences.",
-  location: { province: ["Bohol"], country: ["Philippines"] },
+  location: { province: ["Bohol"], country: ["the Philippines"] },
   role: "Software Engineer",
 
   url: "https://www.portfolio-kenprce09.vercel.app",
@@ -523,7 +523,6 @@ export const siteConfig = {
       textColorClass: "text-terracotta-foreground",
       icon: IconLayout,
       iconColor: "terracotta-foreground",
-      // image: "Screenshot2025-03-19183302.png",
       hoverImage: "2025-03-2004-07-44-ezgif.com-crop.gif",
     },
     {
@@ -534,7 +533,6 @@ export const siteConfig = {
       textColorClass: "text-terracotta-foreground",
       icon: IconCode,
       iconColor: "terracotta-foreground",
-      // image: "Screenshot2025-03-19184009.png",
       hoverImage: "2025-03-2013-45-58-ezgif.com-crop.gif",
     },
     {
@@ -545,7 +543,6 @@ export const siteConfig = {
       textColorClass: "text-terracotta-foreground",
       icon: IconDevices,
       iconColor: "terracotta-foreground",
-      // image: "Screenshot2025-03-19193016-left(1).jpg",
       hoverImage: "2025-03-1918-46-14-ezgif.com-video-to-gif-converter.gif",
     },
     {
@@ -556,8 +553,6 @@ export const siteConfig = {
       textColorClass: "text-terracotta-foreground",
       icon: IconPalette,
       iconColor: "terracotta-foreground",
-      // image:
-      // "https://www.facebook.com/photo/?fbid=974708283685950&set=a.110066923483428",
       hoverImage: "2025-03-2004-39-34-ezgif.com-optimize.gif",
     },
   ],

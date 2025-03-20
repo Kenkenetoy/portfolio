@@ -49,7 +49,7 @@ export default function IndexPage() {
 
       <DefaultLayout>
         <div className="lg:h-screen min-h-[25rem] mb-12">
-          <HeroSection the={true} />
+          <HeroSection />
         </div>
         <div className="w-screen px-4 mx-auto space-y-8 md:space-y-24 md:text-3xl max-w-screen-2xl">
           <div className="flex flex-col gap-8">
