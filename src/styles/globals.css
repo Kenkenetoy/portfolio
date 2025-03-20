@@ -2,3 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 @plugin "daisyui";
+/* Default (Light mode) */
+html,
+html.light {
+  scrollbar-width: thin;
+  scrollbar-color: #f4c7b8 #f1f5f9; /* thumb (terracotta), track (slateshit) */
+}
+
+/* Dark mode */
+html.dark {
+  scrollbar-color: #b84c34 #09090b; /* thumb (terracotta), track (slateshit) */
+}
+
+/* Webkit (Chrome, Edge, Safari) */
+html ::-webkit-scrollbar,
+html.light ::-webkit-scrollbar,
+html.dark ::-webkit-scrollbar {
+  width: 6px;
+}
+
+html ::-webkit-scrollbar-track,
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9; /* slateshit (light mode) */
+  border-radius: 10px;
+}
+
+html ::-webkit-scrollbar-thumb,
+html.light ::-webkit-scrollbar-thumb {
+  background: #f4c7b8; /* terracotta (light mode) */
+  border-radius: 10px;
+}
+
+/* Dark mode scrollbars */
+html.dark ::-webkit-scrollbar-track {
+  background: #09090b; /* slateshit (dark mode) */
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #b84c34; /* terracotta (dark mode) */
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #ffb499; /* Slightly lighter terracotta for hover */
+}

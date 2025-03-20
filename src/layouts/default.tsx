@@ -46,7 +46,7 @@ export default function DefaultLayout({
       </div>
 
       <motion.div
-        className="fixed z-50 top-0 left-0 right-0 h-[5px] bg-secondary origin-left"
+        className="fixed z-50 top-0 left-0 right-0 h-[5px] bg-terracotta origin-left"
         style={{ scaleX }}
       />
 
