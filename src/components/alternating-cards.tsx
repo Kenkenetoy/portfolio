@@ -7,11 +7,7 @@ import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 import { IconBrandGithub, IconDownload, IconLink } from "@tabler/icons-react";
 import { Tooltip } from "@heroui/tooltip";
-import {
-  Pagination,
-  PaginationItemType,
-  PaginationItemRenderProps,
-} from "@heroui/pagination";
+import { Pagination, PaginationItemRenderProps } from "@heroui/pagination";
 import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
@@ -41,7 +37,6 @@ const AlternatingCards = () => {
     key,
     value,
     isActive,
-    setPage,
     className,
   }: PaginationItemRenderProps) => {
     return (
