@@ -39,9 +39,9 @@ export const HeroSection = ({ the }: { the: boolean }) => {
   }, []);
 
   return (
-    <div className="h-full w-screen md:w-full bg-background dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex flex-col justify-center items-center">
+    <div className="h-full w-screen md:w-full bg-slateshit dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex flex-col justify-center items-center">
       <div
-        className="absolute inset-0 flex items-center justify-center bg-background "
+        className="absolute inset-0 flex items-center justify-center bg-slateshit "
         style={{
           maskImage:
             "radial-gradient(ellipse at center, transparent 20%, black 75%)",

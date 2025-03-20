@@ -48,7 +48,7 @@ export default function IndexPage() {
       </Helmet>
 
       <DefaultLayout>
-        <div className="lg:h-screen min-h-[25rem]">
+        <div className="lg:h-screen min-h-[25rem] mb-12">
           <HeroSection the={true} />
         </div>
         <div className="w-screen px-4 mx-auto space-y-8 md:space-y-24 md:text-3xl max-w-screen-2xl">
