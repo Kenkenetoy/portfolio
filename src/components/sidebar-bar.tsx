@@ -18,23 +18,25 @@ export function SidebarDemo() {
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="flex flex-col justify-between flex-1 w-full h-full gap-4 overflow-x-hidden overflow-y-auto ">
+        <SidebarBody className="flex flex-col justify-between flex-1 w-full h-full gap-4 overflow-x-hidden overflow-y-auto lg:gap-8 ">
           {/* mobile friendly */}
-          {Object.values(siteConfig.navItems).map((navItem, idx) => (
-            <SidebarLink
-              key={idx}
-              link={{
-                label: navItem.label,
-                href: navItem.href,
-                icon: navItem.icon && (
-                  <navItem.icon
-                    className="text-default-foreground lg:shrink-0"
-                    stroke={1}
-                  />
-                ),
-              }}
-            />
-          ))}
+          <div className="flex flex-col gap-2">
+            {Object.values(siteConfig.navItems).map((navItem, idx) => (
+              <SidebarLink
+                key={idx}
+                link={{
+                  label: navItem.label,
+                  href: navItem.href,
+                  icon: navItem.icon && (
+                    <navItem.icon
+                      className="text-default-foreground lg:shrink-0"
+                      stroke={1}
+                    />
+                  ),
+                }}
+              />
+            ))}
+          </div>
           <ThemeSwitch />
         </SidebarBody>
       </Sidebar>
