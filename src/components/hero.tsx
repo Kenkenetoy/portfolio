@@ -79,32 +79,33 @@ export const HeroSection = () => {
           </div>
           {/* Text Block */}
           <motion.section
-            className="flex flex-col justify-center space-y-8 max-w-[40rem] p-4 md:p-0"
+            className="flex flex-col justify-center space-y-4 lg:space-y-8 max-w-[40rem] p-4 md:p-0"
             initial="initial"
             transition={{ duration: 1.5, ease: "easeInOut" }}
             variants={moveright}
             viewport={{ once: true, amount: 0.1 }}
             whileInView="inView"
           >
-            <div className="space-y-2 ">
-              <motion.div
-                className="block mx-auto lg:hidden w-fit"
-                initial="initial"
-                transition={{ duration: 1.75, ease: "circOut" }}
-                variants={moveright}
-                viewport={{ once: true, amount: 0.1 }}
-                whileInView="inView"
-              >
-                <Image
-                  alt={`${siteConfig.name}'s Profile Picture`}
-                  draggable={false}
-                  radius="full"
-                  shadow="md"
-                  src={siteConfig.logo}
-                  width={200}
-                />
-              </motion.div>
+            {/* Hidden Image */}
+            <motion.div
+              className="block mx-auto lg:hidden w-fit"
+              initial="initial"
+              transition={{ duration: 1.75, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 0.1 }}
+              whileInView="inView"
+            >
+              <Image
+                className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56"
+                alt={`${siteConfig.name}'s Profile Picture`}
+                draggable={false}
+                radius="full"
+                shadow="md"
+                src={siteConfig.logo}
+              />
+            </motion.div>
 
+            <div className="space-y-2 lg:space-y-4">
               <div className="flex items-center gap-2 mx-auto lg:gap-4 w-fit">
                 <motion.div
                   className="p-2 rounded-full sm:p-3 lg:p-4 w-fit h-fit bg-terracotta dark:bg-terracotta-foreground"
@@ -119,29 +120,29 @@ export const HeroSection = () => {
                   />
                 </motion.div>
 
-                <p className="text-xs font-normal whitespace-pre-line sm:text-sm md:text-lg lg:text-xl xl:text-2xl">
+                <p className="text-xs font-normal whitespace-pre-line text-start sm:text-sm md:text-lg lg:text-2xl ">
                   {` /* Hi, I am ${siteConfig.name} \n Aparece based in ${siteConfig.location.country}, `}
                 </p>
               </div>
 
               <motion.h1
-                className="flex flex-col items-center justify-center gap-0 font-serif font-medium mg:gap-2 lg:gap-4 lg:flex-row text-default-foreground"
+                className="flex flex-col justify-center gap-0 font-serif font-medium lg:items-start mg:gap-2 lg:gap-4 lg:flex-row text-default-foreground"
                 initial="initial"
                 transition={{ duration: 1.75, ease: "circOut" }}
                 variants={moveright}
                 viewport={{ once: true, amount: 0.1 }}
                 whileInView="inView"
               >
-                <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-nowrap">
+                <p className="text-xs lg:translate-y-8 sm:text-sm md:text-lg lg:text-xl text-nowrap">
                   I&apos;m a
                 </p>
-                <h1 className="text-2xl uppercase sm:text-4xl md:text-6xl lg:text-8xl lg:text-start">
+                <h1 className="text-2xl font-semibold uppercase text-nowrap lg:text-wrap sm:text-4xl md:text-6xl lg:text-8xl lg:text-start">
                   {siteConfig.hero_big}
                 </h1>
               </motion.h1>
 
               <motion.p
-                className="max-w-sm mx-auto text-xs font-normal sm:max-w-md md:max-w-lg lg:max-w-2xl sm:text-sm md:text-lg lg:text-xl"
+                className="w-[90%] max-w-xs mx-auto text-xs font-normal sm:max-w-md md:max-w-lg lg:max-w-2xl sm:text-sm md:text-lg lg:text-xl"
                 initial="initial"
                 transition={{ duration: 1.75, ease: "easeInOut" }}
                 variants={moveright}
@@ -168,7 +169,7 @@ export const HeroSection = () => {
 
             {/* Buttons */}
             <motion.div
-              className="flex flex-col gap-4 mx-auto sm:flex-row w-fit"
+              className="flex flex-row gap-4 mx-auto w-fit"
               initial="initial"
               transition={{ duration: 1.75, ease: "circOut" }}
               variants={movedown}
@@ -177,11 +178,10 @@ export const HeroSection = () => {
             >
               <Button
                 as={Link}
-                className="bg-terracotta text-terracotta-text hover:bg-terracotta/80"
+                className="px-4 py-2 bg-terracotta text-terracotta-text hover:bg-terracotta/80 sm:px-6 sm:py-4 md:py-6 md:px-8 lg:px-10 lg:py-8"
                 href={siteConfig.navItems.Contact.href}
                 radius="full"
-                size="lg"
-                variant="shadow"
+                variant="solid"
               >
                 <span className="text-sm sm:text-lg">Contact</span>
                 <span>
@@ -190,8 +190,8 @@ export const HeroSection = () => {
               </Button>
 
               <Button
+                className="px-4 py-2 sm:px-6 sm:py-4 md:py-6 md:px-8 lg:px-10 lg:py-8"
                 radius="full"
-                size="lg"
                 variant="ghost"
                 onPress={() => {
                   const link = document.createElement("a");
