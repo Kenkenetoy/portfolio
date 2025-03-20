@@ -18,6 +18,7 @@ import { Footer } from "@/components/footer";
 import { StickyScroll } from "@/components/sticky-scroll-reveal";
 import { InfiniteMovingCards } from "@/components/infinite-moving-cards";
 import { moveright, moveleft, moveup, rotateBounce } from "@/anim/variants";
+import ExperienceComponent from "@/components/experience-cards";
 
 export default function IndexPage() {
   return (
@@ -174,6 +175,37 @@ export default function IndexPage() {
                   <IconArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                 </span>
               </Button>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="space-y-8"
+            initial="initial"
+            transition={{ duration: 0.5, ease: "circOut" }}
+            variants={moveup}
+            viewport={{ once: true, amount: 0.1 }}
+            whileInView="inView"
+          >
+            <motion.h1
+              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl"
+              initial="initial"
+              transition={{ duration: 0.75, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 0.2 }}
+              whileInView="inView"
+            >
+              Experience
+            </motion.h1>
+            <Divider />
+            <motion.div
+              className="max-w-[95%] mx-auto flex flex-wrap gap-12"
+              initial="initial"
+              transition={{ duration: 0.75, ease: "circOut" }}
+              variants={moveup}
+              viewport={{ once: true, amount: 1 }}
+              whileInView="inView"
+            >
+              <ExperienceComponent />
             </motion.div>
           </motion.div>
           <motion.div

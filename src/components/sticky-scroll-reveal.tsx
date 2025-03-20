@@ -147,7 +147,7 @@ export const StickyScroll = ({
               <Divider />
             </div>
             {/* Right Content on mobile */}
-            <motion.p className="w-auto max-w-xs text-xs sm:w-full sm:text-xs md:text-sm text-default-foreground sm:max-w-sm md:max-w-lg">
+            <motion.p className="w-auto max-w-xs text-xs sm:w-full sm:text-sm md:text-base text-default-foreground sm:max-w-sm md:max-w-lg">
               {item.description.split("\n\n")[0]}
             </motion.p>
 

@@ -533,7 +533,7 @@ export const siteConfig = {
       backgroundClass: "bg-default-50",
       textColorClass: "text-secondary",
       icon: IconCode,
-      iconColor: "secondary",
+      iconColor: "danger",
       // image: "Screenshot2025-03-19184009.png",
       hoverImage: "2025-03-2013-45-58-ezgif.com-crop.gif",
     },
@@ -559,6 +559,17 @@ export const siteConfig = {
       // image:
       // "https://www.facebook.com/photo/?fbid=974708283685950&set=a.110066923483428",
       hoverImage: "2025-03-2004-39-34-ezgif.com-optimize.gif",
+    },
+  ],
+
+  ExperienceData: [
+    {
+      title: "Mata Technologies",
+      duration: "3 months",
+      role: "Operations Intern",
+      stack: ["krpano", "html", "css", "javascript", "jquery"],
+      description:
+        "Mata Technologies has been a Google Street View-Trusted Photographer since 2019.  It is the premier provider of virtual tours for real estate in the Philippines and the virtual reality map provider of tourist destinations in the country.",
     },
   ],
 };
