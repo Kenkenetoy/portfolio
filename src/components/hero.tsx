@@ -107,7 +107,7 @@ export const HeroSection = () => {
 
               <div className="flex items-center gap-2 mx-auto lg:gap-4 w-fit">
                 <motion.div
-                  className="p-2 rounded-full sm:p-3 lg:p-4 w-fit h-fit bg-terracotta"
+                  className="p-2 rounded-full sm:p-3 lg:p-4 w-fit h-fit bg-terracotta dark:bg-terracotta-foreground"
                   transition={rotateBounce.transition}
                   variants={rotateBounce}
                   whileHover="hover"

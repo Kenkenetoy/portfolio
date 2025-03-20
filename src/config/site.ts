@@ -320,7 +320,7 @@ export const siteConfig = {
         title: "Updated Release",
         description: "Download the latest revised version directly.",
       },
-      imageSrc: "Poster.png",
+      imageSrc: "Poster.webp",
       stack: ["unity", "C#", "blender"],
       url: {
         demo: "https://sites.google.com/view/vlog-01",
@@ -354,7 +354,7 @@ export const siteConfig = {
             "Seamlessly blended 3D-rendered objects with real-world panoramic images to create an immersive and interactive experience. Ensured accurate lighting, perspective alignment, and smooth transitions for a natural look.",
         },
       ],
-      imageSrc: "Screenshot2025-03-17132127.png",
+      imageSrc: "Screenshot2025-03-17132127.webp",
       stack: ["krpano", "javascript", "xml", "css", "blender"],
       url: {
         demo: "https://mata.ph/mactannewtown/",
@@ -377,7 +377,7 @@ export const siteConfig = {
             "Structured metadata for better discoverability in search engines.",
         },
       ],
-      imageSrc: "Screenshot2025-03-17161055.png",
+      imageSrc: "Screenshot2025-03-17161055.webp",
       stack: ["krpano", "javascript", "xml", "css", "blender"],
       url: {
         demo: "https://borromeo.ph/tfpvirtualtour/",
@@ -388,7 +388,7 @@ export const siteConfig = {
       type: "Corporate Website",
       description:
         "Revamped and optimized the Ehrlich Ph website after inheriting a bloated version from a past developer. Redesigned the UI/UX using Figma for a cleaner and more intuitive layout, then rebuilt the site for improved performance and maintainability. Additionally, troubleshot and resolved an AWS mail (MX) overload issue to ensure reliable email delivery.",
-      imageSrc: "Screenshot2025-03-17155511.png",
+      imageSrc: "Screenshot2025-03-17155511.webp",
       stack: ["wordpress", "php", "css", "figma", "aws"],
       url: {
         demo: "https://ehrlich.ph/",
@@ -426,7 +426,7 @@ export const siteConfig = {
             "Fully adaptable for an optimal experience across all devices.",
         },
       ],
-      imageSrc: "Screenshot2025-03-17155713.png",
+      imageSrc: "Screenshot2025-03-17155713.webp",
       stack: ["react", "typescript", "tailwind", "git"],
       url: {
         demo: "https://portfolio-gamma-seven-14.vercel.app/",
@@ -465,7 +465,7 @@ export const siteConfig = {
             "Admins can manage most features, while Super Admins (future feature) have full control.",
         },
       ],
-      imageSrc: "Screenshot2025-03-17161401.png",
+      imageSrc: "Screenshot2025-03-17161401.webp",
       stack: ["java", "sql", "netbeans", "jdbc", "xampp"],
       url: {
         demo: "",

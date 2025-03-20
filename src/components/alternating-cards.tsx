@@ -7,7 +7,12 @@ import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 import { IconBrandGithub, IconDownload, IconLink } from "@tabler/icons-react";
 import { Tooltip } from "@heroui/tooltip";
-import { Pagination } from "@heroui/pagination";
+import {
+  Pagination,
+  PaginationItemType,
+  PaginationItemRenderProps,
+} from "@heroui/pagination";
+import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
 
@@ -30,6 +35,34 @@ const AlternatingCards = () => {
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
+
+  const renderItem = ({
+    ref,
+    key,
+    value,
+    isActive,
+    setPage,
+    className,
+  }: PaginationItemRenderProps) => {
+    return (
+      <button
+        key={key}
+        ref={ref}
+        className={clsx(
+          className,
+          isActive &&
+            "bg-terracotta/100 text-terracotta-text hover:bg-terracotta/80"
+        )}
+        onClick={() => {
+          if (typeof value === "number") {
+            setCurrentPage(value); // Only update if it's a number
+          }
+        }}
+      >
+        {value}
+      </button>
+    );
+  };
 
   return (
     <div className="flex flex-col gap-12 py-10">
@@ -133,7 +166,7 @@ const AlternatingCards = () => {
               >
                 <Button
                   as={Link}
-                  color="primary"
+                  className="bg-terracotta text-terracotta-text hover:bg-terracotta/80"
                   href={item?.url?.demo ?? "#"}
                   isDisabled={!item.url?.demo}
                   radius="full"
@@ -193,13 +226,9 @@ const AlternatingCards = () => {
 
       {/* Pagination Controls */}
       <div className="flex flex-col items-center gap-5">
-        <p className="text-small text-default-foreground">
-          Page {currentPage} of {totalPages}
-        </p>
-
-        <div className="flex gap-4">
+        <div className="flex items-center gap-4">
           <Button
-            color="primary"
+            className="bg-terracotta text-terracotta-text hover:bg-terracotta/80"
             radius="full"
             size="md"
             variant="solid"
@@ -208,16 +237,17 @@ const AlternatingCards = () => {
             Previous
           </Button>
           <Pagination
-            color="primary"
+            disableCursorAnimation
+            className="gap-2"
             page={currentPage}
             radius="full"
-            size="lg"
+            renderItem={renderItem}
             total={totalPages}
-            variant="bordered"
+            variant="light"
             onChange={setCurrentPage}
           />
           <Button
-            color="primary"
+            className="bg-terracotta text-terracotta-text hover:bg-terracotta/80"
             radius="full"
             size="md"
             variant="solid"
