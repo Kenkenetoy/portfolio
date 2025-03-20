@@ -46,7 +46,7 @@ const AlternatingCards = () => {
         className={clsx(
           className,
           isActive &&
-            "bg-terracotta/90 text-terracotta-text hover:bg-terracotta/80"
+            "bg-terracotta/90 dark:bg-terracotta/90 text-terracotta-text hover:bg-terracotta/80 dark:hover:bg-terracotta/80"
         )}
         onClick={() => {
           if (typeof value === "number") {
