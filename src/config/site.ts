@@ -535,7 +535,7 @@ export const siteConfig = {
       icon: IconCode,
       iconColor: "secondary",
       // image: "Screenshot2025-03-19184009.png",
-      hoverImage: "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
+      hoverImage: "2025-03-2013-45-58-ezgif.com-crop.gif",
     },
     {
       title: "Mobile & Web Apps",
