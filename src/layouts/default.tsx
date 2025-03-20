@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { motion, useScroll, useSpring } from "framer-motion";
 import { memo, useEffect } from "react";
+import { useLocation } from "react-router-dom"; // React Router
 
 import { Provider } from "../provider";
 
@@ -11,9 +12,11 @@ const MemoizedMain = memo(function Main({
 }: {
   children: React.ReactNode;
 }) {
+  const location = useLocation(); // Track route changes
+
   useEffect(() => {
-    window.scrollTo(0, 0); // Reset scroll position on page change
-  }, [children]);
+    window.scrollTo({ top: 0, behavior: "smooth" }); // Smooth scroll to top
+  }, [location.pathname]);
 
   return (
     <motion.main
@@ -40,18 +43,19 @@ export default function DefaultLayout({
   });
 
   return (
-    <div className="relative flex min-h-screen font-sans ">
-      <div className="z-50 ">
+    <div className="relative flex min-h-screen font-sans">
+      <div className="z-50">
         <SidebarDemo />
       </div>
 
+      {/* Scroll progress bar */}
       <motion.div
         className="fixed z-50 top-0 left-0 right-0 h-[5px] bg-terracotta origin-left"
         style={{ scaleX }}
       />
 
-      <div className="relative flex flex-col flex-grow overflow-x-clip">
-        <MemoizedMain key={location.pathname}>{children}</MemoizedMain>
+      <div className="relative flex flex-col flex-grow">
+        <MemoizedMain>{children}</MemoizedMain>
       </div>
     </div>
   );
