@@ -18,7 +18,7 @@ const MemoizedMain = memo(function Main({
   return (
     <motion.main
       animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
-      className="space-y-24"
+      className="space-y-24 bg-slateshit"
       exit={{ opacity: 0, y: -20, transition: { duration: 0.3 } }}
       initial={{ opacity: 0, y: 20 }}
     >

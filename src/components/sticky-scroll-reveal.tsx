@@ -154,7 +154,7 @@ export const StickyScroll = ({
             <div className="flex justify-start w-full p-2 space-x-4 lg:hidden">
               <Button
                 as={Link}
-                color="primary"
+                className="bg-terracotta text-terracotta-text hover:bg-terracotta/80"
                 href={content[activeCard]?.url?.demo ?? "#"}
                 isDisabled={!content[activeCard].url?.demo}
                 radius="full"
@@ -251,7 +251,7 @@ export const StickyScroll = ({
             >
               <Button
                 as={Link}
-                color="primary"
+                className="bg-terracotta text-terracotta-text hover:bg-terracotta/80"
                 href={content[activeCard]?.url?.demo ?? "#"}
                 isDisabled={!content[activeCard].url?.demo}
                 radius="full"

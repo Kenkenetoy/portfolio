@@ -269,7 +269,7 @@ export default function DocsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
               >
                 <motion.div
-                  className="space-y-2 w-fit"
+                  className="space-y-2 w-fit text-default-foreground"
                   initial={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                   viewport={{ once: true }}
@@ -278,9 +278,11 @@ export default function DocsPage() {
                   <h1 className="text-lg sm:text-xl md:text-2xl">
                     CONTACT DETAILS
                   </h1>
-                  <p className="text-sm sm:text-base md:text-lg">
-                    {siteConfig.email.first}
-                  </p>
+                  <div className="flex flex-col text-sm sm:text-base md:text-lg">
+                    {Object.values(siteConfig.email).map((email, index) => (
+                      <p key={index}>{email}</p>
+                    ))}
+                  </div>
                 </motion.div>
 
                 <motion.div
@@ -290,8 +292,8 @@ export default function DocsPage() {
                   viewport={{ once: true }}
                   whileInView={{ opacity: 1, y: 0 }}
                 >
-                  <h6 className="text-base sm:text-lg md:text-xl">SOCIALS</h6>
-                  <div className="z-10 flex flex-col gap-2 sm:gap-3 md:gap-4">
+                  <h6 className="text-sm sm:text-basea md:text-lg">SOCIALS</h6>
+                  <div className="z-10 flex flex-col gap-1 md:gap-2">
                     {siteConfig.socials.map(({ link, icon: Icon, title }) => (
                       <motion.div
                         key={link}
@@ -299,12 +301,12 @@ export default function DocsPage() {
                         whileTap={{ scale: 0.95 }}
                       >
                         <Link
-                          className="flex items-center gap-2 text-sm sm:text-base md:text-lg"
+                          className="flex items-center gap-2 text-xs sm:text-sm md:text-base"
                           color="foreground"
                           href={link}
                           target="_blank"
                         >
-                          <Icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+                          <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                           <span>{title}</span>
                         </Link>
                       </motion.div>

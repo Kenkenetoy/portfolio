@@ -52,9 +52,42 @@ module.exports = {
   darkMode: "class",
   plugins: [
     require("daisyui"),
-    heroui(),
     addVariablesForColors,
     createBackgroundUtilities,
+    heroui({
+      themes: {
+        light: {
+          colors: {
+            terracotta: {
+              DEFAULT: "#F4C7B8", // Light mode base
+              foreground: "#7A3B2E", // Text contrast in light mode
+            },
+            default: {
+              foreground: "#27272A",
+              "foreground-bold": "#101014",
+            },
+            slateshit: {
+              DEFAULT: "#F1F5F9", // slate-100 (light mode)
+            },
+          },
+        },
+        dark: {
+          colors: {
+            terracotta: {
+              DEFAULT: "#B84C34", // Dark mode base
+              foreground: "#FFD8C2", // Text contrast in dark mode
+            },
+            default: {
+              foreground: "#F8F6E7",
+              "foreground-bold": "#F0EAD6",
+            },
+            slateshit: {
+              DEFAULT: "#09090B", // zinc-950 (dark mode)
+            },
+          },
+        },
+      },
+    }),
   ],
 };
 

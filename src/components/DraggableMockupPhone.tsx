@@ -90,7 +90,7 @@ export const DraggableMockupPhone = () => {
       <div className="display">
         <div
           aria-label="Scrollable content"
-          className="h-[600px] p-4 space-y-4 overflow-x-hidden overflow-y-auto artboard artboard-demo phone-1 bg-gray-50 dark:bg-neutral-900"
+          className="h-[600px] p-4 space-y-4 overflow-x-hidden overflow-y-auto artboard artboard-demo phone-1  bg-default-50"
           role="button"
           tabIndex={0}
         >
@@ -101,12 +101,10 @@ export const DraggableMockupPhone = () => {
             src={siteConfig.logo}
           />
           <div>
-            <p className="text-2xl text-neutral-900 dark:text-whitetext-neutral-900 dark:text-white">
+            <p className="text-2xl text-default-foreground">
               {siteConfig.name}
             </p>
-            <p className="text-lg text-neutral-700 dark:text-gray-300">
-              {siteConfig.role}
-            </p>
+            <p className="text-lg text-default-foreground">{siteConfig.role}</p>
             {
               currentlyPlaying ? (
                 <>

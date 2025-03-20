@@ -520,9 +520,9 @@ export const siteConfig = {
       description:
         "I craft intuitive, user-friendly interfaces that make apps easy to use and visually appealing.",
       backgroundClass: "bg-default-50",
-      textColorClass: "text-primary",
+      textColorClass: "text-terracotta-foreground",
       icon: IconLayout,
-      iconColor: "primary",
+      iconColor: "terracotta-foreground",
       // image: "Screenshot2025-03-19183302.png",
       hoverImage: "2025-03-2004-07-44-ezgif.com-crop.gif",
     },
@@ -531,9 +531,9 @@ export const siteConfig = {
       description:
         "I build seamless web and mobile apps, handling both front-end and back-end for a smooth user experience.",
       backgroundClass: "bg-default-50",
-      textColorClass: "text-secondary",
+      textColorClass: "text-terracotta-foreground",
       icon: IconCode,
-      iconColor: "danger",
+      iconColor: "terracotta-foreground",
       // image: "Screenshot2025-03-19184009.png",
       hoverImage: "2025-03-2013-45-58-ezgif.com-crop.gif",
     },
@@ -542,9 +542,9 @@ export const siteConfig = {
       description:
         "I create fast, responsive apps that work smoothly across all devices and platforms.",
       backgroundClass: "bg-default-50",
-      textColorClass: "text-warning",
+      textColorClass: "text-terracotta-foreground",
       icon: IconDevices,
-      iconColor: "warning",
+      iconColor: "terracotta-foreground",
       // image: "Screenshot2025-03-19193016-left(1).jpg",
       hoverImage: "2025-03-1918-46-14-ezgif.com-video-to-gif-converter.gif",
     },
@@ -553,9 +553,9 @@ export const siteConfig = {
       description:
         "I lead the visual design, crafting concepts that tell a story and connect with your audience.",
       backgroundClass: "bg-default-50",
-      textColorClass: "text-danger",
+      textColorClass: "text-terracotta-foreground",
       icon: IconPalette,
-      iconColor: "danger",
+      iconColor: "terracotta-foreground",
       // image:
       // "https://www.facebook.com/photo/?fbid=974708283685950&set=a.110066923483428",
       hoverImage: "2025-03-2004-39-34-ezgif.com-optimize.gif",

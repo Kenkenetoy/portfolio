@@ -61,12 +61,12 @@ export default function IndexPage() {
               viewport={{ once: true, amount: 0.5 }}
               whileInView="inView"
             >
-              <p className="w-full max-w-2xl text-base sm:text-lg md:text-xl lg:text-2xl">
+              <p className="w-full max-w-2xl text-base sm:text-lg md:text-xl lg:text-2xl text-default-foreground">
                 I build fast, scalable apps using Laravel, and React—seamlessly
                 combining backend power with interactive, immersive frontends.
               </p>
               <motion.p
-                className="w-full text-xs md:w-96 md:text-sm lg:text-base"
+                className="w-full text-xs md:w-96 md:text-sm lg:text-base text-default-foreground"
                 initial="initial"
                 transition={{ duration: 0.35, ease: "circOut" }}
                 variants={moveright}
@@ -133,7 +133,7 @@ export default function IndexPage() {
               viewport={{ once: true, amount: 0.3 }}
               whileInView="inView"
             >
-              <p className="w-full text-2xl font-medium sm:text-3xl lg:text-4xl text-primary sm:w-3/4 md:w-96">
+              <p className="w-full text-2xl font-medium sm:text-3xl lg:text-4xl text-terracotta-foreground dark:text-terracotta-foreground sm:w-3/4 md:w-96">
                 Engineering Scalable Systems
               </p>
             </motion.div>
@@ -146,7 +146,7 @@ export default function IndexPage() {
             viewport={{ once: true, amount: 0.2 }}
             whileInView="inView"
           >
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl text-default-foreground">
               What I Do
             </h1>
 
@@ -187,7 +187,7 @@ export default function IndexPage() {
             whileInView="inView"
           >
             <motion.h1
-              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl"
+              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl text-default-foreground"
               initial="initial"
               transition={{ duration: 0.75, ease: "circOut" }}
               variants={moveright}
@@ -217,7 +217,7 @@ export default function IndexPage() {
             whileInView="inView"
           >
             <motion.h1
-              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl"
+              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl text-default-foreground"
               initial="initial"
               transition={{ duration: 0.75, ease: "circOut" }}
               variants={moveright}
@@ -294,7 +294,7 @@ export default function IndexPage() {
             whileInView="inView"
           >
             <motion.h1
-              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl"
+              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl text-default-foreground"
               initial="initial"
               transition={{ duration: 0.5, ease: "circOut" }}
               variants={moveright}

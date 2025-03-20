@@ -162,8 +162,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
             >
               <Button
                 as={Link}
-                className="gap-2"
-                color="primary"
+                className="bg-terracotta text-terracotta-text hover:bg-terracotta/80"
                 href={siteConfig.navItems.Contact.href}
                 radius="full"
                 size="lg"
@@ -272,8 +271,7 @@ export const HeroSection = ({ the }: { the: boolean }) => {
               <Link
                 isExternal
                 anchorIcon={<IconLink size={20} />}
-                className="hidden gap-2 w-fit md:block"
-                color="foreground"
+                className="hidden gap-2 w-fit md:block text-default-foreground"
                 href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.email.first}`}
                 target="_blank"
               >

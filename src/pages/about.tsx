@@ -117,7 +117,7 @@ export default function DocsPage() {
             </filter>
           </defs>
         </svg> */}
-        <div className="w-screen px-4 pt-24 mx-auto space-y-12 md:space-y-24 max-w-screen-2xl">
+        <div className="w-screen px-4 pt-24 mx-auto space-y-12 md:space-y-24 max-w-screen-2xl text-default-foreground">
           <motion.div
             className="space-y-8"
             initial="initial"
@@ -240,7 +240,7 @@ export default function DocsPage() {
 
           <div className="space-y-20">
             <div className="flex flex-col space-y-4 w-fit">
-              <p className="mx-auto font-serif text-4xl text-primary">
+              <p className="mx-auto font-serif text-4xl text-terracotta-foreground dark:text-terracotta-foreground">
                 I can help you with
               </p>
               <motion.div

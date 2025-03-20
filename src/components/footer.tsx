@@ -12,7 +12,7 @@ import { moveright, moveup, rotateBounce } from "@/anim/variants";
 export const Footer = () => {
   return (
     <div className="space-y-4">
-      <footer className="p-10 space-y-4 overflow-hidden border bg-default-50 rounded-2xl text-default-foreground border-default">
+      <footer className="p-10 space-y-4 overflow-hidden border bg-default-50 rounded-2xl text-default-foreground border-default ">
         <div className="flex flex-col gap-12 md:flex-row">
           <motion.nav
             className="justify-self-start"
@@ -40,7 +40,7 @@ export const Footer = () => {
                   ease: "linear",
                 }}
               >
-                <text className="text-lg tracking-wide pointer-events-none fill-default-foreground">
+                <text className="text-lg tracking-wide pointer-events-none fill-terracotta-foreground">
                   <textPath
                     href="#mediumCirclePath"
                     startOffset="50%"
@@ -56,6 +56,7 @@ export const Footer = () => {
                 <div className="flex items-center justify-center w-full h-full">
                   <motion.div
                     initial="initial"
+                    className="text-terracotta-foreground"
                     transition={rotateBounce.transition}
                     variants={rotateBounce}
                     whileHover="hover"
@@ -75,12 +76,16 @@ export const Footer = () => {
               viewport={{ once: true, amount: 0.1 }}
               whileInView="inView"
             >
-              <h6 className="w-full font-bold text-center text-large text-primary md:text-start">
+              <h6 className="w-full font-bold text-center text-large text-terracotta-foreground dark:text-terracotta-foreground md:text-start">
                 Explore
               </h6>
               <div className="z-10 flex flex-col items-center gap-2 md:items-start">
                 {Object.values(siteConfig.navItems).map((item) => (
-                  <Link key={item.label} color="foreground" href={item.href}>
+                  <Link
+                    key={item.label}
+                    className=" text-default-foreground"
+                    href={item.href}
+                  >
                     {item.label}
                   </Link>
                 ))}
@@ -95,15 +100,14 @@ export const Footer = () => {
               viewport={{ once: true, amount: 0.1 }}
               whileInView="inView"
             >
-              <h6 className="w-full font-bold text-center text-large text-primary md:text-start">
+              <h6 className="w-full font-bold text-center text-large text-terracotta-foreground dark:text-terracotta-foreground md:text-start">
                 Follow Me
               </h6>
               <div className="z-10 flex flex-col items-center gap-2 md:items-start">
                 {siteConfig.socials.map(({ link, icon: Icon, title }) => (
                   <Link
                     key={link}
-                    className="gap-2"
-                    color="foreground"
+                    className="gap-2 text-default-foreground"
                     href={link}
                     target="_blank"
                   >
@@ -123,7 +127,7 @@ export const Footer = () => {
               viewport={{ once: true, amount: 0.1 }}
               whileInView="inView"
             >
-              <h6 className="w-full font-bold text-center text-large text-primary sm:text-start">
+              <h6 className="w-full font-bold text-center text-large text-terracotta-foreground dark:text-terracotta-foreground md:text-start">
                 3d Experience
               </h6>
               <div className="z-10 flex flex-col gap-2">
@@ -170,12 +174,12 @@ export const Footer = () => {
             >
               <Button
                 as={Link}
-                className="gap-2 text-3xl"
+                className="gap-2 text-3xl bg-terracotta-light bg-terracotta text-terracotta-text hover:bg-terracotta/80"
                 color="default"
                 href={siteConfig.navItems.Contact.href}
                 radius="full"
                 size="lg"
-                variant="ghost"
+                variant="solid"
               >
                 <span>Get in Touch!</span>
                 <IconLink />
@@ -185,7 +189,7 @@ export const Footer = () => {
         </motion.div>
       </footer>
 
-      <span className="flex flex-wrap justify-between text-xs sm:text-sm md:text-base">
+      <span className="flex flex-wrap justify-between text-xs sm:text-sm md:text-base text-default-foreground">
         <p>
           {siteConfig.name} ©{new Date().getFullYear()} - Privacy Policy
         </p>
