@@ -59,7 +59,7 @@ export const siteConfig = {
   Devmode: false,
 
   name: "Kenneth Aparece",
-  logo: "228041565_1204885213317442_2861452606248897561_n.webp",
+  logo: "c79a6145-cb47-48fb-bda7-da86f5b61302.jpg",
   hero_big: "designer & developer",
   hero_small:
     "I blend design and development to create smooth digital experiences.",

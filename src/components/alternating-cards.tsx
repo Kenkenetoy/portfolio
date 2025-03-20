@@ -45,17 +45,14 @@ const AlternatingCards = () => {
           whileInView={{ opacity: 1, y: 0 }}
         >
           {/* Image Side */}
-          <motion.div
-            className="overflow-hidden rounded-lg shadow-md lg:max-w-[50%] h-fit w-fit"
-            transition={{ duration: 0.3 }}
-            whileHover={{ scale: 1.05 }}
-          >
+          <div className="overflow-hidden rounded-lg shadow-md lg:max-w-[50%] h-fit w-fit">
             <Image
+              isZoomed
               alt={item.title}
               className="object-cover w-full h-auto"
               src={item.imageSrc}
             />
-          </motion.div>
+          </div>
 
           {/* Text Side */}
           <div className="w-full space-y-4 lg:w-1/2">

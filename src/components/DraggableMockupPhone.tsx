@@ -54,6 +54,7 @@ const fetchCurrentlyPlaying = async (accessToken: string) => {
   }
 
   const data = await response.json();
+
   console.log("Currently Playing Response:", data); // Log the response
 
   return data;
@@ -85,17 +86,18 @@ export const DraggableMockupPhone = () => {
   }, []);
 
   return (
-    <div className="select-none mockup-phone cursor-grab active:cursor-grabbing">
+    <div className="h-full select-none mockup-phone cursor-grab active:cursor-grabbing">
       <div className="camera" />
       <div className="display">
         <div
           aria-label="Scrollable content"
-          className="h-[600px] p-4 space-y-4 overflow-x-hidden overflow-y-auto artboard artboard-demo phone-1  bg-default-50"
+          className="h-[600px] p-4 space-y-4 n overflow-y-auto artboard artboard-demo phone-1  bg-default-50"
           role="button"
           tabIndex={0}
         >
           <Image
-            alt="Woman listening to music"
+            isBlurred
+            alt={`${siteConfig.name}'s Profile Picture`}
             className="object-cover pointer-events-none select-none"
             draggable={false}
             src={siteConfig.logo}

@@ -205,6 +205,7 @@ export const StickyScroll = ({
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           <Image
+            isZoomed
             alt={content[activeCard].title}
             className="object-cover w-full aspect-[6/3] max-w-sm sm:max-w-md md:max-w-lg" // Width limit
             src={content[activeCard].imageSrc}
