@@ -524,8 +524,7 @@ export const siteConfig = {
       icon: IconLayout,
       iconColor: "primary",
       // image: "Screenshot2025-03-19183302.png",
-      hoverImage:
-        "https://blog.tubikstudio.com/wp-content/uploads/2015/12/ui-concept-animation-design-1-1.gif",
+      hoverImage: "2025-03-2004-07-44-ezgif.com-crop.gif",
     },
     {
       title: "Full-Stack Development",
@@ -559,7 +558,7 @@ export const siteConfig = {
       iconColor: "danger",
       // image:
       // "https://www.facebook.com/photo/?fbid=974708283685950&set=a.110066923483428",
-      hoverImage: "https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif",
+      hoverImage: "2025-03-2004-39-34-ezgif.com-optimize.gif",
     },
   ],
 };
