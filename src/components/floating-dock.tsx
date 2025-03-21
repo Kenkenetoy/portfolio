@@ -170,7 +170,7 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link isExternal={true} href={href}>
+    <Link href={href} isExternal={true}>
       <motion.div
         ref={ref}
         className="relative flex items-center justify-center transition-colors rounded-full bg-default duration-250 aspect-square "
