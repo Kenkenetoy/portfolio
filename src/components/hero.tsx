@@ -136,7 +136,7 @@ export const HeroSection = () => {
                 <p className="text-xs lg:translate-y-8 sm:text-sm md:text-lg lg:text-xl text-nowrap">
                   I&apos;m a
                 </p>
-                <h1 className="text-3xl font-semibold uppercase text-nowrap lg:text-wrap sm:text-4xl md:text-6xl lg:text-8xl lg:text-start">
+                <h1 className="text-5xl font-semibold uppercase md:text-6xl lg:text-8xl lg:text-start">
                   {siteConfig.hero_big}
                 </h1>
               </motion.h1>
