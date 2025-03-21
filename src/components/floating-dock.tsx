@@ -170,7 +170,7 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link href={href}>
+    <Link isExternal={true} href={href}>
       <motion.div
         ref={ref}
         className="relative flex items-center justify-center transition-colors rounded-full bg-default duration-250 aspect-square "
@@ -192,7 +192,7 @@ function IconContainer({
             </motion.div>
           )}
         </AnimatePresence>
-        
+
         <div className="flex items-center justify-center w-12 h-12 transition ease-in-out rounded-full duration-250 bg-default-foreground">
           <motion.div
             className="flex items-center justify-center"
