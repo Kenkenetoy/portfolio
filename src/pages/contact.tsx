@@ -70,11 +70,12 @@ export default function DocsPage() {
 
     try {
       await emailjs.send(
-        "service_jczfwad",
-        "template_zm5m5js",
+        process.env.REACT_APP_EMAILJS_SERVICE_ID as string,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID as string,
         data,
-        "LJRo4VXi016kGcTuV"
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string
       );
+
       addToast({
         title: "Success!",
         description: "Your message has been sent successfully.",

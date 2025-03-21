@@ -30,3 +30,4 @@ package-lock.json
 bun.lockb
 .vercel
 .qodo
+.env
