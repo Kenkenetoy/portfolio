@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { motion, useScroll, useSpring } from "framer-motion";
-import { memo, useEffect } from "react";
+import { memo, useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom"; // React Router
 
 import { Provider } from "../provider";
@@ -12,17 +12,18 @@ const MemoizedMain = memo(function Main({
 }: {
   children: React.ReactNode;
 }) {
-  const location = useLocation(); // Track route changes
+  const location = useLocation();
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" }); // Smooth scroll to top
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
   }, [location.pathname]);
 
   return (
     <motion.main
+      key={location.pathname} // Ensures Framer Motion resets on navigation
       animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
       className="space-y-24 bg-slateshit"
-      exit={{ opacity: 0, y: -20, transition: { duration: 0.3 } }}
+      exit={{ opacity: 0, transition: { duration: 0.3 } }} // Removed `y: -20`
       initial={{ opacity: 0, y: 20 }}
     >
       <Provider>{children}</Provider>

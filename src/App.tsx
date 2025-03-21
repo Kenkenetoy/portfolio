@@ -2,7 +2,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
-import { SidebarProvider } from "@/context/SidebarContext"; // Ensure correct import path
 import DefaultLayout from "@/layouts/default";
 import IndexPage from "@/pages/index";
 import ProjectPage from "@/pages/project";
@@ -13,7 +12,6 @@ function App() {
   const location = useLocation();
 
   return (
-    <SidebarProvider>
       <DefaultLayout>
         <AnimatePresence>
           <Routes key={location.pathname} location={location}>
@@ -24,7 +22,6 @@ function App() {
           </Routes>
         </AnimatePresence>
       </DefaultLayout>
-    </SidebarProvider>
   );
 }
 
