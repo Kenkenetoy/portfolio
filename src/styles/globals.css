@@ -2,16 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 @plugin "daisyui";
+
 /* Default (Light mode) */
 html,
 html.light {
   scrollbar-width: thin;
   scrollbar-color: #f4c7b8 #f1f5f9; /* thumb (terracotta), track (slateshit) */
+  background-color: #f1f5f9; /* slateshit (light mode) */
+}
+
+body.light {
+  background-color: #f1f5f9; /* slateshit (light mode) */
 }
 
 /* Dark mode */
 html.dark {
   scrollbar-color: #b84c34 #09090b; /* thumb (terracotta), track (slateshit) */
+  background-color: #09090b; /* slateshit (dark mode) */
+}
+
+body.dark {
+  background-color: #09090b; /* slateshit (dark mode) */
 }
 
 /* Webkit (Chrome, Edge, Safari) */

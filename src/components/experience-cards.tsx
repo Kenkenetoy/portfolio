@@ -8,7 +8,7 @@ export const ExperienceComponent = () => {
   return (
     <>
       {ExperienceData.map((data, index) => (
-        <div key={index} className="space-y-4 text-default-foreground">
+        <div key={index} className="w-full space-y-4 text-default-foreground">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-default-foreground">
@@ -39,7 +39,9 @@ export const ExperienceComponent = () => {
 
           <Divider />
 
-          <p className="text-sm sm:text-base md:text-lg">{data.description}</p>
+          <p className="max-w-4xl text-sm sm:text-base md:text-lg">
+            {data.description}
+          </p>
         </div>
       ))}
     </>
