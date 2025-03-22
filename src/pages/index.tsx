@@ -52,6 +52,7 @@ export default function IndexPage() {
           <HeroSection />
         </div>
         <div className="w-screen px-4 mx-auto space-y-8 md:space-y-24 md:text-3xl max-w-screen-2xl">
+          {/* Some Text */}
           <div className="flex flex-col gap-8">
             <motion.div
               className="flex flex-col justify-between gap-4 md:flex-row"
@@ -138,6 +139,8 @@ export default function IndexPage() {
               </p>
             </motion.div>
           </div>
+
+          {/* What I Do */}
           <motion.div
             className="space-y-8"
             initial="initial"
@@ -178,36 +181,7 @@ export default function IndexPage() {
             </motion.div>
           </motion.div>
 
-          <motion.div
-            className="space-y-8"
-            initial="initial"
-            transition={{ duration: 0.5, ease: "circOut" }}
-            variants={moveup}
-            viewport={{ once: true, amount: 0.1 }}
-            whileInView="inView"
-          >
-            <motion.h1
-              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl text-default-foreground"
-              initial="initial"
-              transition={{ duration: 0.75, ease: "circOut" }}
-              variants={moveright}
-              viewport={{ once: true, amount: 0.2 }}
-              whileInView="inView"
-            >
-              Experience
-            </motion.h1>
-            <Divider />
-            <motion.div
-              className="max-w-[95%] mx-auto flex flex-wrap gap-12"
-              initial="initial"
-              transition={{ duration: 0.75, ease: "circOut" }}
-              variants={moveup}
-              viewport={{ once: true, amount: 1 }}
-              whileInView="inView"
-            >
-              <ExperienceComponent />
-            </motion.div>
-          </motion.div>
+          {/* Project Section */}
           <motion.div
             className="space-y-8"
             initial="initial"
@@ -285,6 +259,40 @@ export default function IndexPage() {
             </div>
             <Divider />
           </motion.div>
+
+          {/* Experience Section */}
+          <motion.div
+            className="space-y-8"
+            initial="initial"
+            transition={{ duration: 0.5, ease: "circOut" }}
+            variants={moveup}
+            viewport={{ once: true, amount: 0.1 }}
+            whileInView="inView"
+          >
+            <motion.h1
+              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl text-default-foreground"
+              initial="initial"
+              transition={{ duration: 0.75, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 0.2 }}
+              whileInView="inView"
+            >
+              Experience
+            </motion.h1>
+            <Divider />
+            <motion.div
+              className="max-w-[95%] mx-auto flex flex-wrap gap-12"
+              initial="initial"
+              transition={{ duration: 0.75, ease: "circOut" }}
+              variants={moveup}
+              viewport={{ once: true, amount: 1 }}
+              whileInView="inView"
+            >
+              <ExperienceComponent />
+            </motion.div>
+          </motion.div>
+
+          {/* My Tech Stack */}
           <motion.div
             className="space-y-8"
             initial="initial"
@@ -338,6 +346,8 @@ export default function IndexPage() {
               </Link>
             </motion.div>
           </motion.div>
+
+          {/* Footer */}
           <Footer />
         </div>
       </DefaultLayout>
