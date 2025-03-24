@@ -80,7 +80,7 @@ export const siteConfig = {
   },
 
   navItems: {
-    Home: { label: "Home", href: "/", icon: IconHomeFilled },
+    // Home: { label: "Home", href: "/", icon: IconHomeFilled },
     Projects: {
       label: "Projects",
       href: "/projects",

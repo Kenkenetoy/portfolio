@@ -55,7 +55,7 @@ export const HeroSection = () => {
 
         {/* Middle Section */}
         <motion.div
-          className="flex items-center justify-center h-full gap-12 py-24 font-bold text-center"
+          className="flex items-center justify-center h-full gap-12 font-bold text-center"
           initial="initial"
           transition={{ duration: 0.75, ease: "easeInOut" }}
           variants={moveright}
@@ -63,7 +63,7 @@ export const HeroSection = () => {
           whileInView="inView"
         >
           {/* Phone, hidden on small devices */}
-          <div className="relative hidden group lg:block">
+          <div className="relative hidden group xl:block">
             {/* Phone */}
             <div className="relative z-50 ">
               <GlareCard>
@@ -81,7 +81,7 @@ export const HeroSection = () => {
           </div>
           {/* Text Block */}
           <motion.section
-            className="flex flex-col justify-center space-y-4 lg:space-y-8 max-w-[40rem] p-4 md:p-0"
+            className="flex flex-col justify-center space-y-4  xl:space-y-8 max-w-[40rem] p-4 md:p-0"
             initial="initial"
             transition={{ duration: 1.5, ease: "easeInOut" }}
             variants={moveright}
@@ -90,7 +90,7 @@ export const HeroSection = () => {
           >
             {/* Hidden Image */}
             <motion.div
-              className="block mx-auto lg:hidden w-fit"
+              className="block pt-12 mx-auto xl:hidden w-fit"
               initial="initial"
               transition={{ duration: 1.75, ease: "circOut" }}
               variants={moveright}

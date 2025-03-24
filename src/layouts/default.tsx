@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom"; // React Router
 
 import { Provider } from "../provider";
 
-import { SidebarDemo } from "@/components/sidebar-bar";
+// import { SidebarDemo } from "@/components/sidebar-bar";
 import { Navbar } from "@/components/navbar";
 
 const MemoizedMain = memo(function Main({

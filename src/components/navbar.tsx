@@ -2,15 +2,12 @@
 import { Link } from "@heroui/link";
 import {
   Navbar as HeroUINavbar,
-  NavbarBrand,
   NavbarContent,
   NavbarItem,
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
 } from "@heroui/navbar";
-import { link as linkStyles } from "@heroui/theme";
-import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
@@ -18,43 +15,36 @@ import { ThemeSwitch } from "@/components/theme-switch";
 export const Navbar = () => {
   return (
     <HeroUINavbar
-      className="fixed z-40 w-full h-24 px-4 border-b max-w-none bg-slateshit border-default-foreground"
+      className="fixed z-40 w-full h-24 border-b max-w-none bg-slateshit border-default-foreground"
+      maxWidth="full"
       position="sticky"
     >
-      {/* desktop */}
-      <Link
-        className="flex items-start justify-start gap-1"
-        color="foreground"
-        href="/"
-      >
-        <img alt="Logo" className="w-12 h-12" src="/logo-onlyletter.svg" />
-        <p className="w-16 font-sans font-bold font-border-l-warning-200">
-          Kenneth Aparece
-        </p>
-      </Link>
+      <div className="grid items-center w-full grid-cols-3">
+        {/* Left: Logo */}
+        <Link className="flex items-start gap-1" color="foreground" href="/">
+          <img alt="Logo" className="w-12 h-12" src="/logo-onlyletter.svg" />
+          <p className="w-16 font-sans font-bold">Kenneth Aparece</p>
+        </Link>
 
-      <NavbarItem className="justify-center hidden gap-8 p-4 px-8 rounded-full border-default-100 lg:flex border-1">
-        {Object.values(siteConfig.navItems).map((item, idx) => (
-          <NavbarItem key={idx}>
-            <Link
-              className={clsx(
-                linkStyles({ color: "foreground" }),
-                "data-[active=true]:text-primary data-[active=true]:font-medium"
-              )}
-              color="foreground"
-              href={item.href}
-            >
-              {item.label}
-            </Link>
-          </NavbarItem>
-        ))}
-      </NavbarItem>
+        {/* Center: Navbar Links (Desktop Only) */}
+        <NavbarItem className="hidden gap-8 p-4 px-8 rounded-full justify-self-center w-fit md:flex border-default-100 border-1">
+          {Object.values(siteConfig.navItems).map((item, idx) => (
+            <NavbarItem key={idx}>
+              <Link color="foreground" href={item.href}>
+                {item.label}
+              </Link>
+            </NavbarItem>
+          ))}
+        </NavbarItem>
 
-      <NavbarItem className="hidden lg:flex">
-        <ThemeSwitch />
-      </NavbarItem>
+        {/* Right: Theme Switch */}
+        <NavbarItem className="justify-end hidden md:flex">
+          <ThemeSwitch />
+        </NavbarItem>
+      </div>
 
-      <NavbarContent className="pl-4 lg:hidden basis-1" justify="end">
+      {/* mobile */}
+      <NavbarContent className="pl-4 md:hidden basis-1" justify="end">
         <ThemeSwitch />
         <NavbarMenuToggle />
       </NavbarContent>
