@@ -66,17 +66,23 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
               "!text-default-foreground",
               "pt-px",
               "px-0",
-              "mx-0",
+              "mx-0 ",
             ],
             classNames?.wrapper
           ),
         })}
       >
-        <div className="hidden dark:block">
-          <MoonFilledIcon size={22} />
+        <div className="items-center hidden gap-2 pr-0 rounded-full md:pr-4 dark:flex border-1 border-default-foreground">
+          <span className="p-3 rounded-full bg-default-foreground">
+            <MoonFilledIcon className="text-default" size={22} />
+          </span>
+          <span className="hidden md:block">Dark Mode</span>
         </div>
-        <div className="block dark:hidden">
-          <SunFilledIcon size={22} />
+        <div className="flex items-center gap-2 pr-0 rounded-full md:pr-4 dark:hidden border-1 border-default-foreground">
+          <span className="p-3 rounded-full bg-default-foreground">
+            <SunFilledIcon className="text-default" size={22} />
+          </span>
+          <span className="hidden md:block">Light Mode</span>
         </div>
       </div>
     </Component>

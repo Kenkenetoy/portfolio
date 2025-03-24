@@ -15,7 +15,7 @@ import { ThemeSwitch } from "@/components/theme-switch";
 export const Navbar = () => {
   return (
     <HeroUINavbar
-      className="fixed z-40 w-full h-24 border-b max-w-none bg-slateshit border-default-foreground"
+      className="fixed z-40 items-center w-full h-24 border-b max-w-none bg-slateshit border-default-foreground"
       maxWidth="full"
       position="sticky"
     >
@@ -27,7 +27,7 @@ export const Navbar = () => {
         </Link>
 
         {/* Center: Navbar Links (Desktop Only) */}
-        <NavbarItem className="hidden gap-8 p-4 px-8 rounded-full justify-self-center w-fit md:flex border-default-100 border-1">
+        <NavbarItem className="hidden gap-8 p-4 px-8 border-gray-300 rounded-full justify-self-center w-fit md:flex dark:border-neutral-800 border-1">
           {Object.values(siteConfig.navItems).map((item, idx) => (
             <NavbarItem key={idx}>
               <Link color="foreground" href={item.href}>
@@ -38,15 +38,17 @@ export const Navbar = () => {
         </NavbarItem>
 
         {/* Right: Theme Switch */}
-        <NavbarItem className="justify-end hidden md:flex">
+        <NavbarItem className="justify-end hidden p-0 duration-200 ease-linear rounded-full transition-color md:flex w-fit h-fit justify-self-end">
           <ThemeSwitch />
         </NavbarItem>
       </div>
 
       {/* mobile */}
       <NavbarContent className="pl-4 md:hidden basis-1" justify="end">
-        <ThemeSwitch />
-        <NavbarMenuToggle />
+        <NavbarItem className="flex justify-end p-0 duration-200 ease-linear rounded-full md:hidden transition-color w-fit h-fit justify-self-end">
+          <ThemeSwitch />
+        </NavbarItem>
+        <NavbarMenuToggle className="flex justify-center w-12 h-12 p-4 rounded-full just bg-default-foreground text-default" />
       </NavbarContent>
 
       <NavbarMenu>
