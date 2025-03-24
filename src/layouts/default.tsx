@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom"; // React Router
 import { Provider } from "../provider";
 
 import { SidebarDemo } from "@/components/sidebar-bar";
+import { Navbar } from "@/components/navbar";
 
 const MemoizedMain = memo(function Main({
   children,
@@ -45,17 +46,14 @@ export default function DefaultLayout({
 
   return (
     <div className="relative flex min-h-screen font-sans">
-      <div className="z-50">
-        <SidebarDemo />
-      </div>
-
       {/* Scroll progress bar */}
       <motion.div
         className="fixed z-50 top-0 left-0 right-0 h-[5px] bg-terracotta origin-left"
         style={{ scaleX }}
       />
 
-      <div className="relative flex flex-col flex-grow">
+      <div className="relative flex flex-col flex-grow ">
+        <Navbar />
         <MemoizedMain>{children}</MemoizedMain>
       </div>
     </div>

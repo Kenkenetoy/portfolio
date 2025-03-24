@@ -118,7 +118,7 @@ export default function DocsPage() {
       </Helmet>
 
       <DefaultLayout>
-        <div className="w-screen px-4 pt-24 mx-auto space-y-12 md:space-y-24 max-w-screen-2xl">
+        <div className="w-screen px-4 pt-48 mx-auto space-y-12 md:space-y-24 max-w-screen-2xl">
           <div className="flex flex-col gap-12 md:flex-row">
             <div className="space-y-12">
               <motion.div

@@ -98,7 +98,24 @@ export const siteConfig = {
     },
   },
 
-  navMenuItems: [{ label: "Projects", href: "/projects" }],
+  navMenuItems: [
+    { label: "Home", href: "/", icon: IconHomeFilled },
+    {
+      label: "Projects",
+      href: "/projects",
+      icon: IconBriefcaseFilled,
+    },
+    {
+      label: "About Me",
+      href: "/about",
+      icon: IconAlignBoxLeftMiddleFilled,
+    },
+    {
+      label: "Contact Me",
+      href: "/contact",
+      icon: IconMailFilled,
+    },
+  ],
 
   socials: [
     {

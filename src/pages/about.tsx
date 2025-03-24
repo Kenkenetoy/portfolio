@@ -117,7 +117,7 @@ export default function DocsPage() {
             </filter>
           </defs>
         </svg> */}
-        <div className="w-screen px-4 pt-24 mx-auto space-y-12 md:space-y-24 max-w-screen-2xl text-default-foreground">
+        <div className="w-screen px-4 pt-48 mx-auto space-y-12 md:space-y-24 max-w-screen-2xl text-default-foreground">
           <motion.div
             className="space-y-8"
             initial="initial"
@@ -128,7 +128,7 @@ export default function DocsPage() {
           >
             <div className="space-y-4 font-serif">
               <motion.h1
-                className="flex flex-col-reverse items-center gap-8 text-3xl sm:text-5xl md:text-6xl lg:text-7xl md:flex-row"
+                className="flex flex-col-reverse items-center gap-8 text-5xl sm:text-6xl md:text-7xl lg:text-8xl md:flex-row"
                 initial="initial"
                 transition={{ duration: 0.75, ease: "circOut" }}
                 variants={movedown}

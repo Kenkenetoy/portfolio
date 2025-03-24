@@ -51,6 +51,8 @@ export const HeroSection = () => {
       />
 
       <div className="z-10 flex flex-col justify-between w-full h-full">
+        <motion.div className="h-24" />
+
         {/* Middle Section */}
         <motion.div
           className="flex items-center justify-center h-full gap-12 py-24 font-bold text-center"
@@ -96,8 +98,8 @@ export const HeroSection = () => {
               whileInView="inView"
             >
               <Image
-                className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56"
                 alt={`${siteConfig.name}'s Profile Picture`}
+                className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56"
                 draggable={false}
                 radius="full"
                 shadow="md"

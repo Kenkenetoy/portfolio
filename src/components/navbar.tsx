@@ -17,64 +17,43 @@ import { ThemeSwitch } from "@/components/theme-switch";
 
 export const Navbar = () => {
   return (
-    <HeroUINavbar maxWidth="xl" position="sticky">
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand className="gap-3 max-w-fit">
-          <Link
-            className="flex items-center justify-start gap-1"
-            color="foreground"
-            href="/"
-          >
-            <p className="font-bold text-inherit">Kenneth Aparece</p>
-          </Link>
-        </NavbarBrand>
-        <div className="justify-start hidden gap-4 ml-2 lg:flex">
-          {Object.values(siteConfig.navItems).map((item, idx) => (
-            <NavbarItem key={idx}>
-              <Link
-                className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium"
-                )}
-                color="foreground"
-                href={item.href}
-              >
-                {item.label}
-              </Link>
-            </NavbarItem>
-          ))}
-        </div>
-      </NavbarContent>
-
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
+    <HeroUINavbar
+      className="fixed z-40 w-full h-24 px-4 border-b max-w-none bg-slateshit border-default-foreground"
+      position="sticky"
+    >
       >
         <NavbarItem className="hidden gap-2 sm:flex">
-          <ThemeSwitch />
-        </NavbarItem>
-      </NavbarContent>
+        <img alt="Logo" className="w-12 h-12" src="/logo-onlyletter.svg" />
+        <p className="w-16 font-sans font-bold font-border-l-warning-200">
+          Kenneth Aparece
+            <Link
+              className={clsx(
+                linkStyles({ color: "foreground" }),
+                "data-[active=true]:text-primary data-[active=true]:font-medium"
+              )}
+              color="foreground"
+              href={item.href}
+            >
+              {item.label}
+            </Link>
+          </NavbarItem>
+        ))}
+      </NavbarItem>
 
-      <NavbarContent className="pl-4 sm:hidden basis-1" justify="end">
+      <NavbarItem className="hidden lg:flex">
+        <ThemeSwitch />
+      </NavbarItem>
+
+      <NavbarContent className="pl-4 lg:hidden basis-1" justify="end">
         <ThemeSwitch />
         <NavbarMenuToggle />
       </NavbarContent>
 
       <NavbarMenu>
-        <div className="flex flex-col gap-2 mx-4 mt-2">
+        <div className="flex flex-col gap-4 mx-auto mt-12 text-center">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href="#"
-                size="lg"
-              >
+              <Link color="foreground" href="#" size="lg">
                 {item.label}
               </Link>
             </NavbarMenuItem>
