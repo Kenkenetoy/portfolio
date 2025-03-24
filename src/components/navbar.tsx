@@ -21,11 +21,21 @@ export const Navbar = () => {
       className="fixed z-40 w-full h-24 px-4 border-b max-w-none bg-slateshit border-default-foreground"
       position="sticky"
     >
+      {/* desktop */}
+      <Link
+        className="flex items-start justify-start gap-1"
+        color="foreground"
+        href="/"
       >
-        <NavbarItem className="hidden gap-2 sm:flex">
         <img alt="Logo" className="w-12 h-12" src="/logo-onlyletter.svg" />
         <p className="w-16 font-sans font-bold font-border-l-warning-200">
           Kenneth Aparece
+        </p>
+      </Link>
+
+      <NavbarItem className="justify-center hidden gap-8 p-4 px-8 rounded-full border-default-100 lg:flex border-1">
+        {Object.values(siteConfig.navItems).map((item, idx) => (
+          <NavbarItem key={idx}>
             <Link
               className={clsx(
                 linkStyles({ color: "foreground" }),
