@@ -67,6 +67,8 @@ export const siteConfig = {
   role: "Software Engineer",
 
   url: "https://www.kenprce.vercel.app",
+  resume:
+    "https://drive.google.com/uc?export=download&id=1A1WOujDVpUu1TlyN1Zg6jmBOr3abOwWC",
 
   meta_type: "website",
   meta_title: "Kenneth Aparece",

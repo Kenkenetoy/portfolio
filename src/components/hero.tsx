@@ -198,8 +198,7 @@ export const HeroSection = () => {
                 onPress={() => {
                   const link = document.createElement("a");
 
-                  link.href =
-                    "https://drive.google.com/uc?export=download&id=1Xl1ZDHjVkCSkz-CWojIKI5NXHfVlkEWC";
+                  link.href = `${siteConfig.resume}`;
                   link.target = "_blank";
                   document.body.appendChild(link);
                   link.click();
