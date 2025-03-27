@@ -24,9 +24,13 @@ const cardAnimation = (
   }
 
   return {
-    scale: activeCard === index ? 1 : 0.95,
-    opacity: activeCard === index ? 1 : 0.3,
+    scale: activeCard === index ? 1 : 0.9,
+    opacity: activeCard === index ? 1 : 0.25,
     originX: 1,
+    transition: {
+      duration: 0.3,
+      ease: "easeInOut"
+    }
   };
 };
 
