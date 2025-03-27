@@ -207,7 +207,7 @@ export const StickyScroll = ({
           <Image
             isZoomed
             alt={content[activeCard].title}
-            className="object-cover w-full aspect-[6/3] min-w-sm max-w-sm sm:max-w-md sm:min-w-md md:max-w-lg md:min-w-lg"
+            className="object-cover w-full aspect-[6/3] min-w-sm max-w-sm sm:max-w-md sm:min-w-md md:max-w-lg md:min-w-lg shrink-0"
             src={content[activeCard].imageSrc}
           />
 

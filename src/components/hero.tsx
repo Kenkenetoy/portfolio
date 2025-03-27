@@ -199,7 +199,7 @@ export const HeroSection = () => {
                   const link = document.createElement("a");
 
                   link.href =
-                    "https://drive.google.com/uc?export=download&id=1IED6anEob_8QUZd1MjLJJanHRPIc8aV7";
+                    "https://drive.google.com/uc?export=download&id=1Xl1ZDHjVkCSkz-CWojIKI5NXHfVlkEWC";
                   link.target = "_blank";
                   document.body.appendChild(link);
                   link.click();

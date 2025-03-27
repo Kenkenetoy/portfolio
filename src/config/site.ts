@@ -66,7 +66,7 @@ export const siteConfig = {
   location: { province: ["Bohol"], country: ["the Philippines"] },
   role: "Software Engineer",
 
-  url: "https://www.portfolio-kenprce09.vercel.app",
+  url: "https://www.kenprce.vercel.app",
 
   meta_type: "website",
   meta_title: "Kenneth Aparece",
@@ -332,11 +332,11 @@ export const siteConfig = {
             "Reduced asset load times and optimized rendering for smooth gameplay.",
         },
       ],
-      extra: {
-        directdownload: "https://example.com/game-download.zip",
-        title: "Updated Release",
-        description: "Download the latest revised version directly.",
-      },
+      // extra: {
+      //   directdownload: "https://example.com/game-download.zip",
+      //   title: "Updated Release",
+      //   description: "Download the latest revised version directly.",
+      // },
       imageSrc: "Poster.webp",
       stack: ["unity", "C#", "blender"],
       url: {
