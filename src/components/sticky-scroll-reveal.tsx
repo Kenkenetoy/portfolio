@@ -6,7 +6,7 @@ import { Image } from "@heroui/image";
 import { Link } from "@heroui/link";
 import { Tooltip } from "@heroui/tooltip";
 import { Divider } from "@heroui/divider";
-import { IconBrandGithub, IconDownload, IconLink } from "@tabler/icons-react";
+import { IconBrandGithub, IconLink } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
 
 // import { siteConfig } from "@/config/site";
