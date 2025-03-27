@@ -174,7 +174,7 @@ const AlternatingCards = () => {
                 </Button>
               </Tooltip>
 
-              {item.extra?.directdownload?.trim() && (
+              {/* {item.extra?.directdownload?.trim() && (
                 <Tooltip
                   content={
                     <div className="px-1 py-2">
@@ -199,7 +199,7 @@ const AlternatingCards = () => {
                     Download <IconDownload />
                   </Button>
                 </Tooltip>
-              )}
+              )} */}
 
               {item.url.github && (
                 <Button

@@ -264,7 +264,7 @@ export const StickyScroll = ({
                 Site Link
               </Button>
             </Tooltip>
-            {content[activeCard].extra?.directdownload && (
+            {/* {content[activeCard].extra?.directdownload && (
               <Tooltip
                 content={
                   <div className="px-1 py-2">
@@ -291,7 +291,7 @@ export const StickyScroll = ({
                   Download <IconDownload size={20} />
                 </Button>
               </Tooltip>
-            )}
+            )} */}
             {content[activeCard].url?.github && (
               <Button
                 isIconOnly
