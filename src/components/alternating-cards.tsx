@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import { Divider } from "@heroui/divider";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
-import { IconBrandGithub, IconDownload, IconLink } from "@tabler/icons-react";
+import { IconBrandGithub, IconLink } from "@tabler/icons-react";
 import { Tooltip } from "@heroui/tooltip";
 import { Pagination, PaginationItemRenderProps } from "@heroui/pagination";
 import clsx from "clsx";
