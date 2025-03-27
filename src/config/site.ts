@@ -332,11 +332,7 @@ export const siteConfig = {
             "Reduced asset load times and optimized rendering for smooth gameplay.",
         },
       ],
-      // extra: {
-      //   directdownload: "https://example.com/game-download.zip",
-      //   title: "Updated Release",
-      //   description: "Download the latest revised version directly.",
-      // },
+
       imageSrc: "Poster.webp",
       stack: ["unity", "C#", "blender"],
       url: {
