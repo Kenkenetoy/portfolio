@@ -374,7 +374,7 @@ export const siteConfig = {
         },
       ],
       imageSrc: "Screenshot2025-03-17132127.webp",
-      stack: ["krpano", "javascript", "xml", "css", "blender"],
+      stack: ["react", "krpano", "javascript", "xml", "css", "blender"],
       url: {
         demo: "https://mata.ph/mactannewtown/",
       },
@@ -397,7 +397,7 @@ export const siteConfig = {
         },
       ],
       imageSrc: "Screenshot2025-03-17161055.webp",
-      stack: ["krpano", "javascript", "xml", "css", "blender"],
+      stack: ["react", "krpano", "javascript", "xml", "css", "blender"],
       url: {
         demo: "https://borromeo.ph/tfpvirtualtour/",
       },
