@@ -303,6 +303,45 @@ export const siteConfig = {
 
   contents: [
     {
+      title: "Gummybook",
+      type: "Client Management Platform",
+      description:
+        "A comprehensive client management and payment processing platform built with Next.js 14. Features include client management, proposal creation, contract handling, payment processing, and seamless integration with Google services for authentication and calendar management.",
+      feature_list: [
+        {
+          title: "Client Management System",
+          description:
+            "Complete system for managing client information, interactions, and history.",
+        },
+        {
+          title: "Proposal & Contract Management",
+          description:
+            "Create, track, and manage proposals and contracts with automated status tracking.",
+        },
+        {
+          title: "Payment Processing",
+          description:
+            "Integrated Stripe payment processing for secure financial transactions.",
+        },
+        {
+          title: "Google Integration",
+          description:
+            "OAuth authentication and Calendar API integration for seamless scheduling.",
+        },
+        {
+          title: "Dashboard Analytics",
+          description:
+            "Comprehensive dashboard for monitoring client activities and business metrics.",
+        },
+      ],
+      imageSrc: "Screenshot 2025-04-14040625.webp",
+      stack: ["typescript", "tailwind", "nextjs", "supabase", "stripe"],
+      url: {
+        demo: "https://gummybook.com",
+        github: "",
+      },
+    },
+    {
       title: "VLOG: 01",
       type: "Capstone Project - Game Development",
       description:
@@ -388,7 +427,7 @@ export const siteConfig = {
         {
           title: "High-Resolution Panoramas",
           description:
-            "Crisp, clear visuals to highlight the venue’s unique architecture.",
+            "Crisp, clear visuals to highlight the venue's unique architecture.",
         },
         {
           title: "SEO Optimization",
@@ -516,7 +555,7 @@ export const siteConfig = {
     //     {
     //       title: "Model-View-Controller (MVC) Architecture",
     //       description:
-    //         "Laravel’s structured approach improves maintainability and scalability.",
+    //         "Laravel's structured approach improves maintainability and scalability.",
     //     },
     //     {
     //       title: "Bootstrap-Powered Responsiveness",
@@ -578,12 +617,24 @@ export const siteConfig = {
 
   ExperienceData: [
     {
+      title: "Gummybook",
+      duration: "4 months",
+      role: "Full Stack Developer",
+      stack: ["typescript", "nextjs", "supabase", "tailwind", "stripe"],
+      description:
+        "Developed a comprehensive client management and payment processing platform. Implemented key features including client management, proposal creation, contract handling, payment processing with Stripe, and Google services integration (OAuth & Calendar API). Built with Next.js 14, TypeScript, and Supabase for robust data management.",
+      startDate: "January 2025",
+      endDate: "April 2025",
+    },
+    {
       title: "Mata Technologies",
       duration: "3 months",
       role: "Operations Intern",
       stack: ["krpano", "html", "css", "javascript", "jquery"],
       description:
         "Mata Technologies has been a Google Street View-Trusted Photographer since 2019.  It is the premier provider of virtual tours for real estate in the Philippines and the virtual reality map provider of tourist destinations in the country.",
+      startDate: "October 2024",
+      endDate: "December 2024",
     },
   ],
 };
