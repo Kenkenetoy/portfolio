@@ -303,6 +303,34 @@ export const siteConfig = {
 
   contents: [
     {
+      title: "Azimi Auto Parts",
+      type: "E-commerce Auto Parts Store",
+      description:
+        "An e-commerce platform built on Shopify, customized for auto parts retail. Features a tailored Shopify theme and automated product population from scraped data using Selenium and Scrapy to ensure up-to-date and accurate inventory listings.",
+      feature_list: [
+        {
+          title: "Shopify Theme Customization",
+          description:
+            "Modified the default Shopify theme to meet branding and UX requirements specific to auto parts sales.",
+        },
+        {
+          title: "Automated Data Scraping",
+          description:
+            "Used Selenium and Scrapy to scrape product details from public websites for accurate and efficient product listing updates.",
+        },
+        {
+          title: "Product Integration",
+          description:
+            "Streamlined workflow to input scraped product data directly into the Shopify store, reducing manual effort and errors.",
+        },
+      ],
+      imageSrc: "azimi.webp", // Add image path if available
+      stack: ["shopify", "selenium", "scrapy", "python"],
+      url: {
+        demo: "https://azimiautoparts.com/", // Add demo URL if available
+      },
+    },
+    {
       title: "Gummybook",
       type: "Client Management Platform",
       description:
@@ -616,6 +644,16 @@ export const siteConfig = {
   ],
 
   ExperienceData: [
+    {
+      title: "Azimi Auto Parts",
+      duration: "2 months",
+      role: "Shopify Expert, Data Scraper",
+      stack: ["shopify", "selenium", "scrapy", "python"],
+      description:
+        "Customized a Shopify theme to fit project needs and integrated product listings scraped using Selenium and Scrapy from public websites. Automated the data extraction and product input process to efficiently populate the store with accurate product info.",
+      startDate: "April 2025",
+      endDate: "June 2025",
+    },
     {
       title: "Gummybook",
       duration: "4 months",
