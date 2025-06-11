@@ -145,13 +145,13 @@ export const siteConfig = {
       icon: IconBrandUnity,
       devicon: UnityOriginal,
     },
-    blender: {
-      title: "Blender",
-      description:
-        "An open-source 3D software for modeling, texturing, rigging, and animation.",
-      icon: IconBrandBlender,
-      devicon: BlenderOriginal,
-    },
+    // blender: {
+    //   title: "Blender",
+    //   description:
+    //     "An open-source 3D software for modeling, texturing, rigging, and animation.",
+    //   icon: IconBrandBlender,
+    //   devicon: BlenderOriginal,
+    // },
     vite: {
       title: "Vite",
       description:
@@ -173,12 +173,12 @@ export const siteConfig = {
       icon: IconBrandReact,
       devicon: ReactOriginal,
     },
-    axios: {
-      title: "Axios",
-      description:
-        "A promise-based HTTP client for making API requests in JavaScript and Node.js.",
-      devicon: AxiosPlain,
-    },
+    // axios: {
+    //   title: "Axios",
+    //   description:
+    //     "A promise-based HTTP client for making API requests in JavaScript and Node.js.",
+    //   devicon: AxiosPlain,
+    // },
     laravel: {
       title: "Laravel",
       description:
@@ -208,40 +208,40 @@ export const siteConfig = {
       icon: IconBrandJavascript,
       devicon: JavascriptOriginal,
     },
-    html: {
-      title: "HTML",
-      description: "The standard markup language for creating web pages.",
-      icon: IconBrandHtml5,
-      devicon: Html5Original,
-    },
-    css: {
-      title: "CSS",
-      description:
-        "A style sheet language used for describing the look of web pages.",
-      icon: IconBrandCss3,
-      devicon: Css3Original,
-    },
-    tailwind: {
-      title: "Tailwind CSS",
-      description:
-        "A utility-first CSS framework for rapid and responsive UI design.",
-      icon: IconBrandTailwind,
-      devicon: TailwindcssOriginal,
-    },
-    bootstrap: {
-      title: "Bootstrap",
-      description:
-        "A popular CSS framework for building responsive and mobile-first websites.",
-      icon: IconBrandBootstrap,
-      devicon: BootstrapOriginal,
-    },
-    framer: {
-      title: "Framer Motion",
-      description:
-        "A powerful animation library for React, enabling smooth and interactive UI animations.",
-      icon: IconBrandFramer,
-      devicon: FramermotionOriginal,
-    },
+    // html: {
+    //   title: "HTML",
+    //   description: "The standard markup language for creating web pages.",
+    //   icon: IconBrandHtml5,
+    //   devicon: Html5Original,
+    // },
+    // css: {
+    //   title: "CSS",
+    //   description:
+    //     "A style sheet language used for describing the look of web pages.",
+    //   icon: IconBrandCss3,
+    //   devicon: Css3Original,
+    // },
+    // tailwind: {
+    //   title: "Tailwind CSS",
+    //   description:
+    //     "A utility-first CSS framework for rapid and responsive UI design.",
+    //   icon: IconBrandTailwind,
+    //   devicon: TailwindcssOriginal,
+    // },
+    // bootstrap: {
+    //   title: "Bootstrap",
+    //   description:
+    //     "A popular CSS framework for building responsive and mobile-first websites.",
+    //   icon: IconBrandBootstrap,
+    //   devicon: BootstrapOriginal,
+    // },
+    // framer: {
+    //   title: "Framer Motion",
+    //   description:
+    //     "A powerful animation library for React, enabling smooth and interactive UI animations.",
+    //   icon: IconBrandFramer,
+    //   devicon: FramermotionOriginal,
+    // },
     csharp: {
       title: "C#",
       description:
@@ -268,12 +268,12 @@ export const siteConfig = {
       icon: IconBrandMysql,
       devicon: MysqlOriginal,
     },
-    sqlite: {
-      title: "SQLite",
-      description:
-        "A lightweight, self-contained SQL database engine for embedded applications.",
-      devicon: SqliteOriginal,
-    },
+    // sqlite: {
+    //   title: "SQLite",
+    //   description:
+    //     "A lightweight, self-contained SQL database engine for embedded applications.",
+    //   devicon: SqliteOriginal,
+    // },
     perl: {
       title: "Perl",
       description:
@@ -281,18 +281,18 @@ export const siteConfig = {
       devicon: PerlOriginal,
     },
 
-    xml: {
-      title: "XML",
-      description:
-        "A markup language used for defining structured data, commonly utilized in KRpano for scene configurations and settings.",
-      devicon: XmlOriginal, // Custom placeholder, replace with an actual icon if needed
-    },
-    wordpress: {
-      title: "WordPress",
-      description:
-        "A popular content management system (CMS) used for building websites and blogs. Known for its flexibility, vast plugin ecosystem, and user-friendly interface.",
-      devicon: WordpressOriginal, // Custom placeholder, replace with an actual icon if needed
-    },
+    // xml: {
+    //   title: "XML",
+    //   description:
+    //     "A markup language used for defining structured data, commonly utilized in KRpano for scene configurations and settings.",
+    //   devicon: XmlOriginal, // Custom placeholder, replace with an actual icon if needed
+    // },
+    // wordpress: {
+    //   title: "WordPress",
+    //   description:
+    //     "A popular content management system (CMS) used for building websites and blogs. Known for its flexibility, vast plugin ecosystem, and user-friendly interface.",
+    //   devicon: WordpressOriginal, // Custom placeholder, replace with an actual icon if needed
+    // },
     aws: {
       title: "Amazon Web Services (AWS)",
       description:
