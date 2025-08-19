@@ -216,7 +216,7 @@ export const DraggableMockupPhone = () => {
   // Array of slide components - easily add new slides here
   const slides = [
     // Slide 1: Personal Info Card
-    <div key="profile" className="relative flex flex-col items-center justify-center w-full h-[600px] p-6 bg-gradient-to-br from-blue-500 to-purple-600">
+    <div key="profile" className="relative flex flex-col items-center justify-center w-full h-full p-6 bg-gradient-to-br from-blue-500 to-purple-600">
       <Image
         isBlurred
         alt={`${siteConfig.name}'s Profile Picture`}
@@ -259,7 +259,7 @@ export const DraggableMockupPhone = () => {
       <Image
         alt="Portfolio Showcase Image"
         className="object-cover w-full h-full"
-        height={600}
+        height={560}
         draggable={false}
         src="/500767421_122101628294889306_499058726028971638_n.webp"
       />
@@ -270,7 +270,7 @@ export const DraggableMockupPhone = () => {
       <Image
         alt="Portfolio Showcase Image"
         className="object-cover w-full h-full"
-        height={600}
+        height={560}
         draggable={false}
         src="/unnamed.webp"
       />
@@ -281,7 +281,7 @@ export const DraggableMockupPhone = () => {
       <Image
         alt="Portfolio Showcase Image"
         className="object-cover w-full h-full"
-        height={600}
+        height={560}
         draggable={false}
         src="/339638376_1064728391582143_6807557032942108900_n.webp"
       />
