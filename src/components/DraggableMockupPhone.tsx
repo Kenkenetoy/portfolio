@@ -194,7 +194,7 @@ export const DraggableMockupPhone = () => {
           console.log('Button clicked!');
           togglePausePlay();
         }}
-        className="p-2 ml-2 transition-opacity duration-200 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-sm pointer-events-auto"
+        className="p-2 ml-2 transition-opacity duration-200 rounded-full pointer-events-auto bg-black/50 hover:bg-black/70 backdrop-blur-sm"
         aria-label={isManuallyPaused ? "Play" : "Pause"}
         style={{ pointerEvents: 'auto' }}
       >
@@ -216,7 +216,7 @@ export const DraggableMockupPhone = () => {
   // Array of slide components - easily add new slides here
   const slides = [
     // Slide 1: Personal Info Card
-    <div key="profile" className="relative flex flex-col items-center justify-center w-full h-full p-6 bg-gradient-to-br from-blue-500 to-purple-600">
+    <div key="profile" className="relative flex flex-col items-center justify-center w-full h-[600px] p-6 bg-gradient-to-br from-blue-500 to-purple-600">
       <Image
         isBlurred
         alt={`${siteConfig.name}'s Profile Picture`}
