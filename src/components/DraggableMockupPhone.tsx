@@ -1,6 +1,9 @@
 /* eslint-disable prettier/prettier */
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import { Autoplay } from 'swiper/modules';
 import { Image } from "@heroui/image"; // Import the image component
 
 import { siteConfig } from "@/config/site"; // Your config file for site settings
@@ -62,6 +65,49 @@ const fetchCurrentlyPlaying = async (accessToken: string) => {
 
 export const DraggableMockupPhone = () => {
   const [currentlyPlaying, setCurrentlyPlaying] = useState<any>(null);
+  // Autoplay & progress state
+  const AUTOPLAY_DELAY = 4000; // ms
+  const swiperRef = useRef<any>(null);
+  // const [activeIndex, setActiveIndex] = useState(0); // unused but kept for future use
+  const [progress, setProgress] = useState(0); // 0..1
+  const rafRef = useRef<number | null>(null);
+  const lastTimestampRef = useRef<number | null>(null);
+  const slideStartRef = useRef<number | null>(null);
+  
+  // Drag state tracking
+  const [isDragging, setIsDragging] = useState(false);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const pausedProgressRef = useRef<number>(0); // Store progress when paused
+  const pausedTimeRef = useRef<number | null>(null); // When we paused
+  
+  // Manual pause/play state
+  const [isManuallyPaused, setIsManuallyPaused] = useState(false);
+
+  const tick = useCallback((t: number) => {
+    if (!lastTimestampRef.current) lastTimestampRef.current = t;
+    // update last timestamp for next frame
+    lastTimestampRef.current = t;
+
+    // Only update progress if not dragging and autoplay is running and not manually paused
+    if (!isDragging && !isManuallyPaused && swiperRef.current && swiperRef.current.autoplay && swiperRef.current.autoplay.running && slideStartRef.current) {
+      // Use per-slide start timestamp to compute progress
+      const sinceStart = t - slideStartRef.current;
+      const pct = Math.min(1, Math.max(0, sinceStart / AUTOPLAY_DELAY));
+      setProgress(pct);
+    }
+
+    rafRef.current = requestAnimationFrame(tick);
+  }, [isDragging, isManuallyPaused, progress]);
+
+  useEffect(() => {
+    // start RAF
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+      lastTimestampRef.current = null;
+    };
+  }, [tick]);
 
   useEffect(() => {
     const authorizationCode = getAuthorizationCodeFromUrl();
@@ -85,57 +131,262 @@ export const DraggableMockupPhone = () => {
     }
   }, []);
 
+  // Handle autoplay state changes based on manual pause
+  useEffect(() => {
+    if (swiperRef.current?.autoplay) {
+      if (isManuallyPaused) {
+        swiperRef.current.autoplay.stop();
+      } else {
+        swiperRef.current.autoplay.start();
+      }
+    }
+  }, [isManuallyPaused]);
+
+  // Manual pause/play toggle function
+  const togglePausePlay = () => {
+    console.log('Toggle clicked, current state:', isManuallyPaused);
+    if (isManuallyPaused) {
+      // Resume
+      console.log('Resuming...');
+      setIsManuallyPaused(false);
+      if (swiperRef.current?.autoplay) {
+        swiperRef.current.autoplay.start();
+      }
+      // Adjust slideStart to account for paused time
+      if (pausedTimeRef.current) {
+        const pausedDuration = performance.now() - pausedTimeRef.current;
+        slideStartRef.current = (slideStartRef.current || performance.now()) + pausedDuration;
+        pausedTimeRef.current = null;
+      }
+    } else {
+      // Pause
+      console.log('Pausing...');
+      setIsManuallyPaused(true);
+      if (swiperRef.current?.autoplay) {
+        swiperRef.current.autoplay.stop();
+      }
+      pausedProgressRef.current = progress;
+      pausedTimeRef.current = performance.now();
+    }
+  };
+
+  // Profile header component for each slide (like IG Reels/FB Stories)
+  // Pass 'bottom' (default true) to control placement
+  const ProfileHeader = ({ bottom = true } = {}) => (
+    <div
+      className={`absolute left-0 z-20 flex items-center w-full gap-2 p-4 pt-8 ${bottom ? 'bg-gradient-to-t' : 'bg-gradient-to-b'} from-black/50 to-transparent ${bottom ? 'bottom-0' : 'top-0'}`}
+    >
+      <Image
+        alt={`${siteConfig.name}'s Profile Picture`}
+        className="object-cover w-10 h-10 border-2 rounded-full border-white/30"
+        draggable={false}
+        src={siteConfig.logo}
+      />
+      <div className="flex-1">
+        <p className="text-sm text-white w-fit">{siteConfig.name}</p>
+        <p className="text-xs text-white/80 w-fit">{siteConfig.role}</p>
+      </div>
+      {/* Pause/Play button */}
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('Button clicked!');
+          togglePausePlay();
+        }}
+        className="p-2 ml-2 transition-opacity duration-200 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-sm pointer-events-auto"
+        aria-label={isManuallyPaused ? "Play" : "Pause"}
+        style={{ pointerEvents: 'auto' }}
+      >
+        {isManuallyPaused ? (
+          // Play icon
+          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        ) : (
+          // Pause icon
+          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+          </svg>
+        )}
+      </button>
+    </div>
+  );
+
+  // Array of slide components - easily add new slides here
+  const slides = [
+    // Slide 1: Personal Info Card
+    <div key="profile" className="relative flex flex-col items-center justify-center w-full h-full p-6 bg-gradient-to-br from-blue-500 to-purple-600">
+      <Image
+        isBlurred
+        alt={`${siteConfig.name}'s Profile Picture`}
+        className="object-cover w-32 h-32 mb-4 border-4 rounded-full border-white/20"
+        draggable={false}
+        src={siteConfig.logo}
+      />
+      <div className="text-center">
+        <h2 className="mb-2 text-3xl font-bold text-white">
+          {siteConfig.name}
+        </h2>
+        <p className="mb-4 text-xl text-white/90">{siteConfig.role}</p>
+        {currentlyPlaying ? (
+          <div className="p-4 mt-4 rounded-lg bg-white/10 backdrop-blur-sm">
+            <Image
+              alt={currentlyPlaying.item.name}
+              className="object-cover w-16 h-16 mx-auto mb-2 rounded-lg"
+              draggable={false}
+              src={currentlyPlaying.item.album.images[0].url}
+            />
+            <p className="text-lg font-semibold text-white">
+              {currentlyPlaying.item.name}
+            </p>
+            <p className="text-sm text-white/80">
+              {currentlyPlaying.item.artists
+                .map((artist: any) => artist.name)
+                .join(", ")}
+            </p>
+            <p className="mt-1 text-xs text-white/70">
+              Now Playing on Spotify
+            </p>
+          </div>
+        ) : null}
+      </div>
+    </div>,
+
+    // Slide 2: Image Showcase
+    <div key="image-showcase" className="relative flex items-center justify-center w-full h-full bg-black">
+      <ProfileHeader bottom={false} />
+      <Image
+        alt="Portfolio Showcase Image"
+        className="object-cover w-full h-full"
+        height={600}
+        draggable={false}
+        src="/500767421_122101628294889306_499058726028971638_n.webp"
+      />
+    </div>,
+    // Slide 3: Image Showcase
+    <div key="image-showcase" className="relative flex items-center justify-center w-full h-full bg-black">
+      <ProfileHeader bottom={false} />
+      <Image
+        alt="Portfolio Showcase Image"
+        className="object-cover w-full h-full"
+        height={600}
+        draggable={false}
+        src="/unnamed.webp"
+      />
+    </div>,
+    // Slide 4: Image Showcase
+    <div key="image-showcase" className="relative flex items-center justify-center w-full h-full bg-black">
+      <ProfileHeader bottom={false} />
+      <Image
+        alt="Portfolio Showcase Image"
+        className="object-cover w-full h-full"
+        height={600}
+        draggable={false}
+        src="/339638376_1064728391582143_6807557032942108900_n.webp"
+      />
+    </div>,
+
+    // Add more slides here easily...
+  ];
+
   return (
     <div className="h-full select-none mockup-phone cursor-grab active:cursor-grabbing">
       <div className="camera" />
       <div className="display">
         <div
           aria-label="Scrollable content"
-          className="h-[600px] p-4 space-y-4 n overflow-y-auto artboard artboard-demo phone-1  bg-default-50"
+          className="relative h-[600px] overflow-y-auto artboard artboard-demo phone-1 bg-default-50"
           role="button"
           tabIndex={0}
         >
-          <Image
-            isBlurred
-            alt={`${siteConfig.name}'s Profile Picture`}
-            className="object-cover pointer-events-none select-none"
-            draggable={false}
-            src={siteConfig.logo}
-          />
-          <div>
-            <p className="text-2xl text-default-foreground">
-              {siteConfig.name}
-            </p>
-            <p className="text-lg text-default-foreground">{siteConfig.role}</p>
-            {
-              currentlyPlaying ? (
-                <>
-                  <Image
-                    alt={currentlyPlaying.item.name}
-                    className="object-cover pointer-events-none select-none"
-                    draggable={false}
-                    src={currentlyPlaying.item.album.images[0].url}
-                  />
-                  <div>
-                    <p className="text-2xl text-neutral-900 dark:text-whitetext-neutral-900 dark:text-white">
-                      {currentlyPlaying.item.name}
-                    </p>
-                    <p className="text-lg text-neutral-700 dark:text-gray-300">
-                      {currentlyPlaying.item.artists
-                        .map((artist: any) => artist.name)
-                        .join(", ")}
-                    </p>
-                    <p className="text-lg text-neutral-700 dark:text-gray-300">
-                      Now Playing on Spotify
-                    </p>
-                  </div>
-                </>
-              ) : null
-              // <div>Nothing is currently playing.</div>
-            }
-          </div>
+          <section
+            className="w-full h-full embla"
+            style={{
+              '--slide-height': '100%',
+              '--slide-spacing': '0rem',
+              '--slide-size': '100%',
+            } as React.CSSProperties}
+          >
+            <Swiper
+              direction="vertical"
+              slidesPerView={1}
+              loop={true}
+              modules={[Autoplay]}
+              autoplay={{
+                delay: AUTOPLAY_DELAY,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: false,
+              }}
+              onSwiper={(s) => {
+                swiperRef.current = s;
+                slideStartRef.current = performance.now();
+              }}
+              onSlideChange={(s) => {
+                const newIndex = s.realIndex ?? s.activeIndex ?? 0;
+                
+                // If we changed slides, reset timer
+                if (newIndex !== currentSlideIndex) {
+                  setCurrentSlideIndex(newIndex);
+                  setProgress(0);
+                  slideStartRef.current = performance.now();
+                  pausedProgressRef.current = 0;
+                } else {
+                  // Same slide - resume from where we left off if we were dragging
+                  if (isDragging && pausedTimeRef.current) {
+                    // Adjust slideStart to account for paused time
+                    const pausedDuration = performance.now() - pausedTimeRef.current;
+                    slideStartRef.current = (slideStartRef.current || performance.now()) + pausedDuration;
+                  }
+                }
+              }}
+              onTouchStart={() => {
+                // User started dragging
+                setIsDragging(true);
+                pausedProgressRef.current = progress;
+                pausedTimeRef.current = performance.now();
+                
+                // Pause autoplay
+                if (swiperRef.current?.autoplay) {
+                  swiperRef.current.autoplay.stop();
+                }
+              }}
+              onTouchEnd={() => {
+                // User stopped dragging
+                setIsDragging(false);
+                
+                // Resume autoplay
+                if (swiperRef.current?.autoplay) {
+                  swiperRef.current.autoplay.start();
+                }
+              }}
+              className="w-full h-full overflow-hidden embla__viewport"
+              style={{ height: '100%', width: '100%' }}
+            >
+              {slides.map((slideContent, index) => (
+                <SwiperSlide
+                  key={index}
+                  className="w-full h-full embla__slide"
+                  style={{ width: '100%', height: '100%' }}
+                >
+                  {slideContent}
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* Full-width thin progress bar (YouTube-like) */}
+            <div className="absolute bottom-0 left-0 right-0 z-50 pointer-events-none">
+              <div className="w-full h-1 bg-white/20">
+                <div
+                  className="h-1 bg-white"
+                  style={{ width: `${Math.round(progress * 100)}%`, transition: 'width 120ms linear' }}
+                />
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>
   );
 };
+

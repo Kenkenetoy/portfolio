@@ -74,7 +74,7 @@ export const HeroSection = () => {
             {/* Tooltip with extended line */}
             <span className="flex flex-col z-30 absolute left-[-175px] top-1/2 bg-default-foreground text-default-50 text-sm p-2 px-6 rounded-full opacity-0 group-hover:opacity-100 transition">
               <p>Swipe Down</p>
-              <p className="text-xs font-light">#comming soon</p>
+              <p className="text-xs font-light">#WIP</p>
               {/* Line Extension */}
               <span className="absolute w-10 h-px bg-default-foreground left-full top-1/2" />
             </span>
