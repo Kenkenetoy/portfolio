@@ -64,7 +64,7 @@ export const siteConfig = {
   hero_small:
     "I blend design and development to create smooth digital experiences.",
   location: { province: ["Bohol"], country: ["the Philippines"] },
-  role: "Software Engineer",
+  role: "Frontend Developer",
 
   url: "https://www.kenprce.vercel.app",
   resume:
