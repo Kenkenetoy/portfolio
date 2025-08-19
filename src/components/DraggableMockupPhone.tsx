@@ -215,43 +215,7 @@ export const DraggableMockupPhone = () => {
 
   // Array of slide components - easily add new slides here
   const slides = [
-    // Slide 1: Personal Info Card
-    <div key="profile" className="relative flex flex-col items-center justify-center w-full h-full p-6 bg-">
-      <Image
-        isBlurred
-        alt={`${siteConfig.name}'s Profile Picture`}
-        className="object-cover w-32 h-32 mb-4 border-4 rounded-full border-white/20"
-        draggable={false}
-        src={siteConfig.logo}
-      />
-      <div className="text-center">
-        <h2 className="mb-2 text-3xl font-bold text-default-foreground">
-          {siteConfig.name}
-        </h2>
-        <p className="mb-4 text-xl text-default-foreground">{siteConfig.role}</p>
-        {currentlyPlaying ? (
-          <div className="p-4 mt-4 rounded-lg bg-white/10 backdrop-blur-sm">
-            <Image
-              alt={currentlyPlaying.item.name}
-              className="object-cover w-16 h-16 mx-auto mb-2 rounded-lg"
-              draggable={false}
-              src={currentlyPlaying.item.album.images[0].url}
-            />
-            <p className="text-lg font-semibold text-default-foreground">
-              {currentlyPlaying.item.name}
-            </p>
-            <p className="text-sm text-default-foreground">
-              {currentlyPlaying.item.artists
-                .map((artist: any) => artist.name)
-                .join(", ")}
-            </p>
-            <p className="mt-1 text-xs text-default-foreground">
-              Now Playing on Spotify
-            </p>
-          </div>
-        ) : null}
-      </div>
-    </div>,
+
 
     // Slide 2: Image Showcase
     <div key="image-showcase" className="relative flex items-center justify-center w-full h-full bg-black">
@@ -298,7 +262,43 @@ export const DraggableMockupPhone = () => {
         style={{ objectPosition: "30% top" }}
       />
     </div>,
-
+    // Slide 1: Personal Info Card
+    <div key="profile" className="relative flex flex-col items-center justify-center w-full h-full p-6 bg-">
+      <Image
+        isBlurred
+        alt={`${siteConfig.name}'s Profile Picture`}
+        className="object-cover w-32 h-32 mb-4 border-4 rounded-full border-white/20"
+        draggable={false}
+        src={siteConfig.logo}
+      />
+      <div className="text-center">
+        <h2 className="mb-2 text-3xl font-bold text-default-foreground">
+          {siteConfig.name}
+        </h2>
+        <p className="mb-4 text-xl text-default-foreground">{siteConfig.role}</p>
+        {currentlyPlaying ? (
+          <div className="p-4 mt-4 rounded-lg bg-white/10 backdrop-blur-sm">
+            <Image
+              alt={currentlyPlaying.item.name}
+              className="object-cover w-16 h-16 mx-auto mb-2 rounded-lg"
+              draggable={false}
+              src={currentlyPlaying.item.album.images[0].url}
+            />
+            <p className="text-lg font-semibold text-default-foreground">
+              {currentlyPlaying.item.name}
+            </p>
+            <p className="text-sm text-default-foreground">
+              {currentlyPlaying.item.artists
+                .map((artist: any) => artist.name)
+                .join(", ")}
+            </p>
+            <p className="mt-1 text-xs text-default-foreground">
+              Now Playing on Spotify
+            </p>
+          </div>
+        ) : null}
+      </div>
+    </div>,
     // Add more slides here easily...
   ];
 
