@@ -184,7 +184,7 @@ export const DraggableMockupPhone = () => {
       />
       <div className="flex-1">
         <p className="text-sm text-white w-fit">{siteConfig.name}</p>
-        <p className="text-xs text-white/80 w-fit">{siteConfig.role}</p>
+        <p className="text-xs text-white w-fit">{siteConfig.role}</p>
       </div>
       {/* Pause/Play button */}
       <button
@@ -194,7 +194,7 @@ export const DraggableMockupPhone = () => {
           console.log('Button clicked!');
           togglePausePlay();
         }}
-        className="p-2 ml-2 transition-opacity duration-200 rounded-full pointer-events-auto bg-black/50 hover:bg-black/70 backdrop-blur-sm"
+        className="p-2 ml-2 transition-opacity duration-200 rounded-full pointer-events-auto bg-black/50 hover:bg-black backdrop-blur-sm"
         aria-label={isManuallyPaused ? "Play" : "Pause"}
         style={{ pointerEvents: 'auto' }}
       >
@@ -216,7 +216,7 @@ export const DraggableMockupPhone = () => {
   // Array of slide components - easily add new slides here
   const slides = [
     // Slide 1: Personal Info Card
-    <div key="profile" className="relative flex flex-col items-center justify-center w-full h-full p-6 bg-gradient-to-br from-blue-500 to-purple-600">
+    <div key="profile" className="relative flex flex-col items-center justify-center w-full h-full p-6 bg-">
       <Image
         isBlurred
         alt={`${siteConfig.name}'s Profile Picture`}
@@ -225,10 +225,10 @@ export const DraggableMockupPhone = () => {
         src={siteConfig.logo}
       />
       <div className="text-center">
-        <h2 className="mb-2 text-3xl font-bold text-white">
+        <h2 className="mb-2 text-3xl font-bold text-default-foreground">
           {siteConfig.name}
         </h2>
-        <p className="mb-4 text-xl text-white/90">{siteConfig.role}</p>
+        <p className="mb-4 text-xl text-default-foreground">{siteConfig.role}</p>
         {currentlyPlaying ? (
           <div className="p-4 mt-4 rounded-lg bg-white/10 backdrop-blur-sm">
             <Image
@@ -237,15 +237,15 @@ export const DraggableMockupPhone = () => {
               draggable={false}
               src={currentlyPlaying.item.album.images[0].url}
             />
-            <p className="text-lg font-semibold text-white">
+            <p className="text-lg font-semibold text-default-foreground">
               {currentlyPlaying.item.name}
             </p>
-            <p className="text-sm text-white/80">
+            <p className="text-sm text-default-foreground">
               {currentlyPlaying.item.artists
                 .map((artist: any) => artist.name)
                 .join(", ")}
             </p>
-            <p className="mt-1 text-xs text-white/70">
+            <p className="mt-1 text-xs text-default-foreground">
               Now Playing on Spotify
             </p>
           </div>
@@ -284,6 +284,18 @@ export const DraggableMockupPhone = () => {
         height={560}
         draggable={false}
         src="/339638376_1064728391582143_6807557032942108900_n.webp"
+      />
+    </div>,
+    // Slide 5: Image Showcase
+    <div key="image-showcase" className="relative flex items-center justify-center w-full h-full bg-black">
+      <ProfileHeader bottom={false} />
+      <Image
+        alt="Portfolio Showcase Image"
+        className="object-cover w-full h-full"
+        height={560}
+        draggable={false}
+        src="/1e8f553f-44eb-4456-a3b7-056fd35d7c05.webp"
+        style={{ objectPosition: "30% top" }}
       />
     </div>,
 
