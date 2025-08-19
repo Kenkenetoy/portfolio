@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Tabs, Tab } from "@heroui/tabs";
-import { motion } from "framer-motion";
+import { easeIn, easeOut, motion } from "framer-motion";
 
 import { StickyScroll } from "./sticky-scroll-reveal";
 import { TimelineDemo } from "./education";
@@ -9,8 +9,8 @@ import { siteConfig } from "@/config/site";
 
 const tabVariants = {
   initial: { opacity: 0, y: -20 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
-  exit: { opacity: 0, y: -20, transition: { duration: 0.2, ease: "easeIn" } },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: easeOut } },
+  exit: { opacity: 0, y: -20, transition: { duration: 0.2, ease: easeIn } },
 };
 
 export default function AnimatedTabs() {

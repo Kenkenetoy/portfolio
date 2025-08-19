@@ -1,12 +1,13 @@
 /* eslint-disable prettier/prettier */
 import { motion } from "motion/react";
+import { circOut } from "framer-motion";
 
 type AnimatedDivProps = {
   children: React.ReactNode;
   variants: any;
   className?: string;
   duration?: number;
-  ease?: string;
+  ease?: any;
 };
 
 const AnimatedDiv = ({
@@ -14,7 +15,7 @@ const AnimatedDiv = ({
   variants,
   className,
   duration = 0.35, // Default duration
-  ease = "circOut", // Default easing
+  ease = circOut, // Default easing
 }: AnimatedDivProps) => (
   <motion.div
     className={className}

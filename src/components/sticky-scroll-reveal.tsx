@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 import { Image } from "@heroui/image";
 import { Link } from "@heroui/link";
 import { Tooltip } from "@heroui/tooltip";
@@ -29,7 +29,7 @@ const cardAnimation = (
     originX: 1,
     transition: {
       duration: 0.3,
-      ease: "easeInOut"
+      ease: easeInOut
     }
   };
 };
