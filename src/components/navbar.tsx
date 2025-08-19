@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Link } from "@heroui/link";
+
+import { IconHomeFilled } from "@tabler/icons-react";
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -28,6 +30,11 @@ export const Navbar = () => {
 
         {/* Center: Navbar Links (Desktop Only) */}
         <NavbarItem className="hidden gap-8 p-4 px-8 border-gray-300 rounded-full justify-self-center w-fit md:flex dark:border-neutral-800 border-1">
+          <NavbarItem>
+            <Link color="foreground" href="/">
+              <IconHomeFilled className="w-6 h-6" />
+            </Link>
+          </NavbarItem>
           {Object.values(siteConfig.navItems).map((item, idx) => (
             <NavbarItem key={idx}>
               <Link color="foreground" href={item.href}>
