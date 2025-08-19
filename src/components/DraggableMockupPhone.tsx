@@ -1,6 +1,4 @@
 /* eslint-disable prettier/prettier */
-import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
-
 import { useEffect, useState, useRef, useCallback } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -65,7 +63,7 @@ const fetchCurrentlyPlaying = async (accessToken: string) => {
 };
 
 export const DraggableMockupPhone = () => {
-  const [currentlyPlaying, setCurrentlyPlaying] = useState<any>(null);
+  const [setCurrentlyPlaying] = useState<any>(null);
   // Autoplay & progress state
   const AUTOPLAY_DELAY = 4000; // ms
   const swiperRef = useRef<any>(null);
