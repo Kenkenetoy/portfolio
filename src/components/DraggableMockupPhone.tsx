@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -172,7 +173,13 @@ export const DraggableMockupPhone = () => {
 
   // Profile header component for each slide (like IG Reels/FB Stories)
   // Pass 'bottom' (default true) to control placement
-  const ProfileHeader = ({ bottom = true } = {}) => (
+  // Pass 'bottom' (default true) and 'date' (optional string) to control placement and date
+  type ProfileHeaderProps = {
+    bottom?: boolean;
+    date?: string;
+  };
+
+  const ProfileHeader = ({ bottom = true, date }: ProfileHeaderProps) => (
     <div
       className={`absolute left-0 z-20 flex items-center w-full gap-2 p-4 pt-8 ${bottom ? 'bg-gradient-to-t' : 'bg-gradient-to-b'} from-black/50 to-transparent ${bottom ? 'bottom-0' : 'top-0'}`}
     >
@@ -184,14 +191,19 @@ export const DraggableMockupPhone = () => {
       />
       <div className="flex-1">
         <p className="text-sm text-white w-fit">{siteConfig.name}</p>
-        <p className="text-xs text-white w-fit">{siteConfig.role}</p>
+        {/* <p className="text-xs text-white w-fit">{siteConfig.role}</p> */}
+        {/* Date like in Reels, only if provided */}
+        {date && (
+          <p className="text-xs text-white w-fit">
+            {date}
+          </p>
+        )}
       </div>
       {/* Pause/Play button */}
       <button
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
-          console.log('Button clicked!');
           togglePausePlay();
         }}
         className="p-2 ml-2 transition-opacity duration-200 rounded-full pointer-events-auto bg-black/50 hover:bg-black backdrop-blur-sm"
@@ -215,11 +227,9 @@ export const DraggableMockupPhone = () => {
 
   // Array of slide components - easily add new slides here
   const slides = [
-
-
     // Slide 2: Image Showcase
     <div key="image-showcase" className="relative flex items-center justify-center w-full h-full bg-black">
-      <ProfileHeader bottom={false} />
+      <ProfileHeader bottom={false} date="28/05/2025"/>
       <Image
         alt="Portfolio Showcase Image"
         className="object-cover w-full h-full"
@@ -228,9 +238,9 @@ export const DraggableMockupPhone = () => {
         src="/500767421_122101628294889306_499058726028971638_n.webp"
       />
     </div>,
-    // Slide 3: Image Showcase
+    // Slide 3: Handorf
     <div key="image-showcase" className="relative flex items-center justify-center w-full h-full bg-black">
-      <ProfileHeader bottom={false} />
+      <ProfileHeader bottom={false} date="14/04/2023"/>
       <Image
         alt="Portfolio Showcase Image"
         className="object-cover w-full h-full"
@@ -239,9 +249,9 @@ export const DraggableMockupPhone = () => {
         src="/unnamed.webp"
       />
     </div>,
-    // Slide 4: Image Showcase
+    // Slide 4: Sydney bridge
     <div key="image-showcase" className="relative flex items-center justify-center w-full h-full bg-black">
-      <ProfileHeader bottom={false} />
+      <ProfileHeader bottom={false} date="18/04/2023" />
       <Image
         alt="Portfolio Showcase Image"
         className="object-cover w-full h-full"
@@ -250,11 +260,11 @@ export const DraggableMockupPhone = () => {
         src="/339638376_1064728391582143_6807557032942108900_n.webp"
       />
     </div>,
-    // Slide 5: Image Showcase
+    // Slide 5: Grad day
     <div key="image-showcase" className="relative flex items-center justify-center w-full h-full bg-black">
-      <ProfileHeader bottom={false} />
+      <ProfileHeader bottom={false} date="12/06/2025" />
       <Image
-        alt="Portfolio Showcase Image"
+        alt="Graduation Day Image"
         className="object-cover w-full h-full"
         height={560}
         draggable={false}
@@ -265,45 +275,31 @@ export const DraggableMockupPhone = () => {
     // Slide 1: Personal Info Card
     <div key="profile" className="relative flex flex-col items-center justify-center w-full h-full p-6 bg-">
       <Image
-        isBlurred
         alt={`${siteConfig.name}'s Profile Picture`}
-        className="object-cover w-32 h-32 mb-4 border-4 rounded-full border-white/20"
+        className="object-cover w-40 h-40 mb-4 border-4 rounded-full shadow-md border-white/20"
         draggable={false}
         src={siteConfig.logo}
       />
-      <div className="text-center">
-        <h2 className="mb-2 text-3xl font-bold text-default-foreground">
-          {siteConfig.name}
-        </h2>
-        <p className="mb-4 text-xl text-default-foreground">{siteConfig.role}</p>
-        {currentlyPlaying ? (
-          <div className="p-4 mt-4 rounded-lg bg-white/10 backdrop-blur-sm">
-            <Image
-              alt={currentlyPlaying.item.name}
-              className="object-cover w-16 h-16 mx-auto mb-2 rounded-lg"
-              draggable={false}
-              src={currentlyPlaying.item.album.images[0].url}
-            />
-            <p className="text-lg font-semibold text-default-foreground">
-              {currentlyPlaying.item.name}
-            </p>
-            <p className="text-sm text-default-foreground">
-              {currentlyPlaying.item.artists
-                .map((artist: any) => artist.name)
-                .join(", ")}
-            </p>
-            <p className="mt-1 text-xs text-default-foreground">
-              Now Playing on Spotify
-            </p>
-          </div>
-        ) : null}
+      <div className="flex flex-col items-center w-full text-center text-default-foreground">
+        <h2 className="mb-1 text-2xl font-bold">{siteConfig.name}</h2>
+        <p className="mb-2 text-md ">{siteConfig.role}</p>
+        {/* <p className="mb-2 text-sm ">Full-stack developer. Building cool stuff. 🚀</p> */}
+        {/* <div className="flex justify-center gap-4 mb-2">
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <IconBrandGithub className="w-5 h-5 hover:brightness-150" />
+          </a>
+          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <IconBrandLinkedin className="w-5 h-5 hover:brightness-150" />
+          </a>
+        </div> */}
+        {/* <button className="px-4 py-2 mt-2 text-white transition bg-blue-600 rounded-full hover:bg-blue-700">Follow</button> */}
       </div>
     </div>,
     // Add more slides here easily...
   ];
 
   return (
-    <div className="h-full select-none mockup-phone cursor-grab active:cursor-grabbing">
+    <div className="h-full shadow-2xl select-none mockup-phone cursor-grab active:cursor-grabbing">
       <div className="camera" />
       <div className="display">
         <div
