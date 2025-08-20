@@ -17,45 +17,61 @@ import { movedown, moveright, moveup, rotateBounce } from "@/anim/variants";
 // FloatingBit component: flexible container for any content with floating animation
 const FloatingBit = ({ 
   children,
-  style, 
-  duration = 6 
-}: { 
+  style,
+  duration = 6,
+  rotationIntensity = 1,
+  translationIntensityX = 1,
+  translationIntensityY = 1,
+}: {
   children: React.ReactNode;
-  style?: React.CSSProperties; 
+  style?: React.CSSProperties;
   duration?: number;
-}) => (
-  <div
-    style={{
-      position: "absolute",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      opacity: 0.8,
-      zIndex: 10,
-      ...style,
-      animation: `floatBit ${duration}s ease-in-out infinite alternate`,
-      pointerEvents: "none",
-    }}
-  >
-    {children}
-  </div>
-);
+  rotationIntensity?: number;
+  translationIntensityX?: number;
+  translationIntensityY?: number;
+}) => {
+  // Clamp intensities between -1 and 1
+  const rotIntensity = Math.max(-1, Math.min(1, rotationIntensity ?? 1));
+  const transIntensityX = Math.max(-1, Math.min(1, translationIntensityX ?? 1));
+  const transIntensityY = Math.max(-1, Math.min(1, translationIntensityY ?? 1));
+  // Sanitize for CSS selector
+  const keyStr = `${rotIntensity}_${transIntensityX}_${transIntensityY}`.replace(/\./g, '_').replace(/-/g, 'm');
+  const animName = `floatBitCustomAnim${keyStr}`;
+  if (!document.head.querySelector(`#${animName}`)) {
+    const styleSheet = document.createElement("style");
+    styleSheet.id = animName;
+    // Scale translation and rotation by intensity
+    styleSheet.innerHTML = `
+      @keyframes ${animName} {
+        0% { transform: translateY(0) translateX(0) rotate(0deg);}
+        25% { transform: translateY(${ -20 * transIntensityY }px) translateX(${ 10 * transIntensityX }px) rotate(${ 10 * rotIntensity }deg);}
+        50% { transform: translateY(${ 10 * transIntensityY }px) translateX(${ -10 * transIntensityX }px) rotate(${ -10 * rotIntensity }deg);}
+        75% { transform: translateY(${ -15 * transIntensityY }px) translateX(${ 15 * transIntensityX }px) rotate(${ 5 * rotIntensity }deg);}
+        100% { transform: translateY(0) translateX(0) rotate(0deg);}
+      }
+    `;
+    document.head.appendChild(styleSheet);
+  }
+  return (
+    <div
+      style={{
+        position: "absolute",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        opacity: 0.8,
+        zIndex: 10,
+        ...style,
+        animation: `${animName} ${duration}s ease-in-out infinite alternate`,
+        pointerEvents: "none",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
 
-// Add keyframes for floating animation
-const styleSheet = document.createElement("style");
-styleSheet.innerHTML = `
-@keyframes floatBit {
-  0% { transform: translateY(0) translateX(0) rotate(0deg);}
-  25% { transform: translateY(-20px) translateX(10px) rotate(10deg);}
-  50% { transform: translateY(10px) translateX(-10px) rotate(-10deg);}
-  75% { transform: translateY(-15px) translateX(15px) rotate(5deg);}
-  100% { transform: translateY(0) translateX(0) rotate(0deg);}
-}
-`;
-if (!document.head.querySelector("#floatBitKeyframes")) {
-  styleSheet.id = "floatBitKeyframes";
-  document.head.appendChild(styleSheet);
-}
+// Remove static keyframes, now generated per intensity
 
 const links = siteConfig.socials.map((social) => ({
   title: social.title,
@@ -83,23 +99,6 @@ export const HeroSection = () => {
 
   return (
     <div className="h-full w-screen md:w-full bg-slateshit dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex flex-col justify-center items-center">
-      {/* Floating bits with different HTML content */}
-      <FloatingBit style={{ top: "10%", left: "15%" }} duration={7}>
-        <div className="w-6 h-6 bg-blue-500 rounded-full shadow-lg" />
-      </FloatingBit>
-      <FloatingBit style={{ top: "30%", left: "70%" }} duration={5}>
-        ngiga
-      </FloatingBit>
-      <FloatingBit style={{ top: "60%", left: "40%" }} duration={8}>
-        <div className="w-4 h-4 rotate-45 rounded bg-gradient-to-r from-purple-500 to-pink-500" />
-      </FloatingBit>
-      <FloatingBit style={{ top: "80%", left: "20%" }} duration={6}>
-        <span className="text-xl">🌟</span>
-      </FloatingBit>
-      <FloatingBit style={{ top: "50%", left: "80%" }} duration={7}>
-        <div className="w-5 h-5 bg-green-100 border-2 border-green-400 rounded-full" />
-      </FloatingBit>
-
       <div
         className="absolute inset-0 flex items-center justify-center bg-slateshit "
         style={{
@@ -141,13 +140,56 @@ export const HeroSection = () => {
           </div>
           {/* Text Block */}
           <motion.section
-            className="flex flex-col justify-center space-y-4  xl:space-y-8 max-w-[40rem] p-4 md:p-0"
+            className="relative flex flex-col justify-center space-y-4  xl:space-y-8 max-w-[40rem] p-4 md:p-0"
             initial="initial"
             transition={{ duration: 1.5, ease: "easeInOut" }}
             variants={moveright}
             viewport={{ once: true, amount: 0.1 }}
             whileInView="inView"
           >
+            <FloatingBit style={{ top: "25%", left: "75%" }} duration={5} rotationIntensity={0}>
+              <span className="absolute z-10 px-2 py-1 text-sm font-thin bg-orange-200 rounded-lg shadow-lg top-2 left-4 text-slate-900 whitespace-nowrap">
+                UI/UX
+              </span>
+              <svg
+                className="absolute top-0 left-0 z-20"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path fill="#FFF" stroke="#000" stroke-width="2" d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z" />
+              </svg>
+            </FloatingBit>
+            <FloatingBit style={{ top: "67%", left: "72%" }} duration={5} rotationIntensity={0.5}>
+              <span className="absolute z-10 px-2 py-1 text-sm font-thin bg-blue-200 rounded-lg shadow-lg top-2 left-4 text-slate-900 whitespace-nowrap">
+                3D Modelling
+              </span>
+              <svg
+                className="absolute top-0 left-0 z-20"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path fill="#FFF" stroke="#000" stroke-width="2" d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z" />
+              </svg>
+            </FloatingBit>
+            <FloatingBit style={{ top: "77%", left: "15%" }} duration={5} rotationIntensity={-0.2} translationIntensityX={.51} translationIntensityY={-0.45}>
+              <span className="absolute z-10 px-2 py-1 text-sm font-thin text-right bg-green-200 rounded-lg shadow-lg top-2 right-4 text-slate-900">
+                Programming
+              </span>
+              <svg
+                className="absolute top-0 right-0 z-20"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                style={{ transform: "scaleX(-1)" }}
+              >
+                <path fill="#FFF" stroke="#000" strokeWidth="2" d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z" />
+              </svg>
+            </FloatingBit>
             {/* Hidden Image */}
             <motion.div
               className="block pt-12 mx-auto xl:hidden w-fit"
