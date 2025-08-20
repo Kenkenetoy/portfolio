@@ -50,7 +50,9 @@ export const StickyScroll = ({
   contentClassName?: string;
 }) => {
   const [activeCard, setActiveCard] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout>();
 
   const [enableAnimation, setEnableAnimation] = useState(isLargeScreen());
 
@@ -65,6 +67,19 @@ export const StickyScroll = ({
   useEffect(() => {
     const handleScroll = () => {
       if (!ref.current) return;
+
+      // Set scrolling state to close tooltips
+      setIsScrolling(true);
+      
+      // Clear existing timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      
+      // Set timeout to stop scrolling state
+      scrollTimeoutRef.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 150);
 
       const sections = ref.current.querySelectorAll(".scroll-section");
       let closestIndex = 0;
@@ -85,7 +100,12 @@ export const StickyScroll = ({
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -250,9 +270,30 @@ export const StickyScroll = ({
                   "No Preview Available"
                 )
               }
-              isDisabled={!content[activeCard].url?.demo}
+              isDisabled={!content[activeCard].url?.demo || isScrolling}
               shadow="md"
               showArrow={true}
+              placement="top"
+              delay={500}
+              closeDelay={100}
+              motionProps={{
+                variants: {
+                  exit: {
+                    opacity: 0,
+                    transition: {
+                      duration: 0.1,
+                      ease: "easeIn",
+                    }
+                  },
+                  enter: {
+                    opacity: 1,
+                    transition: {
+                      duration: 0.15,
+                      ease: "easeOut",
+                    }
+                  },
+                },
+              }}
             >
               <Button
                 as={Link}

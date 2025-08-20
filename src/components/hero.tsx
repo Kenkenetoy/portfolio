@@ -14,22 +14,31 @@ import { FloatingDock } from "./floating-dock";
 import { siteConfig } from "@/config/site"; // Import siteConfig directly
 import { movedown, moveright, moveup, rotateBounce } from "@/anim/variants";
 
-// FloatingBit component: a red block with floating animation
-const FloatingBit = ({ style, duration = 6 }: { style?: React.CSSProperties; duration?: number }) => (
+// FloatingBit component: flexible container for any content with floating animation
+const FloatingBit = ({ 
+  children,
+  style, 
+  duration = 6 
+}: { 
+  children: React.ReactNode;
+  style?: React.CSSProperties; 
+  duration?: number;
+}) => (
   <div
     style={{
       position: "absolute",
-      width: "24px",
-      height: "24px",
-      background: "red",
-      borderRadius: "6px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
       opacity: 0.8,
       zIndex: 10,
       ...style,
       animation: `floatBit ${duration}s ease-in-out infinite alternate`,
       pointerEvents: "none",
     }}
-  />
+  >
+    {children}
+  </div>
 );
 
 // Add keyframes for floating animation
@@ -74,12 +83,22 @@ export const HeroSection = () => {
 
   return (
     <div className="h-full w-screen md:w-full bg-slateshit dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex flex-col justify-center items-center">
-      {/* Floating bits (red blocks) */}
-      <FloatingBit style={{ top: "10%", left: "15%" }} duration={7} />
-      <FloatingBit style={{ top: "30%", left: "70%" }} duration={5} />
-      <FloatingBit style={{ top: "60%", left: "40%" }} duration={8} />
-      <FloatingBit style={{ top: "80%", left: "20%" }} duration={6} />
-      <FloatingBit style={{ top: "50%", left: "80%" }} duration={7} />
+      {/* Floating bits with different HTML content */}
+      <FloatingBit style={{ top: "10%", left: "15%" }} duration={7}>
+        <div className="w-6 h-6 bg-blue-500 rounded-full shadow-lg" />
+      </FloatingBit>
+      <FloatingBit style={{ top: "30%", left: "70%" }} duration={5}>
+        ngiga
+      </FloatingBit>
+      <FloatingBit style={{ top: "60%", left: "40%" }} duration={8}>
+        <div className="w-4 h-4 rotate-45 rounded bg-gradient-to-r from-purple-500 to-pink-500" />
+      </FloatingBit>
+      <FloatingBit style={{ top: "80%", left: "20%" }} duration={6}>
+        <span className="text-xl">🌟</span>
+      </FloatingBit>
+      <FloatingBit style={{ top: "50%", left: "80%" }} duration={7}>
+        <div className="w-5 h-5 bg-green-100 border-2 border-green-400 rounded-full" />
+      </FloatingBit>
 
       <div
         className="absolute inset-0 flex items-center justify-center bg-slateshit "
