@@ -14,6 +14,40 @@ import { FloatingDock } from "./floating-dock";
 import { siteConfig } from "@/config/site"; // Import siteConfig directly
 import { movedown, moveright, moveup, rotateBounce } from "@/anim/variants";
 
+// FloatingBit component: a red block with floating animation
+const FloatingBit = ({ style, duration = 6 }: { style?: React.CSSProperties; duration?: number }) => (
+  <div
+    style={{
+      position: "absolute",
+      width: "24px",
+      height: "24px",
+      background: "red",
+      borderRadius: "6px",
+      opacity: 0.8,
+      zIndex: 10,
+      ...style,
+      animation: `floatBit ${duration}s ease-in-out infinite alternate`,
+      pointerEvents: "none",
+    }}
+  />
+);
+
+// Add keyframes for floating animation
+const styleSheet = document.createElement("style");
+styleSheet.innerHTML = `
+@keyframes floatBit {
+  0% { transform: translateY(0) translateX(0) rotate(0deg);}
+  25% { transform: translateY(-20px) translateX(10px) rotate(10deg);}
+  50% { transform: translateY(10px) translateX(-10px) rotate(-10deg);}
+  75% { transform: translateY(-15px) translateX(15px) rotate(5deg);}
+  100% { transform: translateY(0) translateX(0) rotate(0deg);}
+}
+`;
+if (!document.head.querySelector("#floatBitKeyframes")) {
+  styleSheet.id = "floatBitKeyframes";
+  document.head.appendChild(styleSheet);
+}
+
 const links = siteConfig.socials.map((social) => ({
   title: social.title,
   icon: <social.icon className="w-full h-full text-default-foreground" />,
@@ -40,6 +74,13 @@ export const HeroSection = () => {
 
   return (
     <div className="h-full w-screen md:w-full bg-slateshit dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex flex-col justify-center items-center">
+      {/* Floating bits (red blocks) */}
+      <FloatingBit style={{ top: "10%", left: "15%" }} duration={7} />
+      <FloatingBit style={{ top: "30%", left: "70%" }} duration={5} />
+      <FloatingBit style={{ top: "60%", left: "40%" }} duration={8} />
+      <FloatingBit style={{ top: "80%", left: "20%" }} duration={6} />
+      <FloatingBit style={{ top: "50%", left: "80%" }} duration={7} />
+
       <div
         className="absolute inset-0 flex items-center justify-center bg-slateshit "
         style={{
