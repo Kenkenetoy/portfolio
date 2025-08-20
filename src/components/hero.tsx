@@ -14,6 +14,61 @@ import { FloatingDock } from "./floating-dock";
 import { siteConfig } from "@/config/site"; // Import siteConfig directly
 import { movedown, moveright, moveup, rotateBounce } from "@/anim/variants";
 
+// FloatingBit component: flexible container for any content with floating animation
+type FloatingBitProps = {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+  duration?: number;
+  intensity?: [number, number, number]; // [translationIntensityX, translationIntensityY, rotationIntensity]
+};
+
+const FloatingBit = ({
+  children,
+  style,
+  duration = 6,
+  intensity = [1, 1, 1],
+}: FloatingBitProps) => {
+  // Clamp intensities between -1 and 1
+  const [transIntensityX, transIntensityY, rotIntensity] = intensity.map((v) => Math.max(-1, Math.min(1, v ?? 1)));
+  // Sanitize for CSS selector
+  const keyStr = `${rotIntensity}_${transIntensityX}_${transIntensityY}`.replace(/\./g, '_').replace(/-/g, 'm');
+  const animName = `floatBitCustomAnim${keyStr}`;
+  if (!document.head.querySelector(`#${animName}`)) {
+    const styleSheet = document.createElement("style");
+    styleSheet.id = animName;
+    // Scale translation and rotation by intensity
+    styleSheet.innerHTML = `
+      @keyframes ${animName} {
+        0% { transform: translateY(0) translateX(0) rotate(0deg);}
+        25% { transform: translateY(${ -20 * transIntensityY }px) translateX(${ 10 * transIntensityX }px) rotate(${ 10 * rotIntensity }deg);}
+        50% { transform: translateY(${ 10 * transIntensityY }px) translateX(${ -10 * transIntensityX }px) rotate(${ -10 * rotIntensity }deg);}
+        75% { transform: translateY(${ -15 * transIntensityY }px) translateX(${ 15 * transIntensityX }px) rotate(${ 5 * rotIntensity }deg);}
+        100% { transform: translateY(0) translateX(0) rotate(0deg);}
+      }
+    `;
+    document.head.appendChild(styleSheet);
+  }
+  return (
+    <div
+      style={{
+        position: "absolute",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        opacity: 0.8,
+        zIndex: 10,
+        ...style,
+        animation: `${animName} ${duration}s ease-in-out infinite alternate`,
+        pointerEvents: "none",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
+// Remove static keyframes, now generated per intensity
+
 const links = siteConfig.socials.map((social) => ({
   title: social.title,
   icon: <social.icon className="w-full h-full text-default-foreground" />,
@@ -81,13 +136,56 @@ export const HeroSection = () => {
           </div>
           {/* Text Block */}
           <motion.section
-            className="flex flex-col justify-center space-y-4  xl:space-y-8 max-w-[40rem] p-4 md:p-0"
+            className="relative flex flex-col justify-center space-y-4  xl:space-y-8 max-w-[40rem] p-4 md:p-0"
             initial="initial"
             transition={{ duration: 1.5, ease: "easeInOut" }}
             variants={moveright}
             viewport={{ once: true, amount: 0.1 }}
             whileInView="inView"
           >
+            <FloatingBit style={{ top: "7.5%", left: "90%" }} duration={5} intensity={[-0.51, 0.45, 0]}>
+              <span className="absolute z-10 px-3 py-2 text-sm font-thin bg-orange-200 rounded-full shadow-lg top-2 left-4 text-slate-900 whitespace-nowrap">
+                UI/UX
+              </span>
+              <svg
+                className="absolute top-0 left-0 z-20"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path fill="#FFF" stroke="#000" stroke-width="2" d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z" />
+              </svg>
+            </FloatingBit>
+            <FloatingBit style={{ top: "72%", left: "82%" }} duration={5} intensity={[-0.51, 0.85, -0.25]}>
+              <span className="absolute z-10 px-3 py-2 text-sm font-thin bg-blue-200 rounded-full shadow-lg top-2 left-4 text-slate-900 whitespace-nowrap">
+                3D Modelling
+              </span>
+              <svg
+                className="absolute top-0 left-0 z-20"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path fill="#FFF" stroke="#000" stroke-width="2" d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z" />
+              </svg>
+            </FloatingBit>
+            <FloatingBit style={{ top: "77%", left: "15%" }} duration={5} intensity={[0.51, -0.45, -0.2]}>
+              <span className="absolute z-10 px-3 py-2 text-sm font-thin text-right bg-green-200 rounded-full shadow-lg top-2 right-4 text-slate-900">
+                Programming
+              </span>
+              <svg
+                className="absolute top-0 right-0 z-20"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                style={{ transform: "scaleX(-1)" }}
+              >
+                <path fill="#FFF" stroke="#000" strokeWidth="2" d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z" />
+              </svg>
+            </FloatingBit>
             {/* Hidden Image */}
             <motion.div
               className="block pt-12 mx-auto xl:hidden w-fit"
