@@ -15,25 +15,21 @@ import { siteConfig } from "@/config/site"; // Import siteConfig directly
 import { movedown, moveright, moveup, rotateBounce } from "@/anim/variants";
 
 // FloatingBit component: flexible container for any content with floating animation
-const FloatingBit = ({ 
-  children,
-  style,
-  duration = 6,
-  rotationIntensity = 1,
-  translationIntensityX = 1,
-  translationIntensityY = 1,
-}: {
+type FloatingBitProps = {
   children: React.ReactNode;
   style?: React.CSSProperties;
   duration?: number;
-  rotationIntensity?: number;
-  translationIntensityX?: number;
-  translationIntensityY?: number;
-}) => {
+  intensity?: [number, number, number]; // [translationIntensityX, translationIntensityY, rotationIntensity]
+};
+
+const FloatingBit = ({
+  children,
+  style,
+  duration = 6,
+  intensity = [1, 1, 1],
+}: FloatingBitProps) => {
   // Clamp intensities between -1 and 1
-  const rotIntensity = Math.max(-1, Math.min(1, rotationIntensity ?? 1));
-  const transIntensityX = Math.max(-1, Math.min(1, translationIntensityX ?? 1));
-  const transIntensityY = Math.max(-1, Math.min(1, translationIntensityY ?? 1));
+  const [transIntensityX, transIntensityY, rotIntensity] = intensity.map((v) => Math.max(-1, Math.min(1, v ?? 1)));
   // Sanitize for CSS selector
   const keyStr = `${rotIntensity}_${transIntensityX}_${transIntensityY}`.replace(/\./g, '_').replace(/-/g, 'm');
   const animName = `floatBitCustomAnim${keyStr}`;
@@ -147,8 +143,8 @@ export const HeroSection = () => {
             viewport={{ once: true, amount: 0.1 }}
             whileInView="inView"
           >
-            <FloatingBit style={{ top: "25%", left: "75%" }} duration={5} rotationIntensity={0}>
-              <span className="absolute z-10 px-2 py-1 text-sm font-thin bg-orange-200 rounded-lg shadow-lg top-2 left-4 text-slate-900 whitespace-nowrap">
+            <FloatingBit style={{ top: "7.5%", left: "90%" }} duration={5} intensity={[-0.51, 0.45, 0]}>
+              <span className="absolute z-10 px-3 py-2 text-sm font-thin bg-orange-200 rounded-full shadow-lg top-2 left-4 text-slate-900 whitespace-nowrap">
                 UI/UX
               </span>
               <svg
@@ -161,8 +157,8 @@ export const HeroSection = () => {
                 <path fill="#FFF" stroke="#000" stroke-width="2" d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z" />
               </svg>
             </FloatingBit>
-            <FloatingBit style={{ top: "67%", left: "72%" }} duration={5} rotationIntensity={0.5}>
-              <span className="absolute z-10 px-2 py-1 text-sm font-thin bg-blue-200 rounded-lg shadow-lg top-2 left-4 text-slate-900 whitespace-nowrap">
+            <FloatingBit style={{ top: "72%", left: "82%" }} duration={5} intensity={[-0.51, 0.85, -0.25]}>
+              <span className="absolute z-10 px-3 py-2 text-sm font-thin bg-blue-200 rounded-full shadow-lg top-2 left-4 text-slate-900 whitespace-nowrap">
                 3D Modelling
               </span>
               <svg
@@ -175,8 +171,8 @@ export const HeroSection = () => {
                 <path fill="#FFF" stroke="#000" stroke-width="2" d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z" />
               </svg>
             </FloatingBit>
-            <FloatingBit style={{ top: "77%", left: "15%" }} duration={5} rotationIntensity={-0.2} translationIntensityX={.51} translationIntensityY={-0.45}>
-              <span className="absolute z-10 px-2 py-1 text-sm font-thin text-right bg-green-200 rounded-lg shadow-lg top-2 right-4 text-slate-900">
+            <FloatingBit style={{ top: "77%", left: "15%" }} duration={5} intensity={[0.51, -0.45, -0.2]}>
+              <span className="absolute z-10 px-3 py-2 text-sm font-thin text-right bg-green-200 rounded-full shadow-lg top-2 right-4 text-slate-900">
                 Programming
               </span>
               <svg
