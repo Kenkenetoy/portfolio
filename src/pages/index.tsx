@@ -9,7 +9,6 @@ import {
   IconRecharging,
 } from "@tabler/icons-react";
 import { Link } from "@heroui/link";
-
 import DefaultLayout from "@/layouts/default";
 import { siteConfig } from "@/config/site";
 import HeroSection from "@/components/hero";
