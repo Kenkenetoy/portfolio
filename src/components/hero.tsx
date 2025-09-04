@@ -120,7 +120,7 @@ export const HeroSection = () => {
           {/* Phone, hidden on small devices */}
           <div className="relative hidden group xl:block">
             {/* Phone */}
-            <div className="relative z-50 ">
+            <div className="relative z-50">
               <GlareCard>
                 <DraggableMockupPhone />
               </GlareCard>

@@ -64,156 +64,156 @@ const AlternatingCards = () => {
       {paginatedContents.map((item, index) => (
         <motion.div
           key={index}
-          className={`border-1 border-default-50 px-4 py-8 rounded-3xl flex flex-col lg:flex-row items-center shadow-lg ${
-            index % 2 === 0 ? "lg:flex-row-reverse" : ""
-          } gap-6 md:gap-12`}
+          className='items-center justify-between px-4 py-8 space-y-4 shadow-lg md:space-y-6 border-1 border-default-50 rounded-3xl'
           initial={{ opacity: 0, y: 50 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.2 }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          {/* Image Side */}
-          <div className="overflow-hidden rounded-lg shadow-md lg:max-w-[50%] h-fit w-fit">
-            <Image
-              isZoomed
-              alt={item.title}
-              className="object-cover w-full h-auto"
-              src={item.imageSrc}
-            />
-          </div>
-
-          {/* Text Side */}
-          <div className="w-full space-y-4 lg:w-1/2">
-            <div className="flex flex-col justify-between lg:flex-row">
-              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-default-foreground">
-                {item.title}
-              </h2>
-              <div>
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-default-foreground">
-                  {item.type}
-                </p>
-                <div className="flex gap-3">
-                  {item.stack.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="gap-4 text-xs font-medium sm:text-sm md:text-base text-default-foreground"
-                    >
-                      {tech}
-                      {i < item.stack.length - 1 && ","}
-                    </span>
-                  ))}
-                </div>
+          <div className="flex flex-col justify-between w-full lg:flex-row md:p-4">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-default-foreground">
+              {item.title}
+            </h2>
+            <div>
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-default-foreground">
+                {item.type}
+              </p>
+              <div className="flex gap-3">
+                {item.stack.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="gap-4 text-xs font-medium sm:text-sm md:text-base text-default-foreground"
+                  >
+                    {tech}
+                    {i < item.stack.length - 1 && ","}
+                  </span>
+                ))}
               </div>
             </div>
+          </div>
+          <Divider />
+          <div className={`lg:flex-row md:gap-12 gap-6 flex flex-col ${index % 2 === 0 ? "lg:flex-row-reverse" : ""}`}>
+            {/* Image Side */}
+            <div className="overflow-hidden rounded-lg shadow-md lg:max-w-[50%] h-fit w-fit">
+              <Image
+                isZoomed
+                alt={item.title}
+                className="object-cover w-full h-auto"
+                src={item.imageSrc}
+              />
+            </div>
 
-            <Divider />
+            {/* Text Side */}
+            <div className="w-full space-y-4 lg:w-1/2">
 
-            <p className="text-xs whitespace-pre-line sm:text-sm md:text-base text-default-foreground">
-              {item.description}
-            </p>
 
-            <ul className="text-xs list-disc list-inside sm:text-sm md:text-base">
-              {item.feature_list?.map((feature, index) => (
-                <li key={index}>
-                  <strong>{feature.title}:</strong> {feature.description}
-                </li>
-              ))}
-            </ul>
+              <p className="text-xs whitespace-pre-line sm:text-sm md:text-base text-default-foreground">
+                {item.description}
+              </p>
 
-            {/* Links */}
-            <div className="flex gap-4 mt-4">
-              <Tooltip
-                content={
-                  item.url.demo ? (
-                    <Link
-                      isExternal
-                      showAnchorIcon
-                      anchorIcon={<IconLink size={20} />}
-                      className="flex flex-col p-2 space-y-2 text-[10px] sm:text-xs"
-                      color="foreground"
-                      href={item.url.demo}
-                      isBlock={true}
-                      size="sm"
-                      target="_blank"
-                    >
-                      <span>
-                        <Image
-                          alt={item.url?.demo}
-                          className="z-0 object-cover w-full h-full"
-                          height={200}
-                          src={`https://api.microlink.io/?url=${encodeURIComponent(
-                            item.url?.demo
-                          )}&screenshot=true&meta=false&embed=screenshot.url`}
-                          width={200}
-                        />
-                      </span>
-                      <span className="w-48 overflow-hidden text-ellipsis">
-                        {item.url?.demo}
-                      </span>
-                    </Link>
-                  ) : (
-                    "No Preview Available"
-                  )
-                }
-                isDisabled={!item.url?.demo}
-                shadow="md"
-                showArrow={true}
-              >
-                <Button
-                  as={Link}
-                  className="bg-terracotta text-terracotta-text hover:bg-terracotta/80"
-                  href={item?.url?.demo ?? "#"}
-                  isDisabled={!item.url?.demo}
-                  radius="full"
-                  size="lg"
-                  target="_blank"
-                  variant="solid"
-                >
-                  <IconLink />
-                  Site Link
-                </Button>
-              </Tooltip>
+              <ul className="text-xs list-disc list-inside sm:text-sm md:text-base">
+                {item.feature_list?.map((feature, index) => (
+                  <li key={index}>
+                    <strong>{feature.title}:</strong> {feature.description}
+                  </li>
+                ))}
+              </ul>
 
-              {/* {item.extra?.directdownload?.trim() && (
+              {/* Links */}
+              <div className="flex gap-4 mt-4">
                 <Tooltip
                   content={
-                    <div className="px-1 py-2">
-                      <div className="font-bold text-tiny sm:text-xs">
-                        {item.extra.title}
-                      </div>
-                      <div className="text-tiny">{item.extra.description}</div>
-                    </div>
+                    item.url.demo ? (
+                      <Link
+                        isExternal
+                        showAnchorIcon
+                        anchorIcon={<IconLink size={20} />}
+                        className="flex flex-col p-2 space-y-2 text-[10px] sm:text-xs"
+                        color="foreground"
+                        href={item.url.demo}
+                        isBlock={true}
+                        size="sm"
+                        target="_blank"
+                      >
+                        <span>
+                          <Image
+                            alt={item.url?.demo}
+                            className="z-0 object-cover w-full h-full"
+                            height={200}
+                            src={`https://api.microlink.io/?url=${encodeURIComponent(
+                              item.url?.demo
+                            )}&screenshot=true&meta=false&embed=screenshot.url`}
+                            width={200}
+                          />
+                        </span>
+                        <span className="w-48 overflow-hidden text-ellipsis">
+                          {item.url?.demo}
+                        </span>
+                      </Link>
+                    ) : (
+                      "No Preview Available"
+                    )
                   }
+                  isDisabled={!item.url?.demo}
+                  shadow="md"
                   showArrow={true}
                 >
                   <Button
                     as={Link}
-                    className="hidden lg:flex"
-                    href={item.extra.directdownload}
+                    className="bg-terracotta text-terracotta-text hover:bg-terracotta/80"
+                    href={item?.url?.demo ?? "#"}
+                    isDisabled={!item.url?.demo}
+                    radius="full"
+                    size="lg"
+                    target="_blank"
+                    variant="solid"
+                  >
+                    <IconLink />
+                    Site Link
+                  </Button>
+                </Tooltip>
+
+                {/* {item.extra?.directdownload?.trim() && (
+                  <Tooltip
+                    content={
+                      <div className="px-1 py-2">
+                        <div className="font-bold text-tiny sm:text-xs">
+                          {item.extra.title}
+                        </div>
+                        <div className="text-tiny">{item.extra.description}</div>
+                      </div>
+                    }
+                    showArrow={true}
+                  >
+                    <Button
+                      as={Link}
+                      className="hidden lg:flex"
+                      href={item.extra.directdownload}
+                      radius="full"
+                      rel="noopener noreferrer"
+                      size="lg"
+                      target="_blank"
+                      variant="solid"
+                    >
+                      Download <IconDownload />
+                    </Button>
+                  </Tooltip>
+                )} */}
+
+                {item.url.github && (
+                  <Button
+                    as={Link}
+                    href={item.url.github}
                     radius="full"
                     rel="noopener noreferrer"
                     size="lg"
                     target="_blank"
                     variant="solid"
                   >
-                    Download <IconDownload />
+                    GitHub <IconBrandGithub />
                   </Button>
-                </Tooltip>
-              )} */}
-
-              {item.url.github && (
-                <Button
-                  as={Link}
-                  href={item.url.github}
-                  radius="full"
-                  rel="noopener noreferrer"
-                  size="lg"
-                  target="_blank"
-                  variant="solid"
-                >
-                  GitHub <IconBrandGithub />
-                </Button>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </motion.div>
