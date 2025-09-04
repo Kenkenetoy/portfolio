@@ -302,6 +302,44 @@ export const siteConfig = {
   },
 
   contents: [
+        {
+      title: "Workflo",
+      type: "Project Management Tool",
+      description:
+        "A comprehensive project management tool designed to streamline team collaboration and task management. Features include task assignments, progress tracking, file sharing, and real-time communication, all within an intuitive interface.",
+      feature_list: [
+        {
+          title: "Custom Software Development",
+          description:
+            "Building scalable, tailored applications that solve your unique business challenges. From concept to deployment.",
+        },
+        {
+          title: "Software & Pm Consultation",
+          description:
+            "Strategic guidance from senior engineers and project managers. Optimize your development process and technical decisions.",
+        },
+        {
+          title: "Website & Landing Page Development",
+          description:
+            "High-converting, performance-optimized web solutions. Turn visitors into customers with data-driven design.",
+        },
+        {
+          title: "Project Optimization",
+          description:
+            "Inherit challenging codebases? We refactor, optimize, and modernize legacy systems for peak performance.",
+        },
+        {
+          title: "Cloud & Devops",
+          description:
+            "Streamline deployment, enhance security, and maximize uptime with our cloud-native infrastructure expertise executed by experts",
+        },
+      ],
+      imageSrc: "Screenshot 2025-09-04 171455.webp", // Add image path if available
+      stack: ["react", "redux", "tailwind", "javascript", "wordpress"],
+      url: {
+        demo: "https://workflo.com/", // Add demo URL if available
+      },
+    },
     {
       title: "Azimi Auto Parts",
       type: "E-commerce Auto Parts Store",
