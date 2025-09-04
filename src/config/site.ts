@@ -650,7 +650,7 @@ export const siteConfig = {
       role: "Contract Frontend Developer",
       stack: ["react", "redux"],
       description:
-        "Customized a Shopify theme to fit project needs and integrated product listings scraped using Selenium and Scrapy from public websites. Automated the data extraction and product input process to efficiently populate the store with accurate product info.",
+        "Enhanced and maintained the front-end of Workflo webapp. My responsibilities include implementing new features, beautifying UI, and ensuring a seamless user experience. I collaborate closely with the design and back-end teams to deliver high-quality solutions that meet user needs and business goals.",
       startDate: "June 2025",
     },
     {
@@ -680,8 +680,8 @@ export const siteConfig = {
       stack: ["krpano",  "jquery"],
       description:
         "Mata Technologies has been a Google Street View-Trusted Photographer since 2019.  It is the premier provider of virtual tours for real estate in the Philippines and the virtual reality map provider of tourist destinations in the country.",
-      startDate: "October 2024",
-      endDate: "December 2024",
+      startDate: "July 2024",
+      endDate: "October 2024",
     },
   ],
 };
