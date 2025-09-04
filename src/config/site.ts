@@ -645,10 +645,19 @@ export const siteConfig = {
 
   ExperienceData: [
     {
+      title: "Workflo",
+      duration: "Ongoing",
+      role: "Contract Frontend Developer",
+      stack: ["react", "redux"],
+      description:
+        "Customized a Shopify theme to fit project needs and integrated product listings scraped using Selenium and Scrapy from public websites. Automated the data extraction and product input process to efficiently populate the store with accurate product info.",
+      startDate: "June 2025",
+    },
+    {
       title: "Azimi Auto Parts",
       duration: "2 months",
       role: "Shopify Expert, Data Scraper",
-      stack: ["shopify", "selenium", "scrapy", "python"],
+      stack: ["shopify", "selenium", "python"],
       description:
         "Customized a Shopify theme to fit project needs and integrated product listings scraped using Selenium and Scrapy from public websites. Automated the data extraction and product input process to efficiently populate the store with accurate product info.",
       startDate: "April 2025",
@@ -657,8 +666,8 @@ export const siteConfig = {
     {
       title: "Gummybook",
       duration: "4 months",
-      role: "Full Stack Developer",
-      stack: ["typescript", "nextjs", "supabase", "tailwind", "stripe"],
+      role: "Contract Frontend Developer",
+      stack: ["typescript", "nextjs", "supabase"],
       description:
         "Developed a comprehensive client management and payment processing platform. Implemented key features including client management, proposal creation, contract handling, payment processing with Stripe, and Google services integration (OAuth & Calendar API). Built with Next.js 14, TypeScript, and Supabase for robust data management.",
       startDate: "January 2025",
@@ -668,7 +677,7 @@ export const siteConfig = {
       title: "Mata Technologies",
       duration: "3 months",
       role: "Operations Intern",
-      stack: ["krpano", "html", "css", "javascript", "jquery"],
+      stack: ["krpano",  "jquery"],
       description:
         "Mata Technologies has been a Google Street View-Trusted Photographer since 2019.  It is the premier provider of virtual tours for real estate in the Philippines and the virtual reality map provider of tourist destinations in the country.",
       startDate: "October 2024",
