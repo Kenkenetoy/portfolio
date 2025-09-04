@@ -57,7 +57,7 @@ import {
 
 export const siteConfig = {
   Devmode: false,
-
+  durationmode: false,
   name: "Kenneth Aparece",
   logo: "339638376_1064728391582143_6807557032942108900_n.webp",
   hero_big: "designer & developer",

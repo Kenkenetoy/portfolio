@@ -6,7 +6,7 @@ import { moveup } from "@/anim/variants";
 
 export const ExperienceComponent = () => {
   const { ExperienceData } = siteConfig;
-
+  const { durationmode } = siteConfig;
   return (
     <>
       {ExperienceData.map((data, index) => (
@@ -28,7 +28,7 @@ export const ExperienceComponent = () => {
 
             <div className="flex flex-col items-start sm:items-end">
               <p className="text-sm text-left sm:text-base md:text-lg w-fit text-default-foreground">
-                {data.duration}
+                {durationmode ? <>{data.duration}</> : <>{data.startDate} - {data.endDate ? <>{data.endDate}</> : <>Ongoing</> }</>}
               </p>
               <div className="flex flex-wrap justify-start gap-1 sm:justify-end">
                 {data.stack.map((stackItem, i) => (
