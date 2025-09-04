@@ -1,12 +1,15 @@
 /* eslint-disable prettier/prettier */
-import { IconDownload, IconLink, IconMail } from "@tabler/icons-react";
+import { IconDownload, IconFileCv, IconLink, IconMail } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
 import { Tooltip } from "@heroui/tooltip";
 import { Link } from "@heroui/link";
 import { Image } from "@heroui/image";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
-
+import {
+  Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure,
+} from "@heroui/modal";
+import { RPProvider, RPDefaultLayout, RPPages, RPConfig } from '@pdf-viewer/react'
 import { DraggableMockupPhone } from "./DraggableMockupPhone";
 import { GlareCard } from "./glare-card";
 import { FloatingDock } from "./floating-dock";
@@ -80,6 +83,7 @@ export const HeroSection = () => {
   const [isPhoneMode, setPhoneMode] = useState<"sm" | "md" | "lg" | undefined>(
     undefined
   );
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   useEffect(() => {
     const handleResize = () => {
@@ -289,25 +293,48 @@ export const HeroSection = () => {
                 </span>
               </Button>
 
-              <Button
-                className="px-4 py-2 sm:px-6 sm:py-4 md:py-6 md:px-8 lg:px-10 lg:py-8"
-                radius="full"
-                variant="ghost"
-                onPress={() => {
-                  const link = document.createElement("a");
-
-                  link.href = `${siteConfig.resume}`;
-                  link.target = "_blank";
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }}
-              >
-                <span className="text-sm sm:text-lg">Resume</span>
-                <span>
-                  <IconDownload />
-                </span>
+              <Button onPress={onOpen} className="px-4 py-2 sm:px-6 sm:py-4 md:py-6 md:px-8 lg:px-10 lg:py-8" radius="full" variant="ghost">
+                <span className="text-sm sm:text-lg">Resume   </span><span>
+                  <IconFileCv /></span>
               </Button>
+              <Modal size="5xl" backdrop='blur' isDismissable={false} isOpen={isOpen} onOpenChange={onOpenChange}>
+                <ModalContent>
+                  {(onClose) => (
+                    <>
+                    <ModalHeader className="flex flex-col gap-1">Resume</ModalHeader>
+                    <ModalBody>
+                      <RPConfig>
+                        <RPProvider src={siteConfig.resume}>
+                          <RPDefaultLayout style={{ height: '660px' }}>
+                            <RPPages />
+                          </RPDefaultLayout>
+                        </RPProvider>
+                      </RPConfig>        
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button
+                        radius="full"
+                        variant="ghost"
+                        onPress={() => {
+                          const link = document.createElement("a");
+
+                          link.href = `${siteConfig.resume}`;
+                          link.target = "_blank";
+                          document.body.appendChild(link);
+                          link.click();
+                          document.body.removeChild(link);
+                        }}
+                      >
+                        <span className="text-sm sm:text-lg">Resume</span>
+                        <span>
+                          <IconDownload />
+                        </span>
+                      </Button>
+                    </ModalFooter>
+                    </>
+                  )}
+                </ModalContent>
+              </Modal>
             </motion.div>
           </motion.section>
         </motion.div>
