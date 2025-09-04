@@ -221,7 +221,7 @@ export const HeroSection = () => {
                 </motion.div>
 
                 <p className="text-xs font-normal whitespace-pre-line text-start sm:text-sm md:text-lg lg:text-2xl ">
-                  {` /* Hi, I am ${siteConfig.name} \n Aparece based in ${siteConfig.location.country}, `}
+                  {` /* Hi, I am ${siteConfig.name} \n Aparece based in ${siteConfig.location.themode ? `the` : ""} ${siteConfig.location.country}, `}
                 </p>
               </div>
 
