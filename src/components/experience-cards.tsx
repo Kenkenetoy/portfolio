@@ -1,14 +1,21 @@
 /* eslint-disable prettier/prettier */
 import { Divider } from "@heroui/divider";
 import { siteConfig } from "@/config/site";
+import { motion } from "framer-motion";
+import { moveup } from "@/anim/variants";
 
 export const ExperienceComponent = () => {
   const { ExperienceData } = siteConfig;
-
+  const { durationmode } = siteConfig;
   return (
     <>
       {ExperienceData.map((data, index) => (
-        <div key={index} className="w-full space-y-4 text-default-foreground">
+
+        <motion.div key={index} className="w-full space-y-4 text-default-foreground" initial="initial"
+              transition={{ duration: 0.75, ease: "circOut" }}
+              variants={moveup}
+              viewport={{ once: true, amount: .75 }}
+              whileInView="inView">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-default-foreground">
@@ -21,7 +28,7 @@ export const ExperienceComponent = () => {
 
             <div className="flex flex-col items-start sm:items-end">
               <p className="text-sm text-left sm:text-base md:text-lg w-fit text-default-foreground">
-                {data.duration}
+                {durationmode ? <>{data.duration}</> : <>{data.startDate} - {data.endDate ? <>{data.endDate}</> : <>Ongoing</> }</>}
               </p>
               <div className="flex flex-wrap justify-start gap-1 sm:justify-end">
                 {data.stack.map((stackItem, i) => (
@@ -42,7 +49,7 @@ export const ExperienceComponent = () => {
           <p className="max-w-4xl text-sm sm:text-base md:text-lg">
             {data.description}
           </p>
-        </div>
+        </motion.div>
       ))}
     </>
   );

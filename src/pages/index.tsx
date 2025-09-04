@@ -280,16 +280,9 @@ export default function IndexPage() {
               Experience
             </motion.h1>
             <Divider />
-            <motion.div
-              className="max-w-[95%] mx-auto flex flex-wrap gap-12"
-              initial="initial"
-              transition={{ duration: 0.75, ease: "circOut" }}
-              variants={moveup}
-              viewport={{ once: true, amount: 1 }}
-              whileInView="inView"
-            >
+            <div className="max-w-[95%] mx-auto flex flex-wrap gap-12">
               <ExperienceComponent />
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* My Tech Stack */}
