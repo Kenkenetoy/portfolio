@@ -299,7 +299,7 @@ export const HeroSection = () => {
               </Button>
               <Modal size="5xl" backdrop='blur' isDismissable={false} isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>
-                  {(onClose) => (
+                  {() => (
                     <>
                     <ModalHeader className="flex flex-col gap-1">Resume</ModalHeader>
                     <ModalBody>
