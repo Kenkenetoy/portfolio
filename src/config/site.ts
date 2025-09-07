@@ -299,6 +299,76 @@ export const siteConfig = {
         "A comprehensive cloud computing platform offering scalable infrastructure, hosting, and cloud services. Commonly used for web hosting, database management, and email handling (including MX records for mail servers).",
       devicon: AmazonwebservicesOriginalWordmark, // Custom placeholder, replace with an actual icon if needed
     },
+    redux: {
+      title: "Redux",
+      description:
+        "A predictable state container for JavaScript apps, commonly used with React for managing application state.",
+    },
+    shopify: {
+      title: "Shopify",
+      description:
+        "A commerce platform that allows anyone to set up an online store and sell their products.",
+    },
+    selenium: {
+      title: "Selenium",
+      description:
+        "A web browser automation tool used for testing web applications and scraping web data.",
+    },
+    scrapy: {
+      title: "Scrapy",
+      description:
+        "An open source web crawling framework for Python used to extract data from websites.",
+    },
+    nextjs: {
+      title: "Next.js",
+      description:
+        "A React framework that enables functionality like server-side rendering and generating static websites.",
+    },
+    supabase: {
+      title: "Supabase",
+      description:
+        "An open source Firebase alternative providing a Postgres database, authentication, instant APIs, and real-time subscriptions.",
+    },
+    stripe: {
+      title: "Stripe",
+      description:
+        "A technology company that builds economic infrastructure for the internet, enabling online payments.",
+    },
+    krpano: {
+      title: "KRpano",
+      description:
+        "A viewer for spherical panoramic images and interactive virtual tours with support for Flash and HTML5.",
+    },
+    jquery: {
+      title: "jQuery",
+      description:
+        "A fast, small, and feature-rich JavaScript library that simplifies HTML document manipulation and event handling.",
+    },
+    figma: {
+      title: "Figma",
+      description:
+        "A web-based UI and UX design application tool used for designing interfaces, prototyping, and collaborating.",
+    },
+    netbeans: {
+      title: "NetBeans",
+      description:
+        "An integrated development environment (IDE) for Java, though it also supports other languages.",
+    },
+    jdbc: {
+      title: "JDBC",
+      description:
+        "Java Database Connectivity, an API for connecting and executing queries with databases in Java.",
+    },
+    xampp: {
+      title: "XAMPP",
+      description:
+        "A free and open-source cross-platform web server solution stack package consisting mainly of Apache HTTP Server, MariaDB database, and interpreters for scripts written in PHP.",
+    },
+    sql: {
+      title: "SQL",
+      description:
+        "Structured Query Language, a domain-specific language used in programming for managing data in relational databases.",
+    },
   },
 
   contents: [
