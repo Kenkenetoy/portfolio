@@ -121,7 +121,7 @@ export const StickyScroll = ({
       ref={ref}
       className="relative flex justify-center space-x-6 sm:space-x-12"
     >
-      <div className="relative grid w-full grid-cols-1 gap-8 mb-0 sm:grid-cols-2 lg:flex-col lg:space-y-16 lg:flex lg:mb-24">
+      <div className="relative grid w-full grid-cols-1 gap-8 mb-0 sm:grid-cols-2 lg:flex-col lg:space-y-16 lg:flex lg:mb-24 lg:max-w-2xl">
         {content.slice(0, 4).map((item, index) => (
           <motion.div
             key={item.title + index}
@@ -216,9 +216,10 @@ export const StickyScroll = ({
 
       <div
         className={cn(
-          "hidden lg:block h-full min-w-fit w-auto xl:max-w-xl rounded-md sticky top-[33vh]",
+          "hidden lg:block h-full rounded-md sticky top-[33vh]",
           contentClassName
         )}
+        style={{ width: '500px' }} // Fixed width for the entire right section
       >
         <motion.div
           key={activeCard}
@@ -228,12 +229,14 @@ export const StickyScroll = ({
           initial={{ opacity: 0, y: 10, scale: 0.95 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-          <Image
-            isZoomed
-            alt={content[activeCard].title}
-            className="object-cover w-full aspect-[6/3] min-w-sm max-w-sm sm:max-w-md sm:min-w-md md:max-w-lg md:min-w-lg shrink-0"
-            src={content[activeCard].imageSrc}
-          />
+          <div className="w-[500px] h-[250px] flex items-center justify-center bg-default-100 rounded-lg overflow-hidden">
+            <Image
+              isZoomed
+              alt={content[activeCard].title}
+              className="object-cover w-full h-full"
+              src={content[activeCard].imageSrc}
+            />
+          </div>
 
           <div className="flex justify-center w-full p-2 space-x-4">
             <Tooltip
