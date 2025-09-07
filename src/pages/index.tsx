@@ -200,6 +200,17 @@ export default function IndexPage() {
               My Projects
             </motion.h1>
 
+            <motion.p
+              className="w-full font-serif text-xl lg:w-1/2 sm:text-sm md:text-mg lg:text-lg text-default-foreground"
+              initial="initial"
+              transition={{ duration: 0.75, ease: "circOut" }}
+              variants={moveright}
+              viewport={{ once: true, amount: 0.2 }}
+              whileInView="inView"
+            >
+              I've worked on projects with others and on my own, building things that solve real problems and make life easier for people.
+            </motion.p>
+
             <motion.div
               className="relative flex items-center w-full"
               initial="initial"
