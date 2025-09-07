@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Link } from "@heroui/link";
+import { useState, useEffect } from "react";
 
 import { IconHomeFilled } from "@tabler/icons-react";
 import {
@@ -15,21 +16,47 @@ import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 
 export const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [hideElements, setHideElements] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 50);
+      
+      // Hide elements after scrolling more
+      setHideElements(scrollPosition > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <HeroUINavbar
-      className="fixed z-40 items-center w-full h-24 border-b max-w-none bg-slateshit border-default-foreground"
+      className={`fixed z-40 items-center w-full h-24 border-b max-w-none transition-all duration-500 ease-in-out bg-slateshit border-default-foreground ${
+        isScrolled 
+          ? 'md:bg-transparent md:border-transparent md:backdrop-blur-none' 
+          : ''
+      }`}
       maxWidth="full"
       position="sticky"
     >
       <div className="grid items-center w-full grid-cols-3">
         {/* Left: Logo */}
-        <Link className="flex items-start gap-1" color="foreground" href="/">
+        <Link 
+          className={`flex items-start gap-1 transition-all duration-500 ease-in-out md:opacity-100 md:translate-x-0 ${
+            hideElements ? 'md:opacity-0 md:translate-x-[-20px]' : 'md:opacity-100 md:translate-x-0'
+          }`} 
+          color="foreground" 
+          href="/"
+        >
           <img alt="Logo" className="w-12 h-12" src="/logo-onlyletter.svg" />
           <p className="w-16 font-sans font-bold">Kenneth Aparece</p>
         </Link>
 
         {/* Center: Navbar Links (Desktop Only) */}
-        <NavbarItem className="hidden gap-8 p-4 px-8 border-gray-300 rounded-full justify-self-center w-fit md:flex dark:border-neutral-800 border-1">
+        <NavbarItem className="hidden gap-8 p-4 px-8 border-gray-300 rounded-full justify-self-center w-fit md:flex dark:border-neutral-800 border-1 bg-slateshit">
           <NavbarItem>
             <Link color="foreground" href="/">
               <IconHomeFilled className="w-6 h-6" />
@@ -45,7 +72,11 @@ export const Navbar = () => {
         </NavbarItem>
 
         {/* Right: Theme Switch */}
-        <NavbarItem className="justify-end hidden p-0 duration-200 ease-linear rounded-full transition-color md:flex w-fit h-fit justify-self-end">
+        <NavbarItem 
+          className={`justify-end hidden p-0 duration-500 ease-in-out rounded-full transition-all md:flex w-fit h-fit justify-self-end ${
+            hideElements ? 'opacity-0 translate-x-[20px]' : 'opacity-100 translate-x-0'
+          }`}
+        >
           <ThemeSwitch />
         </NavbarItem>
       </div>
