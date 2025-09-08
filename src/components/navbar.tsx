@@ -34,7 +34,7 @@ export const Navbar = () => {
 
   return (
     <HeroUINavbar
-      className={`fixed z-40 items-center w-full h-24 border-b max-w-none transition-all duration-500 ease-in-out bg-slateshit border-default-foreground ${
+      className={`fixed z-40 items-center w-full h-24 border-b max-w-none transition-transform duration-500 ease-in-out bg-slateshit border-default-foreground ${
         isScrolled 
           ? 'md:bg-transparent md:border-transparent md:backdrop-blur-none' 
           : ''
