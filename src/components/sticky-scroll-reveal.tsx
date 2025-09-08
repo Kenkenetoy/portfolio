@@ -160,7 +160,7 @@ export const StickyScroll = ({
                       const stackItem = siteConfig.stack[techKey as keyof typeof siteConfig.stack];
                       return stackItem && 'devicon' in stackItem ? stackItem.devicon : null;
                     })
-                    .filter(Boolean)
+                    .filter((DevIcon): DevIcon is NonNullable<typeof DevIcon> => DevIcon !== null)
                     .map((DevIcon, i) => (
                       <DevIcon 
                         key={i}
