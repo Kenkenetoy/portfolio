@@ -53,6 +53,13 @@ import {
   XmlOriginal,
   WordpressOriginal,
   AmazonwebservicesOriginalWordmark,
+  ReduxOriginal,
+  SeleniumOriginal,
+  NextjsOriginal,
+  SupabaseOriginal,
+  JqueryOriginal,
+  FigmaOriginal,
+  NetbeansOriginal,
 } from "devicons-react";
 
 export const siteConfig = {
@@ -144,6 +151,7 @@ export const siteConfig = {
         "A game engine for developing immersive 2D and 3D experiences.",
       icon: IconBrandUnity,
       devicon: UnityOriginal,
+      showInMovingCards: false,
     },
     blender: {
       title: "Blender",
@@ -151,6 +159,7 @@ export const siteConfig = {
         "An open-source 3D software for modeling, texturing, rigging, and animation.",
       icon: IconBrandBlender,
       devicon: BlenderOriginal,
+      showInMovingCards: false,
     },
     vite: {
       title: "Vite",
@@ -158,6 +167,7 @@ export const siteConfig = {
         "A fast build tool and development server for modern web projects.",
       icon: IconBrandVite,
       devicon: ViteOriginal,
+      showInMovingCards: false,
     },
     git: {
       title: "Git",
@@ -165,6 +175,7 @@ export const siteConfig = {
         "A distributed version control system for tracking changes in source code during software development.",
       icon: IconBrandGit,
       devicon: GitOriginal,
+      showInMovingCards: true,
     },
     react: {
       title: "React",
@@ -172,12 +183,14 @@ export const siteConfig = {
         "A powerful JavaScript library for building dynamic and interactive UIs.",
       icon: IconBrandReact,
       devicon: ReactOriginal,
+      showInMovingCards: true,
     },
     axios: {
       title: "Axios",
       description:
         "A promise-based HTTP client for making API requests in JavaScript and Node.js.",
       devicon: AxiosPlain,
+      showInMovingCards: false,
     },
     laravel: {
       title: "Laravel",
@@ -185,6 +198,7 @@ export const siteConfig = {
         "A PHP framework for building scalable and maintainable backends.",
       icon: IconBrandLaravel,
       devicon: LaravelOriginal,
+      showInMovingCards: false,
     },
     php: {
       title: "PHP",
@@ -192,6 +206,7 @@ export const siteConfig = {
         "A popular general-purpose scripting language suited for web development.",
       icon: IconBrandPhp, // Replace with an actual PHP icon if available
       devicon: PhpOriginal, // Devicon should have this
+      showInMovingCards: false,
     },
 
     typescript: {
@@ -200,6 +215,7 @@ export const siteConfig = {
         "A strongly typed programming language that builds on JavaScript.",
       icon: IconBrandTypescript,
       devicon: TypescriptOriginal,
+      showInMovingCards: true,
     },
     javascript: {
       title: "JavaScript",
@@ -207,12 +223,14 @@ export const siteConfig = {
         "A versatile programming language for building web applications.",
       icon: IconBrandJavascript,
       devicon: JavascriptOriginal,
+      showInMovingCards: true,
     },
     html: {
       title: "HTML",
       description: "The standard markup language for creating web pages.",
       icon: IconBrandHtml5,
       devicon: Html5Original,
+      showInMovingCards: true,
     },
     css: {
       title: "CSS",
@@ -220,6 +238,7 @@ export const siteConfig = {
         "A style sheet language used for describing the look of web pages.",
       icon: IconBrandCss3,
       devicon: Css3Original,
+      showInMovingCards: true,
     },
     tailwind: {
       title: "Tailwind CSS",
@@ -227,6 +246,7 @@ export const siteConfig = {
         "A utility-first CSS framework for rapid and responsive UI design.",
       icon: IconBrandTailwind,
       devicon: TailwindcssOriginal,
+      showInMovingCards: true,
     },
     bootstrap: {
       title: "Bootstrap",
@@ -234,6 +254,7 @@ export const siteConfig = {
         "A popular CSS framework for building responsive and mobile-first websites.",
       icon: IconBrandBootstrap,
       devicon: BootstrapOriginal,
+      showInMovingCards: false,
     },
     framer: {
       title: "Framer Motion",
@@ -241,18 +262,21 @@ export const siteConfig = {
         "A powerful animation library for React, enabling smooth and interactive UI animations.",
       icon: IconBrandFramer,
       devicon: FramermotionOriginal,
+      showInMovingCards: false,
     },
     csharp: {
       title: "C#",
       description:
         "A powerful object-oriented programming language used in game development and enterprise applications.",
       devicon: CsharpOriginal,
+      showInMovingCards: false,
     },
     java: {
       title: "Java",
       description:
         "A robust and versatile programming language for backend, mobile, and enterprise applications.",
       devicon: JavaOriginal,
+      showInMovingCards: false,
     },
     python: {
       title: "Python",
@@ -260,6 +284,7 @@ export const siteConfig = {
         "A widely-used programming language for web development, AI, and automation.",
       icon: IconBrandPython,
       devicon: PythonOriginal,
+      showInMovingCards: true,
     },
     mysql: {
       title: "MySQL",
@@ -267,18 +292,21 @@ export const siteConfig = {
         "A popular relational database management system for structured data storage.",
       icon: IconBrandMysql,
       devicon: MysqlOriginal,
+      showInMovingCards: false,
     },
     sqlite: {
       title: "SQLite",
       description:
         "A lightweight, self-contained SQL database engine for embedded applications.",
       devicon: SqliteOriginal,
+      showInMovingCards: false,
     },
     perl: {
       title: "Perl",
       description:
         "A high-level programming language known for its text-processing capabilities.",
       devicon: PerlOriginal,
+      showInMovingCards: false,
     },
 
     xml: {
@@ -286,18 +314,112 @@ export const siteConfig = {
       description:
         "A markup language used for defining structured data, commonly utilized in KRpano for scene configurations and settings.",
       devicon: XmlOriginal, // Custom placeholder, replace with an actual icon if needed
+      showInMovingCards: false,
     },
     wordpress: {
       title: "WordPress",
       description:
         "A popular content management system (CMS) used for building websites and blogs. Known for its flexibility, vast plugin ecosystem, and user-friendly interface.",
       devicon: WordpressOriginal, // Custom placeholder, replace with an actual icon if needed
+      showInMovingCards: false,
     },
     aws: {
       title: "Amazon Web Services (AWS)",
       description:
         "A comprehensive cloud computing platform offering scalable infrastructure, hosting, and cloud services. Commonly used for web hosting, database management, and email handling (including MX records for mail servers).",
       devicon: AmazonwebservicesOriginalWordmark, // Custom placeholder, replace with an actual icon if needed
+      showInMovingCards: false,
+    },
+    redux: {
+      title: "Redux",
+      description:
+        "A predictable state container for JavaScript apps, commonly used with React for managing application state.",
+      devicon: ReduxOriginal,
+      showInMovingCards: false,
+    },
+    shopify: {
+      title: "Shopify",
+      description:
+        "A commerce platform that allows anyone to set up an online store and sell their products.",
+      showInMovingCards: false,
+    },
+    selenium: {
+      title: "Selenium",
+      description:
+        "A web browser automation tool used for testing web applications and scraping web data.",
+      devicon: SeleniumOriginal,
+      showInMovingCards: false,
+    },
+    scrapy: {
+      title: "Scrapy",
+      description:
+        "An open source web crawling framework for Python used to extract data from websites.",
+      showInMovingCards: false,
+    },
+    nextjs: {
+      title: "Next.js",
+      description:
+        "A React framework that enables functionality like server-side rendering and generating static websites.",
+      devicon: NextjsOriginal,
+      showInMovingCards: true,
+    },
+    supabase: {
+      title: "Supabase",
+      description:
+        "An open source Firebase alternative providing a Postgres database, authentication, instant APIs, and real-time subscriptions.",
+      devicon: SupabaseOriginal,
+      showInMovingCards: false,
+    },
+    stripe: {
+      title: "Stripe",
+      description:
+        "A technology company that builds economic infrastructure for the internet, enabling online payments.",
+      showInMovingCards: false,
+    },
+    krpano: {
+      title: "KRpano",
+      description:
+        "A viewer for spherical panoramic images and interactive virtual tours with support for Flash and HTML5.",
+      showInMovingCards: false,
+    },
+    jquery: {
+      title: "jQuery",
+      description:
+        "A fast, small, and feature-rich JavaScript library that simplifies HTML document manipulation and event handling.",
+      devicon: JqueryOriginal,
+      showInMovingCards: false,
+    },
+    figma: {
+      title: "Figma",
+      description:
+        "A web-based UI and UX design application tool used for designing interfaces, prototyping, and collaborating.",
+      devicon: FigmaOriginal,
+      showInMovingCards: false,
+    },
+    netbeans: {
+      title: "NetBeans",
+      description:
+        "An integrated development environment (IDE) for Java, though it also supports other languages.",
+      devicon: NetbeansOriginal,
+      showInMovingCards: false,
+    },
+    jdbc: {
+      title: "JDBC",
+      description:
+        "Java Database Connectivity, an API for connecting and executing queries with databases in Java.",
+      showInMovingCards: false,
+    },
+    xampp: {
+      title: "XAMPP",
+      description:
+        "A free and open-source cross-platform web server solution stack package consisting mainly of Apache HTTP Server, MariaDB database, and interpreters for scripts written in PHP.",
+      showInMovingCards: false,
+    },
+    sql: {
+      title: "SQL",
+      description:
+        "Structured Query Language, a domain-specific language used in programming for managing data in relational databases.",
+      showInMovingCards: false,
     },
   },
 
@@ -370,9 +492,9 @@ export const siteConfig = {
     },
     {
       title: "Gummybook",
-      type: "Client Management Platform",
+      type: "Customer Relationship Management",
       description:
-        "A comprehensive client management and payment processing platform built with Next.js 14. Features include client management, proposal creation, contract handling, payment processing, and seamless integration with Google services for authentication and calendar management.",
+        "A comprehensive Customer Relationship Management (CRM) system built with Next.js 14. Streamlines client relationships through integrated proposal management, contract handling, payment processing, and Google Workspace integration for seamless business operations.",
       feature_list: [
         {
           title: "Client Management System",
@@ -409,9 +531,9 @@ export const siteConfig = {
     },
     {
       title: "VLOG: 01",
-      type: "Capstone Project - Game Development",
+      type: "Game Development",
       description:
-        "Our capstone team created our first ever game—a 3D horror puzzle game set in my school. Solve puzzles, navigate dark hallways, and uncover secrets while avoiding threats.\n\nI am the junior programmer and graphics programmer. I meticulously build and optimize game assets, and integrate visuals in the system.",
+        "Our capstone team collaborated to create our first ever game—a 3D horror puzzle game set in my school. Working closely with team members, we designed puzzles, developed navigation systems, and created atmospheric environments.\n\nAs junior programmer and graphics programmer, I collaborated with the team to build and optimize game assets, working alongside designers and senior developers to integrate visuals into the system.",
       feature_list: [
         {
           title: "3D Horror Environment",
@@ -426,17 +548,17 @@ export const siteConfig = {
         {
           title: "Dynamic Lighting",
           description:
-            "Implemented optimized real-time shadows and light effects for immersion.",
+            "Collaborated with the team to implement optimized real-time shadows and light effects for immersion.",
         },
         {
           title: "Enemy AI",
           description:
-            "Designed AI behavior that reacts to player movement and sound cues.",
+            "Worked with designers and programmers to create AI behavior that reacts to player movement and sound cues.",
         },
         {
           title: "Performance Optimization",
           description:
-            "Reduced asset load times and optimized rendering for smooth gameplay.",
+            "Partnered with team members to reduce asset load times and optimize rendering for smooth gameplay.",
         },
       ],
       extra: {
@@ -445,7 +567,7 @@ export const siteConfig = {
         description: "Download the latest revised version directly.",
       },
       imageSrc: "Poster.webp",
-      stack: ["unity", "C#", "blender"],
+      stack: ["unity", "csharp", "blender"],
       url: {
         demo: "https://sites.google.com/view/vlog-01",
         github: "",
@@ -511,7 +633,7 @@ export const siteConfig = {
       title: "Ehrlich Ph",
       type: "Corporate Website",
       description:
-        "Revamped and optimized the Ehrlich Ph website after inheriting a bloated version from a past developer. Redesigned the UI/UX using Figma for a cleaner and more intuitive layout, then rebuilt the site for improved performance and maintainability. Additionally, troubleshot and resolved an AWS mail (MX) overload issue to ensure reliable email delivery.",
+        "Collaborated with the Ehrlich Ph team to revamp and optimize their website after inheriting a bloated version from a previous developer. Worked closely with stakeholders to redesign the UI/UX using Figma for a cleaner layout, then coordinated with the team to rebuild the site for improved performance. Additionally, partnered with IT support to troubleshoot and resolve AWS mail (MX) overload issues.",
       imageSrc: "Screenshot2025-03-17155511.webp",
       stack: ["wordpress", "php", "css", "figma", "aws"],
       url: {
@@ -522,7 +644,7 @@ export const siteConfig = {
       title: "Portfolio",
       type: "Front-end Project",
       description:
-        "A sleek, interactive web portfolio designed to showcase my projects, skills, and technical expertise. Built with modern front-end technologies, incorporating smooth transitions, light/dark mode, and optimized for mobile responsiveness.",
+        "A sleek, interactive web portfolio developed following industry best practices and modern design principles. Built collaboratively using modern front-end technologies, incorporating smooth transitions, light/dark mode, and optimized for mobile responsiveness with feedback from the developer community.",
       feature_list: [
         {
           title: "Smooth Animations",
@@ -697,7 +819,7 @@ export const siteConfig = {
       role: "Shopify Expert, Data Scraper",
       stack: ["shopify", "selenium", "python"],
       description:
-        "Customized a Shopify theme to fit project needs and integrated product listings scraped using Selenium and Scrapy from public websites. Automated the data extraction and product input process to efficiently populate the store with accurate product info.",
+        "Collaborated with the client team to customize a Shopify theme and integrate automated product listings. Worked closely with stakeholders to implement scraped data using Selenium and Scrapy, coordinating with the business team to streamline the data extraction and product input process for accurate store population.",
       startDate: "April 2025",
       endDate: "June 2025",
     },
@@ -707,7 +829,7 @@ export const siteConfig = {
       role: "Contract Frontend Developer",
       stack: ["typescript", "nextjs", "supabase"],
       description:
-        "Developed a comprehensive client management and payment processing platform. Implemented key features including client management, proposal creation, contract handling, payment processing with Stripe, and Google services integration (OAuth & Calendar API). Built with Next.js 14, TypeScript, and Supabase for robust data management.",
+        "Collaborated with a cross-functional team to develop a comprehensive client management and payment processing platform. Partnered with backend developers and designers to implement key features including client management, proposal creation, and Stripe payment integration. Worked closely with the product team to integrate Google services (OAuth & Calendar API) using Next.js 14, TypeScript, and Supabase.",
       startDate: "January 2025",
       endDate: "April 2025",
     },
@@ -717,7 +839,7 @@ export const siteConfig = {
       role: "Operations Intern",
       stack: ["krpano",  "jquery"],
       description:
-        "Mata Technologies has been a Google Street View-Trusted Photographer since 2019.  It is the premier provider of virtual tours for real estate in the Philippines and the virtual reality map provider of tourist destinations in the country.",
+        "Collaborated with the development team at Mata Technologies, a Google Street View-Trusted Photographer since 2019. Contributed to virtual tour projects for real estate clients and worked alongside the team to enhance the virtual reality mapping solutions for tourist destinations across the Philippines.",
       startDate: "July 2024",
       endDate: "October 2024",
     },

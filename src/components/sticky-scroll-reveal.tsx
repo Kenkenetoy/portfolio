@@ -9,7 +9,7 @@ import { Divider } from "@heroui/divider";
 import { IconBrandGithub, IconLink } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
 
-// import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 const isLargeScreen = () => window.matchMedia("(min-width: 1024px)").matches;
@@ -121,7 +121,7 @@ export const StickyScroll = ({
       ref={ref}
       className="relative flex justify-center space-x-6 sm:space-x-12"
     >
-      <div className="relative grid w-full grid-cols-1 gap-8 mb-0 sm:grid-cols-2 lg:flex-col lg:space-y-16 lg:flex lg:mb-24">
+      <div className="relative grid w-full grid-cols-1 gap-8 mb-0 sm:grid-cols-2 lg:flex-col lg:space-y-16 lg:flex lg:mb-24 ">
         {content.slice(0, 4).map((item, index) => (
           <motion.div
             key={item.title + index}
@@ -155,15 +155,19 @@ export const StickyScroll = ({
                 </motion.h4>
 
                 <div className="flex flex-wrap justify-start gap-1 md:gap-2 xl:justify-end">
-                  {item.stack.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="text-xs font-medium sm:text-sm text-default-foreground"
-                    >
-                      {tech}
-                      {i < item.stack.length - 1 && ","}
-                    </span>
-                  ))}
+                  {item.stack
+                    .map((techKey) => {
+                      const stackItem = siteConfig.stack[techKey as keyof typeof siteConfig.stack];
+                      return stackItem && 'devicon' in stackItem ? stackItem.devicon : null;
+                    })
+                    .filter((DevIcon): DevIcon is NonNullable<typeof DevIcon> => DevIcon !== null)
+                    .map((DevIcon, i) => (
+                      <DevIcon 
+                        key={i}
+                        className="w-5 h-5 sm:w-6 sm:h-6" 
+                        size={20}
+                      />
+                    ))}
                 </div>
               </div>
             </div>
@@ -216,9 +220,10 @@ export const StickyScroll = ({
 
       <div
         className={cn(
-          "hidden lg:block h-full min-w-fit w-auto xl:max-w-xl rounded-md sticky top-[33vh]",
+          "hidden lg:block h-full rounded-md sticky top-[33vh]",
           contentClassName
         )}
+        style={{ width: '500px' }} // Fixed width for the entire right section
       >
         <motion.div
           key={activeCard}
@@ -228,12 +233,14 @@ export const StickyScroll = ({
           initial={{ opacity: 0, y: 10, scale: 0.95 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-          <Image
-            isZoomed
-            alt={content[activeCard].title}
-            className="object-cover w-full aspect-[6/3] min-w-sm max-w-sm sm:max-w-md sm:min-w-md md:max-w-lg md:min-w-lg shrink-0"
-            src={content[activeCard].imageSrc}
-          />
+          <div className="w-[500px] h-[250px] flex items-center justify-center bg-default-100 rounded-lg overflow-hidden">
+            <Image
+              isZoomed
+              alt={content[activeCard].title}
+              className="object-cover w-full h-full"
+              src={content[activeCard].imageSrc}
+            />
+          </div>
 
           <div className="flex justify-center w-full p-2 space-x-4">
             <Tooltip
