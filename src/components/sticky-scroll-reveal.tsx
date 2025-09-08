@@ -9,7 +9,7 @@ import { Divider } from "@heroui/divider";
 import { IconBrandGithub, IconLink } from "@tabler/icons-react";
 import { Button } from "@heroui/button";
 
-// import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 const isLargeScreen = () => window.matchMedia("(min-width: 1024px)").matches;
@@ -155,15 +155,19 @@ export const StickyScroll = ({
                 </motion.h4>
 
                 <div className="flex flex-wrap justify-start gap-1 md:gap-2 xl:justify-end">
-                  {item.stack.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="text-xs font-medium sm:text-sm text-default-foreground"
-                    >
-                      {tech}
-                      {i < item.stack.length - 1 && ","}
-                    </span>
-                  ))}
+                  {item.stack
+                    .map((techKey) => {
+                      const stackItem = siteConfig.stack[techKey as keyof typeof siteConfig.stack];
+                      return stackItem && 'devicon' in stackItem ? stackItem.devicon : null;
+                    })
+                    .filter(Boolean)
+                    .map((DevIcon, i) => (
+                      <DevIcon 
+                        key={i}
+                        className="w-5 h-5 sm:w-6 sm:h-6" 
+                        size={20}
+                      />
+                    ))}
                 </div>
               </div>
             </div>

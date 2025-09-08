@@ -53,6 +53,13 @@ import {
   XmlOriginal,
   WordpressOriginal,
   AmazonwebservicesOriginalWordmark,
+  ReduxOriginal,
+  SeleniumOriginal,
+  NextjsOriginal,
+  SupabaseOriginal,
+  JqueryOriginal,
+  FigmaOriginal,
+  NetbeansOriginal,
 } from "devicons-react";
 
 export const siteConfig = {
@@ -303,6 +310,7 @@ export const siteConfig = {
       title: "Redux",
       description:
         "A predictable state container for JavaScript apps, commonly used with React for managing application state.",
+      devicon: ReduxOriginal,
     },
     shopify: {
       title: "Shopify",
@@ -313,6 +321,7 @@ export const siteConfig = {
       title: "Selenium",
       description:
         "A web browser automation tool used for testing web applications and scraping web data.",
+      devicon: SeleniumOriginal,
     },
     scrapy: {
       title: "Scrapy",
@@ -323,11 +332,13 @@ export const siteConfig = {
       title: "Next.js",
       description:
         "A React framework that enables functionality like server-side rendering and generating static websites.",
+      devicon: NextjsOriginal,
     },
     supabase: {
       title: "Supabase",
       description:
         "An open source Firebase alternative providing a Postgres database, authentication, instant APIs, and real-time subscriptions.",
+      devicon: SupabaseOriginal,
     },
     stripe: {
       title: "Stripe",
@@ -343,16 +354,19 @@ export const siteConfig = {
       title: "jQuery",
       description:
         "A fast, small, and feature-rich JavaScript library that simplifies HTML document manipulation and event handling.",
+      devicon: JqueryOriginal,
     },
     figma: {
       title: "Figma",
       description:
         "A web-based UI and UX design application tool used for designing interfaces, prototyping, and collaborating.",
+      devicon: FigmaOriginal,
     },
     netbeans: {
       title: "NetBeans",
       description:
         "An integrated development environment (IDE) for Java, though it also supports other languages.",
+      devicon: NetbeansOriginal,
     },
     jdbc: {
       title: "JDBC",
@@ -440,9 +454,9 @@ export const siteConfig = {
     },
     {
       title: "Gummybook",
-      type: "Client Management Platform",
+      type: "CRM",
       description:
-        "A comprehensive client management and payment processing platform built with Next.js 14. Features include client management, proposal creation, contract handling, payment processing, and seamless integration with Google services for authentication and calendar management.",
+        "A comprehensive Customer Relationship Management (CRM) system built with Next.js 14. Streamlines client relationships through integrated proposal management, contract handling, payment processing, and Google Workspace integration for seamless business operations.",
       feature_list: [
         {
           title: "Client Management System",
@@ -479,9 +493,9 @@ export const siteConfig = {
     },
     {
       title: "VLOG: 01",
-      type: "Capstone Project - Game Development",
+      type: "Game Development",
       description:
-        "Our capstone team created our first ever game—a 3D horror puzzle game set in my school. Solve puzzles, navigate dark hallways, and uncover secrets while avoiding threats.\n\nI am the junior programmer and graphics programmer. I meticulously build and optimize game assets, and integrate visuals in the system.",
+        "Our capstone team collaborated to create our first ever game—a 3D horror puzzle game set in my school. Working closely with team members, we designed puzzles, developed navigation systems, and created atmospheric environments.\n\nAs junior programmer and graphics programmer, I collaborated with the team to build and optimize game assets, working alongside designers and senior developers to integrate visuals into the system.",
       feature_list: [
         {
           title: "3D Horror Environment",
@@ -496,17 +510,17 @@ export const siteConfig = {
         {
           title: "Dynamic Lighting",
           description:
-            "Implemented optimized real-time shadows and light effects for immersion.",
+            "Collaborated with the team to implement optimized real-time shadows and light effects for immersion.",
         },
         {
           title: "Enemy AI",
           description:
-            "Designed AI behavior that reacts to player movement and sound cues.",
+            "Worked with designers and programmers to create AI behavior that reacts to player movement and sound cues.",
         },
         {
           title: "Performance Optimization",
           description:
-            "Reduced asset load times and optimized rendering for smooth gameplay.",
+            "Partnered with team members to reduce asset load times and optimize rendering for smooth gameplay.",
         },
       ],
       extra: {
@@ -515,7 +529,7 @@ export const siteConfig = {
         description: "Download the latest revised version directly.",
       },
       imageSrc: "Poster.webp",
-      stack: ["unity", "C#", "blender"],
+      stack: ["unity", "csharp", "blender"],
       url: {
         demo: "https://sites.google.com/view/vlog-01",
         github: "",
@@ -581,7 +595,7 @@ export const siteConfig = {
       title: "Ehrlich Ph",
       type: "Corporate Website",
       description:
-        "Revamped and optimized the Ehrlich Ph website after inheriting a bloated version from a past developer. Redesigned the UI/UX using Figma for a cleaner and more intuitive layout, then rebuilt the site for improved performance and maintainability. Additionally, troubleshot and resolved an AWS mail (MX) overload issue to ensure reliable email delivery.",
+        "Collaborated with the Ehrlich Ph team to revamp and optimize their website after inheriting a bloated version from a previous developer. Worked closely with stakeholders to redesign the UI/UX using Figma for a cleaner layout, then coordinated with the team to rebuild the site for improved performance. Additionally, partnered with IT support to troubleshoot and resolve AWS mail (MX) overload issues.",
       imageSrc: "Screenshot2025-03-17155511.webp",
       stack: ["wordpress", "php", "css", "figma", "aws"],
       url: {
@@ -592,7 +606,7 @@ export const siteConfig = {
       title: "Portfolio",
       type: "Front-end Project",
       description:
-        "A sleek, interactive web portfolio designed to showcase my projects, skills, and technical expertise. Built with modern front-end technologies, incorporating smooth transitions, light/dark mode, and optimized for mobile responsiveness.",
+        "A sleek, interactive web portfolio developed following industry best practices and modern design principles. Built collaboratively using modern front-end technologies, incorporating smooth transitions, light/dark mode, and optimized for mobile responsiveness with feedback from the developer community.",
       feature_list: [
         {
           title: "Smooth Animations",
@@ -767,7 +781,7 @@ export const siteConfig = {
       role: "Shopify Expert, Data Scraper",
       stack: ["shopify", "selenium", "python"],
       description:
-        "Customized a Shopify theme to fit project needs and integrated product listings scraped using Selenium and Scrapy from public websites. Automated the data extraction and product input process to efficiently populate the store with accurate product info.",
+        "Collaborated with the client team to customize a Shopify theme and integrate automated product listings. Worked closely with stakeholders to implement scraped data using Selenium and Scrapy, coordinating with the business team to streamline the data extraction and product input process for accurate store population.",
       startDate: "April 2025",
       endDate: "June 2025",
     },
@@ -777,7 +791,7 @@ export const siteConfig = {
       role: "Contract Frontend Developer",
       stack: ["typescript", "nextjs", "supabase"],
       description:
-        "Developed a comprehensive client management and payment processing platform. Implemented key features including client management, proposal creation, contract handling, payment processing with Stripe, and Google services integration (OAuth & Calendar API). Built with Next.js 14, TypeScript, and Supabase for robust data management.",
+        "Collaborated with a cross-functional team to develop a comprehensive client management and payment processing platform. Partnered with backend developers and designers to implement key features including client management, proposal creation, and Stripe payment integration. Worked closely with the product team to integrate Google services (OAuth & Calendar API) using Next.js 14, TypeScript, and Supabase.",
       startDate: "January 2025",
       endDate: "April 2025",
     },
@@ -787,7 +801,7 @@ export const siteConfig = {
       role: "Operations Intern",
       stack: ["krpano",  "jquery"],
       description:
-        "Mata Technologies has been a Google Street View-Trusted Photographer since 2019.  It is the premier provider of virtual tours for real estate in the Philippines and the virtual reality map provider of tourist destinations in the country.",
+        "Collaborated with the development team at Mata Technologies, a Google Street View-Trusted Photographer since 2019. Contributed to virtual tour projects for real estate clients and worked alongside the team to enhance the virtual reality mapping solutions for tourist destinations across the Philippines.",
       startDate: "July 2024",
       endDate: "October 2024",
     },
