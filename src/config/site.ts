@@ -454,7 +454,7 @@ export const siteConfig = {
     },
     {
       title: "Gummybook",
-      type: "CRM",
+      type: "Customer Relationship Management",
       description:
         "A comprehensive Customer Relationship Management (CRM) system built with Next.js 14. Streamlines client relationships through integrated proposal management, contract handling, payment processing, and Google Workspace integration for seamless business operations.",
       feature_list: [
