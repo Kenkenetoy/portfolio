@@ -151,6 +151,7 @@ export const siteConfig = {
         "A game engine for developing immersive 2D and 3D experiences.",
       icon: IconBrandUnity,
       devicon: UnityOriginal,
+      showInMovingCards: false,
     },
     blender: {
       title: "Blender",
@@ -158,6 +159,7 @@ export const siteConfig = {
         "An open-source 3D software for modeling, texturing, rigging, and animation.",
       icon: IconBrandBlender,
       devicon: BlenderOriginal,
+      showInMovingCards: false,
     },
     vite: {
       title: "Vite",
@@ -165,6 +167,7 @@ export const siteConfig = {
         "A fast build tool and development server for modern web projects.",
       icon: IconBrandVite,
       devicon: ViteOriginal,
+      showInMovingCards: false,
     },
     git: {
       title: "Git",
@@ -172,6 +175,7 @@ export const siteConfig = {
         "A distributed version control system for tracking changes in source code during software development.",
       icon: IconBrandGit,
       devicon: GitOriginal,
+      showInMovingCards: true,
     },
     react: {
       title: "React",
@@ -179,12 +183,14 @@ export const siteConfig = {
         "A powerful JavaScript library for building dynamic and interactive UIs.",
       icon: IconBrandReact,
       devicon: ReactOriginal,
+      showInMovingCards: true,
     },
     axios: {
       title: "Axios",
       description:
         "A promise-based HTTP client for making API requests in JavaScript and Node.js.",
       devicon: AxiosPlain,
+      showInMovingCards: false,
     },
     laravel: {
       title: "Laravel",
@@ -192,6 +198,7 @@ export const siteConfig = {
         "A PHP framework for building scalable and maintainable backends.",
       icon: IconBrandLaravel,
       devicon: LaravelOriginal,
+      showInMovingCards: false,
     },
     php: {
       title: "PHP",
@@ -199,6 +206,7 @@ export const siteConfig = {
         "A popular general-purpose scripting language suited for web development.",
       icon: IconBrandPhp, // Replace with an actual PHP icon if available
       devicon: PhpOriginal, // Devicon should have this
+      showInMovingCards: false,
     },
 
     typescript: {
@@ -207,6 +215,7 @@ export const siteConfig = {
         "A strongly typed programming language that builds on JavaScript.",
       icon: IconBrandTypescript,
       devicon: TypescriptOriginal,
+      showInMovingCards: true,
     },
     javascript: {
       title: "JavaScript",
@@ -214,12 +223,14 @@ export const siteConfig = {
         "A versatile programming language for building web applications.",
       icon: IconBrandJavascript,
       devicon: JavascriptOriginal,
+      showInMovingCards: true,
     },
     html: {
       title: "HTML",
       description: "The standard markup language for creating web pages.",
       icon: IconBrandHtml5,
       devicon: Html5Original,
+      showInMovingCards: true,
     },
     css: {
       title: "CSS",
@@ -227,6 +238,7 @@ export const siteConfig = {
         "A style sheet language used for describing the look of web pages.",
       icon: IconBrandCss3,
       devicon: Css3Original,
+      showInMovingCards: true,
     },
     tailwind: {
       title: "Tailwind CSS",
@@ -234,6 +246,7 @@ export const siteConfig = {
         "A utility-first CSS framework for rapid and responsive UI design.",
       icon: IconBrandTailwind,
       devicon: TailwindcssOriginal,
+      showInMovingCards: true,
     },
     bootstrap: {
       title: "Bootstrap",
@@ -241,6 +254,7 @@ export const siteConfig = {
         "A popular CSS framework for building responsive and mobile-first websites.",
       icon: IconBrandBootstrap,
       devicon: BootstrapOriginal,
+      showInMovingCards: false,
     },
     framer: {
       title: "Framer Motion",
@@ -248,18 +262,21 @@ export const siteConfig = {
         "A powerful animation library for React, enabling smooth and interactive UI animations.",
       icon: IconBrandFramer,
       devicon: FramermotionOriginal,
+      showInMovingCards: false,
     },
     csharp: {
       title: "C#",
       description:
         "A powerful object-oriented programming language used in game development and enterprise applications.",
       devicon: CsharpOriginal,
+      showInMovingCards: false,
     },
     java: {
       title: "Java",
       description:
         "A robust and versatile programming language for backend, mobile, and enterprise applications.",
       devicon: JavaOriginal,
+      showInMovingCards: false,
     },
     python: {
       title: "Python",
@@ -267,6 +284,7 @@ export const siteConfig = {
         "A widely-used programming language for web development, AI, and automation.",
       icon: IconBrandPython,
       devicon: PythonOriginal,
+      showInMovingCards: true,
     },
     mysql: {
       title: "MySQL",
@@ -274,18 +292,21 @@ export const siteConfig = {
         "A popular relational database management system for structured data storage.",
       icon: IconBrandMysql,
       devicon: MysqlOriginal,
+      showInMovingCards: false,
     },
     sqlite: {
       title: "SQLite",
       description:
         "A lightweight, self-contained SQL database engine for embedded applications.",
       devicon: SqliteOriginal,
+      showInMovingCards: false,
     },
     perl: {
       title: "Perl",
       description:
         "A high-level programming language known for its text-processing capabilities.",
       devicon: PerlOriginal,
+      showInMovingCards: false,
     },
 
     xml: {
@@ -293,95 +314,112 @@ export const siteConfig = {
       description:
         "A markup language used for defining structured data, commonly utilized in KRpano for scene configurations and settings.",
       devicon: XmlOriginal, // Custom placeholder, replace with an actual icon if needed
+      showInMovingCards: false,
     },
     wordpress: {
       title: "WordPress",
       description:
         "A popular content management system (CMS) used for building websites and blogs. Known for its flexibility, vast plugin ecosystem, and user-friendly interface.",
       devicon: WordpressOriginal, // Custom placeholder, replace with an actual icon if needed
+      showInMovingCards: false,
     },
     aws: {
       title: "Amazon Web Services (AWS)",
       description:
         "A comprehensive cloud computing platform offering scalable infrastructure, hosting, and cloud services. Commonly used for web hosting, database management, and email handling (including MX records for mail servers).",
       devicon: AmazonwebservicesOriginalWordmark, // Custom placeholder, replace with an actual icon if needed
+      showInMovingCards: false,
     },
     redux: {
       title: "Redux",
       description:
         "A predictable state container for JavaScript apps, commonly used with React for managing application state.",
       devicon: ReduxOriginal,
+      showInMovingCards: false,
     },
     shopify: {
       title: "Shopify",
       description:
         "A commerce platform that allows anyone to set up an online store and sell their products.",
+      showInMovingCards: false,
     },
     selenium: {
       title: "Selenium",
       description:
         "A web browser automation tool used for testing web applications and scraping web data.",
       devicon: SeleniumOriginal,
+      showInMovingCards: false,
     },
     scrapy: {
       title: "Scrapy",
       description:
         "An open source web crawling framework for Python used to extract data from websites.",
+      showInMovingCards: false,
     },
     nextjs: {
       title: "Next.js",
       description:
         "A React framework that enables functionality like server-side rendering and generating static websites.",
       devicon: NextjsOriginal,
+      showInMovingCards: true,
     },
     supabase: {
       title: "Supabase",
       description:
         "An open source Firebase alternative providing a Postgres database, authentication, instant APIs, and real-time subscriptions.",
       devicon: SupabaseOriginal,
+      showInMovingCards: false,
     },
     stripe: {
       title: "Stripe",
       description:
         "A technology company that builds economic infrastructure for the internet, enabling online payments.",
+      showInMovingCards: false,
     },
     krpano: {
       title: "KRpano",
       description:
         "A viewer for spherical panoramic images and interactive virtual tours with support for Flash and HTML5.",
+      showInMovingCards: false,
     },
     jquery: {
       title: "jQuery",
       description:
         "A fast, small, and feature-rich JavaScript library that simplifies HTML document manipulation and event handling.",
       devicon: JqueryOriginal,
+      showInMovingCards: false,
     },
     figma: {
       title: "Figma",
       description:
         "A web-based UI and UX design application tool used for designing interfaces, prototyping, and collaborating.",
       devicon: FigmaOriginal,
+      showInMovingCards: false,
     },
     netbeans: {
       title: "NetBeans",
       description:
         "An integrated development environment (IDE) for Java, though it also supports other languages.",
       devicon: NetbeansOriginal,
+      showInMovingCards: false,
     },
     jdbc: {
       title: "JDBC",
       description:
         "Java Database Connectivity, an API for connecting and executing queries with databases in Java.",
+      showInMovingCards: false,
     },
     xampp: {
       title: "XAMPP",
       description:
         "A free and open-source cross-platform web server solution stack package consisting mainly of Apache HTTP Server, MariaDB database, and interpreters for scripts written in PHP.",
+      showInMovingCards: false,
     },
     sql: {
       title: "SQL",
       description:
         "Structured Query Language, a domain-specific language used in programming for managing data in relational databases.",
+      showInMovingCards: false,
     },
   },
 

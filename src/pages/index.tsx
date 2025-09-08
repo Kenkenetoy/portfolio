@@ -322,7 +322,7 @@ export default function IndexPage() {
 
             <InfiniteMovingCards
               direction="right"
-              items={Object.values(siteConfig.stack).filter(item => 'devicon' in item)}
+              items={Object.values(siteConfig.stack)}
               speed="normal"
               useDevicon={true}
             />
