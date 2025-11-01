@@ -9,7 +9,6 @@ import { useState, useEffect } from "react";
 import {
   Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure,
 } from "@heroui/modal";
-import { RPProvider, RPDefaultLayout, RPPages, RPConfig } from '@pdf-viewer/react'
 import { DraggableMockupPhone } from "./DraggableMockupPhone";
 import { GlareCard } from "./glare-card";
 import { FloatingDock } from "./floating-dock";
