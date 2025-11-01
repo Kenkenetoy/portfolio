@@ -75,7 +75,7 @@ export const siteConfig = {
 
   url: "https://www.kenprce.vercel.app",
   resume:
-    "https://drive.google.com/uc?export=download&id=1A1WOujDVpUu1TlyN1Zg6jmBOr3abOwWC",
+    "https://cdn.jsdelivr.net/gh/Kenkenetoy/portfolio@b1b59bce970ef6b37f5cc39f17b61ca276cd2f32/public/Resume%20-%20Kenneth%20Jose%20R.%20Aparece.pdf",
 
   meta_type: "website",
   meta_title: "Kenneth Aparece",

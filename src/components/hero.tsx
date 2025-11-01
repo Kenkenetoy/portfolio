@@ -306,13 +306,12 @@ export const HeroSection = () => {
                     <>
                     <ModalHeader className="flex flex-col gap-1">Resume</ModalHeader>
                     <ModalBody>
-                      <RPConfig>
-                        <RPProvider src={siteConfig.resume}>
-                          <RPDefaultLayout style={{ height: '660px' }}>
-                            <RPPages />
-                          </RPDefaultLayout>
-                        </RPProvider>
-                      </RPConfig>        
+                      <iframe
+                        src={siteConfig.resume}
+                        width="100%"
+                        height="750px"
+                        style={{ border: 'none' }}
+                      />       
                     </ModalBody>
                     <ModalFooter>
                       <Button
