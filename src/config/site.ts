@@ -425,7 +425,7 @@ export const siteConfig = {
 
   contents: [
         {
-      title: "Workflo",
+      title: "Workflo Official Site",
       type: "Project Management Tool",
       description:
         "A comprehensive project management tool designed to streamline team collaboration and task management. Features include task assignments, progress tracking, file sharing, and real-time communication, all within an intuitive interface.",
