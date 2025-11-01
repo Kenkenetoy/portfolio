@@ -78,14 +78,11 @@ const AlternatingCards = () => {
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-default-foreground">
                 {item.type}
               </p>
-              <div className="flex gap-3">
+              <div className="text-xs font-medium sm:text-sm md:text-base text-default-foreground">
                 {item.stack.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="gap-4 text-xs font-medium sm:text-sm md:text-base text-default-foreground"
-                  >
+                  <span key={i} className="inline">
                     {tech}
-                    {i < item.stack.length - 1 && ","}
+                    {i < item.stack.length - 1 && ", "}
                   </span>
                 ))}
               </div>
