@@ -75,7 +75,7 @@ export const siteConfig = {
 
   url: "https://www.kenprce.vercel.app",
   resume:
-    "https://drive.google.com/uc?export=download&id=1A1WOujDVpUu1TlyN1Zg6jmBOr3abOwWC",
+    "https://cdn.jsdelivr.net/gh/Kenkenetoy/portfolio@b1b59bce970ef6b37f5cc39f17b61ca276cd2f32/public/Resume%20-%20Kenneth%20Jose%20R.%20Aparece.pdf",
 
   meta_type: "website",
   meta_title: "Kenneth Aparece",
@@ -425,7 +425,7 @@ export const siteConfig = {
 
   contents: [
         {
-      title: "Workflo",
+      title: "Workflo Official Site",
       type: "Project Management Tool",
       description:
         "A comprehensive project management tool designed to streamline team collaboration and task management. Features include task assignments, progress tracking, file sharing, and real-time communication, all within an intuitive interface.",
