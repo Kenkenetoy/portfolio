@@ -11,14 +11,14 @@ export const WobbleCard = ({
   children,
   containerClassName,
   className,
-  // image,
   hoverImage,
+  aspectRatio = "4/3", // Default aspect ratio, can be customized
 }: {
   children: React.ReactNode;
   containerClassName?: string;
   className?: string;
-  // image: string;
   hoverImage: string;
+  aspectRatio?: string; // e.g., "16/9", "4/3", "1/1", "3/4"
 }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -35,7 +35,7 @@ export const WobbleCard = ({
   return (
     <motion.section
       className={cn(
-        "mx-auto w-full relative rounded-3xl overflow-hidden transition-colors duration-300 ease-in-out",
+        "mx-auto w-full h-full relative rounded-3xl overflow-hidden transition-colors duration-300 ease-in-out",
         containerClassName
       )}
       style={{
@@ -52,7 +52,7 @@ export const WobbleCard = ({
       }}
       onMouseMove={handleMouseMove}
     >
-      <div>
+      <div className="h-full">
         <motion.div
           className={cn("relative h-full gap-12 overflow-hidden", className)}
           style={{
@@ -64,23 +64,29 @@ export const WobbleCard = ({
         >
           <div
             className={cn(
-              "group w-full cursor-pointer overflow-hidden relative card h-[20rem] sm:h-[25rem] md:h-[30rem] lg:h-[35rem] xl:h-[40rem] rounded-md shadow-xl mx-auto flex flex-col justify-end dark:border-neutral-800",
+              "group w-full h-full cursor-pointer overflow-hidden relative card rounded-md shadow-xl mx-auto",
+              "flex flex-col", // Stacked vertically on all devices
+              "dark:border-neutral-800",
               "hover:after:content-[''] hover:after:absolute hover:after:inset-0 ",
-              // "hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:bg-black hover:after:opacity-50",
               "transition-all duration-500"
             )}
-            style={{
-              backgroundImage: `url(${hoverImage})`,
-              // backgroundImage: `url(${isHovering ? hoverImage : image})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
           >
-            {/* Content */}
-            <div className="absolute bottom-0 z-50 w-full min-h-40 md:h-48 lg:h-60 bg-default-50">
-              <div className="px-2 py-4 sm:pt-4 md:pt-8 md:px-4 lg:pt-12 lg:px-8">
+            {/* Image Section */}
+            <div
+              className="flex-shrink-0 w-full"
+              style={{
+                aspectRatio: aspectRatio,
+                backgroundImage: `url(${hoverImage})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+
+            {/* Content Section */}
+            <div className="flex items-center flex-grow w-full p-2 bg-default-50 sm:p-4 md:p-6">
+              <div className="w-full">
                 {children}
               </div>
             </div>
@@ -94,21 +100,21 @@ export const WobbleCard = ({
 export function WobbleCardComponent() {
   return (
     <motion.div
-      className="flex flex-wrap justify-center gap-4 mx-auto"
+      className="grid justify-center grid-cols-4 gap-4 mx-auto auto-rows-fr"
       initial="hidden"
       variants={containerVariants}
       viewport={{ once: true, amount: 0.1 }}
       whileInView="show"
     >
       {siteConfig.whatIDoData.map((card, index) => (
-        <motion.div key={index} className="flex-grow" variants={cardVariants}>
+        <motion.div key={index} className="flex" variants={cardVariants}>
           <WobbleCard
             className="flex-1 min-w-[200px] w-full"
             containerClassName={`border border-1 border-default ${card.backgroundClass}`}
             hoverImage={card.hoverImage}
-            // image={card.image}
+            aspectRatio="4/3" // Set your desired aspect ratio here
           >
-            <div className="flex flex-col items-start transition-colors ease-in-out duration-250">
+            <div className="flex flex-col items-start justify-between h-full transition-colors ease-in-out duration-250">
               <div className="flex items-center gap-2">
                 <card.icon className={`text-${card.iconColor}`} />
 
@@ -121,7 +127,7 @@ export function WobbleCardComponent() {
                   {card.title}
                 </h2>
               </div>
-              <p className="mt-2 text-xs text-left lg:text-sm xl:text-base">
+              <p className="text-xs text-left lg:text-sm xl:text-base">
                 {card.description}
               </p>
             </div>
