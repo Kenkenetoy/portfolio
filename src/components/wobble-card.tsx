@@ -112,7 +112,7 @@ export function WobbleCardComponent() {
             className="flex-1 min-w-[200px] w-full"
             containerClassName={`border border-1 border-default ${card.backgroundClass}`}
             hoverImage={card.hoverImage}
-            aspectRatio="4/3" // Set your desired aspect ratio here
+            aspectRatio="4/5" // Set your desired aspect ratio here
           >
             <div className="flex flex-col items-start justify-between h-full transition-colors ease-in-out duration-250">
               <div className="flex items-center gap-2">
