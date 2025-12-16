@@ -85,7 +85,7 @@ export const WobbleCard = ({
             />
 
             {/* Content Section */}
-            <div className="flex items-center flex-grow w-full p-2 bg-default-50 sm:p-4 md:p-6">
+            <div className="flex items-center flex-grow w-full p-4 bg-default-50 sm:p-4 md:p-6">
               <div className="w-full">
                 {children}
               </div>
@@ -100,7 +100,7 @@ export const WobbleCard = ({
 export function WobbleCardComponent() {
   return (
     <motion.div
-      className="grid justify-center grid-cols-4 gap-4 mx-auto auto-rows-fr"
+      className="grid grid-cols-1 gap-4 mx-auto sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-fr"
       initial="hidden"
       variants={containerVariants}
       viewport={{ once: true, amount: 0.1 }}
@@ -114,13 +114,13 @@ export function WobbleCardComponent() {
             hoverImage={card.hoverImage}
             aspectRatio="4/5" // Set your desired aspect ratio here
           >
-            <div className="flex flex-col items-start justify-between h-full transition-colors ease-in-out duration-250">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-col items-start justify-between h-full gap-4 transition-colors ease-in-out duration-250">
+              <div className="flex items-center gap-4">
                 <card.icon className={`text-${card.iconColor}`} />
 
                 <h2
                   className={cn(
-                    "text-base sm:text-lg md:text-xl font-serif",
+                    "text-lg sm:text-lg md:text-xl font-serif",
                     card.textColorClass
                   )}
                 >
